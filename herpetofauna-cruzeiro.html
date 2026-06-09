@@ -1,0 +1,1800 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Herpetofauna de Cruzeiro | HerpetoMantiqueira</title>
+    <meta name="description" content="Album interativo e educativo da herpetofauna de Cruzeiro, com figurinhas, fotografias, textos acessiveis e fichas de especies.">
+    <style>
+      :root {
+        --bg: #06110b;
+        --bg-2: #0b1a10;
+        --ink: #fff8dd;
+        --muted: #d9cba8;
+        --soft: rgba(255, 248, 221, 0.72);
+        --line: rgba(235, 190, 93, 0.22);
+        --gold: #f2c66d;
+        --amber: #f48f22;
+        --leaf: #6da86f;
+        --water: #86d1ca;
+        --danger: #e46a3d;
+        --card: rgba(9, 25, 14, 0.78);
+        --card-2: rgba(17, 37, 23, 0.9);
+        --shadow: 0 30px 80px rgba(0, 0, 0, 0.45);
+        color-scheme: dark;
+      }
+
+      * { box-sizing: border-box; }
+
+      html { scroll-behavior: smooth; }
+
+      body {
+        margin: 0;
+        min-height: 100vh;
+        font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+        background:
+          radial-gradient(circle at 18% 0%, rgba(244, 143, 34, 0.18), transparent 30rem),
+          radial-gradient(circle at 90% 12%, rgba(109, 168, 111, 0.16), transparent 28rem),
+          linear-gradient(180deg, #030604 0%, var(--bg) 42%, #030604 100%);
+        color: var(--ink);
+      }
+
+      body::before {
+        content: "";
+        position: fixed;
+        inset: 0;
+        pointer-events: none;
+        opacity: 0.18;
+        background-image:
+          linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+        background-size: 42px 42px;
+        mask-image: linear-gradient(to bottom, black, transparent 85%);
+      }
+
+      a { color: inherit; }
+
+      img { max-width: 100%; display: block; }
+
+      button, input {
+        font: inherit;
+      }
+
+      .page-shell {
+        position: relative;
+        overflow: hidden;
+      }
+
+      .topbar {
+        position: sticky;
+        top: 0;
+        z-index: 30;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 1rem;
+        padding: 1rem clamp(1rem, 5vw, 4.5rem);
+        border-bottom: 1px solid var(--line);
+        background: rgba(3, 8, 5, 0.78);
+        backdrop-filter: blur(18px);
+      }
+
+      .brand {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.75rem;
+        text-decoration: none;
+        min-width: 0;
+      }
+
+      .brand img {
+        width: 46px;
+        height: 46px;
+        object-fit: contain;
+        filter: drop-shadow(0 8px 18px rgba(0, 0, 0, 0.45));
+      }
+
+      .brand strong {
+        display: block;
+        font-family: Georgia, "Times New Roman", serif;
+        font-size: clamp(1rem, 2vw, 1.35rem);
+        line-height: 1;
+        color: var(--gold);
+      }
+
+      .brand small {
+        display: block;
+        margin-top: 0.2rem;
+        color: var(--soft);
+        font-size: 0.68rem;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+      }
+
+      .topnav {
+        display: flex;
+        align-items: center;
+        gap: 0.45rem;
+        color: var(--soft);
+        font-size: 0.78rem;
+        text-transform: uppercase;
+        letter-spacing: 0.06em;
+      }
+
+      .topnav a {
+        text-decoration: none;
+        padding: 0.72rem 0.9rem;
+        border-radius: 999px;
+        border: 1px solid transparent;
+      }
+
+      .topnav a:hover,
+      .topnav a:focus-visible {
+        color: var(--ink);
+        border-color: var(--line);
+        background: rgba(255, 255, 255, 0.05);
+        outline: none;
+      }
+
+      .hero {
+        min-height: 82vh;
+        display: grid;
+        grid-template-columns: minmax(0, 1.04fr) minmax(20rem, 0.96fr);
+        align-items: center;
+        gap: clamp(2rem, 5vw, 5rem);
+        padding: clamp(1.4rem, 4vw, 2.6rem) clamp(1rem, 5vw, 4.5rem) 3rem;
+      }
+
+      .institutional-strip {
+        grid-column: 1 / -1;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 1rem;
+        margin-bottom: clamp(1rem, 3vw, 2rem);
+        padding: 0.9rem clamp(0.85rem, 2vw, 1.2rem);
+        border: 1px solid rgba(242, 198, 109, 0.18);
+        border-radius: 1.2rem;
+        background: linear-gradient(90deg, rgba(255, 248, 221, 0.06), rgba(255, 248, 221, 0.025));
+        box-shadow: 0 18px 50px rgba(0, 0, 0, 0.24);
+      }
+
+      .institutional-strip__text {
+        min-width: 12rem;
+      }
+
+      .institutional-strip__text small {
+        display: block;
+        color: var(--gold);
+        font-weight: 900;
+        font-size: 0.68rem;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+      }
+
+      .institutional-strip__text strong {
+        display: block;
+        margin-top: 0.2rem;
+        color: var(--ink);
+        font-family: Georgia, "Times New Roman", serif;
+        font-size: clamp(1rem, 2vw, 1.35rem);
+      }
+
+      .institutional-logos {
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        gap: clamp(0.7rem, 1.5vw, 1rem);
+        flex-wrap: wrap;
+      }
+
+      .institutional-logos img {
+        width: clamp(5.2rem, 8vw, 7.4rem);
+        height: clamp(3.6rem, 5.6vw, 5rem);
+        object-fit: contain;
+        padding: 0.48rem;
+        border-radius: 0.9rem;
+        border: 1px solid rgba(242, 198, 109, 0.18);
+        background:
+          radial-gradient(circle at 50% 25%, rgba(255, 255, 255, 0.95), rgba(248, 244, 226, 0.9));
+        box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.05), 0 12px 26px rgba(0, 0, 0, 0.26);
+      }
+
+      .hero-copy {
+        position: relative;
+        z-index: 2;
+      }
+
+      .eyebrow {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        margin: 0 0 1rem;
+        color: var(--gold);
+        font-weight: 800;
+        font-size: 0.75rem;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+      }
+
+      .eyebrow::before {
+        content: "";
+        width: 2.3rem;
+        height: 1px;
+        background: currentColor;
+      }
+
+      h1, h2, h3, p { overflow-wrap: anywhere; }
+
+      h1 {
+        max-width: min(100%, 13ch);
+        margin: 0;
+        font-family: Georgia, "Times New Roman", serif;
+        font-size: clamp(3.2rem, 10vw, 8rem);
+        line-height: 0.88;
+        color: var(--ink);
+        overflow-wrap: normal;
+        word-break: normal;
+        hyphens: none;
+        text-wrap: balance;
+      }
+
+      .hero-copy > p:not(.eyebrow) {
+        max-width: 44rem;
+        margin: 1.4rem 0 0;
+        color: var(--soft);
+        font-size: clamp(1.02rem, 2vw, 1.26rem);
+        line-height: 1.75;
+      }
+
+      .hero-actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.8rem;
+        margin-top: 2rem;
+      }
+
+      .button {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 3.05rem;
+        padding: 0.85rem 1.15rem;
+        border-radius: 999px;
+        border: 1px solid rgba(242, 198, 109, 0.38);
+        background: linear-gradient(135deg, rgba(244, 143, 34, 0.92), rgba(242, 198, 109, 0.84));
+        color: #120c05;
+        font-weight: 900;
+        text-decoration: none;
+        box-shadow: 0 20px 40px rgba(244, 143, 34, 0.22);
+      }
+
+      .button.secondary {
+        background: rgba(255, 255, 255, 0.04);
+        color: var(--ink);
+        box-shadow: none;
+      }
+
+      .hero-stage {
+        position: relative;
+        min-height: min(74vh, 52rem);
+        display: grid;
+        place-items: center;
+      }
+
+      .poster {
+        position: relative;
+        width: min(100%, 30rem);
+        aspect-ratio: 5 / 7;
+        border: 1px solid var(--line);
+        border-radius: 1.7rem;
+        overflow: hidden;
+        background: linear-gradient(180deg, rgba(8, 20, 11, 0.35), rgba(8, 20, 11, 0.92));
+        box-shadow: var(--shadow);
+        transform: rotate(1.5deg);
+      }
+
+      .poster::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background:
+          linear-gradient(180deg, transparent 35%, rgba(3, 8, 5, 0.82)),
+          radial-gradient(circle at 50% 28%, transparent 0 26%, rgba(0, 0, 0, 0.18) 60%);
+      }
+
+      .poster img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        filter: saturate(1.06) contrast(1.02);
+      }
+
+      .poster-badge {
+        position: absolute;
+        left: 1.3rem;
+        right: 1.3rem;
+        bottom: 1.3rem;
+        z-index: 2;
+        padding: 1rem;
+        border-radius: 1rem;
+        border: 1px solid rgba(242, 198, 109, 0.22);
+        background: rgba(3, 8, 5, 0.68);
+        backdrop-filter: blur(10px);
+      }
+
+      .poster-badge strong {
+        display: block;
+        font-family: Georgia, "Times New Roman", serif;
+        color: var(--gold);
+        font-size: 1.5rem;
+      }
+
+      .poster-badge span {
+        display: block;
+        margin-top: 0.35rem;
+        color: var(--soft);
+        line-height: 1.55;
+      }
+
+      .section {
+        padding: clamp(3.2rem, 7vw, 6rem) clamp(1rem, 5vw, 4.5rem);
+        border-top: 1px solid rgba(242, 198, 109, 0.1);
+      }
+
+      .section-head {
+        display: grid;
+        grid-template-columns: minmax(0, 0.8fr) minmax(16rem, 0.65fr);
+        gap: 1.5rem;
+        align-items: end;
+        margin-bottom: 2rem;
+      }
+
+      h2 {
+        margin: 0;
+        font-family: Georgia, "Times New Roman", serif;
+        font-size: clamp(2.2rem, 6vw, 4.7rem);
+        line-height: 0.98;
+        text-wrap: balance;
+      }
+
+      .section-head p {
+        margin: 0;
+        color: var(--soft);
+        line-height: 1.7;
+      }
+
+      .controls {
+        display: grid;
+        grid-template-columns: minmax(14rem, 1fr) auto;
+        gap: 0.9rem;
+        align-items: center;
+        margin: 1.5rem 0 2rem;
+      }
+
+      .search {
+        min-height: 3.2rem;
+        width: 100%;
+        border-radius: 999px;
+        border: 1px solid var(--line);
+        background: rgba(255, 255, 255, 0.05);
+        color: var(--ink);
+        padding: 0 1.1rem;
+        outline: none;
+      }
+
+      .search:focus {
+        border-color: rgba(242, 198, 109, 0.7);
+        box-shadow: 0 0 0 4px rgba(242, 198, 109, 0.1);
+      }
+
+      .filters {
+        display: flex;
+        gap: 0.55rem;
+        flex-wrap: wrap;
+        justify-content: flex-end;
+      }
+
+      .filter {
+        min-height: 2.8rem;
+        border: 1px solid var(--line);
+        border-radius: 999px;
+        background: rgba(255, 255, 255, 0.04);
+        color: var(--soft);
+        padding: 0.65rem 0.95rem;
+        cursor: pointer;
+      }
+
+      .filter.is-active {
+        background: rgba(242, 198, 109, 0.15);
+        color: var(--gold);
+        border-color: rgba(242, 198, 109, 0.48);
+      }
+
+      .album-grid {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: clamp(0.9rem, 2vw, 1.25rem);
+        padding: clamp(0.7rem, 2vw, 1.2rem);
+        border: 1px solid rgba(242, 198, 109, 0.12);
+        border-radius: 1.5rem;
+        background:
+          linear-gradient(90deg, rgba(242, 198, 109, 0.04) 1px, transparent 1px),
+          linear-gradient(rgba(242, 198, 109, 0.04) 1px, transparent 1px),
+          rgba(4, 12, 7, 0.46);
+        background-size: 2.5rem 2.5rem;
+      }
+
+      .species-card {
+        position: relative;
+        min-height: 0;
+        padding: 0.45rem;
+        border: 1px solid var(--line);
+        border-radius: 1.35rem;
+        overflow: hidden;
+        background:
+          linear-gradient(145deg, rgba(255, 248, 221, 0.08), transparent 36%),
+          linear-gradient(180deg, rgba(18, 38, 22, 0.92), rgba(4, 11, 7, 0.96));
+        box-shadow: 0 18px 45px rgba(0, 0, 0, 0.28);
+        cursor: pointer;
+        color: var(--ink);
+        text-align: left;
+        transition: transform 180ms ease, border-color 180ms ease, box-shadow 180ms ease;
+      }
+
+      .species-card:hover,
+      .species-card:focus-visible {
+        transform: translateY(-5px);
+        border-color: rgba(242, 198, 109, 0.55);
+        box-shadow: 0 28px 70px rgba(0, 0, 0, 0.42);
+        outline: none;
+      }
+
+      .species-card__image {
+        position: relative;
+        aspect-ratio: 2.5 / 3.5;
+        height: auto;
+        display: grid;
+        place-items: center;
+        padding: 0.45rem;
+        border-radius: 1rem;
+        border: 1px solid rgba(255, 248, 221, 0.11);
+        background:
+          radial-gradient(circle at 50% 35%, rgba(242, 198, 109, 0.18), transparent 45%),
+          linear-gradient(180deg, rgba(255, 255, 255, 0.045), rgba(0, 0, 0, 0.08));
+      }
+
+      .species-card__image img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+        filter: drop-shadow(0 20px 24px rgba(0, 0, 0, 0.46));
+        transform: none;
+      }
+
+      .species-card__body {
+        padding: 1rem 1rem 1.15rem;
+      }
+
+      .tag-row {
+        display: flex;
+        gap: 0.4rem;
+        flex-wrap: wrap;
+        margin-bottom: 0.7rem;
+      }
+
+      .tag {
+        display: inline-flex;
+        align-items: center;
+        min-height: 1.55rem;
+        padding: 0.22rem 0.52rem;
+        border-radius: 999px;
+        border: 1px solid rgba(255, 255, 255, 0.12);
+        color: var(--soft);
+        font-size: 0.7rem;
+        font-weight: 800;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+      }
+
+      .tag.amphibia { color: #b8f0b8; border-color: rgba(109, 168, 111, 0.38); }
+      .tag.reptilia { color: #ffd9a3; border-color: rgba(244, 143, 34, 0.38); }
+      .tag.plantae { color: #b6f5da; border-color: rgba(134, 209, 202, 0.38); }
+
+      .species-card h3 {
+        margin: 0;
+        font-family: Georgia, "Times New Roman", serif;
+        color: var(--gold);
+        font-size: 1.45rem;
+        line-height: 1.05;
+        font-style: italic;
+      }
+
+      .species-card p {
+        margin: 0.55rem 0 0;
+        color: var(--soft);
+        font-size: 0.92rem;
+        line-height: 1.55;
+      }
+
+      .notes-grid {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 1rem;
+      }
+
+      .note-card {
+        padding: 1.25rem;
+        border-radius: 1.1rem;
+        border: 1px solid var(--line);
+        background: var(--card);
+      }
+
+      .note-card h3 {
+        margin: 0;
+        color: var(--gold);
+        font-family: Georgia, "Times New Roman", serif;
+        font-size: 1.5rem;
+      }
+
+      .note-card p {
+        margin: 0.75rem 0 0;
+        color: var(--soft);
+        line-height: 1.65;
+      }
+
+      .logos {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.8rem;
+        align-items: center;
+        margin-top: 2rem;
+      }
+
+      .logos img {
+        width: 86px;
+        height: 58px;
+        object-fit: contain;
+        padding: 0.55rem;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 0.9rem;
+        background: rgba(255, 255, 255, 0.04);
+      }
+
+      .modal {
+        position: fixed;
+        inset: 0;
+        z-index: 80;
+        display: grid;
+        place-items: center;
+        padding: clamp(0.6rem, 3vw, 2rem);
+        background: rgba(0, 0, 0, 0.72);
+        backdrop-filter: blur(10px);
+      }
+
+      .modal[hidden] { display: none; }
+
+      .modal-card {
+        position: relative;
+        width: min(1120px, 100%);
+        max-height: min(92vh, 58rem);
+        overflow: auto;
+        border: 1px solid rgba(242, 198, 109, 0.32);
+        border-radius: 1.35rem;
+        background: linear-gradient(180deg, rgba(10, 24, 14, 0.98), rgba(3, 8, 5, 0.98));
+        box-shadow: var(--shadow);
+      }
+
+      .modal-close {
+        position: sticky;
+        top: 0.85rem;
+        z-index: 2;
+        display: block;
+        width: 2.85rem;
+        height: 2.85rem;
+        margin: 0.85rem 0.85rem 0 auto;
+        border-radius: 999px;
+        border: 1px solid var(--line);
+        background: rgba(3, 8, 5, 0.82);
+        color: var(--ink);
+        cursor: pointer;
+        font-size: 1.45rem;
+      }
+
+      .modal-grid {
+        display: grid;
+        grid-template-columns: minmax(0, 0.95fr) minmax(0, 1.05fr);
+        gap: 0;
+        margin-top: 0;
+      }
+
+      .media-panel {
+        padding: clamp(1rem, 3vw, 1.5rem);
+        border-right: 1px solid var(--line);
+      }
+
+      .photo-frame {
+        min-height: 28rem;
+        display: grid;
+        place-items: center;
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        border-radius: 1rem;
+        overflow: hidden;
+        background: #020503;
+      }
+
+      .photo-frame img {
+        width: 100%;
+        height: 100%;
+        min-height: 0;
+        object-fit: contain;
+      }
+
+      .thumbs {
+        display: flex;
+        gap: 0.55rem;
+        margin-top: 0.7rem;
+        overflow-x: auto;
+        padding-bottom: 0.2rem;
+      }
+
+      .thumbs button {
+        flex: 0 0 5.2rem;
+        height: 4.2rem;
+        padding: 0;
+        border-radius: 0.75rem;
+        overflow: hidden;
+        border: 1px solid transparent;
+        background: rgba(255, 255, 255, 0.06);
+        cursor: pointer;
+      }
+
+      .thumbs button.is-active { border-color: var(--gold); }
+
+      .thumbs img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      .sticker-strip {
+        display: grid;
+        grid-template-columns: 8rem minmax(0, 1fr);
+        gap: 1rem;
+        align-items: center;
+        margin-top: 1rem;
+        padding: 0.8rem;
+        border: 1px solid var(--line);
+        border-radius: 1rem;
+        background: rgba(255, 255, 255, 0.035);
+      }
+
+      .sticker-strip img {
+        max-height: 8.8rem;
+        object-fit: contain;
+        filter: drop-shadow(0 16px 20px rgba(0, 0, 0, 0.35));
+      }
+
+      .sticker-strip p {
+        margin: 0;
+        color: var(--soft);
+        line-height: 1.6;
+      }
+
+      .content-panel {
+        padding: clamp(1.2rem, 4vw, 2.1rem);
+      }
+
+      .content-panel h2 {
+        font-size: clamp(2rem, 5vw, 4rem);
+        color: var(--gold);
+        font-style: italic;
+      }
+
+      .popular {
+        margin: 0.4rem 0 1rem;
+        color: var(--muted);
+        font-size: 1.05rem;
+      }
+
+      .fact-grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 0.6rem;
+        margin: 1rem 0 1.3rem;
+      }
+
+      .fact {
+        padding: 0.75rem;
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        border-radius: 0.85rem;
+        background: rgba(255, 255, 255, 0.035);
+      }
+
+      .fact small {
+        display: block;
+        margin-bottom: 0.25rem;
+        color: var(--gold);
+        font-size: 0.66rem;
+        font-weight: 900;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+      }
+
+      .fact span {
+        color: var(--ink);
+        line-height: 1.4;
+      }
+
+      .modal-text {
+        color: var(--soft);
+        line-height: 1.75;
+        font-size: 1rem;
+      }
+
+      .modal-text strong { color: var(--ink); }
+
+      .sound-card {
+        margin: 1.25rem 0;
+        padding: 1rem;
+        border-radius: 1rem;
+        border: 1px solid rgba(134, 209, 202, 0.24);
+        background: linear-gradient(180deg, rgba(134, 209, 202, 0.08), rgba(255, 255, 255, 0.035));
+      }
+
+      .sound-card h3 {
+        margin: 0 0 0.7rem;
+        font-family: Georgia, "Times New Roman", serif;
+        color: var(--water);
+        font-size: 1.35rem;
+      }
+
+      .wave {
+        width: 100%;
+        height: 118px;
+        display: block;
+        border-radius: 0.8rem;
+        background: rgba(0, 0, 0, 0.28);
+      }
+
+      .sound-card p {
+        margin: 0.75rem 0 0;
+        color: var(--soft);
+        font-size: 0.92rem;
+        line-height: 1.55;
+      }
+
+      .literature-note {
+        margin: 1rem 0 0;
+        padding: 1rem;
+        border-radius: 0.9rem;
+        border: 1px solid rgba(242, 198, 109, 0.2);
+        background: rgba(242, 198, 109, 0.06);
+        color: var(--soft);
+        line-height: 1.6;
+        font-size: 0.92rem;
+      }
+
+      .literature-note strong {
+        display: block;
+        margin-bottom: 0.35rem;
+        color: var(--gold);
+      }
+
+      .safety {
+        margin-top: 1rem;
+        padding: 1rem;
+        border-left: 4px solid var(--danger);
+        border-radius: 0.85rem;
+        background: rgba(228, 106, 61, 0.1);
+        color: var(--soft);
+        line-height: 1.65;
+      }
+
+      .empty-state {
+        display: none;
+        padding: 2rem;
+        border: 1px solid var(--line);
+        border-radius: 1rem;
+        color: var(--soft);
+        text-align: center;
+        background: var(--card);
+      }
+
+      .empty-state.is-visible { display: block; }
+
+      .reference-list {
+        display: grid;
+        gap: 0.8rem;
+        margin: 1.4rem 0 0;
+        padding: 0;
+        list-style: none;
+        counter-reset: refs;
+      }
+
+      .reference-list li {
+        counter-increment: refs;
+        display: flex;
+        align-items: flex-start;
+        gap: 0.85rem;
+        padding: 1rem;
+        border: 1px solid var(--line);
+        border-radius: 1rem;
+        background: var(--card);
+        color: var(--soft);
+        line-height: 1.65;
+      }
+
+      .reference-list li::before {
+        content: counter(refs);
+        display: grid;
+        place-items: center;
+        width: 2.2rem;
+        height: 2.2rem;
+        border-radius: 999px;
+        background: rgba(242, 198, 109, 0.12);
+        color: var(--gold);
+        font-weight: 900;
+        flex: 0 0 auto;
+      }
+
+      .ref-text {
+        display: block;
+        min-width: 0;
+        overflow-wrap: normal;
+        word-break: normal;
+      }
+
+      .ref-text strong,
+      .ref-text em,
+      .ref-text a {
+        display: inline;
+      }
+
+      .reference-list a {
+        color: var(--gold);
+        overflow-wrap: anywhere;
+        word-break: normal;
+        text-decoration-thickness: 1px;
+        text-underline-offset: 0.18em;
+      }
+
+      @media (max-width: 1120px) {
+        .album-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+      }
+
+      @media (max-width: 880px) {
+        .topbar {
+          align-items: flex-start;
+          flex-direction: column;
+        }
+
+        .topnav {
+          width: 100%;
+          overflow-x: auto;
+          padding-bottom: 0.15rem;
+        }
+
+        .topnav a { white-space: nowrap; }
+
+        .hero {
+          min-height: auto;
+          grid-template-columns: 1fr;
+          padding-top: 2.3rem;
+        }
+
+        .institutional-strip {
+          align-items: flex-start;
+          flex-direction: column;
+        }
+
+        .institutional-logos {
+          width: 100%;
+          justify-content: flex-start;
+        }
+
+        .hero-stage { min-height: 34rem; }
+
+        .section-head,
+        .controls,
+        .modal-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .filters { justify-content: flex-start; }
+
+        .album-grid { grid-template-columns: repeat(2, minmax(13rem, 1fr)); }
+
+        .notes-grid { grid-template-columns: 1fr; }
+
+        .media-panel { border-right: 0; border-bottom: 1px solid var(--line); }
+
+        .photo-frame,
+        .photo-frame img { min-height: 21rem; }
+
+        .modal-card {
+          max-height: 95vh;
+          border-radius: 1rem;
+        }
+      }
+
+      @media (max-width: 560px) {
+        .brand small { display: none; }
+
+        .hero {
+          padding-inline: 0.85rem;
+        }
+
+        .institutional-strip {
+          border-radius: 1rem;
+          padding: 0.8rem;
+        }
+
+        .institutional-logos {
+          display: grid;
+          grid-template-columns: repeat(4, minmax(0, 1fr));
+          gap: 0.5rem;
+        }
+
+        .institutional-logos img {
+          width: 100%;
+          height: 3.9rem;
+          padding: 0.35rem;
+        }
+
+        h1 { font-size: clamp(3rem, 18vw, 4.7rem); }
+
+        .poster {
+          width: min(94vw, 25rem);
+          transform: none;
+        }
+
+        .section {
+          padding-inline: 0.85rem;
+        }
+
+        .controls { gap: 0.75rem; }
+
+        .album-grid {
+          grid-template-columns: 1fr;
+          gap: 0.9rem;
+          padding: 0.75rem;
+        }
+
+        .species-card { border-radius: 1rem; }
+
+        .species-card__image {
+          padding: 0.55rem;
+        }
+
+        .species-card__body { padding: 0.82rem; }
+
+        .species-card h3 { font-size: 1.08rem; }
+
+        .species-card p { font-size: 0.8rem; }
+
+        .tag {
+          font-size: 0.58rem;
+          letter-spacing: 0.04em;
+        }
+
+        .fact-grid,
+        .sticker-strip {
+          grid-template-columns: 1fr;
+        }
+
+        .sticker-strip img {
+          max-height: 7rem;
+          margin: auto;
+        }
+
+        .photo-frame,
+        .photo-frame img { min-height: 17rem; }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="page-shell">
+      <header class="topbar">
+        <a class="brand" href="index.html" aria-label="Voltar para HerpetoMantiqueira">
+          <img src="assets/herpetofauna/logos/herpeto-mantiqueira-logo.png" alt="">
+          <span><strong>HerpetoMantiqueira</strong><small>Album educativo de biodiversidade</small></span>
+        </a>
+        <nav class="topnav" aria-label="Navegacao desta pagina">
+          <a href="index.html">Inicio</a>
+          <a href="#album">Figurinhas</a>
+          <a href="#como-ler">Como ler</a>
+          <a href="#parceiros">Parceiros</a>
+          <a href="#referencias">Referencias</a>
+        </nav>
+      </header>
+
+      <main>
+        <section class="hero">
+          <div class="institutional-strip" aria-label="Instituições parceiras do álbum">
+            <div class="institutional-strip__text">
+              <small>Projeto conjunto</small>
+              <strong>Educação, ciência e conservação em rede.</strong>
+            </div>
+            <div class="institutional-logos">
+              <img src="assets/herpetofauna/logos/herpeto-mantiqueira-logo.png" alt="HerpetoMantiqueira">
+          <img src="assets/herpetofauna/logos/rppn-gigante-itaguare-dark-green.png" alt="RPPN Gigante do Itaguare">
+              <img src="assets/herpetofauna/logos/jardim-botanico-logo.png" alt="Jardim Botanico">
+              <img src="assets/herpetofauna/logos/escola-nacional-de-botanica-tropical-logo.png" alt="Escola Nacional de Botanica Tropical">
+            </div>
+          </div>
+          <div class="hero-copy">
+            <p class="eyebrow">Cruzeiro, SP · Vale Historico Paulista</p>
+            <h1>Herpetofauna de Cruzeiro</h1>
+            <p>Um album interativo para aproximar jovens, adultos, educadores e curiosos dos anfibios, repteis e microhabitats que ajudam a contar a historia natural de Cruzeiro.</p>
+            <div class="hero-actions">
+              <a class="button" href="#album">Abrir album</a>
+              <a class="button secondary" href="#como-ler">Como usar</a>
+            </div>
+          </div>
+          <div class="hero-stage" aria-hidden="true">
+            <figure class="poster">
+              <img src="assets/herpetofauna/stickers-signed/herpetofauna-cruzeiro-fundo.png" alt="">
+              <figcaption class="poster-badge">
+                <strong>Figurinhas + ciencia</strong>
+                <span>Clique em uma figurinha para abrir fotos reais, texto acessivel, cuidados de observacao e uma leitura visual do som quando houver vocalizacao.</span>
+              </figcaption>
+            </figure>
+          </div>
+        </section>
+
+        <section class="section" id="album">
+          <div class="section-head">
+            <div>
+              <p class="eyebrow">Album vivo</p>
+              <h2>Clique, descubra, observe.</h2>
+            </div>
+            <p>As fichas abaixo sao educativas e nao substituem revisao taxonomica formal, licencas, chaves de identificacao ou orientacao tecnica. Para campo, observe sem manusear e preserve o ambiente.</p>
+          </div>
+
+          <div class="controls">
+            <input class="search" id="speciesSearch" type="search" placeholder="Buscar por especie, grupo, habitat..." aria-label="Buscar especies">
+            <div class="filters" aria-label="Filtros do album">
+              <button class="filter is-active" type="button" data-filter="todos">Todos</button>
+              <button class="filter" type="button" data-filter="anfibio">Anfibios</button>
+              <button class="filter" type="button" data-filter="reptil">Repteis</button>
+              <button class="filter" type="button" data-filter="bromelia">Bromelia</button>
+            </div>
+          </div>
+
+          <div class="album-grid" id="albumGrid"></div>
+          <div class="empty-state" id="emptyState">Nenhuma figurinha encontrada com esse filtro.</div>
+        </section>
+
+        <section class="section" id="como-ler">
+          <div class="section-head">
+            <div>
+              <p class="eyebrow">Como ler</p>
+              <h2>Bonito por fora, cuidadoso por dentro.</h2>
+            </div>
+            <p>O album usa linguagem simples, mas preserva a diferenca entre nome cientifico, nome popular, grupo biologico e identificacao incerta.</p>
+          </div>
+          <div class="notes-grid">
+            <article class="note-card">
+              <h3>Nome cientifico</h3>
+              <p>Quando o nome aparece em italico, ele representa uma identificacao biologica. Em casos como <em>cf.</em> ou <em>sp.</em>, a ficha indica que a identificacao precisa ser tratada com cautela.</p>
+            </article>
+            <article class="note-card">
+              <h3>Som e canto</h3>
+              <p>Anfibios anuros podem vocalizar. Quando nao ha audio real carregado, a ficha mostra apenas uma visualizacao ilustrativa, marcada como tal.</p>
+            </article>
+            <article class="note-card">
+              <h3>Seguranca</h3>
+              <p>Serpentes e anfibios nao devem ser capturados. Fotografar de longe, nao matar e manter distancia sao atitudes melhores para a pessoa e para o animal.</p>
+            </article>
+          </div>
+        </section>
+
+        <section class="section" id="parceiros">
+          <div class="section-head">
+            <div>
+              <p class="eyebrow">Uso destacavel</p>
+              <h2>Pronto para circular.</h2>
+            </div>
+            <p>Esta pagina foi montada como uma peca independente: pode ficar dentro da HerpetoMantiqueira ou ser adaptada para uma pagina de parceiro, como RPPN, instituto, escola ou atividade de educacao ambiental.</p>
+          </div>
+        </section>
+
+        <section class="section" id="referencias">
+          <div class="section-head">
+            <div>
+              <p class="eyebrow">Base cientifica</p>
+              <h2>Referencias usadas nas fichas.</h2>
+            </div>
+            <p>As fichas foram escritas em linguagem leiga, mas usando literatura de herpetologia, ecologia de anfibios e repteis, microhabitat, serapilheira, bromelias e conservacao. A lista abaixo combina fontes por especie, genero, grupo biologico e tema ecologico, para que todas as 18 fichas tenham apoio bibliografico real.</p>
+          </div>
+          <ol class="reference-list">
+            <li><span class="ref-text">ZINA, J.; HADDAD, C. F. B. Ecology and reproductive biology of two species of <em>Aplastodiscus</em> (Anura: Hylidae) in the Atlantic forest, Brazil. <strong>Journal of Natural History</strong>, v. 40, n. 29-31, p. 1831-1840, 2006. DOI: <a href="https://doi.org/10.1080/00222930600976021" target="_blank" rel="noopener noreferrer">10.1080/00222930600976021</a>.</span></li>
+            <li><span class="ref-text">HADDAD, C. F. B.; TOLEDO, L. F.; PRADO, C. P. A.; LOEBMANN, D.; GASPARINI, J. L.; SAZIMA, I. <strong>Guia dos anfíbios da Mata Atlântica: diversidade e biologia</strong>. São Paulo: Anolis Books, 2013.</span></li>
+            <li><span class="ref-text">WELLS, K. D. <strong>The ecology and behavior of amphibians</strong>. Chicago: University of Chicago Press, 2007.</span></li>
+            <li><span class="ref-text">ARAÚJO, M. S. et al. Food habits and ontogenetic diet shifts of the litter dwelling frog <em>Proceratophrys boiei</em> (Wied). <strong>Revista Brasileira de Zoologia</strong>, v. 15, n. 2, 1998. DOI: <a href="https://doi.org/10.1590/S0101-81751998000200011" target="_blank" rel="noopener noreferrer">10.1590/S0101-81751998000200011</a>.</span></li>
+            <li><span class="ref-text">POMBAL JÚNIOR, J. P. Oviposição e desenvolvimento de <em>Brachycephalus ephippium</em> (Spix) (Anura, Brachycephalidae). <strong>Revista Brasileira de Zoologia</strong>, v. 16, n. 4, 1999. DOI: <a href="https://doi.org/10.1590/S0101-81751999000400004" target="_blank" rel="noopener noreferrer">10.1590/S0101-81751999000400004</a>.</span></li>
+            <li><span class="ref-text">NUNES, I. et al. Hidden by the name: a new fluorescent pumpkin toadlet from the <em>Brachycephalus ephippium</em> species group (Anura: Brachycephalidae). <strong>PLoS ONE</strong>, v. 16, n. 4, e0244812, 2021. DOI: <a href="https://doi.org/10.1371/journal.pone.0244812" target="_blank" rel="noopener noreferrer">10.1371/journal.pone.0244812</a>.</span></li>
+            <li><span class="ref-text">SIQUEIRA, C. C.; VRCIBRADIC, D.; ALMEIDA-GOMES, M.; BORGES-JUNIOR, V. N. T.; ALMEIDA-SANTOS, P.; ALMEIDA-SANTOS, M. et al. Density and richness of leaf litter frogs (Amphibia: Anura) of an Atlantic Rainforest area in the Serra dos Órgãos, Rio de Janeiro State, Brazil. <strong>Zoologia</strong>, v. 26, n. 1, p. 97-102, 2009. DOI: <a href="https://doi.org/10.1590/S1984-46702009000100015" target="_blank" rel="noopener noreferrer">10.1590/S1984-46702009000100015</a>.</span></li>
+            <li><span class="ref-text">BERTOLUCI, J.; FAMELLI, S.; ROCHA, P. L. B.; RODRIGUES, M. T. Effects of the presence of litter on the composition of stream tadpoles' assemblages in an Atlantic Forest remnant of southeastern Brazil. <strong>Biota Neotropica</strong>, v. 21, n. 4, e20201147, 2021. DOI: <a href="https://doi.org/10.1590/1676-0611-BN-2020-1147" target="_blank" rel="noopener noreferrer">10.1590/1676-0611-BN-2020-1147</a>.</span></li>
+            <li><span class="ref-text">HARTMANN, M. T.; HARTMANN, P. A.; HADDAD, C. F. B. Reproductive modes and fecundity of an assemblage of anuran amphibians in the Atlantic rainforest, Brazil. <strong>Iheringia, Série Zoologia</strong>, v. 100, n. 3, 2010. DOI: <a href="https://doi.org/10.1590/S0073-47212010000300004" target="_blank" rel="noopener noreferrer">10.1590/S0073-47212010000300004</a>.</span></li>
+            <li><span class="ref-text">CONTE, C. E.; ROSSA-FERES, D. C. Riqueza e distribuição espaço-temporal de anuros em um remanescente de Floresta Atlântica no sudeste do Brasil. <strong>Biota Neotropica</strong>, v. 6, n. 2, 2006. DOI: <a href="https://doi.org/10.1590/S1676-06032006000200010" target="_blank" rel="noopener noreferrer">10.1590/S1676-06032006000200010</a>.</span></li>
+            <li><span class="ref-text">TOLEDO, L. F.; MARTINS, I. A.; BRUSCHI, D. P.; PASSOS, M. A.; ALEXANDRE, C.; HADDAD, C. F. B. The anuran calling repertoire in the light of social context. <strong>Acta Ethologica</strong>, v. 18, p. 87-99, 2015. DOI: <a href="https://doi.org/10.1007/s10211-014-0194-4" target="_blank" rel="noopener noreferrer">10.1007/s10211-014-0194-4</a>.</span></li>
+            <li><span class="ref-text">TEIXEIRA, R. L.; SCHINEIDER, J. A. P.; ALMEIDA, G. I. The occurrence of amphibians in bromeliads from a southeastern Brazilian restinga habitat, with special reference to <em>Aparasphenodon brunoi</em> (Anura, Hylidae). <strong>Brazilian Journal of Biology</strong>, v. 62, n. 2, p. 263-268, 2002. DOI: <a href="https://doi.org/10.1590/S1519-69842002000200010" target="_blank" rel="noopener noreferrer">10.1590/S1519-69842002000200010</a>.</span></li>
+            <li><span class="ref-text">PEDERASSI, J.; LIMA, M. S. C. S.; PEIXOTO, O. L.; SOUZA, C. A. S. The choice of bromeliads as a microhabitat by <em>Scinax argyreornatus</em> (Miranda-Ribeiro, 1926) (Anura, Hylidae) in southeastern Brazil. <strong>Brazilian Journal of Biology</strong>, v. 72, n. 2, p. 229-233, 2012. DOI: <a href="https://doi.org/10.1590/S1519-69842012000200001" target="_blank" rel="noopener noreferrer">10.1590/S1519-69842012000200001</a>.</span></li>
+            <li><span class="ref-text">SABAGH, L. T.; ROCHA, C. F. D. Bromeliads as shelter, nesting site and hunting ground for amphibians and reptiles in Brazil. <strong>Bromeliad Society International Journal</strong>, v. 64, n. 3, p. 113-119, 2014.</span></li>
+            <li><span class="ref-text">GOMES, C. A.; ALMEIDA-SANTOS, S. M. Microhabitat use by species of the genera <em>Bothrops</em> and <em>Crotalus</em> (Viperidae) in semi-extensive captivity. <strong>Journal of Venomous Animals and Toxins including Tropical Diseases</strong>, v. 18, n. 4, p. 393-398, 2012. DOI: <a href="https://doi.org/10.1590/S1678-91992012000400007" target="_blank" rel="noopener noreferrer">10.1590/S1678-91992012000400007</a>.</span></li>
+            <li><span class="ref-text">SAZIMA, I. Natural history of the jararaca pitviper, <em>Bothrops jararaca</em>, in southeastern Brazil. In: CAMPBELL, J. A.; BRODIE JÚNIOR, E. D. (ed.). <strong>Biology of the pitvipers</strong>. Tyler: Selva, 1992. p. 199-216.</span></li>
+            <li><span class="ref-text">SAZIMA, I. Um estudo de biologia comportamental da jararaca, <em>Bothrops jararaca</em>, com uso de marcas naturais. <strong>Memórias do Instituto Butantan</strong>, São Paulo, v. 50, n. 3, 1988.</span></li>
+            <li><span class="ref-text">CAMPBELL, J. A.; LAMAR, W. W. <strong>The venomous reptiles of the Western Hemisphere</strong>. Ithaca: Cornell University Press, 2004.</span></li>
+            <li><span class="ref-text">MARQUES, O. A. V.; ETEROVIC, A.; SAZIMA, I. <strong>Serpentes da Mata Atlântica: guia ilustrado para a Serra do Mar</strong>. Ribeirão Preto: Holos, 2001.</span></li>
+            <li><span class="ref-text">RAUTENBERG, R.; LAPS, R. R. Natural history of the lizard <em>Enyalius iheringii</em> (Squamata, Leiosauridae) in southern Brazilian Atlantic forest. <strong>Iheringia, Série Zoologia</strong>, v. 100, n. 4, p. 287-290, 2010. DOI: <a href="https://doi.org/10.1590/S0073-47212010000400002" target="_blank" rel="noopener noreferrer">10.1590/S0073-47212010000400002</a>.</span></li>
+            <li><span class="ref-text">COSTA, H. C.; BÉRNILS, R. S. Répteis do Brasil e suas Unidades Federativas: lista de espécies. <strong>Herpetologia Brasileira</strong>, v. 7, n. 1, p. 11-57, 2018.</span></li>
+            <li><span class="ref-text">SEGALLA, M. V. et al. List of Brazilian amphibians. <strong>Herpetologia Brasileira</strong>, v. 10, n. 1, p. 121-216, 2021.</span></li>
+            <li><span class="ref-text">FROST, D. R. <strong>Amphibian Species of the World: an online reference</strong>. Version 6.2. New York: American Museum of Natural History, 2026. Disponível em: <a href="https://amphibiansoftheworld.amnh.org/" target="_blank" rel="noopener noreferrer">https://amphibiansoftheworld.amnh.org/</a>. Acesso em: 5 jun. 2026.</span></li>
+            <li><span class="ref-text">UETZ, P.; FREED, P.; AGUILAR, R.; REYES, F.; HOŠEK, J. (ed.). <strong>The Reptile Database</strong>. 2026. Disponível em: <a href="https://reptile-database.reptarium.cz/" target="_blank" rel="noopener noreferrer">https://reptile-database.reptarium.cz/</a>. Acesso em: 5 jun. 2026.</span></li>
+            <li><span class="ref-text">LUEDTKE, J. A. et al. Ongoing declines for the world's amphibians in the face of emerging threats. <strong>Nature</strong>, v. 622, 2023. DOI: <a href="https://doi.org/10.1038/s41586-023-06578-4" target="_blank" rel="noopener noreferrer">10.1038/s41586-023-06578-4</a>.</span></li>
+            <li><span class="ref-text">FAHRIG, L.; RYTWINSKI, T. Effects of roads on animal abundance: an empirical review and synthesis. <strong>Ecology and Society</strong>, v. 14, n. 1, 2009. DOI: <a href="https://doi.org/10.5751/ES-02815-140121" target="_blank" rel="noopener noreferrer">10.5751/ES-02815-140121</a>.</span></li>
+            <li><span class="ref-text">BECKER, C. G.; FONSECA, C. R.; HADDAD, C. F. B.; BATISTA, R. F.; PRADO, P. I. Habitat split and the global decline of amphibians. <strong>Science</strong>, v. 318, n. 5857, p. 1775-1777, 2007. DOI: <a href="https://doi.org/10.1126/science.1149374" target="_blank" rel="noopener noreferrer">10.1126/science.1149374</a>.</span></li>
+            <li><span class="ref-text">YOUNG, B. E. et al. Disappearing jewels: the status of New World amphibians. <strong>Nature</strong>, v. 428, p. 853-854, 2004. DOI: <a href="https://doi.org/10.1038/428853a" target="_blank" rel="noopener noreferrer">10.1038/428853a</a>.</span></li>
+          </ol>
+        </section>
+      </main>
+    </div>
+
+    <div class="modal" id="speciesModal" hidden role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+      <article class="modal-card">
+        <button class="modal-close" id="modalClose" type="button" aria-label="Fechar ficha">×</button>
+        <div class="modal-grid">
+          <div class="media-panel">
+            <div class="photo-frame"><img id="modalPhoto" alt=""></div>
+            <div class="thumbs" id="modalThumbs"></div>
+            <div class="sticker-strip">
+              <img id="modalSticker" alt="">
+              <p id="modalStickerText"></p>
+            </div>
+          </div>
+          <div class="content-panel">
+            <div class="tag-row" id="modalTags"></div>
+            <h2 id="modalTitle"></h2>
+            <p class="popular" id="modalPopular"></p>
+            <div class="fact-grid" id="modalFacts"></div>
+            <div class="modal-text" id="modalText"></div>
+            <div class="literature-note" id="modalLiterature"></div>
+            <div class="sound-card">
+              <h3 id="soundTitle">Som e visualizacao</h3>
+              <canvas class="wave" id="soundCanvas" width="920" height="236"></canvas>
+              <p id="soundNote"></p>
+              <div id="audioSlot"></div>
+            </div>
+            <div class="safety" id="modalSafety"></div>
+          </div>
+        </div>
+      </article>
+    </div>
+
+    <script>
+      const BASE = "assets/herpetofauna";
+      const normalizeFileName = filename => {
+        if (!filename) return filename;
+        const extensionIndex = filename.lastIndexOf('.');
+        const stem = extensionIndex > 0 ? filename.slice(0, extensionIndex) : filename;
+        const extension = extensionIndex > 0 ? filename.slice(extensionIndex) : '';
+        return stem
+          .normalize('NFD')
+          .replace(/\p{Diacritic}/gu, '')
+          .toLowerCase()
+          .replace(/\s+/g, '-')
+          .replace(/[^a-z0-9\-_]/g, '') + extension.toLowerCase();
+      };
+      const fileUrl = (folder, file) => {
+        const signedFolder = folder === "stickers" || folder === "photos" ? `${folder}-signed` : folder;
+        return `${BASE}/${signedFolder}/${encodeURIComponent(normalizeFileName(file))}`;
+      };
+      const rootUrl = file => `${BASE}/${encodeURIComponent(normalizeFileName(file))}`;
+
+      const species = [
+        {
+          id: "aplastodiscus-arildae",
+          name: "Aplastodiscus arildae",
+          popular: "Perereca de riacho",
+          group: "anfibio",
+          groupLabel: "Anfibio",
+          className: "amphibia",
+          family: "Hylidae",
+          order: "Anura",
+          habitat: "Vegetacao proxima de riachos",
+          sticker: "Aplastodiscus arildae.png",
+          photos: ["Aplastodiscus arildae.png"],
+          intro: "Uma perereca associada a ambientes umidos e vegetacao proxima de cursos d'agua. Para o publico, ela ajuda a mostrar como pequenos riachos e florestas conectadas sustentam uma vida noturna intensa.",
+          detail: "Em anuros, o canto costuma ser uma pista importante para localizar individuos e entender periodos reprodutivos. A observacao deve ser feita com lanterna moderada, cuidado para nao pisotear margens e sem retirar animais do microhabitat.",
+          sound: "Canto noturno de anuro; audio real ainda nao carregado.",
+          soundPattern: "frog",
+          safety: "Evite manusear anfibios: a pele e sensivel e pode absorver substancias das nossas maos."
+        },
+        {
+          id: "boana-beckeri",
+          name: "Boana beckeri",
+          popular: "Perereca",
+          group: "anfibio",
+          groupLabel: "Anfibio",
+          className: "amphibia",
+          family: "Hylidae",
+          order: "Anura",
+          habitat: "Ambientes umidos e vegetacao de borda",
+          sticker: "Boana beckeri.png",
+          photos: ["Boana beckeri.png"],
+          intro: "Pererecas do genero Boana costumam chamar atencao pela vida arboricola e pela relacao com ambientes umidos. Elas mostram que folhas, galhos e margens de riacho tambem fazem parte do mapa da biodiversidade.",
+          detail: "A identificacao de pererecas pode depender de morfologia, canto, localidade e comparacao com literatura. Em educacao ambiental, e uma boa especie para explicar por que conservar vegetacao riparia importa.",
+          sound: "Possui contexto de vocalizacao em anuros; audio real ainda nao carregado.",
+          soundPattern: "frog",
+          safety: "Observe sem tocar e mantenha a vegetacao onde ela esta."
+        },
+        {
+          id: "bothrops-jararaca",
+          name: "Bothrops jararaca",
+          popular: "Jararaca",
+          group: "reptil",
+          groupLabel: "Reptil",
+          className: "reptilia",
+          family: "Viperidae",
+          order: "Squamata",
+          habitat: "Serapilheira, bordas de mata e areas rurais",
+          sticker: "Bothrops jararaca.png",
+          photos: ["Bothrops jararaca.png", "Bothrops jararaca 2.png"],
+          intro: "A jararaca e uma serpente peconhenta de grande importancia ecologica. Ela ajuda a controlar pequenos vertebrados e faz parte das cadeias alimentares da Mata Atlantica.",
+          detail: "O nome popular jararaca pode ser usado de forma ampla, mas aqui a ficha trata de Bothrops jararaca. Identificacao de serpentes exige cautela: cor e desenho variam, e aproximacao pode causar acidentes.",
+          sound: "Serpentes nao vocalizam como anuros; sem audio esperado para canto.",
+          soundPattern: "quiet",
+          safety: "Mantenha distancia, nao tente capturar ou matar. Em caso de picada, procure atendimento medico imediatamente. Nao faca torniquete, cortes, succao ou aplicacao de substancias."
+        },
+        {
+          id: "brachycephalus-rotenbergae",
+          name: "Brachycephalus rotenbergae",
+          popular: "Pingo-de-ouro",
+          group: "anfibio",
+          groupLabel: "Anfibio",
+          className: "amphibia",
+          family: "Brachycephalidae",
+          order: "Anura",
+          habitat: "Serapilheira de florestas umidas",
+          sticker: "Brachycephalus rotenbergae.png",
+          photos: ["Brachycephalus rotenbergae.jpg", "Brachycephalus rotenbergae 2.jpg"],
+          intro: "Pequeno, dourado e muito carismatico, o pingo-de-ouro e um exemplo perfeito de como a biodiversidade pode estar escondida nas folhas caidas da floresta.",
+          detail: "A cor viva pode estar relacionada a estrategias de defesa. Esses animais dependem de microclima umido, sombra e serapilheira preservada; por isso, trilhas, pisoteio e ressecamento do ambiente importam.",
+          sound: "Anuro pequeno; audio real ainda nao carregado.",
+          soundPattern: "frog",
+          safety: "Nao toque: alem de serem muito pequenos e frageis, anfibios podem ter secrecoes cutaneas e pele sensivel."
+        },
+        {
+          id: "dryophylax-nattereri",
+          name: "Dryophylax nattereri",
+          popular: "Serpente da mata",
+          group: "reptil",
+          groupLabel: "Reptil",
+          className: "reptilia",
+          family: "Dipsadidae",
+          order: "Squamata",
+          habitat: "Ambientes umidos, bordas e areas florestais",
+          sticker: "Dryophylax nattereri.png",
+          photos: ["Dryophylax nattereri.png", "Dryophylax nattereri 2.png"],
+          intro: "Uma serpente que ajuda a lembrar que nem toda cobra e jararaca, coral ou jiboia. Muitas especies participam silenciosamente do equilibrio ecologico.",
+          detail: "Mesmo serpentes sem importancia medica comparavel a viperideos devem ser observadas a distancia. Fotografias laterais e dorsais, sem captura, ja ajudam muito em atividades educativas.",
+          sound: "Sem canto; serpentes nao produzem vocalizacao de anuncio como anuros.",
+          soundPattern: "quiet",
+          safety: "Nunca manuseie serpentes para confirmar identificacao. Distancia e a melhor ferramenta."
+        },
+        {
+          id: "enyalius-iheringii",
+          name: "Enyalius iheringii",
+          popular: "Lagarto de floresta",
+          group: "reptil",
+          groupLabel: "Reptil",
+          className: "reptilia",
+          family: "Leiosauridae",
+          order: "Squamata",
+          habitat: "Troncos, sub-bosque e serapilheira",
+          sticker: "Enyalius iheringii.png",
+          photos: ["Enyalius iheringii.png"],
+          intro: "Lagartos de floresta sao mestres em desaparecer no ambiente. A camuflagem ajuda a escapar de predadores e tambem a esperar oportunidades de alimento.",
+          detail: "Observar lagartos exige paciencia: movimentos lentos, atencao a troncos e folhas, e respeito ao espaco do animal. Eles sao bons personagens para falar de camuflagem e microhabitat.",
+          sound: "Sem canto de anuro; ficha sem audio real.",
+          soundPattern: "quiet",
+          safety: "Observe sem perseguir ou capturar."
+        },
+        {
+          id: "erythrolamprus-aesculapii",
+          name: "Erythrolamprus aesculapii",
+          popular: "Falsa-coral",
+          group: "reptil",
+          groupLabel: "Reptil",
+          className: "reptilia",
+          family: "Dipsadidae",
+          order: "Squamata",
+          habitat: "Matas, bordas e mosaicos rurais",
+          sticker: "Erythrolamprus aesculapii.png",
+          photos: ["Erythrolamprus aesculapii.png"],
+          intro: "A falsa-coral mostra como padroes de cor podem confundir. Ela e uma especie excelente para ensinar que identificacao por 'regrinha de cor' pode falhar.",
+          detail: "Corais verdadeiras e falsas-corais podem ser parecidas. Para o publico, a mensagem principal e simples: nao manipule, fotografe de longe e chame alguem capacitado se houver risco.",
+          sound: "Sem canto de anuro; ficha sem audio real.",
+          soundPattern: "quiet",
+          safety: "Nao use padroes de cor como unico criterio de seguranca. Mantenha distancia de qualquer serpente."
+        },
+        {
+          id: "haddadus-binotatus",
+          name: "Haddadus binotatus",
+          popular: "Anuro de serapilheira",
+          group: "anfibio",
+          groupLabel: "Anfibio",
+          className: "amphibia",
+          family: "Craugastoridae",
+          order: "Anura",
+          habitat: "Chao de floresta e folhas acumuladas",
+          sticker: "Haddadus binotatus.png",
+          photos: ["Haddadus binotatus.png"],
+          intro: "Um pequeno anuro de floresta que ajuda a valorizar a serapilheira: aquela camada de folhas, galhos e materia organica que muita gente pisa sem perceber.",
+          detail: "A serapilheira guarda umidade, alimento e abrigo. Para anfibios pequenos, ela pode ser tao importante quanto um lago ou riacho visivel.",
+          sound: "Anuro; audio real ainda nao carregado.",
+          soundPattern: "frog",
+          safety: "Nao remova folhas em excesso durante observacoes. O microhabitat e parte da casa do animal."
+        },
+        {
+          id: "ischnocnema-sp",
+          name: "Ischnocnema sp.",
+          popular: "Ranzinha de serapilheira",
+          group: "anfibio",
+          groupLabel: "Anfibio",
+          className: "amphibia",
+          family: "Brachycephalidae",
+          order: "Anura",
+          habitat: "Serapilheira e sub-bosque",
+          sticker: "Ischnocnema sp.png",
+          photos: ["Ischnocnema sp.png"],
+          intro: "Aqui a identificacao esta em nivel de genero. O 'sp.' indica que a especie exata nao foi fechada na ficha educativa.",
+          detail: "Isso e ciencia bem feita: quando nao ha certeza suficiente, a melhor resposta e declarar a incerteza. Grupos como Ischnocnema podem exigir comparacao detalhada e revisao especializada.",
+          sound: "Anuro; audio real ainda nao carregado.",
+          soundPattern: "frog",
+          safety: "Evite manuseio e preserve o local onde foi encontrado."
+        },
+        {
+          id: "mussurana-montana",
+          name: "Mussurana montana",
+          popular: "Mussurana",
+          group: "reptil",
+          groupLabel: "Reptil",
+          className: "reptilia",
+          family: "Dipsadidae",
+          order: "Squamata",
+          habitat: "Florestas, bordas e ambientes com abrigo",
+          sticker: "Mussurana montana.png",
+          photos: ["Mussurana montana.png", "Mussurana montana 2.png"],
+          intro: "Mussuranas sao serpentes que despertam curiosidade por seus habitos predatorios. Elas ajudam a lembrar que cobras tambem controlam populacoes de outros animais.",
+          detail: "Mesmo quando a especie nao e tratada como serpente de alto risco medico, a regra educativa continua: observar, registrar e nao manipular.",
+          sound: "Sem canto de anuro; ficha sem audio real.",
+          soundPattern: "quiet",
+          safety: "Nao capture serpentes. A melhor foto e a que nao coloca ninguem em risco."
+        },
+        {
+          id: "ololygon-luizotavioi",
+          name: "Ololygon luizotavioi",
+          popular: "Perereca",
+          group: "anfibio",
+          groupLabel: "Anfibio",
+          className: "amphibia",
+          family: "Hylidae",
+          order: "Anura",
+          habitat: "Vegetacao, margens umidas e ambientes florestais",
+          sticker: "Ololygon luizotavioi.png",
+          photos: ["Ololygon luizotavioi.png"],
+          intro: "Uma perereca que aproxima o publico do mundo dos sons noturnos. Muitos anuros sao percebidos primeiro pelo ouvido, depois pelos olhos.",
+          detail: "A conservacao de anfibios passa por agua limpa, vegetacao, conectividade e reducao de poluicao sonora e luminosa.",
+          sound: "Anuro vocal; audio real ainda nao carregado.",
+          soundPattern: "frog",
+          safety: "Nao ilumine diretamente por muito tempo e evite perturbar vocalizacoes."
+        },
+        {
+          id: "phasmahyla-cf-cochranae",
+          name: "Phasmahyla cf. cochranae",
+          popular: "Perereca de riacho",
+          group: "anfibio",
+          groupLabel: "Anfibio",
+          className: "amphibia",
+          family: "Phyllomedusidae",
+          order: "Anura",
+          habitat: "Riachos florestais e vegetacao sobre agua",
+          sticker: "Phasmahyla cf. cochranae.png",
+          photos: ["Phasmahyla cf. cochranae.png", "Phasmahyla cf. cochranae 2.png"],
+          intro: "O 'cf.' quer dizer que a identificacao e comparativa e cautelosa. E um jeito honesto de dizer: parece essa especie, mas precisa de confirmacao.",
+          detail: "Pererecas associadas a riachos limpos sao boas para conversar sobre qualidade ambiental, mata ciliar e fragilidade dos ambientes aquaticos pequenos.",
+          sound: "Anuro de riacho; audio real ainda nao carregado.",
+          soundPattern: "frog",
+          safety: "Riachos sao habitats sensiveis: evite pisotear margens e virar pedras sem necessidade."
+        },
+        {
+          id: "physalaemus-cuvieri",
+          name: "Physalaemus cuvieri",
+          popular: "Ra de espuma",
+          group: "anfibio",
+          groupLabel: "Anfibio",
+          className: "amphibia",
+          family: "Leptodactylidae",
+          order: "Anura",
+          habitat: "Pocas temporarias, areas abertas e bordas",
+          sticker: "Physalaemus cuvieri.png",
+          photos: ["Physalaemus cuvieri.png"],
+          intro: "Uma especie interessante para falar de reproducao em ambientes temporarios. Alguns anuros usam ninhos de espuma, uma estrategia que protege ovos em determinadas condicoes.",
+          detail: "Pocas pequenas e temporarias podem parecer sem importancia, mas para anfibios elas podem ser berçarios inteiros.",
+          sound: "Anuro vocal; audio real ainda nao carregado.",
+          soundPattern: "frog",
+          safety: "Nao drene ou contamine pocas temporarias; elas podem sustentar reproducao de anfibios."
+        },
+        {
+          id: "proceratophrys-itamari",
+          name: "Proceratophrys itamari",
+          popular: "Sapo-de-chifre",
+          group: "anfibio",
+          groupLabel: "Anfibio",
+          className: "amphibia",
+          family: "Odontophrynidae",
+          order: "Anura",
+          habitat: "Serapilheira e chao de floresta",
+          sticker: "Proceratophrys itamari.png",
+          photos: ["Proceratophrys itamari.png", "Proceratophrys itamari 2.png"],
+          intro: "Sapos-de-chifre sao artistas da camuflagem. O corpo e as cores ajudam o animal a se misturar com folhas, terra e sombras.",
+          detail: "Esse tipo de especie e perfeito para educacao ambiental: mostra que preservar folhas no chao tambem preserva abrigo, alimento e estrategia de sobrevivencia.",
+          sound: "Anuro; audio real ainda nao carregado.",
+          soundPattern: "frog",
+          safety: "Observe onde pisa e nao remova o animal do ambiente."
+        },
+        {
+          id: "rhinella-icterica",
+          name: "Rhinella icterica",
+          popular: "Sapo-cururu",
+          group: "anfibio",
+          groupLabel: "Anfibio",
+          className: "amphibia",
+          family: "Bufonidae",
+          order: "Anura",
+          habitat: "Bordas, trilhas, areas abertas e ambientes umidos",
+          sticker: "Rhinella icterica.png",
+          photos: ["Rhinella icterica.png", "Rhinella icterica 2.png"],
+          intro: "Um sapo robusto e conhecido por muita gente. Ele ajuda a conversar sobre controle de invertebrados, convivencia e respeito aos anfibios.",
+          detail: "Sapos do genero Rhinella possuem glandulas parotoides e secrecoes de defesa. Isso nao e motivo para matar o animal; e motivo para nao manusear.",
+          sound: "Anuro vocal; audio real ainda nao carregado.",
+          soundPattern: "frog",
+          safety: "Nao pegue com as maos. Se houver contato, lave bem as maos e evite contato com olhos e boca."
+        },
+        {
+          id: "rhinella-ornata",
+          name: "Rhinella ornata",
+          popular: "Sapo da Mata Atlantica",
+          group: "anfibio",
+          groupLabel: "Anfibio",
+          className: "amphibia",
+          family: "Bufonidae",
+          order: "Anura",
+          habitat: "Mata Atlantica, bordas e trilhas umidas",
+          sticker: "Rhinella ornata.png",
+          photos: ["Rhinella ornata.png"],
+          intro: "Outro representante de Rhinella, importante para mostrar que 'sapo' e um nome popular amplo, nao uma unica especie.",
+          detail: "A presenca de sapos em trilhas e bordas lembra que atropelamento, perda de umidade e contaminacao tambem afetam anfibios comuns.",
+          sound: "Anuro vocal; audio real ainda nao carregado.",
+          soundPattern: "frog",
+          safety: "Nao manipule e mantenha animais domesticos afastados."
+        },
+        {
+          id: "vitreorana-parvula",
+          name: "Vitreorana parvula",
+          popular: "Perereca-de-vidro",
+          group: "anfibio",
+          groupLabel: "Anfibio",
+          className: "amphibia",
+          family: "Centrolenidae",
+          order: "Anura",
+          habitat: "Riachos limpos e vegetacao suspensa",
+          sticker: "Vitreorana parvula.png",
+          photos: ["Vitreorana parvula.png", "Vitreorana parvula 2.png"],
+          intro: "Pererecas-de-vidro encantam pela delicadeza. Muitas vivem associadas a vegetacao sobre riachos, onde agua limpa e sombra fazem muita diferenca.",
+          detail: "E uma boa ficha para explicar bioindicadores de qualidade ambiental e a importancia de proteger pequenos cursos d'agua.",
+          sound: "Anuro de ambiente ripario; audio real ainda nao carregado.",
+          soundPattern: "frog",
+          safety: "Nao toque nas folhas com ovos ou animais. Observe de longe."
+        },
+        {
+          id: "vriesea-gradata",
+          name: "Vriesea gradata",
+          popular: "Bromelia",
+          group: "bromelia",
+          groupLabel: "Bromelia",
+          className: "plantae",
+          family: "Bromeliaceae",
+          order: "Poales",
+          habitat: "Troncos, rochas e ambientes umidos",
+          sticker: "Vriesea gradata.png",
+          photos: ["Vriesea gradata.jpg"],
+          intro: "Embora nao seja anfibio nem reptil, a bromelia entrou no album porque pode funcionar como microhabitat. Suas folhas podem acumular agua e criar pequenos ambientes para outros organismos.",
+          detail: "Bromelias ajudam o publico a entender que conservar herpetofauna tambem envolve conservar plantas, estrutura da floresta, umidade e lugares pequenos onde a vida acontece.",
+          sound: "Plantas nao vocalizam como anuros; sem audio de canto.",
+          soundPattern: "quiet",
+          safety: "Nao retire bromelias do ambiente. Elas podem abrigar muitos organismos."
+        }
+      ];
+
+      const profileUpdates = {
+        "aplastodiscus-arildae": {
+          intro: "Esta perereca representa muito bem os anfibios ligados a ambientes umidos da Mata Atlantica. Mesmo quando uma pessoa nao consegue ve-la de primeira, o canto noturno, a presenca de vegetacao junto a riachos e a umidade do ar contam parte da historia. Em uma trilha, ela ajuda a explicar que conservar anfibios nao e apenas proteger o animal, mas tambem manter sombra, folhas, agua limpa e pequenos corredores de vegetacao.",
+          detail: "Como acontece com muitos anuros arboricolas, a vida dela depende de microhabitats: folhas, galhos, margens e pontos onde a umidade nao desaparece rapido. Para o publico leigo, a ideia principal e simples: se o riacho perde mata ciliar, se a margem e pisoteada ou se a noite fica cheia de luz e barulho, o ambiente fica menos favoravel para esses pequenos vocalizadores.",
+          literature: ["Ecologia geral de anuros", "Mata Atlantica", "Microhabitats umidos"]
+        },
+        "boana-beckeri": {
+          intro: "Pererecas como Boana beckeri mostram que a floresta tambem e vertical. Parte da vida acontece acima do chao, em folhas, galhos e vegetacao proxima de pontos umidos. Para quem esta conhecendo herpetofauna, ela e um bom convite para olhar devagar: nem tudo que vive na mata esta no solo ou dentro da agua.",
+          detail: "A literatura sobre anuros da Mata Atlantica reforca que reproducao, canto e escolha de abrigo mudam muito conforme chuva, temperatura, estrutura da vegetacao e disponibilidade de agua. Por isso, uma foto isolada e bonita, mas o mais importante e entender o conjunto: o animal, o lugar onde ele esta e a paisagem que permite sua permanencia.",
+          literature: ["Ecologia geral de anuros", "Modos reprodutivos", "Conservacao de anfibios"]
+        },
+        "bothrops-jararaca": {
+          intro: "A jararaca costuma provocar medo, mas tambem merece respeito como parte da fauna nativa. Bothrops jararaca e uma serpente peconhenta, predadora, importante no controle de pequenos vertebrados e integrada a uma rede alimentar maior. Ela nao esta 'atacando a trilha': esta vivendo no ambiente onde alimento, abrigo, temperatura e umidade permitem sua atividade.",
+          detail: "Estudos sobre Bothrops mostram que uso de microhabitat, atividade e abrigo variam com temperatura, umidade, epoca do ano e estrutura do ambiente. Isso ajuda a transformar medo em comportamento seguro: olhar onde pisa, nao colocar a mao em buracos ou folhas acumuladas sem ver, usar lanterna em trilhas noturnas e nunca tentar capturar. A melhor convivencia e distancia.",
+          literature: ["Bothrops e microhabitat", "Historia natural de jararaca", "Seguranca em ofidismo"]
+        },
+        "brachycephalus-rotenbergae": {
+          intro: "O pingo-de-ouro e pequeno, carismatico e perfeito para mostrar que a floresta guarda detalhes enormes em escala minima. Sua cor viva chama a atencao, mas o ponto mais importante e o ambiente: serapilheira umida, sombra, musgos, folhas e estabilidade microclimatica. Sem esse 'chao vivo', muitos anfibios pequenos simplesmente perdem casa.",
+          detail: "A literatura sobre Brachycephalus e anuros de serapilheira ajuda a explicar por que esses animais sao sensiveis. Eles vivem perto do solo, dependem de umidade e podem sofrer com ressecamento, pisoteio, abertura de trilhas e mudancas no microclima. No album, ele funciona como embaixador de uma mensagem simples: folhas no chao tambem sao biodiversidade.",
+          literature: ["Brachycephalus", "Serapilheira", "Conservacao de anfibios"]
+        },
+        "dryophylax-nattereri": {
+          intro: "Dryophylax nattereri ajuda a desfazer uma ideia comum: cobra nao e tudo igual. Muitas serpentes da Mata Atlantica nao sao viperideos e cumprem papeis discretos como predadoras de pequenos animais. O olhar educativo aqui e aprender a observar sem transformar toda serpente em ameaça.",
+          detail: "Mesmo quando a especie nao e tratada como de alta importancia medica, a regra de campo continua a mesma: nao manipular. A identificacao de serpentes exige cuidado, fotografia boa e, muitas vezes, avaliacao de especialista. Para o visitante, a atitude correta e manter distancia, deixar rota de fuga e registrar sem interferir.",
+          literature: ["Historia natural de repteis", "Educacao para convivencia", "Seguranca com serpentes"]
+        },
+        "enyalius-iheringii": {
+          intro: "Enyalius iheringii e um lagarto de floresta que parece ter sido desenhado para desaparecer no ambiente. Corpo, postura e cor conversam com troncos, musgos e folhas. Para jovens e adultos, ele e uma boa especie para falar de camuflagem, comportamento e da importancia de uma floresta com estrutura, nao apenas de uma area verde qualquer.",
+          detail: "Estudos de historia natural com Enyalius em Mata Atlantica mostram como dieta, atividade e uso de ambiente ajudam a entender a vida de lagartos florestais. A mensagem do album e que conservar lagartos tambem envolve manter troncos, sub-bosque, serrapilheira e continuidade da mata.",
+          literature: ["Historia natural de Enyalius", "Microhabitat de lagartos", "Mata Atlantica"]
+        },
+        "erythrolamprus-aesculapii": {
+          intro: "A falsa-coral e uma das melhores especies para ensinar prudencia. Ela lembra corais verdadeiras, mas padroes de cor podem enganar. Para o publico leigo, o aprendizado nao deve ser decorar regra de anel colorido; deve ser entender que serpentes exigem distancia e respeito.",
+          detail: "O valor educativo dessa ficha esta na convivencia segura. Falsas-corais e outras serpentes participam do equilibrio ecologico como predadoras e presas. Quando aparecem em quintais, bordas ou trilhas, a resposta correta nao e matar: e isolar a area, nao tocar e chamar apoio capacitado quando necessario.",
+          literature: ["Historia natural de repteis", "Educacao para convivencia", "Seguranca com serpentes"]
+        },
+        "haddadus-binotatus": {
+          intro: "Haddadus binotatus e um anuro de serapilheira, e isso ja diz muita coisa. Ele vive em uma camada da floresta que muita gente chama apenas de 'folha seca', mas que funciona como abrigo, esponja de umidade, fonte de alimento e lugar de reproducao para pequenos organismos.",
+          detail: "Estudos com anuros de serapilheira na Mata Atlantica mostram que densidade e riqueza desses animais dependem da estrutura do chao da floresta. Para uma pessoa visitando uma trilha, a licao e pratica: pisotear menos, nao varrer folhas, nao abrir atalhos e perceber que o solo da mata esta cheio de vida.",
+          literature: ["Anuros de serapilheira", "Serapilheira", "Mata Atlantica"]
+        },
+        "ischnocnema-sp": {
+          intro: "Esta ficha foi deixada como Ischnocnema sp. de proposito. O 'sp.' e uma forma honesta de dizer que o genero foi reconhecido, mas a especie exata ainda precisa de confirmacao. Isso e importante para mostrar ao publico que ciencia nao e chute: quando a evidencia nao fecha, a resposta correta e assumir a incerteza.",
+          detail: "Muitos anuros pequenos de serapilheira sao parecidos entre si e podem exigir canto, morfologia detalhada, localidade, comparacao com colecoes ou literatura especializada. No album, esta ficha ajuda a ensinar uma das virtudes mais bonitas da ciencia: saber dizer 'ainda nao sei com seguranca'.",
+          literature: ["Taxonomia cautelosa", "Anuros de serapilheira", "Metodologia cientifica"]
+        },
+        "mussurana-montana": {
+          intro: "Mussuranas costumam despertar curiosidade porque algumas serpentes desse grupo podem predar outras serpentes. Isso torna a ficha muito boa para explicar cadeia alimentar: uma cobra tambem pode ser predadora, presa, competidora e parte de um equilibrio maior.",
+          detail: "Mesmo com fama popular positiva, a mussurana nao deve ser capturada. O melhor registro e uma fotografia segura, feita de longe. A mensagem educativa e que conservar serpentes significa conservar abrigo, alimento e conectividade; e tambem diminuir a matanca por medo.",
+          literature: ["Historia natural de repteis", "Educacao para convivencia", "Conservacao de serpentes"]
+        },
+        "ololygon-luizotavioi": {
+          intro: "Ololygon luizotavioi representa as pequenas pererecas que transformam a noite em paisagem sonora. Muitas vezes, a pessoa escuta antes de ver. Isso abre uma conversa bonita sobre bioacustica: o canto nao e 'barulho', e comunicacao, territorio, reproducao e presenca no ambiente.",
+          detail: "A literatura sobre anuros mostra que vocalizacao pode depender de chuva, temperatura, hora da noite e estrutura do microhabitat. Em atividades educativas, ela ajuda a ensinar escuta atenta: parar, ouvir, localizar sem invadir e registrar sem perturbar.",
+          literature: ["Bioacustica de anuros", "Ecologia geral de anuros", "Conservacao de anfibios"]
+        },
+        "phasmahyla-cf-cochranae": {
+          intro: "Phasmahyla cf. cochranae e uma ficha com aviso cientifico embutido. O 'cf.' indica que a identificacao e aproximada: o animal se parece com essa especie, mas a confirmacao exige mais cuidado. Isso protege o album de transformar semelhanca em certeza.",
+          detail: "Pererecas associadas a riachos florestais ajudam a explicar a importancia da agua corrente limpa, da mata ciliar e da vegetacao sobre o curso d'agua. Para o publico, e uma especie que conecta beleza, transparencia, folhas e qualidade ambiental.",
+          literature: ["Riachos florestais", "Taxonomia cautelosa", "Conservacao de anfibios"]
+        },
+        "physalaemus-cuvieri": {
+          intro: "Physalaemus cuvieri e uma boa porta de entrada para falar de estrategias reprodutivas. Alguns anuros usam ninhos de espuma, vocalizam apos chuva e aproveitam ambientes temporarios que, para muita gente, parecem apenas poças sem importancia.",
+          detail: "Na ecologia de anfibios, ambientes temporarios podem ser decisivos. Eles mudam rapido, secam, enchem, aquecem e esfriam; ainda assim, sustentam reproducao e desenvolvimento. A ficha ajuda a mostrar que conservar anfibios nao e apenas proteger grandes rios: pequenas poças tambem contam.",
+          literature: ["Modos reprodutivos", "Ecologia geral de anuros", "Ambientes temporarios"]
+        },
+        "proceratophrys-itamari": {
+          intro: "Proceratophrys itamari, como outros sapos-de-chifre, parece uma folha viva. A cabeca larga, a postura baixa e a camuflagem fazem dele um personagem perfeito para falar de serapilheira e paciencia: muitas vezes a floresta nao esconde por falta de cor, mas por excesso de detalhe.",
+          detail: "Estudos com Proceratophrys e anuros de serapilheira mostram que dieta, crescimento e uso do chao da mata estao ligados aos pequenos invertebrados e ao ambiente folhoso. Para o visitante, a mensagem e simples: a folha no chao nao e sujeira, e habitat.",
+          literature: ["Proceratophrys", "Serapilheira", "Dieta de anuros"]
+        },
+        "rhinella-icterica": {
+          intro: "Rhinella icterica e um sapo robusto, conhecido por muita gente, e por isso mesmo muito importante na educacao ambiental. Ele ajuda a explicar que 'sapo' e nome popular amplo, nao uma unica especie. Tambem ajuda a conversar sobre convivencia: aparecer perto de casas, trilhas ou areas abertas nao torna o animal inimigo.",
+          detail: "Sapos do genero Rhinella possuem glandulas parotoides e secrecoes defensivas. Isso pede respeito, nao medo exagerado. Eles consomem invertebrados, participam da cadeia alimentar e dependem de umidade, abrigo e locais adequados para reproducao.",
+          literature: ["Ecologia geral de anuros", "Bufonidae", "Convivencia segura"]
+        },
+        "rhinella-ornata": {
+          intro: "Rhinella ornata reforca a ideia de que especies aparentemente comuns tambem contam historias importantes. Sapos vistos em trilhas, bordas de mata e ambientes umidos podem indicar como a paisagem esta funcionando para animais que circulam entre floresta e areas abertas.",
+          detail: "Para o publico leigo, a ficha ajuda a separar duas coisas: nojo ou medo sao reacoes culturais; importancia ecologica e outra conversa. Esses animais comem invertebrados, servem de alimento para outros bichos e podem sofrer com atropelamento, ressecamento e perda de abrigo.",
+          literature: ["Ecologia geral de anuros", "Conservacao de anfibios", "Estradas e fauna"]
+        },
+        "vitreorana-parvula": {
+          intro: "Vitreorana parvula, uma perereca-de-vidro, traz um encanto imediato: corpo delicado, associacao com folhas e riachos, e uma sensacao de fragilidade que combina com sua ecologia. Ela e uma boa embaixadora dos riachos limpos e sombreados.",
+          detail: "Espécies ligadas a riachos florestais dependem de agua, vegetacao e microclima. Mesmo sem transformar a ficha em laudo ambiental, ela ajuda o visitante a entender que a qualidade de um riacho tambem se mede pela vida pequena que ele sustenta.",
+          literature: ["Riachos florestais", "Conservacao de anfibios", "Microhabitats umidos"]
+        },
+        "vriesea-gradata": {
+          intro: "Vriesea gradata entrou no album porque bromelias podem ser mais do que plantas bonitas. Em muitas paisagens da Mata Atlantica, bromelias acumulam agua entre as folhas e criam pequenos mundos: os fitotelmos. Ali podem viver larvas, invertebrados e, em alguns contextos, anfibios associados a esse microhabitat.",
+          detail: "Artigos sobre anfibios em bromelias mostram que essas plantas podem funcionar como abrigo, ponto de reproducao ou ambiente temporario. Para educacao ambiental, a mensagem e forte: proteger herpetofauna tambem e proteger plantas, umidade, troncos, epifitas e a arquitetura da floresta.",
+          literature: ["Bromelias como microhabitat", "Fitotelmos", "Ecologia de anfibios"]
+        }
+      };
+
+      species.forEach(item => Object.assign(item, profileUpdates[item.id] || {}));
+
+      const grid = document.getElementById("albumGrid");
+      const empty = document.getElementById("emptyState");
+      const search = document.getElementById("speciesSearch");
+      const filters = document.querySelectorAll(".filter");
+      const modal = document.getElementById("speciesModal");
+      const closeModal = document.getElementById("modalClose");
+      let activeFilter = "todos";
+      let currentSpecies = null;
+
+      function renderCards() {
+        const term = search.value.trim().toLowerCase();
+        const visible = species.filter(item => {
+          const haystack = [item.name, item.popular, item.groupLabel, item.family, item.order, item.habitat, item.intro].join(" ").toLowerCase();
+          const groupMatch = activeFilter === "todos" || item.group === activeFilter;
+          return groupMatch && (!term || haystack.includes(term));
+        });
+
+        grid.innerHTML = visible.map(item => `
+          <button class="species-card" type="button" data-id="${item.id}" onclick="window.openSpeciesFromCard && window.openSpeciesFromCard('${item.id}')">
+            <div class="species-card__image">
+              <img src="${fileUrl("stickers", item.sticker)}" alt="Figurinha de ${item.name}" loading="lazy">
+            </div>
+            <div class="species-card__body">
+              <div class="tag-row">
+                <span class="tag ${item.className}">${item.groupLabel}</span>
+                <span class="tag">${item.family}</span>
+              </div>
+              <h3>${item.name}</h3>
+              <p>${item.popular} · ${item.habitat}</p>
+            </div>
+          </button>
+        `).join("");
+
+        empty.classList.toggle("is-visible", visible.length === 0);
+      }
+
+      function openSpecies(id) {
+        const item = species.find(entry => entry.id === id);
+        if (!item) return;
+        currentSpecies = item;
+
+        document.getElementById("modalTitle").textContent = item.name;
+        document.getElementById("modalPopular").textContent = `${item.popular} · ${item.habitat}`;
+        document.getElementById("modalSticker").src = fileUrl("stickers", item.sticker);
+        document.getElementById("modalSticker").alt = `Figurinha de ${item.name}`;
+        document.getElementById("modalStickerText").textContent = "A figurinha foi pensada para chamar atencao e abrir conversa; a foto real ajuda a ligar arte, campo e educacao cientifica.";
+        document.getElementById("modalTags").innerHTML = `
+          <span class="tag ${item.className}">${item.groupLabel}</span>
+          <span class="tag">${item.order}</span>
+          <span class="tag">${item.family}</span>
+        `;
+        document.getElementById("modalFacts").innerHTML = `
+          <div class="fact"><small>Grupo</small><span>${item.groupLabel}</span></div>
+          <div class="fact"><small>Ordem</small><span>${item.order}</span></div>
+          <div class="fact"><small>Familia</small><span>${item.family}</span></div>
+          <div class="fact"><small>Ambiente</small><span>${item.habitat}</span></div>
+        `;
+        document.getElementById("modalText").innerHTML = `<p><strong>${item.intro}</strong></p><p>${item.detail}</p>`;
+        document.getElementById("modalLiterature").innerHTML = `<strong>Leitura usada para esta ficha</strong>${(item.literature || ["historia natural", "ecologia e seguranca em campo"]).join(" · ")}. As referencias completas estao no final da pagina.`;
+        document.getElementById("soundNote").textContent = item.sound;
+        document.getElementById("audioSlot").innerHTML = item.audio ? `<audio controls src="${rootUrl(item.audio)}"></audio>` : "";
+        document.getElementById("modalSafety").textContent = item.safety;
+
+        const photo = document.getElementById("modalPhoto");
+        const thumbs = document.getElementById("modalThumbs");
+        setPhoto(item.photos[0], item.name);
+        thumbs.innerHTML = item.photos.map((photoName, index) => `
+          <button type="button" class="${index === 0 ? "is-active" : ""}" data-photo="${photoName}" aria-label="Ver foto ${index + 1} de ${item.name}">
+            <img src="${fileUrl("photos", photoName)}" alt="">
+          </button>
+        `).join("");
+
+        drawWave(item.soundPattern, item.id);
+        modal.hidden = false;
+        document.body.style.overflow = "hidden";
+        closeModal.focus();
+
+        function setPhoto(photoName, label) {
+          photo.src = fileUrl("photos", photoName);
+          photo.alt = `Foto real de ${label}`;
+        }
+      }
+
+      window.openSpeciesFromCard = openSpecies;
+
+      function drawWave(pattern, seed) {
+        const canvas = document.getElementById("soundCanvas");
+        const ctx = canvas.getContext("2d");
+        const width = canvas.width;
+        const height = canvas.height;
+        ctx.clearRect(0, 0, width, height);
+
+        const grd = ctx.createLinearGradient(0, 0, width, 0);
+        grd.addColorStop(0, "rgba(134, 209, 202, 0.05)");
+        grd.addColorStop(0.5, "rgba(242, 198, 109, 0.13)");
+        grd.addColorStop(1, "rgba(244, 143, 34, 0.05)");
+        ctx.fillStyle = grd;
+        ctx.fillRect(0, 0, width, height);
+
+        ctx.strokeStyle = "rgba(255,255,255,0.08)";
+        ctx.lineWidth = 1;
+        for (let x = 0; x < width; x += 64) {
+          ctx.beginPath();
+          ctx.moveTo(x, 0);
+          ctx.lineTo(x, height);
+          ctx.stroke();
+        }
+
+        const center = height / 2;
+        const hash = Array.from(seed).reduce((acc, char) => acc + char.charCodeAt(0), 0);
+        ctx.lineWidth = 4;
+        ctx.lineCap = "round";
+        ctx.strokeStyle = pattern === "quiet" ? "rgba(217,203,168,0.5)" : "rgba(134, 209, 202, 0.92)";
+        ctx.beginPath();
+
+        for (let x = 0; x <= width; x += 5) {
+          let y = center;
+          if (pattern === "frog") {
+            const pulse = Math.sin((x + hash) / 24) * Math.sin((x + hash) / 7);
+            const envelope = 0.35 + 0.65 * Math.abs(Math.sin((x + hash) / 90));
+            y += pulse * 58 * envelope;
+          } else {
+            y += Math.sin((x + hash) / 70) * 5;
+          }
+          if (x === 0) ctx.moveTo(x, y);
+          else ctx.lineTo(x, y);
+        }
+        ctx.stroke();
+
+        ctx.fillStyle = pattern === "quiet" ? "rgba(217,203,168,0.78)" : "rgba(242,198,109,0.92)";
+        ctx.font = "700 24px Inter, sans-serif";
+        ctx.fillText(pattern === "quiet" ? "sem canto de anuro" : "visualizacao ilustrativa do canto", 28, 42);
+      }
+
+      grid.addEventListener("click", event => {
+        const card = event.target.closest(".species-card");
+        if (card) openSpecies(card.dataset.id);
+      });
+
+      grid.addEventListener("keydown", event => {
+        if ((event.key === "Enter" || event.key === " ") && event.target.matches(".species-card")) {
+          event.preventDefault();
+          openSpecies(event.target.dataset.id);
+        }
+      });
+
+      document.getElementById("modalThumbs").addEventListener("click", event => {
+        const button = event.target.closest("button[data-photo]");
+        if (!button || !currentSpecies) return;
+        document.querySelectorAll("#modalThumbs button").forEach(item => item.classList.remove("is-active"));
+        button.classList.add("is-active");
+        const photo = document.getElementById("modalPhoto");
+        photo.src = fileUrl("photos", button.dataset.photo);
+        photo.alt = `Foto real de ${currentSpecies.name}`;
+      });
+
+      function hideModal() {
+        modal.hidden = true;
+        document.body.style.overflow = "";
+      }
+
+      closeModal.addEventListener("click", hideModal);
+      modal.addEventListener("click", event => {
+        if (event.target === modal) hideModal();
+      });
+      window.addEventListener("keydown", event => {
+        if (event.key === "Escape" && !modal.hidden) hideModal();
+      });
+
+      filters.forEach(button => {
+        button.addEventListener("click", () => {
+          filters.forEach(item => item.classList.remove("is-active"));
+          button.classList.add("is-active");
+          activeFilter = button.dataset.filter;
+          renderCards();
+        });
+      });
+
+      search.addEventListener("input", renderCards);
+      renderCards();
+    </script>
+  </body>
+</html>

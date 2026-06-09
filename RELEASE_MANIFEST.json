@@ -1,0 +1,1771 @@
+{
+  "generated_at": "2026-06-09T18:21:15",
+  "source_project": "C:\\Users\\T-Gamer\\Music\\Herpeto Mantiqueira",
+  "pages": [
+    "index.html",
+    "sobre-gold.html",
+    "oikos-fieldbook.html",
+    "sigmai.html",
+    "topotrail.html",
+    "herpetofauna-cruzeiro.html"
+  ],
+  "assets": [
+    {
+      "path": "assets/animations/flipbook/frame-001.jpg",
+      "size_bytes": 265689,
+      "sha256": "cb05537a57058cce641fc71b896abadd3125195171213bbc2b12b6c18fca9a13"
+    },
+    {
+      "path": "assets/animations/flipbook/frame-002.jpg",
+      "size_bytes": 260898,
+      "sha256": "cbdd2ad6e93819d7de1add58f70e145e63433eb2c7865c03d80871ed673cb9aa"
+    },
+    {
+      "path": "assets/animations/flipbook/frame-003.jpg",
+      "size_bytes": 257504,
+      "sha256": "d605acd1dbf69f28e4b29314479edaafd71829f874c2a3c625031057807030d3"
+    },
+    {
+      "path": "assets/animations/flipbook/frame-004.jpg",
+      "size_bytes": 256309,
+      "sha256": "06ae327783acd6b503ef77e9da77cefe4c670fb14e1be59cd1e8a0c4872c1d93"
+    },
+    {
+      "path": "assets/animations/flipbook/frame-005.jpg",
+      "size_bytes": 257777,
+      "sha256": "7cdb195eb3a90d9df241e9c29418af6513b4d7641bff976f7087300badf62839"
+    },
+    {
+      "path": "assets/animations/flipbook/frame-006.jpg",
+      "size_bytes": 260624,
+      "sha256": "6a44b8a83ba7c9d89a4e5d71e72b50d2034b5e3355a5aeec750c17df67f6a099"
+    },
+    {
+      "path": "assets/animations/flipbook/frame-007.jpg",
+      "size_bytes": 257576,
+      "sha256": "ca2872a2586d517d29561d5668e5b58498ee8192fa4168c9bcba18de1ef9b205"
+    },
+    {
+      "path": "assets/animations/flipbook/frame-008.jpg",
+      "size_bytes": 256616,
+      "sha256": "40b6b40127483f9de9dc8ed1b0568888801ce0ea7eecd1373361896217d41a49"
+    },
+    {
+      "path": "assets/animations/flipbook/frame-009.jpg",
+      "size_bytes": 258490,
+      "sha256": "da24839075b5b4963dfd0415645646490b511ef9a95291d51bdaee6a2d9efd31"
+    },
+    {
+      "path": "assets/animations/flipbook/frame-010.jpg",
+      "size_bytes": 263946,
+      "sha256": "5165650e8da7657f75fe3091a0a9d5434e1d437f88cdde2666b18a2fdc259031"
+    },
+    {
+      "path": "assets/animations/flipbook/frame-011.jpg",
+      "size_bytes": 271335,
+      "sha256": "0ab2bfc28d24437fe55a4b77a34cfd07f327bd64c4417aa08b8a9af4e476fff8"
+    },
+    {
+      "path": "assets/animations/flipbook/frame-012.jpg",
+      "size_bytes": 265062,
+      "sha256": "6abea7cb0775d8f2052231dbe8f7dd4c0fbb671d6cdf7393ed2b3a81168dc4a9"
+    },
+    {
+      "path": "assets/animations/flipbook/frame-013.jpg",
+      "size_bytes": 261290,
+      "sha256": "fd8e387bcd1b9ef74e4d56d9fe0c793d1b6580cbb914035dc16795853ae58654"
+    },
+    {
+      "path": "assets/animations/flipbook/frame-014.jpg",
+      "size_bytes": 261288,
+      "sha256": "a18a68b0c2855647822dd8576f03f7f72170108e9a7ad76fef8b6655c9fd43fa"
+    },
+    {
+      "path": "assets/animations/flipbook/frame-015.jpg",
+      "size_bytes": 264563,
+      "sha256": "daed1ecf5f4b4b3b724678f762eb893a13702a1f77fd19db04f59572c0022984"
+    },
+    {
+      "path": "assets/animations/flipbook/frame-016.jpg",
+      "size_bytes": 270047,
+      "sha256": "f9e505d2b25a1ea8bda2005373a1a4e9b94decc429902c5c92653bbe00b918a0"
+    },
+    {
+      "path": "assets/animations/flipbook/frame-017.jpg",
+      "size_bytes": 263855,
+      "sha256": "1064f00ef47f1b548fb99fa8076a54513801b2fe9c4bf85a5df03efff3b36a36"
+    },
+    {
+      "path": "assets/animations/flipbook/frame-018.jpg",
+      "size_bytes": 260646,
+      "sha256": "2ac95fbaf2ae44f8364f4b6fad77dc3c187e388420d08d94dfb678637b699a36"
+    },
+    {
+      "path": "assets/animations/flipbook/frame-019.jpg",
+      "size_bytes": 261719,
+      "sha256": "a76a38c5119a55a999f360d33d0c40da1cd0ecacf715ccd31998174806b84a9f"
+    },
+    {
+      "path": "assets/animations/flipbook/frame-020.jpg",
+      "size_bytes": 266888,
+      "sha256": "129aed76efc848f6ba0d60cbf1d4441b7001eeb79332ac4365c88a91242a0001"
+    },
+    {
+      "path": "assets/animations/flipbook/frame-021.jpg",
+      "size_bytes": 274975,
+      "sha256": "e431c9d7a96f5bfd0d8c33a02ed243723c521ce75013ba171cb3e041a5197236"
+    },
+    {
+      "path": "assets/animations/flipbook/frame-022.jpg",
+      "size_bytes": 266771,
+      "sha256": "b877decb42072ca2e02029aeae8984d04a379d7f0042b7f0eebcd198274badd2"
+    },
+    {
+      "path": "assets/animations/flipbook/frame-023.jpg",
+      "size_bytes": 260501,
+      "sha256": "203bc065fd3c4c33530c234d44474cbb66c994026d41faacdc090176171fceb3"
+    },
+    {
+      "path": "assets/animations/flipbook/frame-024.jpg",
+      "size_bytes": 257371,
+      "sha256": "5103ba40716fd149a362d2bc9a47b87987505b6f121b40d1e0a7123219554139"
+    },
+    {
+      "path": "assets/animations/flipbook/frame-025.jpg",
+      "size_bytes": 257998,
+      "sha256": "294d3b152d93535aa7c046b64695c389ae0beda195cc4206e80458510af83097"
+    },
+    {
+      "path": "assets/animations/flipbook/frame-026.jpg",
+      "size_bytes": 260630,
+      "sha256": "2a7886a4776d9f0c1fc6a19fc1b1ed407341d9c0ac5e488d07f0934095917e50"
+    },
+    {
+      "path": "assets/animations/flipbook/frame-027.jpg",
+      "size_bytes": 258365,
+      "sha256": "13004b8d82505a3808e3b31ce2cd93017552d64bb4e4bd558b8e939cdaf74666"
+    },
+    {
+      "path": "assets/animations/flipbook/frame-028.jpg",
+      "size_bytes": 257504,
+      "sha256": "f35bbf02294900ef7f1076668b5663214be59778b0edc5cb4abb760cdc1cdbc7"
+    },
+    {
+      "path": "assets/animations/flipbook/frame-029.jpg",
+      "size_bytes": 258480,
+      "sha256": "b2776c0d91d3b01039ed84ace706b4f418c87e6550ee0099fa7fe56fa26d409f"
+    },
+    {
+      "path": "assets/animations/flipbook/frame-030.jpg",
+      "size_bytes": 261644,
+      "sha256": "cdf25ca3cbf78ccb8744102ba6ed70c8b0f4310da46ee47029132414b57b135f"
+    },
+    {
+      "path": "assets/animations/splash/01.png",
+      "size_bytes": 2939395,
+      "sha256": "878b55b9833c7f38f56f341b8258251864f5241f7a49b712464026fe9a2921be"
+    },
+    {
+      "path": "assets/animations/splash/02.png",
+      "size_bytes": 2794639,
+      "sha256": "192e3bcc26c5cc670491bd5533924f984e2d72f6587c2b8bce08898e1bfb097b"
+    },
+    {
+      "path": "assets/animations/splash/03.png",
+      "size_bytes": 2780131,
+      "sha256": "3a48d40913cc84edba9d345e7f246f333813caac959fc6e0a4d0f1cc1b37a5a9"
+    },
+    {
+      "path": "assets/animations/splash/04.png",
+      "size_bytes": 2732757,
+      "sha256": "b166c8eb920098d347b42d67ceb64e1809bfebb7fc473d6b58e755cd5024e508"
+    },
+    {
+      "path": "assets/animations/splash/05.png",
+      "size_bytes": 2602802,
+      "sha256": "41e735adcd66e2ca6f24a5c0ca8fe78b43a4c2ef44e8d03018a57c3db09bedaa"
+    },
+    {
+      "path": "assets/animations/splash/06.png",
+      "size_bytes": 2648170,
+      "sha256": "7b60e98ce0e06385ec6aae928eae093afcec969bef5437554e1ae8c217aaefdc"
+    },
+    {
+      "path": "assets/animations/splash/07.png",
+      "size_bytes": 2469335,
+      "sha256": "dc1450f0f6aa01e7757768dbbf993d073c88495fd46c14f877f9acc1524c37d9"
+    },
+    {
+      "path": "assets/animations/splash/08.png",
+      "size_bytes": 2063703,
+      "sha256": "e70990137877d5882b0cf9e6303e833187ceb3dfb8994c07ea0dd9bfaf7dcb08"
+    },
+    {
+      "path": "assets/animations/splash/09.png",
+      "size_bytes": 1538631,
+      "sha256": "dd85a698dc4ae526e6b819918b23d2d380bc2b58e2fd13027ee2d75a7c930889"
+    },
+    {
+      "path": "assets/animations/splash/10.png",
+      "size_bytes": 282763,
+      "sha256": "e69b1445d905b2c65d282f58d767ba2d7e037e3fae8374bd2fa4d52af6390c43"
+    },
+    {
+      "path": "assets/animations/waterfall/waterfall-smooth-001.png",
+      "size_bytes": 1627252,
+      "sha256": "ae343b38b2d230a89f3a3e4d5394ed532817ffefa6a84506299f01410e6d9c22"
+    },
+    {
+      "path": "assets/animations/waterfall/waterfall-smooth-002.png",
+      "size_bytes": 1612515,
+      "sha256": "17fa5585404ab5d08a836563732b3f432954ce92ae54fc6c978c204758693a0a"
+    },
+    {
+      "path": "assets/animations/waterfall/waterfall-smooth-003.png",
+      "size_bytes": 1479097,
+      "sha256": "6a808a8f4d23626c5a9e55de45b4ee5942129e58349df49ab4f67b9356bb0edd"
+    },
+    {
+      "path": "assets/animations/waterfall/waterfall-smooth-004.png",
+      "size_bytes": 1544208,
+      "sha256": "7c1a4948d03554261bfa638aa27a4040c0d1055af255d0155e98f46bd476ab3d"
+    },
+    {
+      "path": "assets/animations/waterfall/waterfall-smooth-005.png",
+      "size_bytes": 1521911,
+      "sha256": "66e339373e846d9f874cfbd8d36ccd429c2dbfb2127df6a7816c2b19c854e18e"
+    },
+    {
+      "path": "assets/animations/waterfall/waterfall-smooth-006.png",
+      "size_bytes": 1509782,
+      "sha256": "2109bc082c46d0bfe92e3ae23c696a6506aa526c455aca4beb01d2f46743da57"
+    },
+    {
+      "path": "assets/animations/waterfall/waterfall-smooth-007.png",
+      "size_bytes": 1428684,
+      "sha256": "fc629d9578d13b586bd3d197b046098923d7b0de7b871d75eabd114816b9d390"
+    },
+    {
+      "path": "assets/animations/waterfall/waterfall-smooth-008.png",
+      "size_bytes": 1540598,
+      "sha256": "cea129c0c7ff0b1c2d073d8489b02c7a4e296bc175efac337053e24cb9342248"
+    },
+    {
+      "path": "assets/animations/waterfall/waterfall-smooth-009.png",
+      "size_bytes": 1564885,
+      "sha256": "cb14ae5550b493c9b1156f917aa1f9a59edd728d698a3b742f111bb08d0ec024"
+    },
+    {
+      "path": "assets/animations/waterfall/waterfall-smooth-010.png",
+      "size_bytes": 1554957,
+      "sha256": "722933c2091825cf1ca3be6bdf5045cfa2cc3619f3abfb13e0497a5171e29ced"
+    },
+    {
+      "path": "assets/animations/waterfall/waterfall-smooth-011.png",
+      "size_bytes": 1448897,
+      "sha256": "08aec2ab9edfcd52850d1f2f338152f9661b0e6be750183ca1a479d957580690"
+    },
+    {
+      "path": "assets/animations/waterfall/waterfall-smooth-012.png",
+      "size_bytes": 1536879,
+      "sha256": "62abd71e6a37e476e12979d7e911aa3129d994c4316507a965ca5a643f336e12"
+    },
+    {
+      "path": "assets/avatars/confused/gold-001.png",
+      "size_bytes": 200819,
+      "sha256": "504512d1372f90af648b90aeed125f296d6fba12ae3469afe849b1db06655702"
+    },
+    {
+      "path": "assets/avatars/confused/gold-002.png",
+      "size_bytes": 200466,
+      "sha256": "f366d2cdc968e04228495c116248f40822e8d4927342336671207fa67fc1db08"
+    },
+    {
+      "path": "assets/avatars/confused/gold-003.png",
+      "size_bytes": 203519,
+      "sha256": "9bccb39ed9eb85706ce0a5da59771a9c6192a7376830a397403046203e50ffed"
+    },
+    {
+      "path": "assets/avatars/confused/gold-004.png",
+      "size_bytes": 205942,
+      "sha256": "b5a09fa548fabc3692edf3df296c107f3fc85d026b1859c810d1a543784bc798"
+    },
+    {
+      "path": "assets/avatars/confused/gold-005.png",
+      "size_bytes": 207985,
+      "sha256": "a0ba66470aee975023c3883a887d57ec134083db9b481d66ba9bc7b1487edf74"
+    },
+    {
+      "path": "assets/avatars/confused/gold-006.png",
+      "size_bytes": 210651,
+      "sha256": "55739deb294e7ff7367b078e777cc468b87044c749b0a948ba239b8bafc73fff"
+    },
+    {
+      "path": "assets/avatars/confused/gold-007.png",
+      "size_bytes": 213067,
+      "sha256": "09a51674d218950014611ba47bec2410b704fc0c396db579cafa9dd97a046c8b"
+    },
+    {
+      "path": "assets/avatars/confused/gold-008.png",
+      "size_bytes": 215315,
+      "sha256": "fa497ec606e0844f7b50a9fc5dd15625c94c58c18e5dca73b81644676b584df9"
+    },
+    {
+      "path": "assets/avatars/confused/gold-009.png",
+      "size_bytes": 217467,
+      "sha256": "80d54f503eb1e8f1992def0499410a8eb94829946bea286e3c188e8338d19b0e"
+    },
+    {
+      "path": "assets/avatars/confused/gold-010.png",
+      "size_bytes": 219468,
+      "sha256": "7c1953fcf44442aa423d2772ae4b833ac620c00cce5091c13dfaa26699b93d54"
+    },
+    {
+      "path": "assets/avatars/confused/gold-011.png",
+      "size_bytes": 221045,
+      "sha256": "13bf9c4641a3ae5048bd514751b03e877e9121a429a8435c56e574885acae1db"
+    },
+    {
+      "path": "assets/avatars/confused/gold-012.png",
+      "size_bytes": 222700,
+      "sha256": "436aede22ca6252c69af7b5cfb2c7fd20b03fe0b3ca16af5c07e4c9a20be11d2"
+    },
+    {
+      "path": "assets/avatars/confused/gold-013.png",
+      "size_bytes": 223922,
+      "sha256": "6c9d1261b2ab46c17f221b5d44ee93d014b2f61304f57a44ed99b88b5a8e7e15"
+    },
+    {
+      "path": "assets/avatars/confused/gold-014.png",
+      "size_bytes": 225095,
+      "sha256": "af600e98029833268e9fa3123dd27f2fb5fa8f21805a29073047705a5a60b29c"
+    },
+    {
+      "path": "assets/avatars/confused/gold-015.png",
+      "size_bytes": 226004,
+      "sha256": "4135cdf0ddd56a74dd2417249348e65d34810a123188e51e56d5bf8ab668bcb3"
+    },
+    {
+      "path": "assets/avatars/confused/gold-016.png",
+      "size_bytes": 226912,
+      "sha256": "d91e0a86dc2a0e98c98e04cefc8706c87a01a63655f77ea6ab51d20e463b6d0d"
+    },
+    {
+      "path": "assets/avatars/confused/gold-017.png",
+      "size_bytes": 227615,
+      "sha256": "67662c757685713fe177029e7c09c7e80de8186ef06644963096fb652065649f"
+    },
+    {
+      "path": "assets/avatars/confused/gold-018.png",
+      "size_bytes": 227267,
+      "sha256": "0c940ad71c9d09759831748d9c74a4958aa28179d28c4c1cb2adc47b5cb4f036"
+    },
+    {
+      "path": "assets/avatars/confused/gold-019.png",
+      "size_bytes": 228062,
+      "sha256": "9f467f6a864e2e2f157ec630631cb67307a8613bb2729c81f4bcb73854a2b058"
+    },
+    {
+      "path": "assets/avatars/confused/gold-020.png",
+      "size_bytes": 228442,
+      "sha256": "87a6da3da8d12314fe33a7e4c99860cc9ba7c11745a9cd9a2ad06b6bc8466c39"
+    },
+    {
+      "path": "assets/avatars/confused/gold-021.png",
+      "size_bytes": 228896,
+      "sha256": "06694e43c956451c645b46e9a97e98b872a63c25ae7986e8d5d42af7f253fc24"
+    },
+    {
+      "path": "assets/avatars/confused/gold-022.png",
+      "size_bytes": 229262,
+      "sha256": "e6ccd8bd194b4af03ccd4fba48aaffcf2709d280a25de0f71ac843fe76c42068"
+    },
+    {
+      "path": "assets/avatars/confused/gold-023.png",
+      "size_bytes": 229667,
+      "sha256": "3aa56c81e6cf9c574445586a9d945950c5b3ab4e6fd96c892c7b4c985ec05e0a"
+    },
+    {
+      "path": "assets/avatars/confused/gold-024.png",
+      "size_bytes": 229948,
+      "sha256": "d0a184a36666714d53dd6572c7d4d76936a77926d1ca3bf75aa27d2108433c2a"
+    },
+    {
+      "path": "assets/avatars/confused/gold-360.png",
+      "size_bytes": 249017,
+      "sha256": "f862afd915857eaab4ec4f14c1a63b61f5b30ab1da3cbb8079533ed9bffdd55a"
+    },
+    {
+      "path": "assets/avatars/happy/gold-001.png",
+      "size_bytes": 200819,
+      "sha256": "504512d1372f90af648b90aeed125f296d6fba12ae3469afe849b1db06655702"
+    },
+    {
+      "path": "assets/avatars/happy/gold-002.png",
+      "size_bytes": 200466,
+      "sha256": "e331d12d46fecc2f6c5cc5990d04395a76b35b5b4475a010bba016e5e2bd03ee"
+    },
+    {
+      "path": "assets/avatars/happy/gold-003.png",
+      "size_bytes": 204029,
+      "sha256": "b6d33b734b32c23684e1bc5de874af30b416bb2b099a54d29107437081421bb7"
+    },
+    {
+      "path": "assets/avatars/happy/gold-004.png",
+      "size_bytes": 204629,
+      "sha256": "ab8b13562a77a0a93dbb3641801556a6e7393b74e292405f9244f7c7fef841c3"
+    },
+    {
+      "path": "assets/avatars/happy/gold-005.png",
+      "size_bytes": 207262,
+      "sha256": "d2cd971c1842468f57e1f28730d049ca5b4d22353377593b8fea099ab2b2061b"
+    },
+    {
+      "path": "assets/avatars/happy/gold-006.png",
+      "size_bytes": 209864,
+      "sha256": "b8749699075b30057efdd6a8bccfb3391a5f9bbeade595d2ffce90305b9ad5b5"
+    },
+    {
+      "path": "assets/avatars/happy/gold-007.png",
+      "size_bytes": 211355,
+      "sha256": "89925bf7dd6164892d05663405970c22d98ee4ed7a71d079d9b8873d78ee1a0c"
+    },
+    {
+      "path": "assets/avatars/happy/gold-008.png",
+      "size_bytes": 213340,
+      "sha256": "ca1d5f8c03b55590ede965322f6d2493be4154ac1f69bf31484875bb02d9e920"
+    },
+    {
+      "path": "assets/avatars/happy/gold-009.png",
+      "size_bytes": 215324,
+      "sha256": "bc2016dd27f055631cb0b77d0255f0c281f5c1674f7e6c791f8d1a9cc534768d"
+    },
+    {
+      "path": "assets/avatars/happy/gold-010.png",
+      "size_bytes": 216853,
+      "sha256": "17b7afb95c51588501d52774a5632f7c199628b54a0e940385fdffb30db5c65f"
+    },
+    {
+      "path": "assets/avatars/happy/gold-011.png",
+      "size_bytes": 218527,
+      "sha256": "4329d4c14bc1a86441182fcf351e863a82eb63d443f129970087e19cf31a0194"
+    },
+    {
+      "path": "assets/avatars/happy/gold-012.png",
+      "size_bytes": 220058,
+      "sha256": "60cd2ebb5a9af2af0ac7cafb44f5eaa59088813e310d84dc5ba40f23980a95ef"
+    },
+    {
+      "path": "assets/avatars/happy/gold-013.png",
+      "size_bytes": 221490,
+      "sha256": "c9bc95f68a39cecf95bbc81b707dac91f48ff2fb68269b22d78f26dfcc7ba1a6"
+    },
+    {
+      "path": "assets/avatars/happy/gold-014.png",
+      "size_bytes": 222546,
+      "sha256": "bfc9e5c2bf8dbe9cba90e9b12aebc557ab2f5beeb3623069ff5ae9dd740b86e9"
+    },
+    {
+      "path": "assets/avatars/happy/gold-015.png",
+      "size_bytes": 223466,
+      "sha256": "e9f6638fa4dfd7e98250269ae464bf95e7ed258156213958d0ea88696237583e"
+    },
+    {
+      "path": "assets/avatars/happy/gold-016.png",
+      "size_bytes": 224377,
+      "sha256": "25db4ba188c1066b2b3c64b63e5930c2fa89a518becbedda83574f84a94ce255"
+    },
+    {
+      "path": "assets/avatars/happy/gold-017.png",
+      "size_bytes": 225192,
+      "sha256": "4a7d986163c925bf060011dc0d166f229aad16311a833197ceed30349084901d"
+    },
+    {
+      "path": "assets/avatars/happy/gold-018.png",
+      "size_bytes": 225693,
+      "sha256": "1d498f570a29a5b328e7c0142310fafd9c009c0e2634330d4daa958e1a6033fa"
+    },
+    {
+      "path": "assets/avatars/happy/gold-019.png",
+      "size_bytes": 226206,
+      "sha256": "2539980e6da15097f68c1b11e6f3faa0f553fbac88df403b1834193457f0f93b"
+    },
+    {
+      "path": "assets/avatars/happy/gold-020.png",
+      "size_bytes": 226779,
+      "sha256": "0f352d3b264aa8c6dd2b296730a11cdb5fc2bbfa430343156b7316533efb9e97"
+    },
+    {
+      "path": "assets/avatars/happy/gold-021.png",
+      "size_bytes": 227030,
+      "sha256": "0eaf8dfe82e8ebc305d2adeb2a6aa1273dc6f0a5a9116df2198ee6eedff386a0"
+    },
+    {
+      "path": "assets/avatars/happy/gold-022.png",
+      "size_bytes": 227492,
+      "sha256": "3e460dfaa532c45287e92a0eae296bcae42a36aa4a94b036320b586d7559a502"
+    },
+    {
+      "path": "assets/avatars/happy/gold-023.png",
+      "size_bytes": 227810,
+      "sha256": "76ecd88ed87721d8caf85d870c312f13e01d13973ced7012bd06d06ebe20691b"
+    },
+    {
+      "path": "assets/avatars/happy/gold-024.png",
+      "size_bytes": 228038,
+      "sha256": "dba104f9eddff1db8e3480febaff2c38863c7c81503f5ce9ba93c02d3c0b5f34"
+    },
+    {
+      "path": "assets/avatars/happy/gold-360.png",
+      "size_bytes": 215326,
+      "sha256": "69c4db2b7fd41dbcc2933aff6f821a0548021fef6155fd0cd68eadc40da59dd1"
+    },
+    {
+      "path": "assets/avatars/painted/goldfeliz.png",
+      "size_bytes": 2069655,
+      "sha256": "01e33746503d7cf86772a9f985b4a1c8b7f74a69d71be5c7c40fffbbea2faff0"
+    },
+    {
+      "path": "assets/avatars/sad/gold-001.png",
+      "size_bytes": 200819,
+      "sha256": "504512d1372f90af648b90aeed125f296d6fba12ae3469afe849b1db06655702"
+    },
+    {
+      "path": "assets/avatars/sad/gold-002.png",
+      "size_bytes": 200466,
+      "sha256": "e331d12d46fecc2f6c5cc5990d04395a76b35b5b4475a010bba016e5e2bd03ee"
+    },
+    {
+      "path": "assets/avatars/sad/gold-003.png",
+      "size_bytes": 201173,
+      "sha256": "e761677c92805421d7d20694c1b30559708f774ce5661eab099ed2cb02450fc8"
+    },
+    {
+      "path": "assets/avatars/sad/gold-004.png",
+      "size_bytes": 201862,
+      "sha256": "8216075c4e4fc984915f55e1dd9dcd062ee02f6fdc094f0c24831966e9340642"
+    },
+    {
+      "path": "assets/avatars/sad/gold-005.png",
+      "size_bytes": 203013,
+      "sha256": "22839b6d6582a63485b47736efba30ced5c439a08b7319955463065bc39b4aa0"
+    },
+    {
+      "path": "assets/avatars/sad/gold-006.png",
+      "size_bytes": 204471,
+      "sha256": "c4aaa94c332c25e96bdf1bc3010ce7d89dd03882ac203a71077cfa105148c55d"
+    },
+    {
+      "path": "assets/avatars/sad/gold-007.png",
+      "size_bytes": 205764,
+      "sha256": "5b4ff7506f021bc903ecc2949a4c06d89ac31bac5e04d3a04bb9a11409008c7e"
+    },
+    {
+      "path": "assets/avatars/sad/gold-008.png",
+      "size_bytes": 207112,
+      "sha256": "deb7a4350e1d9f0110f26b24ddefb1a37ffe95db515cde207eb475f1f7ce1dae"
+    },
+    {
+      "path": "assets/avatars/sad/gold-009.png",
+      "size_bytes": 208441,
+      "sha256": "e67eb338883547208d1ff0e401d6264e6a68689224d31cb9674340e7249f8684"
+    },
+    {
+      "path": "assets/avatars/sad/gold-010.png",
+      "size_bytes": 209704,
+      "sha256": "35c8196d59f6c336ef1949f96cb57450976157c0c69c79f4a194bdb993e6b3e5"
+    },
+    {
+      "path": "assets/avatars/sad/gold-011.png",
+      "size_bytes": 210846,
+      "sha256": "bc5da7dcfe5340079a96eebcfc05e759c176bfa8e4687ccd198526e6f0dd3bf4"
+    },
+    {
+      "path": "assets/avatars/sad/gold-012.png",
+      "size_bytes": 212041,
+      "sha256": "de1fc54141216e21b8682bce9dae7fd6ce5278b1035cbd407f6c52ad2a455504"
+    },
+    {
+      "path": "assets/avatars/sad/gold-013.png",
+      "size_bytes": 213256,
+      "sha256": "418d3f927dbdd8decdf818caf2729d4691c764d461af041237c3e428469b602e"
+    },
+    {
+      "path": "assets/avatars/sad/gold-014.png",
+      "size_bytes": 214195,
+      "sha256": "7e4c98f7155f0fb8c8141b0ba336505c8ca22681aa1965dcb19ae03c79723964"
+    },
+    {
+      "path": "assets/avatars/sad/gold-015.png",
+      "size_bytes": 214992,
+      "sha256": "71877f18e34ef942c39f8a3281512c5246b7ddcf927f301a5f5f877333b21b2a"
+    },
+    {
+      "path": "assets/avatars/sad/gold-016.png",
+      "size_bytes": 215929,
+      "sha256": "9c3b0090942bf75e4a572d9377f2a49e46c4dfbfd70a1385f19c9c8da909c0e5"
+    },
+    {
+      "path": "assets/avatars/sad/gold-017.png",
+      "size_bytes": 216726,
+      "sha256": "b2ef8df874184c0a1284334d8455b1da911135595bf1231a12073a75a2a9c25c"
+    },
+    {
+      "path": "assets/avatars/sad/gold-018.png",
+      "size_bytes": 217215,
+      "sha256": "2a7d4111b339f6d6b1756b2013aab6c61698173d6323abd0aae31c31dd327856"
+    },
+    {
+      "path": "assets/avatars/sad/gold-019.png",
+      "size_bytes": 217832,
+      "sha256": "458dbc4655069e970794777d91541171c73794658cf9baff26d12d2e02d7d4c4"
+    },
+    {
+      "path": "assets/avatars/sad/gold-020.png",
+      "size_bytes": 218436,
+      "sha256": "f119996b6d044c1842da2308ee0a3cf065068787437d9c1e48765ca9cae32fec"
+    },
+    {
+      "path": "assets/avatars/sad/gold-021.png",
+      "size_bytes": 218832,
+      "sha256": "0c3eb077fd2a87cb2d5fe8e813d52e0ea65ceb85b9644a8de7d06f4f7adc6579"
+    },
+    {
+      "path": "assets/avatars/sad/gold-022.png",
+      "size_bytes": 219173,
+      "sha256": "0fbd8288470b24da7879de0c57c485bb52273de93ce94a12bc5e461ad6d27af8"
+    },
+    {
+      "path": "assets/avatars/sad/gold-023.png",
+      "size_bytes": 219678,
+      "sha256": "e5039bb88bcfa86b2b30cdf267900247651b5f60cdd8a4640b7c8e1c1448751e"
+    },
+    {
+      "path": "assets/avatars/sad/gold-024.png",
+      "size_bytes": 220040,
+      "sha256": "52627409074e3dc024157b7cfc010065a56e066a705ab95ff0425ea4de9f4bec"
+    },
+    {
+      "path": "assets/avatars/sad/gold-360.png",
+      "size_bytes": 232471,
+      "sha256": "7678ba6b5ffd4a4662a2754c414f57b6050e0ea5693fc06c22704acd79435968"
+    },
+    {
+      "path": "assets/batedor-birding.png",
+      "size_bytes": 613157,
+      "sha256": "cd183c4fb03e8ca17cdaac89e881fcb949f113586a357a91b5f6c66603dc84f9"
+    },
+    {
+      "path": "assets/composer-strip-empty.png",
+      "size_bytes": 146781,
+      "sha256": "552cc339ddf2215863c4e2028c365681cbe6aabed98b4f812408bc3d9a73fe5d"
+    },
+    {
+      "path": "assets/herpeto-mantiqueira-logo.png",
+      "size_bytes": 1121541,
+      "sha256": "4d3658a1c2272301f23d300647a63192019bbf4f7a308a6e24b3483f235fc67b"
+    },
+    {
+      "path": "assets/herpetofauna/logos/escola-nacional-de-botanica-tropical-logo.png",
+      "size_bytes": 216722,
+      "sha256": "4aa6e91909346f6e87bd10a710fa6fdca2d26f52b922bc4182cfad80275c3b6e"
+    },
+    {
+      "path": "assets/herpetofauna/logos/herpeto-mantiqueira-logo.png",
+      "size_bytes": 231841,
+      "sha256": "ab942c0156099c88142c26551437b0a6a94462ce5b49a1e7e12a61215961593d"
+    },
+    {
+      "path": "assets/herpetofauna/logos/jardim-botanico-logo.png",
+      "size_bytes": 163884,
+      "sha256": "4f6b66864c7047e24011d4a6c2e3afded01235a4ddbfac4435094ab2b5e9bc06"
+    },
+    {
+      "path": "assets/herpetofauna/logos/rppn-gigante-do-itaguare-logo-dark-green.png",
+      "size_bytes": 1177144,
+      "sha256": "417942754d63735ccf42881e834b815d9b82995a81df7ce479d90590e7898716"
+    },
+    {
+      "path": "assets/herpetofauna/logos/rppn-gigante-do-itaguare-logo.png",
+      "size_bytes": 1372347,
+      "sha256": "634403436d182e75213ac0ffcb0b3f0f058e893b283da6d2d616e1b13babed6b"
+    },
+    {
+      "path": "assets/herpetofauna/logos/rppn-gigante-itaguare-dark-green.png",
+      "size_bytes": 114349,
+      "sha256": "c7b02fc0d6771b84da0a5e93614e816c67fcf32116d72f34ee87a1f0788ebb05"
+    },
+    {
+      "path": "assets/herpetofauna/logos/rppn-preview-on-card.png",
+      "size_bytes": 114038,
+      "sha256": "94f5ab9c062bedd58987b6e5208ee0ce6f769a686887757a198884b35043c71c"
+    },
+    {
+      "path": "assets/herpetofauna/photos-signed/aplastodiscus-arildae.png",
+      "size_bytes": 1165590,
+      "sha256": "d2f1481d706850a7746879840b49f987b519320ceac48aa9ba6a2ad08174bdba"
+    },
+    {
+      "path": "assets/herpetofauna/photos-signed/boana-beckeri.png",
+      "size_bytes": 1949875,
+      "sha256": "f371b569c4ef93163e35143f27f2226c6e82ac22a558e85a328a7a26700108c7"
+    },
+    {
+      "path": "assets/herpetofauna/photos-signed/bothrops-jararaca-2.png",
+      "size_bytes": 2433229,
+      "sha256": "2b98c6d3f5310eeed263f1951f43e97278feb303cb6a7e3340c66280a5a0a571"
+    },
+    {
+      "path": "assets/herpetofauna/photos-signed/bothrops-jararaca.png",
+      "size_bytes": 2137797,
+      "sha256": "2d5ca6c610bfb0e352fa707f820d6d10196a3d52927abae0b4d2ce0b0f1b8de2"
+    },
+    {
+      "path": "assets/herpetofauna/photos-signed/brachycephalus-rotenbergae-2.jpg",
+      "size_bytes": 2315519,
+      "sha256": "30b042703b0186fcac7ebab961adea868af396b7e7ce33c70e3abfb043571124"
+    },
+    {
+      "path": "assets/herpetofauna/photos-signed/brachycephalus-rotenbergae.jpg",
+      "size_bytes": 2596884,
+      "sha256": "ff55f108112a69392ed7b3b00d365dbd35c3b6629ea5b9c4c3bac0c3616299af"
+    },
+    {
+      "path": "assets/herpetofauna/photos-signed/dryophylax-nattereri-2.png",
+      "size_bytes": 766159,
+      "sha256": "ffd60ce17bd03d462859d74128c255af6d1b9ef947270b0a5f8381b3409dbf3d"
+    },
+    {
+      "path": "assets/herpetofauna/photos-signed/dryophylax-nattereri.png",
+      "size_bytes": 1181326,
+      "sha256": "5e7451e1f82f02ef0b288f3501b287ccc911f19c85b1b59c7a55ff2e24e59f93"
+    },
+    {
+      "path": "assets/herpetofauna/photos-signed/enyalius-iheringii.png",
+      "size_bytes": 1988735,
+      "sha256": "c8aa62207682ce0989b792f18f6ba366a0b6bf4e339f67fca1f5ae03060c3a3c"
+    },
+    {
+      "path": "assets/herpetofauna/photos-signed/erythrolamprus-aesculapii.png",
+      "size_bytes": 2464171,
+      "sha256": "1b24ca9dbc04f2192d624c76f6e364d92b5c40e64d1aa025e5f50ba8c287bb67"
+    },
+    {
+      "path": "assets/herpetofauna/photos-signed/haddadus-binotatus.png",
+      "size_bytes": 2148934,
+      "sha256": "4cb92d0239f4de08b3b54d0da185aa1ef19629699b4efbadd5252b0156258a25"
+    },
+    {
+      "path": "assets/herpetofauna/photos-signed/ischnocnema-sp.png",
+      "size_bytes": 2545390,
+      "sha256": "7a6580b5823435165422fd659d9be4136d50463ac9b3092e658965c6372b5f2c"
+    },
+    {
+      "path": "assets/herpetofauna/photos-signed/mussurana-montana-2.png",
+      "size_bytes": 1221610,
+      "sha256": "b4bfaf292c1d021529eb999bf6a96b92c60b38f9b335c82b12c47c9cb45218e2"
+    },
+    {
+      "path": "assets/herpetofauna/photos-signed/mussurana-montana.png",
+      "size_bytes": 1051393,
+      "sha256": "d95e8fcc9b28ef161ea8ffa99ef78c06956314d5ebdd372f659a648cd9a89c11"
+    },
+    {
+      "path": "assets/herpetofauna/photos-signed/ololygon-luizotavioi.png",
+      "size_bytes": 1781509,
+      "sha256": "b54e4be0b796e2f50553ee9186b360fdaca7307da22c7030cc1c2741a97bb956"
+    },
+    {
+      "path": "assets/herpetofauna/photos-signed/phasmahyla-cf-cochranae-2.png",
+      "size_bytes": 1695240,
+      "sha256": "aa6968bb2880eb373d7c1940133dc6d2b94dac1ede686983a21424a07bd9be1d"
+    },
+    {
+      "path": "assets/herpetofauna/photos-signed/phasmahyla-cf-cochranae.png",
+      "size_bytes": 1976200,
+      "sha256": "05facdf2a36ddfd41bb0f4b9043cdf399776a5c7303ff4658603a58fad0bde6e"
+    },
+    {
+      "path": "assets/herpetofauna/photos-signed/physalaemus-cuvieri.png",
+      "size_bytes": 1979304,
+      "sha256": "b79fee956e2ad47c2f6a339a23877d763409644deb0747896b8a2f83c67c655c"
+    },
+    {
+      "path": "assets/herpetofauna/photos-signed/proceratophrys-itamari-2.png",
+      "size_bytes": 2236365,
+      "sha256": "4b280adba4fc7cf9271d2add9f7d396f69cf7aedf2d05c5bfe4aa2dd24f724de"
+    },
+    {
+      "path": "assets/herpetofauna/photos-signed/proceratophrys-itamari.png",
+      "size_bytes": 1583990,
+      "sha256": "1c7ebaf82f70c3ae0bac296812f94bccd34d08f8794abe7652fdac99dea36cbb"
+    },
+    {
+      "path": "assets/herpetofauna/photos-signed/rhinella-icterica-2.png",
+      "size_bytes": 1569937,
+      "sha256": "7ed05841a2bc79192d79f158d7ac97e76603837e9ee7a39ad44719bb713af35e"
+    },
+    {
+      "path": "assets/herpetofauna/photos-signed/rhinella-icterica.png",
+      "size_bytes": 2208611,
+      "sha256": "f4ae853faf8381d5de0e50cf7e258b050c5ebe6c9da57b9c004b165f966e10c8"
+    },
+    {
+      "path": "assets/herpetofauna/photos-signed/rhinella-ornata.png",
+      "size_bytes": 1839039,
+      "sha256": "55650023bc69004a13eebf359490b68c8e2cf193bab33060f2a47ce776eec7fc"
+    },
+    {
+      "path": "assets/herpetofauna/photos-signed/vitreorana-parvula-2.png",
+      "size_bytes": 1579200,
+      "sha256": "9be5fef1223226903ef57c2f9d3772a28e42bb46bdd502bdcb9873fe218f03f8"
+    },
+    {
+      "path": "assets/herpetofauna/photos-signed/vitreorana-parvula.png",
+      "size_bytes": 871996,
+      "sha256": "db0eaf36f5de25ce94af630b48f25e786d397db6a880ed7b3ef99d0775940ffa"
+    },
+    {
+      "path": "assets/herpetofauna/photos-signed/vriesea-gradata.jpg",
+      "size_bytes": 1300485,
+      "sha256": "279cb926d15a3a579b70f8fe1f07ec84955168160aa51ecbdbf4afc98028e392"
+    },
+    {
+      "path": "assets/herpetofauna/stickers-signed/aplastodiscus-arildae.png",
+      "size_bytes": 3145232,
+      "sha256": "a1eb7ae4c83605712c039fc14bce56ba0871e6fbf283d3e094193e9bed771787"
+    },
+    {
+      "path": "assets/herpetofauna/stickers-signed/boana-beckeri.png",
+      "size_bytes": 3041498,
+      "sha256": "899ea16fcea82c913afb848940ea67e0ed7202ff535b2dac015f0571d7ff0448"
+    },
+    {
+      "path": "assets/herpetofauna/stickers-signed/bothrops-jararaca.png",
+      "size_bytes": 3111155,
+      "sha256": "2de77449c9f1e0d57c4e7ab55d6b296fb43943adcba515c4dc3f1a6155000701"
+    },
+    {
+      "path": "assets/herpetofauna/stickers-signed/brachycephalus-rotenbergae.png",
+      "size_bytes": 3108349,
+      "sha256": "85e724eae1d222cfde0d14e2abc99f8151535fa48a49b22cfa891e5a11e5d5b9"
+    },
+    {
+      "path": "assets/herpetofauna/stickers-signed/dryophylax-nattereri.png",
+      "size_bytes": 3306672,
+      "sha256": "009765605219dd13f51a0a3bf5d3b85905c84bd1a6d8a76e01b104c89a1434d0"
+    },
+    {
+      "path": "assets/herpetofauna/stickers-signed/enyalius-iheringii.png",
+      "size_bytes": 3216019,
+      "sha256": "d48e498adda34dd8468134023e4e175d6593aed77903be700593739830bcc2a0"
+    },
+    {
+      "path": "assets/herpetofauna/stickers-signed/erythrolamprus-aesculapii.png",
+      "size_bytes": 3421029,
+      "sha256": "65308db0d5779f2f64a992e1ec7a1aff989c3313f0313c247f1fc2bbb65388dd"
+    },
+    {
+      "path": "assets/herpetofauna/stickers-signed/haddadus-binotatus.png",
+      "size_bytes": 2935060,
+      "sha256": "5f7f464dcb6eda51af77bbfa64f0b7ae4f18cab1cc55412f5248388a494d0e2e"
+    },
+    {
+      "path": "assets/herpetofauna/stickers-signed/herpetofauna-cruzeiro-fundo.png",
+      "size_bytes": 3626732,
+      "sha256": "ebc398524d33e0777ac2e451e7ba2ecf42089e3c6a49e4fb6246a4148b6b9f1d"
+    },
+    {
+      "path": "assets/herpetofauna/stickers-signed/ischnocnema-sp.png",
+      "size_bytes": 3304910,
+      "sha256": "fad9efb4ba28895e0c259de13ff81e066d0508eb45502edf5cd5116030c18947"
+    },
+    {
+      "path": "assets/herpetofauna/stickers-signed/mussurana-montana.png",
+      "size_bytes": 3351434,
+      "sha256": "c7fc7d705b59d75e7a89909694bf74acfddcfbd3b270318b6b66092493c94dc2"
+    },
+    {
+      "path": "assets/herpetofauna/stickers-signed/ololygon-luizotavioi.png",
+      "size_bytes": 2877426,
+      "sha256": "e578b9c61bdfc746fbac6cb398ce2d1e9dd5a1ebaa3248f9abc031a26a47e0e2"
+    },
+    {
+      "path": "assets/herpetofauna/stickers-signed/phasmahyla-cf-cochranae.png",
+      "size_bytes": 2640803,
+      "sha256": "e5a3ef99283b4e743887407ca42ad345ac02f70070f26b82ceebd9b4b38082fc"
+    },
+    {
+      "path": "assets/herpetofauna/stickers-signed/physalaemus-cuvieri.png",
+      "size_bytes": 3126080,
+      "sha256": "23502c26f61b4c05bf062ccc569355494183004e9f100c08ec9c43d2f669f054"
+    },
+    {
+      "path": "assets/herpetofauna/stickers-signed/proceratophrys-itamari.png",
+      "size_bytes": 3224905,
+      "sha256": "fe89cd09b6948cc1bb074dd4561b6b09cfcb9f902003164834f6486b468fbbd0"
+    },
+    {
+      "path": "assets/herpetofauna/stickers-signed/rhinella-icterica.png",
+      "size_bytes": 3299929,
+      "sha256": "61fbc84e692f72f837880bb369650cba8b6a73e04fce1c0cc5ca7bdaba0acabb"
+    },
+    {
+      "path": "assets/herpetofauna/stickers-signed/rhinella-ornata.png",
+      "size_bytes": 3041341,
+      "sha256": "91965177c7750c5366c4911fbc0262901d064f44d13bff07d8c260ff694b87da"
+    },
+    {
+      "path": "assets/herpetofauna/stickers-signed/vitreorana-parvula.png",
+      "size_bytes": 3314315,
+      "sha256": "35e71d11860e352a2d8eec9e75873714083e3489bcd25acdfefad6578056409b"
+    },
+    {
+      "path": "assets/herpetofauna/stickers-signed/vriesea-gradata.png",
+      "size_bytes": 3179919,
+      "sha256": "01f5bebb61749c8c03ad860a31bf204a7d92644fcafb98c339a6086064defc6b"
+    },
+    {
+      "path": "assets/images/2.jpg",
+      "size_bytes": 9271478,
+      "sha256": "b7e6f60fe508fb02dabf00ca532403de4b9e0a57d8770856dce04b7e110db35a"
+    },
+    {
+      "path": "assets/images/boa-constrictor.jpeg",
+      "size_bytes": 207025,
+      "sha256": "d5c640a16dc510a6604b4f24ca8c6c9d96b8184b3710312295742d2863609033"
+    },
+    {
+      "path": "assets/images/brachycephalus-rotenbergae.jpg",
+      "size_bytes": 2438896,
+      "sha256": "ab3dba64e147e264d4a40d806210b5ad682ca062bd1bb83703454d4be0641650"
+    },
+    {
+      "path": "assets/images/bruno-biologo.jpeg",
+      "size_bytes": 145744,
+      "sha256": "f2edfc45cc53997503eccf1eefbc2b5200097b8b93535dbd024d3edc7f73ccad"
+    },
+    {
+      "path": "assets/images/clara-biologa.jpeg",
+      "size_bytes": 267452,
+      "sha256": "7fef5b1d9a3d220a81a2bafdcfa440f0551d632cb1029c6245539bff4c671e9d"
+    },
+    {
+      "path": "assets/images/img-0721.jpg",
+      "size_bytes": 10995043,
+      "sha256": "2d76983349f4fbc77d261cd3a3ca15d34c51594497f58469bd3ab7bd6f3a1cbb"
+    },
+    {
+      "path": "assets/images/luan-fundador-e-biologo.jpeg",
+      "size_bytes": 252630,
+      "sha256": "d20875b68290ba67dd33fe3d8aa9c450ba63a18ccae7d4e334818b8110b74553"
+    },
+    {
+      "path": "assets/images/phasmahyla-sp.jpg",
+      "size_bytes": 2477179,
+      "sha256": "d76a6865ee263d87bdd20136518d2f3c19a19734bb790fffc9b36479c84d837a"
+    },
+    {
+      "path": "assets/images/trachycephalus-mesophaeus-2.jpg",
+      "size_bytes": 2963201,
+      "sha256": "011bf615fe1a93aacab404d967babd58822ea923b49baa266aef56b388493460"
+    },
+    {
+      "path": "assets/images/whatsapp-image-2026-05-31-at-12-47-19-1.jpeg",
+      "size_bytes": 136992,
+      "sha256": "77e5dc9d16099698d0bb90672d77aec77b4ee2259c20fb67288c88f804223dee"
+    },
+    {
+      "path": "assets/images/whatsapp-image-2026-05-31-at-12-47-19.jpeg",
+      "size_bytes": 160340,
+      "sha256": "9ece0451b024c833f91e8f77094b175c10201783258423819d7182d75220b831"
+    },
+    {
+      "path": "assets/oikos-fieldbook/home.jpg",
+      "size_bytes": 56903,
+      "sha256": "8105f0b23dd747c57741bcd75c7b339fbae3a5b3b43b8476449689ce278d5c8a"
+    },
+    {
+      "path": "assets/oikos-fieldbook/midias-ocorrencia.jpg",
+      "size_bytes": 60720,
+      "sha256": "51850c15aa2ec8ab42b7a939b83843db5a02915fbccc2abd8992f899d24dd7ef"
+    },
+    {
+      "path": "assets/oikos-fieldbook/nova-expedicao.jpg",
+      "size_bytes": 57000,
+      "sha256": "9ca07402f2cc1d7be27c1e446e982351a5c1ab4bfa74f95569af5bd328cbeac3"
+    },
+    {
+      "path": "assets/oikos-fieldbook/novo-projeto.jpg",
+      "size_bytes": 38068,
+      "sha256": "3b5c8abd07766f2025fa58d6997d707c65f22213b54a757aaf8564c9b8e656f5"
+    },
+    {
+      "path": "assets/oikos-fieldbook/oikos-logo-dark-normalized.png",
+      "size_bytes": 333491,
+      "sha256": "8e2f32756711bf1a4b85c3fb458f9ba58bef34751cb803e9b3663944e18a24ef"
+    },
+    {
+      "path": "assets/oikos-fieldbook/oikos-logo-hero-official.png",
+      "size_bytes": 1528961,
+      "sha256": "4496b60acd197e4330b9bf5ff6b34555199885aa98f63418cfea93d94cb1b0e1"
+    },
+    {
+      "path": "assets/oikos-fieldbook/oikos-logo-light-normalized.png",
+      "size_bytes": 315422,
+      "sha256": "6c220cb8423283f7498a13b2fb23c27fdb44f5c7b725de9bfa742434721f7978"
+    },
+    {
+      "path": "assets/oikos-fieldbook/trilha-gps.jpg",
+      "size_bytes": 87009,
+      "sha256": "b0ba0d9429dfbc75b10eb6309428cc6518265c82b5898eeeb50aa9e138a7e1e0"
+    },
+    {
+      "path": "assets/rppn-gigante-itaguare.png",
+      "size_bytes": 577272,
+      "sha256": "70df1fbb023bb5390ddb59b2efba9fadf22cc829d3e7c360b5772b0bd087c03e"
+    },
+    {
+      "path": "assets/sigmai/mapa-topotrail-hibrido.png",
+      "size_bytes": 1800686,
+      "sha256": "b0dcba128bc670ea6734d69482c85ad232c63bdd414eed16e17579f26b590561"
+    },
+    {
+      "path": "assets/sigmai/sigmai-icon.png",
+      "size_bytes": 185379,
+      "sha256": "c39dd9ae447ff4da846cd06cbea4b36ede9283e286887a278bb2eb51a76ccce1"
+    },
+    {
+      "path": "assets/sigmai/sigmai-logo-full.png",
+      "size_bytes": 1006617,
+      "sha256": "7a3d8abc34abcbb4c0a583a0965f3a511dbe4efd1e2275cd5f55b853e01ba042"
+    },
+    {
+      "path": "assets/topotrail/logo.png",
+      "size_bytes": 42848,
+      "sha256": "577e7584820ccb5c945d9893688b81fc209e7d89a63af737745db0e3e38beb9e"
+    },
+    {
+      "path": "backend-data/biodiversity-cache/database.json",
+      "size_bytes": 3936253,
+      "sha256": "a42924a51eb9a504afed694a3f2f9a2dca5fe6e6c72c3c00dad30a3129578453"
+    },
+    {
+      "path": "css/styles.css",
+      "size_bytes": 90109,
+      "sha256": "41ea4e0701068febc52a8a43884c7dc8458662380ba847d7b4579ae3666aa4c3"
+    },
+    {
+      "path": "herpetofauna-cruzeiro.html",
+      "size_bytes": 83404,
+      "sha256": "9d36729f4b8c035c134eeeb9e4099ad4337bcf45e766b1e80478a7a4afa9f873"
+    },
+    {
+      "path": "IAAprendaAqui/base_cientifica_chunks_rag_clean.jsonl",
+      "size_bytes": 7561055,
+      "sha256": "4c06e93fbb02940a3f525e13f0ea6c4deddc50fad2f5a7c65569d1636313d854"
+    },
+    {
+      "path": "IAAprendaAqui/base_cientifica_complemento_semantico_10x.json",
+      "size_bytes": 130917,
+      "sha256": "7ec2e41b59c55bbc9f7ba67dcbf4c612564440dfaa1f24123bf7f779578a0ce3"
+    },
+    {
+      "path": "IAAprendaAqui/base_cientifica_master_unificada.json",
+      "size_bytes": 185602,
+      "sha256": "38a22ef653e1207c17d17e9b97cb26ebc942de1398cb2a053c31e90af01a4c43"
+    },
+    {
+      "path": "IAAprendaAqui/glossario_ecologia_zoologia_normalizado.json",
+      "size_bytes": 3020272,
+      "sha256": "d363a3ca892242c6cafd7367e0df808aea899c927105c3981d90b67ce7132f8b"
+    },
+    {
+      "path": "IAAprendaAqui/gold_citation_index.json",
+      "size_bytes": 5526240,
+      "sha256": "88dd73c2525f229c2735c1938616c6d5b3a49bb372a47d4907880242a482a835"
+    },
+    {
+      "path": "IAAprendaAqui/gold_scientific_presentation_index.json",
+      "size_bytes": 33256438,
+      "sha256": "9cc39cbadd4a1a92f24cf59a64383a44392dc1762ac723d154f7dddef7e89945"
+    },
+    {
+      "path": "IAAprendaAqui/taxonomic_context_index.json",
+      "size_bytes": 112637761,
+      "sha256": "86fd4f1336b4e489956bc030e9f4615b1dc6f664bf57f5b3a41d2650029ff9ee"
+    },
+    {
+      "path": "IAAprendaAqui/taxonomy_backbone_initial.json",
+      "size_bytes": 5723,
+      "sha256": "f5badb5f3984113f313f36682edce0c422526007f6cb8bb9ed94653279c9afee"
+    },
+    {
+      "path": "IAAprendaAqui/taxonomy_local_index.json",
+      "size_bytes": 5965901,
+      "sha256": "692a887ca410cf0eaa741a382bf044198207666280e675c498b3d608305c5c4a"
+    },
+    {
+      "path": "index.html",
+      "size_bytes": 16286,
+      "sha256": "b8bd107511d70ca74f307cae668dd8845fd55b837bb83539e7def45410b16467"
+    },
+    {
+      "path": "js/about-gold.js",
+      "size_bytes": 3301,
+      "sha256": "34fb528f7d5b74337895233d282e86d2f1c3b2fb6de4cba40e409a5f03f179b6"
+    },
+    {
+      "path": "js/answer-composer.js",
+      "size_bytes": 8181,
+      "sha256": "96d9e163e6e8a05665ea33ca1f2067b42587d96561c6e5d566ce9f41e7531d9a"
+    },
+    {
+      "path": "js/biodiversity-manager.js",
+      "size_bytes": 50941,
+      "sha256": "b710eb15f454ac2273d945d5a308f00c419b26dcb0c4e7e16345525550c9ca10"
+    },
+    {
+      "path": "js/chat.js",
+      "size_bytes": 16303,
+      "sha256": "cf6778b0297b2e5415fb1cba69cfc28e2c16ffbb613a0d4e322e9774647f7ad4"
+    },
+    {
+      "path": "js/conversation-core.js",
+      "size_bytes": 37613,
+      "sha256": "25645b9bf7a157f708bad17b4b81737835106e207eb4cf89150471d583133774"
+    },
+    {
+      "path": "js/gold-public-cache-data.js",
+      "size_bytes": 2297499,
+      "sha256": "b76e52a2b86f94468f58ea30a631ade1dab2339e1d8b26332629138917ec7a8f"
+    },
+    {
+      "path": "js/gold-references.js",
+      "size_bytes": 2444230,
+      "sha256": "8c9cab28ec6bb6623d5240bac9daec699f4e2f502c8da78ccc8ba7c85fc9962a"
+    },
+    {
+      "path": "js/gold-scientific-orchestrator.js",
+      "size_bytes": 16679,
+      "sha256": "67624c54379e6f9c2d77e57659b6b4645bc5c61d4b123d44142ad9d9343e43b0"
+    },
+    {
+      "path": "js/gold-scientific-reliability.js",
+      "size_bytes": 5560,
+      "sha256": "5efed6a8f345601b0ab9fc63799dcddeeaba26706258ab04b854483ea4ea4e68"
+    },
+    {
+      "path": "js/gold-ux-responses.js",
+      "size_bytes": 2597,
+      "sha256": "2e414c44b04d95f8e5bf2458604c18c0653bcf796b1966b6ebd4b708083231e9"
+    },
+    {
+      "path": "js/herpeto-chat-brain.js",
+      "size_bytes": 28028,
+      "sha256": "8a68963039ed2c9c771ad8da8ef43c7efc9c57fbd497d72fd6a51820db6de274"
+    },
+    {
+      "path": "js/herpetology-engine.js",
+      "size_bytes": 13254,
+      "sha256": "e12bc77c5f31ac8501ac5d3aba763e720a06ecedead5fdc01143d005d344d072"
+    },
+    {
+      "path": "js/home.js",
+      "size_bytes": 1554,
+      "sha256": "191b72a82dab1dc9b6257d199a0abedfab5a49e1b6f6c6903326f50c1adf94d6"
+    },
+    {
+      "path": "js/inat.js",
+      "size_bytes": 25292,
+      "sha256": "2a627cd6cdbbb46934389a868be63ffb6087b0831dec847119125d5115b6672d"
+    },
+    {
+      "path": "js/municipal-biodiversity-engine.js",
+      "size_bytes": 12410,
+      "sha256": "0281bd350158dc3eacc992a79f698792fa82b96e842ab97bc610359200595055"
+    },
+    {
+      "path": "js/municipalities.js",
+      "size_bytes": 3878,
+      "sha256": "c3aeb5d1805cbabededac07c4ee2882891043e570b21e0bb182e184d05840ed4"
+    },
+    {
+      "path": "js/scientific-knowledge-base.js",
+      "size_bytes": 38052,
+      "sha256": "fa28882a2b641bc7004ee5adba4a16e7cfcdcc3754279fb227779b740d53596d"
+    },
+    {
+      "path": "js/scientific-methodology-engine.js",
+      "size_bytes": 30575,
+      "sha256": "624a84ad480d91d0ab869791d695b6c3fb38b56787445127b162d8af354cd897"
+    },
+    {
+      "path": "js/scientific-rag-engine.js",
+      "size_bytes": 15205,
+      "sha256": "91b12b1a50a094400988c24628a006c1be6b158a537482eaffd940a2db0e303b"
+    },
+    {
+      "path": "js/specieslink.js",
+      "size_bytes": 35350,
+      "sha256": "ee4de5f5811ceda6772815c0f17c3ba47722971773986189b42038b8bb0a00a7"
+    },
+    {
+      "path": "js/splash.js",
+      "size_bytes": 4542,
+      "sha256": "ab0f0850cfe09c232853ffdfe8a0c5626c20ac8e37a9587837ed63bfba5b7047"
+    },
+    {
+      "path": "js/taxonomy-backbone.js",
+      "size_bytes": 8112,
+      "sha256": "890354704178cf2600cc6f84722addd59595582dc2a6670785bc6e1a4b32dc65"
+    },
+    {
+      "path": "oikos-fieldbook.html",
+      "size_bytes": 15252,
+      "sha256": "9e9772e7aeb1ae7507cd86943bed8a2d60a46b73a3462037ef63b39bb780493e"
+    },
+    {
+      "path": "sigmai.html",
+      "size_bytes": 26391,
+      "sha256": "a3bb6d76ba0e3388e33101dc31d1afd0e125450f4763a9216bdbda1ce23cdfa2"
+    },
+    {
+      "path": "sobre-gold.html",
+      "size_bytes": 18044,
+      "sha256": "bb0fdb745e93f1e74542395c5f9f0e4820daffdb7a59664f878c0e8464079520"
+    },
+    {
+      "path": "topotrail.html",
+      "size_bytes": 24189,
+      "sha256": "b80b7d1b60aab675a047bb56fe938ec28dad8fddaf4d1e86fa8a3ef5fe6684c6"
+    }
+  ],
+  "source_to_public_mapping": {
+    "about-gold.js": "js/about-gold.js",
+    "answer-composer.js": "js/answer-composer.js",
+    "Assets/avatar-transitions-web/confused/gold-001.png": "assets/avatars/confused/gold-001.png",
+    "Assets/avatar-transitions-web/confused/gold-002.png": "assets/avatars/confused/gold-002.png",
+    "Assets/avatar-transitions-web/confused/gold-003.png": "assets/avatars/confused/gold-003.png",
+    "Assets/avatar-transitions-web/confused/gold-004.png": "assets/avatars/confused/gold-004.png",
+    "Assets/avatar-transitions-web/confused/gold-005.png": "assets/avatars/confused/gold-005.png",
+    "Assets/avatar-transitions-web/confused/gold-006.png": "assets/avatars/confused/gold-006.png",
+    "Assets/avatar-transitions-web/confused/gold-007.png": "assets/avatars/confused/gold-007.png",
+    "Assets/avatar-transitions-web/confused/gold-008.png": "assets/avatars/confused/gold-008.png",
+    "Assets/avatar-transitions-web/confused/gold-009.png": "assets/avatars/confused/gold-009.png",
+    "Assets/avatar-transitions-web/confused/gold-010.png": "assets/avatars/confused/gold-010.png",
+    "Assets/avatar-transitions-web/confused/gold-011.png": "assets/avatars/confused/gold-011.png",
+    "Assets/avatar-transitions-web/confused/gold-012.png": "assets/avatars/confused/gold-012.png",
+    "Assets/avatar-transitions-web/confused/gold-013.png": "assets/avatars/confused/gold-013.png",
+    "Assets/avatar-transitions-web/confused/gold-014.png": "assets/avatars/confused/gold-014.png",
+    "Assets/avatar-transitions-web/confused/gold-015.png": "assets/avatars/confused/gold-015.png",
+    "Assets/avatar-transitions-web/confused/gold-016.png": "assets/avatars/confused/gold-016.png",
+    "Assets/avatar-transitions-web/confused/gold-017.png": "assets/avatars/confused/gold-017.png",
+    "Assets/avatar-transitions-web/confused/gold-018.png": "assets/avatars/confused/gold-018.png",
+    "Assets/avatar-transitions-web/confused/gold-019.png": "assets/avatars/confused/gold-019.png",
+    "Assets/avatar-transitions-web/confused/gold-020.png": "assets/avatars/confused/gold-020.png",
+    "Assets/avatar-transitions-web/confused/gold-021.png": "assets/avatars/confused/gold-021.png",
+    "Assets/avatar-transitions-web/confused/gold-022.png": "assets/avatars/confused/gold-022.png",
+    "Assets/avatar-transitions-web/confused/gold-023.png": "assets/avatars/confused/gold-023.png",
+    "Assets/avatar-transitions-web/confused/gold-024.png": "assets/avatars/confused/gold-024.png",
+    "Assets/avatar-transitions-web/confused/gold-360.png": "assets/avatars/confused/gold-360.png",
+    "Assets/avatar-transitions-web/happy/gold-001.png": "assets/avatars/happy/gold-001.png",
+    "Assets/avatar-transitions-web/happy/gold-002.png": "assets/avatars/happy/gold-002.png",
+    "Assets/avatar-transitions-web/happy/gold-003.png": "assets/avatars/happy/gold-003.png",
+    "Assets/avatar-transitions-web/happy/gold-004.png": "assets/avatars/happy/gold-004.png",
+    "Assets/avatar-transitions-web/happy/gold-005.png": "assets/avatars/happy/gold-005.png",
+    "Assets/avatar-transitions-web/happy/gold-006.png": "assets/avatars/happy/gold-006.png",
+    "Assets/avatar-transitions-web/happy/gold-007.png": "assets/avatars/happy/gold-007.png",
+    "Assets/avatar-transitions-web/happy/gold-008.png": "assets/avatars/happy/gold-008.png",
+    "Assets/avatar-transitions-web/happy/gold-009.png": "assets/avatars/happy/gold-009.png",
+    "Assets/avatar-transitions-web/happy/gold-010.png": "assets/avatars/happy/gold-010.png",
+    "Assets/avatar-transitions-web/happy/gold-011.png": "assets/avatars/happy/gold-011.png",
+    "Assets/avatar-transitions-web/happy/gold-012.png": "assets/avatars/happy/gold-012.png",
+    "Assets/avatar-transitions-web/happy/gold-013.png": "assets/avatars/happy/gold-013.png",
+    "Assets/avatar-transitions-web/happy/gold-014.png": "assets/avatars/happy/gold-014.png",
+    "Assets/avatar-transitions-web/happy/gold-015.png": "assets/avatars/happy/gold-015.png",
+    "Assets/avatar-transitions-web/happy/gold-016.png": "assets/avatars/happy/gold-016.png",
+    "Assets/avatar-transitions-web/happy/gold-017.png": "assets/avatars/happy/gold-017.png",
+    "Assets/avatar-transitions-web/happy/gold-018.png": "assets/avatars/happy/gold-018.png",
+    "Assets/avatar-transitions-web/happy/gold-019.png": "assets/avatars/happy/gold-019.png",
+    "Assets/avatar-transitions-web/happy/gold-020.png": "assets/avatars/happy/gold-020.png",
+    "Assets/avatar-transitions-web/happy/gold-021.png": "assets/avatars/happy/gold-021.png",
+    "Assets/avatar-transitions-web/happy/gold-022.png": "assets/avatars/happy/gold-022.png",
+    "Assets/avatar-transitions-web/happy/gold-023.png": "assets/avatars/happy/gold-023.png",
+    "Assets/avatar-transitions-web/happy/gold-024.png": "assets/avatars/happy/gold-024.png",
+    "Assets/avatar-transitions-web/happy/gold-360.png": "assets/avatars/happy/gold-360.png",
+    "Assets/avatar-transitions-web/sad/gold-001.png": "assets/avatars/sad/gold-001.png",
+    "Assets/avatar-transitions-web/sad/gold-002.png": "assets/avatars/sad/gold-002.png",
+    "Assets/avatar-transitions-web/sad/gold-003.png": "assets/avatars/sad/gold-003.png",
+    "Assets/avatar-transitions-web/sad/gold-004.png": "assets/avatars/sad/gold-004.png",
+    "Assets/avatar-transitions-web/sad/gold-005.png": "assets/avatars/sad/gold-005.png",
+    "Assets/avatar-transitions-web/sad/gold-006.png": "assets/avatars/sad/gold-006.png",
+    "Assets/avatar-transitions-web/sad/gold-007.png": "assets/avatars/sad/gold-007.png",
+    "Assets/avatar-transitions-web/sad/gold-008.png": "assets/avatars/sad/gold-008.png",
+    "Assets/avatar-transitions-web/sad/gold-009.png": "assets/avatars/sad/gold-009.png",
+    "Assets/avatar-transitions-web/sad/gold-010.png": "assets/avatars/sad/gold-010.png",
+    "Assets/avatar-transitions-web/sad/gold-011.png": "assets/avatars/sad/gold-011.png",
+    "Assets/avatar-transitions-web/sad/gold-012.png": "assets/avatars/sad/gold-012.png",
+    "Assets/avatar-transitions-web/sad/gold-013.png": "assets/avatars/sad/gold-013.png",
+    "Assets/avatar-transitions-web/sad/gold-014.png": "assets/avatars/sad/gold-014.png",
+    "Assets/avatar-transitions-web/sad/gold-015.png": "assets/avatars/sad/gold-015.png",
+    "Assets/avatar-transitions-web/sad/gold-016.png": "assets/avatars/sad/gold-016.png",
+    "Assets/avatar-transitions-web/sad/gold-017.png": "assets/avatars/sad/gold-017.png",
+    "Assets/avatar-transitions-web/sad/gold-018.png": "assets/avatars/sad/gold-018.png",
+    "Assets/avatar-transitions-web/sad/gold-019.png": "assets/avatars/sad/gold-019.png",
+    "Assets/avatar-transitions-web/sad/gold-020.png": "assets/avatars/sad/gold-020.png",
+    "Assets/avatar-transitions-web/sad/gold-021.png": "assets/avatars/sad/gold-021.png",
+    "Assets/avatar-transitions-web/sad/gold-022.png": "assets/avatars/sad/gold-022.png",
+    "Assets/avatar-transitions-web/sad/gold-023.png": "assets/avatars/sad/gold-023.png",
+    "Assets/avatar-transitions-web/sad/gold-024.png": "assets/avatars/sad/gold-024.png",
+    "Assets/avatar-transitions-web/sad/gold-360.png": "assets/avatars/sad/gold-360.png",
+    "Assets/batedor-birding.png": "assets/batedor-birding.png",
+    "Assets/composer-strip-empty.png": "assets/composer-strip-empty.png",
+    "Assets/flipbook/frame-001.jpg": "assets/animations/flipbook/frame-001.jpg",
+    "Assets/flipbook/frame-002.jpg": "assets/animations/flipbook/frame-002.jpg",
+    "Assets/flipbook/frame-003.jpg": "assets/animations/flipbook/frame-003.jpg",
+    "Assets/flipbook/frame-004.jpg": "assets/animations/flipbook/frame-004.jpg",
+    "Assets/flipbook/frame-005.jpg": "assets/animations/flipbook/frame-005.jpg",
+    "Assets/flipbook/frame-006.jpg": "assets/animations/flipbook/frame-006.jpg",
+    "Assets/flipbook/frame-007.jpg": "assets/animations/flipbook/frame-007.jpg",
+    "Assets/flipbook/frame-008.jpg": "assets/animations/flipbook/frame-008.jpg",
+    "Assets/flipbook/frame-009.jpg": "assets/animations/flipbook/frame-009.jpg",
+    "Assets/flipbook/frame-010.jpg": "assets/animations/flipbook/frame-010.jpg",
+    "Assets/flipbook/frame-011.jpg": "assets/animations/flipbook/frame-011.jpg",
+    "Assets/flipbook/frame-012.jpg": "assets/animations/flipbook/frame-012.jpg",
+    "Assets/flipbook/frame-013.jpg": "assets/animations/flipbook/frame-013.jpg",
+    "Assets/flipbook/frame-014.jpg": "assets/animations/flipbook/frame-014.jpg",
+    "Assets/flipbook/frame-015.jpg": "assets/animations/flipbook/frame-015.jpg",
+    "Assets/flipbook/frame-016.jpg": "assets/animations/flipbook/frame-016.jpg",
+    "Assets/flipbook/frame-017.jpg": "assets/animations/flipbook/frame-017.jpg",
+    "Assets/flipbook/frame-018.jpg": "assets/animations/flipbook/frame-018.jpg",
+    "Assets/flipbook/frame-019.jpg": "assets/animations/flipbook/frame-019.jpg",
+    "Assets/flipbook/frame-020.jpg": "assets/animations/flipbook/frame-020.jpg",
+    "Assets/flipbook/frame-021.jpg": "assets/animations/flipbook/frame-021.jpg",
+    "Assets/flipbook/frame-022.jpg": "assets/animations/flipbook/frame-022.jpg",
+    "Assets/flipbook/frame-023.jpg": "assets/animations/flipbook/frame-023.jpg",
+    "Assets/flipbook/frame-024.jpg": "assets/animations/flipbook/frame-024.jpg",
+    "Assets/flipbook/frame-025.jpg": "assets/animations/flipbook/frame-025.jpg",
+    "Assets/flipbook/frame-026.jpg": "assets/animations/flipbook/frame-026.jpg",
+    "Assets/flipbook/frame-027.jpg": "assets/animations/flipbook/frame-027.jpg",
+    "Assets/flipbook/frame-028.jpg": "assets/animations/flipbook/frame-028.jpg",
+    "Assets/flipbook/frame-029.jpg": "assets/animations/flipbook/frame-029.jpg",
+    "Assets/flipbook/frame-030.jpg": "assets/animations/flipbook/frame-030.jpg",
+    "Assets/herpeto-mantiqueira-logo.png": "assets/herpeto-mantiqueira-logo.png",
+    "Assets/herpetofauna-cruzeiro/logos/Escola nacional de Botanica Tropical LOGO.png": "assets/herpetofauna/logos/escola-nacional-de-botanica-tropical-logo.png",
+    "Assets/herpetofauna-cruzeiro/logos/Herpeto Mantiqueira LOGO.png": "assets/herpetofauna/logos/herpeto-mantiqueira-logo.png",
+    "Assets/herpetofauna-cruzeiro/logos/Jardim Botanico Logo.png": "assets/herpetofauna/logos/jardim-botanico-logo.png",
+    "Assets/herpetofauna-cruzeiro/logos/RPPN Gigante do Itaguare LOGO dark-green.png": "assets/herpetofauna/logos/rppn-gigante-do-itaguare-logo-dark-green.png",
+    "Assets/herpetofauna-cruzeiro/logos/RPPN Gigante do Itaguaré LOGO.png": "assets/herpetofauna/logos/rppn-gigante-do-itaguare-logo.png",
+    "Assets/herpetofauna-cruzeiro/logos/rppn-gigante-itaguare-dark-green.png": "assets/herpetofauna/logos/rppn-gigante-itaguare-dark-green.png",
+    "Assets/herpetofauna-cruzeiro/logos/rppn-preview-on-card.png": "assets/herpetofauna/logos/rppn-preview-on-card.png",
+    "Assets/herpetofauna-cruzeiro/photos-signed/Aplastodiscus arildae.png": "assets/herpetofauna/photos-signed/aplastodiscus-arildae.png",
+    "Assets/herpetofauna-cruzeiro/photos-signed/Boana beckeri.png": "assets/herpetofauna/photos-signed/boana-beckeri.png",
+    "Assets/herpetofauna-cruzeiro/photos-signed/Bothrops jararaca 2.png": "assets/herpetofauna/photos-signed/bothrops-jararaca-2.png",
+    "Assets/herpetofauna-cruzeiro/photos-signed/Bothrops jararaca.png": "assets/herpetofauna/photos-signed/bothrops-jararaca.png",
+    "Assets/herpetofauna-cruzeiro/photos-signed/Brachycephalus rotenbergae 2.jpg": "assets/herpetofauna/photos-signed/brachycephalus-rotenbergae-2.jpg",
+    "Assets/herpetofauna-cruzeiro/photos-signed/Brachycephalus rotenbergae.jpg": "assets/herpetofauna/photos-signed/brachycephalus-rotenbergae.jpg",
+    "Assets/herpetofauna-cruzeiro/photos-signed/Dryophylax nattereri 2.png": "assets/herpetofauna/photos-signed/dryophylax-nattereri-2.png",
+    "Assets/herpetofauna-cruzeiro/photos-signed/Dryophylax nattereri.png": "assets/herpetofauna/photos-signed/dryophylax-nattereri.png",
+    "Assets/herpetofauna-cruzeiro/photos-signed/Enyalius iheringii.png": "assets/herpetofauna/photos-signed/enyalius-iheringii.png",
+    "Assets/herpetofauna-cruzeiro/photos-signed/Erythrolamprus aesculapii.png": "assets/herpetofauna/photos-signed/erythrolamprus-aesculapii.png",
+    "Assets/herpetofauna-cruzeiro/photos-signed/Haddadus binotatus.png": "assets/herpetofauna/photos-signed/haddadus-binotatus.png",
+    "Assets/herpetofauna-cruzeiro/photos-signed/Ischnocnema sp.png": "assets/herpetofauna/photos-signed/ischnocnema-sp.png",
+    "Assets/herpetofauna-cruzeiro/photos-signed/Mussurana montana 2.png": "assets/herpetofauna/photos-signed/mussurana-montana-2.png",
+    "Assets/herpetofauna-cruzeiro/photos-signed/Mussurana montana.png": "assets/herpetofauna/photos-signed/mussurana-montana.png",
+    "Assets/herpetofauna-cruzeiro/photos-signed/Ololygon luizotavioi.png": "assets/herpetofauna/photos-signed/ololygon-luizotavioi.png",
+    "Assets/herpetofauna-cruzeiro/photos-signed/Phasmahyla cf. cochranae 2.png": "assets/herpetofauna/photos-signed/phasmahyla-cf-cochranae-2.png",
+    "Assets/herpetofauna-cruzeiro/photos-signed/Phasmahyla cf. cochranae.png": "assets/herpetofauna/photos-signed/phasmahyla-cf-cochranae.png",
+    "Assets/herpetofauna-cruzeiro/photos-signed/Physalaemus cuvieri.png": "assets/herpetofauna/photos-signed/physalaemus-cuvieri.png",
+    "Assets/herpetofauna-cruzeiro/photos-signed/Proceratophrys itamari 2.png": "assets/herpetofauna/photos-signed/proceratophrys-itamari-2.png",
+    "Assets/herpetofauna-cruzeiro/photos-signed/Proceratophrys itamari.png": "assets/herpetofauna/photos-signed/proceratophrys-itamari.png",
+    "Assets/herpetofauna-cruzeiro/photos-signed/Rhinella icterica 2.png": "assets/herpetofauna/photos-signed/rhinella-icterica-2.png",
+    "Assets/herpetofauna-cruzeiro/photos-signed/Rhinella icterica.png": "assets/herpetofauna/photos-signed/rhinella-icterica.png",
+    "Assets/herpetofauna-cruzeiro/photos-signed/Rhinella ornata.png": "assets/herpetofauna/photos-signed/rhinella-ornata.png",
+    "Assets/herpetofauna-cruzeiro/photos-signed/Vitreorana parvula 2.png": "assets/herpetofauna/photos-signed/vitreorana-parvula-2.png",
+    "Assets/herpetofauna-cruzeiro/photos-signed/Vitreorana parvula.png": "assets/herpetofauna/photos-signed/vitreorana-parvula.png",
+    "Assets/herpetofauna-cruzeiro/photos-signed/Vriesea gradata.jpg": "assets/herpetofauna/photos-signed/vriesea-gradata.jpg",
+    "Assets/herpetofauna-cruzeiro/stickers-signed/Aplastodiscus arildae.png": "assets/herpetofauna/stickers-signed/aplastodiscus-arildae.png",
+    "Assets/herpetofauna-cruzeiro/stickers-signed/Boana beckeri.png": "assets/herpetofauna/stickers-signed/boana-beckeri.png",
+    "Assets/herpetofauna-cruzeiro/stickers-signed/Bothrops jararaca.png": "assets/herpetofauna/stickers-signed/bothrops-jararaca.png",
+    "Assets/herpetofauna-cruzeiro/stickers-signed/Brachycephalus rotenbergae.png": "assets/herpetofauna/stickers-signed/brachycephalus-rotenbergae.png",
+    "Assets/herpetofauna-cruzeiro/stickers-signed/Dryophylax nattereri.png": "assets/herpetofauna/stickers-signed/dryophylax-nattereri.png",
+    "Assets/herpetofauna-cruzeiro/stickers-signed/Enyalius iheringii.png": "assets/herpetofauna/stickers-signed/enyalius-iheringii.png",
+    "Assets/herpetofauna-cruzeiro/stickers-signed/Erythrolamprus aesculapii.png": "assets/herpetofauna/stickers-signed/erythrolamprus-aesculapii.png",
+    "Assets/herpetofauna-cruzeiro/stickers-signed/Haddadus binotatus.png": "assets/herpetofauna/stickers-signed/haddadus-binotatus.png",
+    "Assets/herpetofauna-cruzeiro/stickers-signed/Herpetofauna Cruzeiro Fundo.png": "assets/herpetofauna/stickers-signed/herpetofauna-cruzeiro-fundo.png",
+    "Assets/herpetofauna-cruzeiro/stickers-signed/Ischnocnema sp.png": "assets/herpetofauna/stickers-signed/ischnocnema-sp.png",
+    "Assets/herpetofauna-cruzeiro/stickers-signed/Mussurana montana.png": "assets/herpetofauna/stickers-signed/mussurana-montana.png",
+    "Assets/herpetofauna-cruzeiro/stickers-signed/Ololygon luizotavioi.png": "assets/herpetofauna/stickers-signed/ololygon-luizotavioi.png",
+    "Assets/herpetofauna-cruzeiro/stickers-signed/Phasmahyla cf. cochranae.png": "assets/herpetofauna/stickers-signed/phasmahyla-cf-cochranae.png",
+    "Assets/herpetofauna-cruzeiro/stickers-signed/Physalaemus cuvieri.png": "assets/herpetofauna/stickers-signed/physalaemus-cuvieri.png",
+    "Assets/herpetofauna-cruzeiro/stickers-signed/Proceratophrys itamari.png": "assets/herpetofauna/stickers-signed/proceratophrys-itamari.png",
+    "Assets/herpetofauna-cruzeiro/stickers-signed/Rhinella icterica.png": "assets/herpetofauna/stickers-signed/rhinella-icterica.png",
+    "Assets/herpetofauna-cruzeiro/stickers-signed/Rhinella ornata.png": "assets/herpetofauna/stickers-signed/rhinella-ornata.png",
+    "Assets/herpetofauna-cruzeiro/stickers-signed/Vitreorana parvula.png": "assets/herpetofauna/stickers-signed/vitreorana-parvula.png",
+    "Assets/herpetofauna-cruzeiro/stickers-signed/Vriesea gradata.png": "assets/herpetofauna/stickers-signed/vriesea-gradata.png",
+    "Assets/oikos-fieldbook/home.jpg": "assets/oikos-fieldbook/home.jpg",
+    "Assets/oikos-fieldbook/midias-ocorrencia.jpg": "assets/oikos-fieldbook/midias-ocorrencia.jpg",
+    "Assets/oikos-fieldbook/nova-expedicao.jpg": "assets/oikos-fieldbook/nova-expedicao.jpg",
+    "Assets/oikos-fieldbook/novo-projeto.jpg": "assets/oikos-fieldbook/novo-projeto.jpg",
+    "Assets/oikos-fieldbook/oikos-logo-dark-normalized.png": "assets/oikos-fieldbook/oikos-logo-dark-normalized.png",
+    "Assets/oikos-fieldbook/oikos-logo-hero-official.png": "assets/oikos-fieldbook/oikos-logo-hero-official.png",
+    "Assets/oikos-fieldbook/oikos-logo-light-normalized.png": "assets/oikos-fieldbook/oikos-logo-light-normalized.png",
+    "Assets/oikos-fieldbook/trilha-gps.jpg": "assets/oikos-fieldbook/trilha-gps.jpg",
+    "Assets/rppn-gigante-itaguare.png": "assets/rppn-gigante-itaguare.png",
+    "Assets/sigmai/mapa_topotrail_hibrido.png": "assets/sigmai/mapa-topotrail-hibrido.png",
+    "Assets/sigmai/sigmai_icon.png": "assets/sigmai/sigmai-icon.png",
+    "Assets/sigmai/sigmai_logo_full.png": "assets/sigmai/sigmai-logo-full.png",
+    "Assets/topotrail/logo.png": "assets/topotrail/logo.png",
+    "Assets/waterfall-smooth/waterfall-smooth-001.png": "assets/animations/waterfall/waterfall-smooth-001.png",
+    "Assets/waterfall-smooth/waterfall-smooth-002.png": "assets/animations/waterfall/waterfall-smooth-002.png",
+    "Assets/waterfall-smooth/waterfall-smooth-003.png": "assets/animations/waterfall/waterfall-smooth-003.png",
+    "Assets/waterfall-smooth/waterfall-smooth-004.png": "assets/animations/waterfall/waterfall-smooth-004.png",
+    "Assets/waterfall-smooth/waterfall-smooth-005.png": "assets/animations/waterfall/waterfall-smooth-005.png",
+    "Assets/waterfall-smooth/waterfall-smooth-006.png": "assets/animations/waterfall/waterfall-smooth-006.png",
+    "Assets/waterfall-smooth/waterfall-smooth-007.png": "assets/animations/waterfall/waterfall-smooth-007.png",
+    "Assets/waterfall-smooth/waterfall-smooth-008.png": "assets/animations/waterfall/waterfall-smooth-008.png",
+    "Assets/waterfall-smooth/waterfall-smooth-009.png": "assets/animations/waterfall/waterfall-smooth-009.png",
+    "Assets/waterfall-smooth/waterfall-smooth-010.png": "assets/animations/waterfall/waterfall-smooth-010.png",
+    "Assets/waterfall-smooth/waterfall-smooth-011.png": "assets/animations/waterfall/waterfall-smooth-011.png",
+    "Assets/waterfall-smooth/waterfall-smooth-012.png": "assets/animations/waterfall/waterfall-smooth-012.png",
+    "AvatarGOLD/GoldFeliz.png": "assets/avatars/painted/goldfeliz.png",
+    "backend-data/biodiversity-cache/database.json": "backend-data/biodiversity-cache/database.json",
+    "biodiversity-manager.js": "js/biodiversity-manager.js",
+    "chat.js": "js/chat.js",
+    "conversation-core.js": "js/conversation-core.js",
+    "Fotos pro site/2.jpg": "assets/images/2.jpg",
+    "Fotos pro site/Boa constrictor.jpeg": "assets/images/boa-constrictor.jpeg",
+    "Fotos pro site/Brachycephalus rotenbergae.jpg": "assets/images/brachycephalus-rotenbergae.jpg",
+    "Fotos pro site/Bruno Biologo.jpeg": "assets/images/bruno-biologo.jpeg",
+    "Fotos pro site/Clara Biologa.jpeg": "assets/images/clara-biologa.jpeg",
+    "Fotos pro site/IMG_0721.JPG": "assets/images/img-0721.jpg",
+    "Fotos pro site/Luan Fundador e Biologo.jpeg": "assets/images/luan-fundador-e-biologo.jpeg",
+    "Fotos pro site/Phasmahyla sp.jpg": "assets/images/phasmahyla-sp.jpg",
+    "Fotos pro site/Trachycephalus mesophaeus 2.jpg": "assets/images/trachycephalus-mesophaeus-2.jpg",
+    "Fotos pro site/WhatsApp Image 2026-05-31 at 12.47.19 (1).jpeg": "assets/images/whatsapp-image-2026-05-31-at-12-47-19-1.jpeg",
+    "Fotos pro site/WhatsApp Image 2026-05-31 at 12.47.19.jpeg": "assets/images/whatsapp-image-2026-05-31-at-12-47-19.jpeg",
+    "gold-public-cache-data.js": "js/gold-public-cache-data.js",
+    "gold-references.js": "js/gold-references.js",
+    "gold-scientific-orchestrator.js": "js/gold-scientific-orchestrator.js",
+    "gold-scientific-reliability.js": "js/gold-scientific-reliability.js",
+    "gold-ux-responses.js": "js/gold-ux-responses.js",
+    "herpeto-chat-brain.js": "js/herpeto-chat-brain.js",
+    "herpetofauna-cruzeiro.html": "herpetofauna-cruzeiro.html",
+    "herpetology-engine.js": "js/herpetology-engine.js",
+    "home.js": "js/home.js",
+    "IAAprendaAqui/base_cientifica_chunks_rag_clean.jsonl": "IAAprendaAqui/base_cientifica_chunks_rag_clean.jsonl",
+    "IAAprendaAqui/base_cientifica_complemento_semantico_10x.json": "IAAprendaAqui/base_cientifica_complemento_semantico_10x.json",
+    "IAAprendaAqui/base_cientifica_master_unificada.json": "IAAprendaAqui/base_cientifica_master_unificada.json",
+    "IAAprendaAqui/glossario_ecologia_zoologia_normalizado.json": "IAAprendaAqui/glossario_ecologia_zoologia_normalizado.json",
+    "IAAprendaAqui/gold_citation_index.json": "IAAprendaAqui/gold_citation_index.json",
+    "IAAprendaAqui/gold_scientific_presentation_index.json": "IAAprendaAqui/gold_scientific_presentation_index.json",
+    "IAAprendaAqui/taxonomic_context_index.json": "IAAprendaAqui/taxonomic_context_index.json",
+    "IAAprendaAqui/taxonomy_backbone_initial.json": "IAAprendaAqui/taxonomy_backbone_initial.json",
+    "IAAprendaAqui/taxonomy_local_index.json": "IAAprendaAqui/taxonomy_local_index.json",
+    "inat.js": "js/inat.js",
+    "index.html": "index.html",
+    "municipal-biodiversity-engine.js": "js/municipal-biodiversity-engine.js",
+    "municipalities.js": "js/municipalities.js",
+    "oikos-fieldbook.html": "oikos-fieldbook.html",
+    "scientific-knowledge-base.js": "js/scientific-knowledge-base.js",
+    "scientific-methodology-engine.js": "js/scientific-methodology-engine.js",
+    "scientific-rag-engine.js": "js/scientific-rag-engine.js",
+    "sigmai.html": "sigmai.html",
+    "sobre-gold.html": "sobre-gold.html",
+    "specieslink.js": "js/specieslink.js",
+    "splash.js": "js/splash.js",
+    "SplashScreen/01.png": "assets/animations/splash/01.png",
+    "SplashScreen/02.png": "assets/animations/splash/02.png",
+    "SplashScreen/03.png": "assets/animations/splash/03.png",
+    "SplashScreen/04.png": "assets/animations/splash/04.png",
+    "SplashScreen/05.png": "assets/animations/splash/05.png",
+    "SplashScreen/06.png": "assets/animations/splash/06.png",
+    "SplashScreen/07.png": "assets/animations/splash/07.png",
+    "SplashScreen/08.png": "assets/animations/splash/08.png",
+    "SplashScreen/09.png": "assets/animations/splash/09.png",
+    "SplashScreen/10.png": "assets/animations/splash/10.png",
+    "styles.css": "css/styles.css",
+    "taxonomy-backbone.js": "js/taxonomy-backbone.js",
+    "topotrail.html": "topotrail.html"
+  },
+  "excluded_sensitive_patterns": [
+    ".cache",
+    ".env",
+    ".git",
+    ".venv",
+    "__pycache__",
+    "datasets",
+    "logs",
+    "models",
+    "node_modules",
+    "reports",
+    "scripts",
+    "tests",
+    "tools",
+    "training"
+  ],
+  "external_refs": [
+    {
+      "from": "topotrail.html",
+      "ref": "https://plugins.qgis.org/plugins/TopoTrail/"
+    },
+    {
+      "from": "topotrail.html",
+      "ref": "https://doi.org/10.5281/zenodo.20320495"
+    },
+    {
+      "from": "herpetofauna-cruzeiro.html",
+      "ref": "https://doi.org/10.1590/S0073-47212010000300004"
+    },
+    {
+      "from": "herpetofauna-cruzeiro.html",
+      "ref": "https://doi.org/10.1007/s10211-014-0194-4"
+    },
+    {
+      "from": "herpetofauna-cruzeiro.html",
+      "ref": "https://doi.org/10.1080/00222930600976021"
+    },
+    {
+      "from": "herpetofauna-cruzeiro.html",
+      "ref": "https://doi.org/10.1126/science.1149374"
+    },
+    {
+      "from": "herpetofauna-cruzeiro.html",
+      "ref": "https://reptile-database.reptarium.cz/"
+    },
+    {
+      "from": "herpetofauna-cruzeiro.html",
+      "ref": "https://doi.org/10.1038/s41586-023-06578-4"
+    },
+    {
+      "from": "herpetofauna-cruzeiro.html",
+      "ref": "https://doi.org/10.1590/S0101-81751999000400004"
+    },
+    {
+      "from": "herpetofauna-cruzeiro.html",
+      "ref": "https://doi.org/10.1590/S1678-91992012000400007"
+    },
+    {
+      "from": "herpetofauna-cruzeiro.html",
+      "ref": "https://doi.org/10.1590/S0073-47212010000400002"
+    },
+    {
+      "from": "herpetofauna-cruzeiro.html",
+      "ref": "https://amphibiansoftheworld.amnh.org/"
+    },
+    {
+      "from": "herpetofauna-cruzeiro.html",
+      "ref": "https://doi.org/10.1590/S0101-81751998000200011"
+    },
+    {
+      "from": "herpetofauna-cruzeiro.html",
+      "ref": "https://doi.org/10.1590/S1519-69842002000200010"
+    },
+    {
+      "from": "herpetofauna-cruzeiro.html",
+      "ref": "https://doi.org/10.1371/journal.pone.0244812"
+    },
+    {
+      "from": "herpetofauna-cruzeiro.html",
+      "ref": "https://doi.org/10.5751/ES-02815-140121"
+    },
+    {
+      "from": "herpetofauna-cruzeiro.html",
+      "ref": "https://doi.org/10.1590/1676-0611-BN-2020-1147"
+    },
+    {
+      "from": "herpetofauna-cruzeiro.html",
+      "ref": "https://doi.org/10.1590/S1519-69842012000200001"
+    },
+    {
+      "from": "herpetofauna-cruzeiro.html",
+      "ref": "https://doi.org/10.1590/S1676-06032006000200010"
+    },
+    {
+      "from": "herpetofauna-cruzeiro.html",
+      "ref": "https://doi.org/10.1038/428853a"
+    },
+    {
+      "from": "herpetofauna-cruzeiro.html",
+      "ref": "https://doi.org/10.1590/S1984-46702009000100015"
+    },
+    {
+      "from": "index.html",
+      "ref": "https://www.instagram.com/reservagigantedoitaguare/"
+    },
+    {
+      "from": "index.html",
+      "ref": "https://www.instagram.com/batedor.birding/"
+    },
+    {
+      "from": "oikos-fieldbook.html",
+      "ref": "https://doi.org/10.5281/zenodo.20526747"
+    },
+    {
+      "from": "sobre-gold.html",
+      "ref": "https://www.icmje.org/recommendations/"
+    },
+    {
+      "from": "sobre-gold.html",
+      "ref": "https://www.nlm.nih.gov/bsd/uniform_requirements.html"
+    },
+    {
+      "from": "sigmai.html",
+      "ref": "https://plugins.qgis.org/plugins/sigmai/"
+    },
+    {
+      "from": "sigmai.html",
+      "ref": "https://doi.org/10.5281/zenodo.20389287"
+    }
+  ],
+  "missing_dependencies": [
+    {
+      "from": "herpetofauna-cruzeiro.html",
+      "ref": "item.audio",
+      "reason": "missing"
+    },
+    {
+      "from": "herpetofauna-cruzeiro.html",
+      "ref": "${fileUrl(",
+      "reason": "missing"
+    },
+    {
+      "from": "herpetofauna-cruzeiro.html",
+      "ref": "${rootUrl(item.audio)}",
+      "reason": "missing"
+    },
+    {
+      "from": "specieslink.js",
+      "ref": "{\n      taxonClass, county, limit, offset, coordinates, basisOfRecord, scientificName, genus, family, order, scope,\n    }, apiKey",
+      "reason": "missing"
+    },
+    {
+      "from": "specieslink.js",
+      "ref": "{\n    apiKey,\n    taxonClass,\n    county,\n    limit = DEFAULT_LIMIT,\n    offset = 0,\n    coordinates,\n    basisOfRecord,\n    scientificName,\n    genus,\n    family,\n    order,\n    scope,\n  }",
+      "reason": "missing"
+    },
+    {
+      "from": "inat.js",
+      "ref": "placeId, options = {}",
+      "reason": "missing"
+    },
+    {
+      "from": "inat.js",
+      "ref": "placeId, options",
+      "reason": "missing"
+    }
+  ],
+  "sensitive_findings": [],
+  "total_files": 246,
+  "total_size_bytes": 392553467,
+  "largest_files": [
+    {
+      "path": "IAAprendaAqui/taxonomic_context_index.json",
+      "size_bytes": 112637761,
+      "sha256": "86fd4f1336b4e489956bc030e9f4615b1dc6f664bf57f5b3a41d2650029ff9ee"
+    },
+    {
+      "path": "IAAprendaAqui/gold_scientific_presentation_index.json",
+      "size_bytes": 33256438,
+      "sha256": "9cc39cbadd4a1a92f24cf59a64383a44392dc1762ac723d154f7dddef7e89945"
+    },
+    {
+      "path": "assets/images/img-0721.jpg",
+      "size_bytes": 10995043,
+      "sha256": "2d76983349f4fbc77d261cd3a3ca15d34c51594497f58469bd3ab7bd6f3a1cbb"
+    },
+    {
+      "path": "assets/images/2.jpg",
+      "size_bytes": 9271478,
+      "sha256": "b7e6f60fe508fb02dabf00ca532403de4b9e0a57d8770856dce04b7e110db35a"
+    },
+    {
+      "path": "IAAprendaAqui/base_cientifica_chunks_rag_clean.jsonl",
+      "size_bytes": 7561055,
+      "sha256": "4c06e93fbb02940a3f525e13f0ea6c4deddc50fad2f5a7c65569d1636313d854"
+    },
+    {
+      "path": "IAAprendaAqui/taxonomy_local_index.json",
+      "size_bytes": 5965901,
+      "sha256": "692a887ca410cf0eaa741a382bf044198207666280e675c498b3d608305c5c4a"
+    },
+    {
+      "path": "IAAprendaAqui/gold_citation_index.json",
+      "size_bytes": 5526240,
+      "sha256": "88dd73c2525f229c2735c1938616c6d5b3a49bb372a47d4907880242a482a835"
+    },
+    {
+      "path": "backend-data/biodiversity-cache/database.json",
+      "size_bytes": 3936253,
+      "sha256": "a42924a51eb9a504afed694a3f2f9a2dca5fe6e6c72c3c00dad30a3129578453"
+    },
+    {
+      "path": "assets/herpetofauna/stickers-signed/herpetofauna-cruzeiro-fundo.png",
+      "size_bytes": 3626732,
+      "sha256": "ebc398524d33e0777ac2e451e7ba2ecf42089e3c6a49e4fb6246a4148b6b9f1d"
+    },
+    {
+      "path": "assets/herpetofauna/stickers-signed/erythrolamprus-aesculapii.png",
+      "size_bytes": 3421029,
+      "sha256": "65308db0d5779f2f64a992e1ec7a1aff989c3313f0313c247f1fc2bbb65388dd"
+    },
+    {
+      "path": "assets/herpetofauna/stickers-signed/mussurana-montana.png",
+      "size_bytes": 3351434,
+      "sha256": "c7fc7d705b59d75e7a89909694bf74acfddcfbd3b270318b6b66092493c94dc2"
+    },
+    {
+      "path": "assets/herpetofauna/stickers-signed/vitreorana-parvula.png",
+      "size_bytes": 3314315,
+      "sha256": "35e71d11860e352a2d8eec9e75873714083e3489bcd25acdfefad6578056409b"
+    },
+    {
+      "path": "assets/herpetofauna/stickers-signed/dryophylax-nattereri.png",
+      "size_bytes": 3306672,
+      "sha256": "009765605219dd13f51a0a3bf5d3b85905c84bd1a6d8a76e01b104c89a1434d0"
+    },
+    {
+      "path": "assets/herpetofauna/stickers-signed/ischnocnema-sp.png",
+      "size_bytes": 3304910,
+      "sha256": "fad9efb4ba28895e0c259de13ff81e066d0508eb45502edf5cd5116030c18947"
+    },
+    {
+      "path": "assets/herpetofauna/stickers-signed/rhinella-icterica.png",
+      "size_bytes": 3299929,
+      "sha256": "61fbc84e692f72f837880bb369650cba8b6a73e04fce1c0cc5ca7bdaba0acabb"
+    },
+    {
+      "path": "assets/herpetofauna/stickers-signed/proceratophrys-itamari.png",
+      "size_bytes": 3224905,
+      "sha256": "fe89cd09b6948cc1bb074dd4561b6b09cfcb9f902003164834f6486b468fbbd0"
+    },
+    {
+      "path": "assets/herpetofauna/stickers-signed/enyalius-iheringii.png",
+      "size_bytes": 3216019,
+      "sha256": "d48e498adda34dd8468134023e4e175d6593aed77903be700593739830bcc2a0"
+    },
+    {
+      "path": "assets/herpetofauna/stickers-signed/vriesea-gradata.png",
+      "size_bytes": 3179919,
+      "sha256": "01f5bebb61749c8c03ad860a31bf204a7d92644fcafb98c339a6086064defc6b"
+    },
+    {
+      "path": "assets/herpetofauna/stickers-signed/aplastodiscus-arildae.png",
+      "size_bytes": 3145232,
+      "sha256": "a1eb7ae4c83605712c039fc14bce56ba0871e6fbf283d3e094193e9bed771787"
+    },
+    {
+      "path": "assets/herpetofauna/stickers-signed/physalaemus-cuvieri.png",
+      "size_bytes": 3126080,
+      "sha256": "23502c26f61b4c05bf062ccc569355494183004e9f100c08ec9c43d2f669f054"
+    }
+  ],
+  "gold_mode": "static_frontend_with_local_js_fallback",
+  "requires_backend": false,
+  "known_limitations": [
+    "O pacote inclui o nucleo cientifico/cache operacional do Gold, mas nao inclui .env, modelos, PDFs brutos, arquivos experimentais gigantes ou backend de APIs.",
+    "Consultas municipais devem usar o cache local empacotado quando APIs/backend nao estiverem disponiveis.",
+    "A otimizacao nesta build foi seletiva por copia de dependencias reais; conversao WebP depende de biblioteca externa nao instalada."
+  ]
+}

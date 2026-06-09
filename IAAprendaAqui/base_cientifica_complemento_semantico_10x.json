@@ -1,0 +1,3054 @@
+{
+  "schema_name": "herpeto_mantiqueira_semantic_complement",
+  "schema_version": "1.0",
+  "created_at_utc": "2026-05-31T23:29:01.632485+00:00",
+  "purpose": "Complemento semântico para elevar a base científica a uso avançado em chatbot/RAG.",
+  "how_to_use": "Enviar este JSON junto com os três arquivos principais. Ele orienta recuperação, filtros, contexto científico e comportamento da IA.",
+  "controlled_themes": {
+    "herpetologia": {
+      "label_pt": "Herpetologia",
+      "description": "Anfíbios, répteis, serpentes, anuros, inventários herpetofaunísticos, história natural e conservação de herpetofauna.",
+      "query_expansions": [
+        "anfíbios",
+        "répteis",
+        "serpentes",
+        "anuros",
+        "herpetofauna",
+        "Squamata",
+        "Anura",
+        "Bothrops",
+        "jararaca",
+        "lagartos"
+      ],
+      "priority": 0.95
+    },
+    "ecologia": {
+      "label_pt": "Ecologia",
+      "description": "Conceitos ecológicos, populações, comunidades, ecossistemas, nicho, habitat e interações.",
+      "query_expansions": [
+        "ecossistema",
+        "nicho",
+        "habitat",
+        "população",
+        "comunidade",
+        "interação ecológica",
+        "fatores bióticos",
+        "fatores abióticos"
+      ],
+      "priority": 0.9
+    },
+    "zoologia": {
+      "label_pt": "Zoologia",
+      "description": "Terminologia zoológica, taxonomia animal, morfologia, fisiologia, comportamento e grupos animais.",
+      "query_expansions": [
+        "zoologia",
+        "animal",
+        "taxonomia",
+        "morfologia",
+        "vertebrados",
+        "invertebrados",
+        "fisiologia",
+        "comportamento"
+      ],
+      "priority": 0.9
+    },
+    "ciencia_cidada": {
+      "label_pt": "Ciência cidadã",
+      "description": "Dados coletados por voluntários, plataformas eBird/iNaturalist, vieses de observadores e desenho amostral.",
+      "query_expansions": [
+        "ciência cidadã",
+        "citizen science",
+        "voluntários",
+        "observadores",
+        "eBird",
+        "iNaturalist",
+        "participatory research"
+      ],
+      "priority": 0.88
+    },
+    "biodiversity_informatics": {
+      "label_pt": "Informática da biodiversidade",
+      "description": "GBIF, Darwin Core, FAIR data, qualidade de dados, coleções biológicas, museus e padronização.",
+      "query_expansions": [
+        "GBIF",
+        "Darwin Core",
+        "DwC",
+        "FAIR",
+        "data quality",
+        "biodiversity data",
+        "coleções biológicas",
+        "natural history collections"
+      ],
+      "priority": 0.92
+    },
+    "sdm_modelagem_distribuicao": {
+      "label_pt": "Modelagem de distribuição de espécies",
+      "description": "SDM/ENM, Maxent, viés amostral, presença-apenas, background, pseudo-ausências e qualidade de ocorrências.",
+      "query_expansions": [
+        "SDM",
+        "Maxent",
+        "modelagem de distribuição",
+        "species distribution model",
+        "ecological niche model",
+        "sampling bias",
+        "pseudo-absence",
+        "background data"
+      ],
+      "priority": 0.94
+    },
+    "conservacao": {
+      "label_pt": "Conservação",
+      "description": "Aplicações em conservação, áreas protegidas, espécies ameaçadas, manejo e planejamento ambiental.",
+      "query_expansions": [
+        "conservação",
+        "conservation",
+        "espécies ameaçadas",
+        "área protegida",
+        "unidade de conservação",
+        "biodiversity planning"
+      ],
+      "priority": 0.86
+    },
+    "glossario_terminologia": {
+      "label_pt": "Glossário e terminologia",
+      "description": "Definições e conceitos de ecologia, zoologia, biologia e meio ambiente.",
+      "query_expansions": [
+        "defina",
+        "conceito",
+        "significado",
+        "glossário",
+        "termo",
+        "dicionário",
+        "terminologia"
+      ],
+      "priority": 0.8
+    },
+    "mata_atlantica": {
+      "label_pt": "Mata Atlântica",
+      "description": "Bioma Mata Atlântica, remanescentes, fragmentação, inventários e conservação.",
+      "query_expansions": [
+        "Mata Atlântica",
+        "Atlantic Forest",
+        "Atlantic Rainforest",
+        "floresta ombrófila",
+        "fragmentação florestal"
+      ],
+      "priority": 0.9
+    },
+    "serra_da_mantiqueira": {
+      "label_pt": "Serra da Mantiqueira",
+      "description": "Serra da Mantiqueira, Vale do Paraíba, Serra do Papagaio, Bocaina, Itaguaré e áreas serranas.",
+      "query_expansions": [
+        "Serra da Mantiqueira",
+        "Vale do Paraíba",
+        "Serra do Papagaio",
+        "Bocaina",
+        "Itaguaré",
+        "Cruzeiro",
+        "Itatiaia"
+      ],
+      "priority": 0.96
+    }
+  },
+  "retrieval_policies": {
+    "main_rule": "Não colocar JSONs inteiros no prompt. Indexar base_cientifica_chunks_rag.jsonl em embeddings e recuperar apenas top-k trechos relevantes.",
+    "file_roles": {
+      "base_cientifica_master_unificada.json": "catálogo, metadados, temas, DOI, títulos, resumos e filtros",
+      "base_cientifica_chunks_rag.jsonl": "fonte principal para busca semântica e respostas baseadas em evidência",
+      "glossario_ecologia_zoologia_normalizado.json": "fonte principal para perguntas terminológicas",
+      "base_cientifica_complemento_semantico_10x.json": "camada de contexto, ontologia, query expansion, regras de roteamento e prioridades"
+    },
+    "routing_rules": [
+      {
+        "intent": "definicao_termo",
+        "use_first": "glossario_ecologia_zoologia_normalizado.json",
+        "use_second": "base_cientifica_chunks_rag.jsonl",
+        "top_k": 6
+      },
+      {
+        "intent": "sintese_cientifica",
+        "use_first": "base_cientifica_chunks_rag.jsonl",
+        "use_second": "base_cientifica_master_unificada.json",
+        "top_k": 12
+      },
+      {
+        "intent": "herpetologia_regional",
+        "theme_filters": [
+          "herpetologia",
+          "mata_atlantica",
+          "serra_da_mantiqueira"
+        ],
+        "top_k": 10
+      },
+      {
+        "intent": "sdm_gbif_dados",
+        "theme_filters": [
+          "sdm_modelagem_distribuicao",
+          "biodiversity_informatics",
+          "ciencia_cidada"
+        ],
+        "top_k": 10
+      }
+    ],
+    "ranking_weights": {
+      "semantic_similarity": 0.55,
+      "theme_match": 0.18,
+      "retrieval_priority": 0.12,
+      "keyword_match": 0.08,
+      "source_page_available": 0.04,
+      "recency_when_relevant": 0.03
+    }
+  },
+  "codex_integration_instructions": {
+    "recommended_folder_structure": {
+      "knowledge_base/processed/base_cientifica_master_unificada.json": "metadados e catálogo",
+      "knowledge_base/processed/base_cientifica_chunks_rag.jsonl": "principal para embeddings/RAG",
+      "knowledge_base/processed/glossario_ecologia_zoologia_normalizado.json": "base terminológica",
+      "knowledge_base/processed/base_cientifica_complemento_semantico_10x.json": "este complemento"
+    },
+    "implementation_steps": [
+      "Ler o JSONL linha a linha.",
+      "Gerar embeddings usando o campo text.",
+      "Salvar metadados junto ao vetor: chunk_id, record_type, article_id, title, source_file, page, themes, keywords.",
+      "Indexar glossary_entry com prioridade alta em perguntas de definição.",
+      "Usar master para recuperar DOI, título, tema e resumo.",
+      "Usar este complemento para expandir consultas, aplicar filtros temáticos e ranquear resultados.",
+      "Montar contexto final apenas com os chunks top-k, nunca com a base inteira."
+    ]
+  },
+  "system_prompt_template_for_chatbot": "Você é um assistente científico especializado em Ecologia, Zoologia, Herpetologia, Ciência Cidadã, Biodiversity Informatics, GBIF, Darwin Core, coleções biológicas e modelagem de distribuição de espécies. Use a base de conhecimento como fonte primária. Responda em português técnico e claro. Diferencie evidência documental, interpretação e recomendação. Para definições, consulte primeiro o glossário. Para métodos científicos, consulte primeiro os chunks dos artigos. Para SDM/GBIF/ciência cidadã, sempre considere qualidade de dados, viés amostral, detectabilidade, pseudo-ausências/background e objetivo da análise. Para taxonomia, trate nomes extraídos automaticamente como candidatos quando não houver validação externa. Cite fonte, título e página quando disponíveis. Não diga que foi treinado nos dados; diga que consultou a base de conhecimento.",
+  "article_semantic_summaries": [
+    {
+      "article_id": "art_dbf00a492399",
+      "title": "Progress in Physical Geography",
+      "source_file": "21.pdf",
+      "year": "2010",
+      "doi": [
+        "10.1177/0309133309355630"
+      ],
+      "themes": [
+        "herpetologia",
+        "ecologia",
+        "zoologia",
+        "biodiversity_informatics",
+        "sdm_modelagem_distribuicao",
+        "conservacao"
+      ],
+      "retrieval_priority": 0.95,
+      "context_for_chatbot": "To conserve biodiversity, it is necessary to understand how species are distributed and which aspects of the environment determine distributions. In large parts of the world and for the majority of species, data describing distributions are very scarce. Museums, private collections and the historical literature offer a vast source of information on distributions. Records of the occurrence of species from these sources are increasingly being captured in electronic databases and made available over the internet. These records may be very valuable in conservation efforts. However, there are a number of limitations with museum data. These limitations are dealt with in the first part of this review. Even if the limitations of museum data can be overcome, these data present a far-from-complete picture of the distributions of species. Species distribution models offer a means to extrapolate limited information in order to estimate the distributions of species over large areas. The second part of this paper reviews the challenges of developing species distribution models for use with museum data and describes some of the questions that species distribution models have been used to address."
+    },
+    {
+      "article_id": "art_127c0d29161d",
+      "title": "Ecological Applications, 19(1), 2009, pp. 181–197",
+      "source_file": "22.pdf",
+      "year": "2009",
+      "doi": [],
+      "themes": [
+        "ecologia",
+        "biodiversity_informatics",
+        "sdm_modelagem_distribuicao",
+        "conservacao"
+      ],
+      "retrieval_priority": 0.94,
+      "context_for_chatbot": ". Most methods for modeling species distributions from occurrence records require additional data representing the range of environmental conditions in the modeled region. These data, called background or pseudo-absence data, are usually drawn at random from the entire region, whereas occurrence collection is often spatially biased toward easily accessed areas. Since the spatial bias generally results in environmental bias, the difference between occurrence collection and background sampling may lead to inaccurate models. To correct the estimation, we propose choosing background data with the same bias as occurrence data. We investigate theoretical and practical implications of this approach. Accurate information about spatial bias is usually lacking, so explicit biased sampling of background sites may not be possible. However, it is likely that an entire target group of species observed by similar methods will share similar bias. We therefore explore the use of all occurrences within a target group as biased background data. We compare model performance using target-group background and randomly sampled background on a comprehensive collection of data for 226 species from diverse "
+    },
+    {
+      "article_id": "art_596f85f1591a",
+      "title": "ScIentIfIc REPORTS | 7: 9132 | DOI:10.1038/s41598-017-09084-6",
+      "source_file": "23.pdf",
+      "year": "1992",
+      "doi": [
+        "10.1038/s41598-017-09084-6"
+      ],
+      "themes": [
+        "herpetologia",
+        "ecologia",
+        "zoologia",
+        "ciencia_cidada",
+        "biodiversity_informatics",
+        "conservacao"
+      ],
+      "retrieval_priority": 0.95,
+      "context_for_chatbot": "1 ScIentIfIc REPORTS | 7: 9132 | DOI:10.1038/s41598-017-09084-6 www.nature.com/scientificreports Taxonomic bias in biodiversity data and societal preferences Julien Troudet1, Philippe Grandcolas1, Amandine Blin2, Régine Vignes-Lebbe1 & Frédéric Legendre 1 Studying and protecting each and every living species on Earth is a major challenge of the 21st century. Yet, most species remain unknown or unstudied, while others attract most of the public, scientific and government attention. Although known to be detrimental, this taxonomic bias continues to be pervasive in the scientific literature, but is still poorly studied and understood. Here, we used 626 million occurrences from the Global Biodiversity Information Facility (GBIF), the biggest biodiversity data portal, to characterize the taxonomic bias in biodiversity data. We also investigated how societal preferences and taxonomic research relate to biodiversity data gathering. For each species belonging to 24 taxonomic classes, we used the number of publications from Web of Science and the number of web pages from Bing searches to approximate research activity and societal preferences. Our results show that societal preferences, rath"
+    },
+    {
+      "article_id": "art_d65af6fd931f",
+      "title": "Scientific RepoRts | 7: 12832 | DOI:10.1038/s41598-017-13130-8",
+      "source_file": "24.pdf",
+      "year": "2017",
+      "doi": [
+        "10.1038/s41598-017-13130-8"
+      ],
+      "themes": [
+        "herpetologia",
+        "ecologia",
+        "zoologia",
+        "ciencia_cidada",
+        "biodiversity_informatics",
+        "conservacao"
+      ],
+      "retrieval_priority": 0.95,
+      "context_for_chatbot": "1 Scientific RepoRts | 7: 12832 | DOI:10.1038/s41598-017-13130-8 www.nature.com/scientificreports Spatial distribution of citizen science casuistic observations for different taxonomic groups Patrícia Tiago1,2, Ana Ceia-Hasse2,3, Tiago A. Marques 4,5, César Capinha6 & Henrique M. Pereira 2,3,7 Opportunistic citizen science databases are becoming an important way of gathering information on species distributions. These data are temporally and spatially dispersed and could have limitations regarding biases in the distribution of the observations in space and/or time. In this work, we test the influence of landscape variables in the distribution of citizen science observations for eight taxonomic groups. We use data collected through a Portuguese citizen science database (biodiversity4all.org). We use a zero-inflated negative binomial regression to model the distribution of observations as a function of a set of variables representing the landscape features plausibly influencing the spatial distribution of the records. Results suggest that the density of paths is the most important variable, having a statistically significant positive relationship with number of observations for seven"
+    },
+    {
+      "article_id": "art_b97b211b14bd",
+      "title": "Vol.:(0123456789)Scientific RepoRtS | (2020) 10:11009 | https://doi.org/10.1038/s41598-020-67658-3",
+      "source_file": "25.pdf",
+      "year": "2020",
+      "doi": [
+        "10.1038/s41598-020-67658-3"
+      ],
+      "themes": [
+        "ecologia",
+        "zoologia",
+        "ciencia_cidada",
+        "sdm_modelagem_distribuicao",
+        "conservacao"
+      ],
+      "retrieval_priority": 0.94,
+      "context_for_chatbot": "1 Vol.:(0123456789)Scientific RepoRtS | (2020) 10:11009 | https://doi.org/10.1038/s41598-020-67658-3 www.nature.com/scientificreports Data‑derived metrics describing the behaviour of field‑based citizen scientists provide insights for project design and modelling bias tom August1*, Richard fox2, David B. Roy1 & Michael J. O. Pocock1 Around the world volunteers and non‑professionals collect data as part of environmental citizen science projects, collecting wildlife observations, measures of water quality and much more. However, where projects allow flexibility in how, where, and when data are collected there will be variation in the behaviour of participants which results in biases in the datasets collected. We develop a method to quantify this behavioural variation, describing the key drivers and providing a tool to account for biases in models that use these data. We used a suite of metrics to describe the temporal and spatial behaviour of participants, as well as variation in the data they collected. These were applied to 5,268 users of the iRecord Butterflies mobile phone app, a multi‑species environmental citizen science project. in contrast to previous studies, after removing"
+    },
+    {
+      "article_id": "art_b88b32c75a6b",
+      "title": "Vol.:(0123456789)Scientific Reports | (2022) 12:11069 | https://doi.org/10.1038/s41598-022-15218-2",
+      "source_file": "26.pdf",
+      "year": "2022",
+      "doi": [
+        "10.1038/s41598-022-15218-2"
+      ],
+      "themes": [
+        "ecologia",
+        "zoologia",
+        "ciencia_cidada",
+        "biodiversity_informatics",
+        "conservacao"
+      ],
+      "retrieval_priority": 0.92,
+      "context_for_chatbot": "1 Vol.:(0123456789)Scientific Reports | (2022) 12:11069 | https://doi.org/10.1038/s41598-022-15218-2 www.nature.com/scientificreports Decision‑making of citizen scientists when recording species observations Diana E. Bowler1,2,3*, Netra Bhandari1, Lydia Repke4, Christoph Beuthner4, Corey T. Callaghan1,5, David Eichenberg1,3, Klaus Henle6, Reinhard Klenke1,5, Anett Richter7, Florian Jansen8, Helge Bruelheide1,5 & Aletta Bonn1,2,3 Citizen scientists play an increasingly important role in biodiversity monitoring. Most of the data, however, are unstructured—collected by diverse methods that are not documented with the data. Insufficient understanding of the data collection processes presents a major barrier to the use of citizen science data in biodiversity research. We developed a questionnaire to ask citizen scientists about their decision‑making before, during and after collecting and reporting species observations, using Germany as a case study. We quantified the greatest sources of variability among respondents and assessed whether motivations and experience related to any aspect of data collection. Our questionnaire was answered by almost 900 people, with varying taxonomic foci a"
+    },
+    {
+      "article_id": "art_7c19925972fe",
+      "title": "TraitBank: Practical semantics for organism attribute data Cynthia S. Parra,c, Katja Schulz§a, Jennifer Hammocka, Nathan Wilsonbd, Patrick Learybe, Jeremy Riceb, Robert J. Corrigan Jr.a a National Museum of Natural History, Smithsonian Institution, Washington, D. C., USA b Marine Biological Laboratory, Woods Hole, Massachusetts, USA c Current address: United States Department of Agriculture, Agricultural Research Service, Beltsville, Maryland, USA d Current address: MassChallenge, Boston, Massachusetts, USA e Current address: California Academy of Sciences, San Francisco, California, USA §Corresponding author, schulzk@si.edu",
+      "source_file": "27.pdf",
+      "year": "",
+      "doi": [],
+      "themes": [
+        "ecologia",
+        "zoologia",
+        "ciencia_cidada",
+        "biodiversity_informatics",
+        "conservacao"
+      ],
+      "retrieval_priority": 0.92,
+      "context_for_chatbot": ". Encyclopedia of Life (EOL) has developed a new repository for organism attribute (trait) data called TraitBank (http://eol.org/traitbank). TraitBank aggregates, manages and serves attribute data for organisms across the tree of life, includ-ing life history characteristics, habitats, distributions, ecological relationships and other data types. We describe how Trait-Bank ingests and manages these data in a way that leverages EOL’s existing infrastructure and semantic annotations to facili-tate reasoning across the TraitBank corpus and interoperability with other resources. We also discuss TraitBank’s impact on users and collaborators and the challenges and benefits of our lightweight, scalable approach to the integration of biodiversity data. Keywords: biodiversity, ontologies, Semantic Web, traits, ecology, evolution, taxonomy, aggregation"
+    },
+    {
+      "article_id": "art_c105a9625b2a",
+      "title": "Ecological Modelling 444 (2021) 109453",
+      "source_file": "28.pdf",
+      "year": "2021",
+      "doi": [
+        "10.1016/j.ecolmodel.2021.109453"
+      ],
+      "themes": [
+        "ecologia",
+        "zoologia",
+        "ciencia_cidada",
+        "biodiversity_informatics",
+        "sdm_modelagem_distribuicao",
+        "conservacao"
+      ],
+      "retrieval_priority": 0.94,
+      "context_for_chatbot": "Opportunistically collected species occurrence data are often used for species distribution models (SDMs) when high-quality data collected through standardized recording protocols are unavailable. While opportunistic data are abundant, uncertainty is usually high, e.g. due to observer effects or a lack of metadata. To increase data quality and improve model performance, we filtered species records based on record attributes that provide information on the observation process or post-entry data validation. Data filtering does not only increase the quality of species records, it simultaneously reduces sample size, a trade-off that remains relatively unexplored. By controlling for sample size in a dataset of 255 species, we were able to explore the combined impact of data quality and sample size on model performance. We applied three data quality filters based on observers ’ activity, the validation status of a record in the database and the detail of a submitted record, and analyzed changes in AUC, Sensitivity and Specificity using Maxent with and without filtering. The impact of stringent filtering on model performance depended on (1) the quality of the filtered data: records valida"
+    },
+    {
+      "article_id": "art_fb1c8cf1cd52",
+      "title": "Composition and natural history of the snakes from",
+      "source_file": "29.pdf",
+      "year": "2018",
+      "doi": [
+        "10.3897/zookeys.797.24549"
+      ],
+      "themes": [
+        "herpetologia",
+        "ecologia",
+        "zoologia",
+        "conservacao",
+        "mata_atlantica",
+        "serra_da_mantiqueira"
+      ],
+      "retrieval_priority": 0.96,
+      "context_for_chatbot": "The Serra da Mantiqueira is one of the least inventoried physiographic areas of southeastern Brazil. There is great potential for detection of endemic species for which little or nothing is known about basic aspects of natural history. The Parque Estadual da Serra do Papagaio (PESP) within the Serra da Mantiqueira is an area of extreme biological importance because it houses mixed formations of grasslands, ombrophilous forests, and enclaves of Araucaria forests (mixed ombrophilous forest). Currently, the mixed ombrophilous forest covers less than 5% of its original range and areas occupied by this forest type, and associated eco systems constitute refuges, housing several endemic, high altitude species. Between September 2015 and April 2016, field samplings were performed in the PESP using four distinct methods. The objective was to determine the composition and natural history of snakes from an isolated, high altitude area of the Serra da Mantiqueira. In PESP and surrounding areas, 80 individuals representing 24 species, 19 genera, and three families were recorded. Data are presented on abundance, habitat, daily activity, diet, reproduction, and defense. Comparison of the PESP sna"
+    },
+    {
+      "article_id": "art_2dc4c21d5470",
+      "title": "More Than Just Records: Analysing Natural History",
+      "source_file": "11.pdf",
+      "year": "2012",
+      "doi": [
+        "10.1371/journal.pone.0050346.g001",
+        "10.1371/journal.pone.0050346.g002",
+        "10.1371/journal.pone.0050346.g003",
+        "10.1371/journal.pone.0050346.g004"
+      ],
+      "themes": [
+        "ecologia",
+        "zoologia",
+        "biodiversity_informatics",
+        "sdm_modelagem_distribuicao",
+        "conservacao"
+      ],
+      "retrieval_priority": 0.94,
+      "context_for_chatbot": "Natural History Collections (NHCs) play a central role as sources of data for biodiversity and conservation. Yet, few NHCs have examined whether the data they contain is adequately representative of local biodiversity. I examined over 15,000 databased records of Hymenoptera from 1435 locations across New Zealand collected over the past 90 years. These records are assessed in terms of their geographical, temporal, and environmental coverage across New Zealand. Results showed that the spatial coverage of records was significantly biased, with the top four areas contributing over 51% of all records. Temporal biases were also evident, with a large proportion (40%) of records collected within a short time period. The lack of repeat visits to specific locations indicated that the current set of NHC records would be of limited use for long-term ecological research. Consequently, analyses and interpretation of historical data, for example, shifts in community composition, would be limited. However, in general, NHC records provided good coverage of the diversity of New Zealand habitats and climatic environments, although fewer NHC records were represented at cooler temperatures (,5uC) and t"
+    },
+    {
+      "article_id": "art_6a985f3e3c56",
+      "title": "From GenBank to GBIF: Phylogeny-Based",
+      "source_file": "12.pdf",
+      "year": "2016",
+      "doi": [
+        "10.1371/journal.pone.0151232",
+        "10.1371/journal.pone.0151232.g001",
+        "10.1371/journal.pone.0151232.g002"
+      ],
+      "themes": [
+        "ecologia",
+        "zoologia",
+        "biodiversity_informatics",
+        "sdm_modelagem_distribuicao"
+      ],
+      "retrieval_priority": 0.94,
+      "context_for_chatbot": "Accuracy of taxonomic identifications is crucial to data quality in online repositories of species occurrence data, such as the Global Biodiversity Information Facility (GBIF), which have accumulated several hundred million records over the past 15 years. These data serve as basis for large scale analyses of macroecological and biogeographic patterns and to document environmental changes over time. However, taxonomic identifications are often unreliable, especially for non-vascular plants and fungi including lichens, which may lack critical revisions of voucher specimens. Due to the scale of the problem, restudy of millions of collections is unrealistic and other strategies are needed. Here we propose to use verified, georeferenced occurrence data of a given species to apply predictive niche modeling that can then be used to evaluate unverified occurrences of that species. Selecting the charismatic lichen fungus,Usnea longissima, as a case study, we used georeferenced occurrence records based on sequenced specimens to model its predicted niche. Our results suggest that the target species is largely restricted to a narrow range of boreal and temperate forest in the Northern Hemisphe"
+    },
+    {
+      "article_id": "art_fa2198a1cc30",
+      "title": "A conceptual framework for quality",
+      "source_file": "13.pdf",
+      "year": "2017",
+      "doi": [
+        "10.1371/j"
+      ],
+      "themes": [
+        "zoologia",
+        "biodiversity_informatics"
+      ],
+      "retrieval_priority": 0.92,
+      "context_for_chatbot": "The increasing availability of digitized biodiversity data worldwide, provided by an increasing number of institutions and researchers , and the growing use of those data for a variety of purposes have raised concerns related to the \"fitness for use\" of such data and the impact of data quality (DQ) on the outcomes of analyses, reports, and decisions. A consistent approach to assess and manage data quality is currently critical for biodiversity data users. However, achieving this goal has been particularly challenging because of idiosyncrasies inherent in the concept of quality. DQ assessment and management cannot be performed if we have not clearly established the quality needs from a data user’s standpoint. This paper defines a formal conceptual framework to support the biodiversity informatics community allowing for the description of the meaning of \"fitness for use\" from a data user’s perspective in a common and standardized manner. This proposed framework defines nine concepts organized into three classes: DQ Needs, DQ Solutions and DQ Report. The framework is intended to formalize human thinking into well-defined components to make it possible to share and reuse concepts of DQ"
+    },
+    {
+      "article_id": "art_29fdc17ec7f7",
+      "title": "Darwin Core: An Evolving Community-Developed",
+      "source_file": "14.pdf",
+      "year": "2012",
+      "doi": [
+        "10.1371/journal.pone.0029715",
+        "10.1371/journal.pone.0029715.g001",
+        "10.1371/journal.pone.0029715.g002"
+      ],
+      "themes": [
+        "zoologia",
+        "biodiversity_informatics",
+        "conservacao"
+      ],
+      "retrieval_priority": 0.92,
+      "context_for_chatbot": "Biodiversity data derive from myriad sources stored in various formats on many distinct hardware and software platforms. An essential step towards understanding global patterns of biodiversity is to provide a standardized view of these heterogeneous data sources to improve interoperability. Fundamental to this advance are definitions of common terms. This paper describes the evolution and development of Darwin Core, a data standard for publishing and integrating biodiversity information. We focus on the categories of terms that define the standard, differences between simple and relational Darwin Core, how the standard has been implemented, and the community processes that are essential for maintenance and growth of the standard. We present case-study extensions of the Darwin Core into new research communities, including metagenomics and genetic resources. We close by showing how Darwin Core records are integrated to create new knowledge products documenting species distributions and changes due to environmental perturbations. Citation: Wieczorek J, Bloom D, Guralnick R, Blum S, Do¨ ring M, et al. (2012) Darwin Core: An Evolving Community-Developed Biodiversity Data Standard. PLoS "
+    },
+    {
+      "article_id": "art_377a60493aec",
+      "title": "Vesper: Visualising species archives",
+      "source_file": "16.pdf",
+      "year": "2014",
+      "doi": [
+        "10.1016/j.ecoinf.2014.08.004"
+      ],
+      "themes": [
+        "ecologia",
+        "zoologia",
+        "biodiversity_informatics"
+      ],
+      "retrieval_priority": 0.92,
+      "context_for_chatbot": "article info Article history: Received 30 April 2014 Received in revised form 12 August 2014 Accepted 17 August 2014 Available online 30 August 2014"
+    },
+    {
+      "article_id": "art_cd5523bf7455",
+      "title": "Contents lists available atScienceDirect",
+      "source_file": "17.pdf",
+      "year": "2007",
+      "doi": [
+        "10.1016/j.ecolmodel.2019.108927"
+      ],
+      "themes": [
+        "ecologia",
+        "ciencia_cidada",
+        "sdm_modelagem_distribuicao",
+        "conservacao"
+      ],
+      "retrieval_priority": 0.94,
+      "context_for_chatbot": "Ecological citizen science data are rapidly growing in availability and use in ecology and conservation. Many citizen science projects have theﬂexibility for participants to select where they survey, resulting in more participants, but also spatially biased data. It is important to assess the extent to which these spatially biased data can provide reliable estimates of species distributions. Here we quantify the extent of site selection bias in a citizen science project and the implications of this spatial bias in species distribution models. Using data from the BirdTrack citizen science project in Great Britain from 2007 to 2011, we modelled the spatial bias of data submissions. We next produced species occupancy models for 138 bird species, and assessed the impact of accounting for spatial bias. We compared the distributions to those produced using unbiased data from an Atlas survey from the same region and time period. Averaging across 138 species, models with spatially biased data produced accurate and precise estimates of species occupancy for most locations in Great Britain. However, these distributions were both less accurate and less precise in the Scottish Highlands, showi"
+    },
+    {
+      "article_id": "art_dcf1815a8dae",
+      "title": "Natural history collections as sources of long-term",
+      "source_file": "19.pdf",
+      "year": "2010",
+      "doi": [
+        "10.1016/j.tree.2010.12.009"
+      ],
+      "themes": [
+        "ecologia",
+        "zoologia",
+        "biodiversity_informatics",
+        "conservacao"
+      ],
+      "retrieval_priority": 0.92,
+      "context_for_chatbot": "Letters Natural history collections as sources of long-term datasets Adrian M. Lister and Climate Change Research Group* Natural History Museum, Cromwell Road, London SW7 5BD, UK In the otherwise excellent special issue of Trends in Ecology and Evolutionon long-term ecological research (TREE 25(10), 2010), none of the contributors mentioned the importance of natural history collections (NHCs) as sources of data that can strongly complement past and ongoing survey data. Whereas very few ﬁeld surveys have operated for more than a few decades, NHCs, conserved in museums and other institutions, comprise samples of the Earth’s biota typically extending back well into the nineteenth century and, in some cases, before this time. They therefore span the period of accelerated anthropogenic habitat destruction, climate warming and ocean acidiﬁcation, in many cases reﬂecting baseline conditions before the major impact of these factors. Natural history collections (NHCs) provide a rich source of data at the taxic and community levels, and can contribute to a wide range of studies[1]. These include biogeographic range changes (spatial and/or altitudinal)[2]; phenological shifts (e.g. in ﬂowerin"
+    },
+    {
+      "article_id": "art_60b23b1bb321",
+      "title": "Contents lists available atScienceDirect",
+      "source_file": "20.pdf",
+      "year": "2007",
+      "doi": [
+        "10.1016/j.ecoinf.2020.101086"
+      ],
+      "themes": [
+        "ecologia",
+        "sdm_modelagem_distribuicao"
+      ],
+      "retrieval_priority": 0.94,
+      "context_for_chatbot": "Contents lists available atScienceDirect Ecological Informatics journal homepage: www.elsevier.com/locate/ecolinf Correcting the eﬀect of sampling bias in species distribution modeling– A new method in the case of a low number of presence data Yi Mouaa,b,⁎ , Emmanuel Rouxb, Frédérique Seylerb, Sébastien Briolantc,d a ESPACE-DEV, UMR 228 (IRD, UM, UR, UA, UG), Université de Guyane, Cayenne, French Guiana b ESPACE-DEV (IRD, Univ Montpellier, Univ La Réunion, Univ Guyane, Univ des Antilles), Institut de Recherche pour le Développement (IRD), Montpellier, France c Unité de Parasitologie et Entomologie, Département des Maladies Infectieuses, Institut de Recherche Biomédicale des Armées, 19-21 Boulevard Jean Moulin, 13005 Marseille, France d IRD, AP-HM, SSA, UMR Vecteurs– Infections Tropicales et Méditerranéennes (VITROME), IHU - Méditerranée Infection, Aix Marseille Université, 19-21 bd Jean Moulin, 13385 Marseille Cedex 5, France ARTICLE INFO Keywords: Sampling bias Data scarcity Species distribution models Maxent ABSTRACT Species distribution models that only require presence data provide potentially inaccurate results due to sampling bias and presence data scarcity. Methods have been"
+    },
+    {
+      "article_id": "art_84e3d63e5237",
+      "title": "Herpetofauna dos remanescentes de Mata Atlântica da",
+      "source_file": "1.pdf",
+      "year": "2009",
+      "doi": [],
+      "themes": [
+        "herpetologia",
+        "ecologia",
+        "conservacao",
+        "glossario_terminologia",
+        "mata_atlantica"
+      ],
+      "retrieval_priority": 0.95,
+      "context_for_chatbot": "?inventory+bn01809012009 http://www.biotaneotropica.org.br Biota Neotrop., vol. 9, no. 1, Jan./Mar. 2009 Herpetofauna dos remanescentes de Mata Atlântica da região de Tapiraí e Piedade, SP, sudeste do Brasil Thais Helena Condez1,3, Ricardo Jannini Sawaya1 & Marianna Dixo2 1Laboratório Especial de Ecologia e Evolução, Instituto Butantan, Av. Dr. Vital Brazil, 1500, CEP 05503-900, São Paulo, SP, Brasil 2Departamento de Ecologia, Instituto de Biociências, Universidade de São Paulo – USP, Rua do Matão, 321, travessa 14, CEP 05508-900, São Paulo, SP, Brasil 3Autor para correspondência: Thais Helena Condez, e-mail: thacondez@yahoo.com.br CONDEZ, T.H, SAWAYA, R.J. & DIXO, M. 2009. Herpetofauna of the Atlantic Forest remnants of Tapiraí and Piedade region, São Paulo state, southeastern Brazil. Biota Neotrop. 9(1): http://www.biotaneotropica. org.br/v9n1/en/abstract?inventory+bn01809012009. Abstract: We present the species list of amphibians and reptiles registered in continuous and fragmented Atlantic Forest remnants at Tapiraí and Piedade municipalities, Atlantic Plateau of São Paulo, Brazil. We sampled 21 localities, 15 located within unprotetcted forest fragments and six located at Parq"
+    },
+    {
+      "article_id": "art_1ccb674cff56",
+      "title": "Introduction",
+      "source_file": "2.pdf",
+      "year": "2000",
+      "doi": [
+        "10.2994/057.006.0301",
+        "10.1111/jbi.12900",
+        "10.2994/SAJH-D-16-00034.1",
+        "10.5007/2175-7925.2010v23n2p135"
+      ],
+      "themes": [
+        "herpetologia",
+        "ecologia",
+        "zoologia",
+        "biodiversity_informatics",
+        "conservacao",
+        "mata_atlantica"
+      ],
+      "retrieval_priority": 0.95,
+      "context_for_chatbot": ". The municipality of São José do Barreiro is located in the Paraíba Valley, São Paulo, Brazil, and is characterized by topographic complexity, wide altitudinal variation, and remarkable climatic diversity, which contribute to a high diversity of species. Studies that provide basic data about herpetofauna are important for understanding the structure and composition of communities. The present study aims to describe a snake inventory in the municipality of São José do Barreiro for characterizing the richness and abundance of species. Data were collected from scientific collections (207 specimens) and via fieldwork (48 specimens) through active surveys, incidental encounters, and pitfall traps. A total of 255 individual snakes belonging to 33 species from four families were recorded: Colubridae (N = 5), Dipsadidae (N = 130), Elapidae (N = 5), and Viperidae (N = 112). The most abundant species was Crotalus durissus terrificus (n = 58), followed by Bothrops jararaca (N = 25) and Atractus zebrinus (N = 24). Viperidae was the family with the highest number of individuals and the second highest number of species. The abundance of viperids may be because of the fact that Butantan Institut"
+    },
+    {
+      "article_id": "art_ec1da0932247",
+      "title": "OP-DABA170104 1..12",
+      "source_file": "4.pdf",
+      "year": "2017",
+      "doi": [
+        "10.1093/database/bax100",
+        "10.1093/database/bax100/4791171",
+        "10.15468/dl.zhyqxp",
+        "10.1093/data"
+      ],
+      "themes": [
+        "zoologia",
+        "biodiversity_informatics"
+      ],
+      "retrieval_priority": 0.92,
+      "context_for_chatbot": "Growing concerns about the quality of aggregated biodiversity data are lowering trust in large-scale data networks. Aggregators frequently respond to quality concerns by recommending that biologists work with original data providers to correct errors ‘at the source.’ We show that this strategy falls systematically short of a full diagnosis of the underlying causes of distrust. In particular, trust in an aggregator is not just a feature of the data signal quality provided by the sources to the aggregator, but also a consequence of the social design of the aggregation process and the resulting power balance between individual data contributors and aggregators. The latter have created an accountability gap by downplaying the authorship and signiﬁcance of the taxonomic hierarchies— frequently called ‘backbones’—they generate, and which are in effect novel classiﬁcation theories that operate at the core of data-structuring process. The Darwin Core standard for sharing occurrence records plays an under-appreciated role in maintaining the accountability gap, because this standard lacks the syntactic structure needed to preserve the taxonomic coherence of data packages submitted for aggreg"
+    },
+    {
+      "article_id": "art_867bb67cbbbc",
+      "title": "Visualizing natural history collection data provides",
+      "source_file": "5.pdf",
+      "year": "2018",
+      "doi": [
+        "10.3897/BDJ.6.e26741",
+        "10.17161/bi.v7i2.3991",
+        "10.1371/journal.pbio.1000385",
+        "10.1111/nph.14855",
+        "10.1111/ddi.12489",
+        "10.1038/s41598-017-09084-6"
+      ],
+      "themes": [
+        "ecologia",
+        "zoologia",
+        "biodiversity_informatics"
+      ],
+      "retrieval_priority": 0.92,
+      "context_for_chatbot": "Natural history collections contain estimated billions of records representing a large body of knowledge about the diversity and distribution of life on Earth. Assessments of various forms of bias within the aggregated data associated with specimens in these collections have been conducted across temporal, taxonomic, and spatial domains. Considering that these biases are the sum of biases across all contributing collections to aggregate datasets, the assessment of bias at the collection level is warranted. Interactive visualization provides a powerful tool for the assessment of these biases and insight into the historical development of natural history collections, providing context for where sources of bias may originate and developing historical narratives to clarify our understanding of our own knowledge about life on Earth. Here, I present a case study on using Sankey diagrams to illustrate the development of the entomology type collection at the Academy of Natural Sciences of Drexel University in Philadelphia, Pennsylvania with the hope that extensions of these practices among individual natural history collections are modiﬁed and adopted. ‡, § © Shirey V. This is an open acce"
+    },
+    {
+      "article_id": "art_16ebf616c28f",
+      "title": "Retrieving biodiversity data from multiple sources: making secondary data standardised and accessible",
+      "source_file": "6.pdf",
+      "year": "2024",
+      "doi": [
+        "10.3897/BDJ.12.e133775",
+        "10.1093/biosci/biw022",
+        "10.3389/fevo.2018.00239",
+        "10.1002/ecs2.3184",
+        "10.1371/journal.pbio.1000385",
+        "10.1111/ecog.02493",
+        "10.1007/s41060-016-0006-1",
+        "10.1016/j.cub.2023.06.077",
+        "10.4322/natcon",
+        "10.1016/j.tree.2013.05.002"
+      ],
+      "themes": [
+        "ecologia",
+        "zoologia",
+        "biodiversity_informatics",
+        "conservacao"
+      ],
+      "retrieval_priority": 0.92,
+      "context_for_chatbot": "Biodiversity data, particularly species occurrence and abundance, are indispensable for testing empirical hypothesis in natural sciences. However, datasets built for research programmes do not often meet FAIR (findable, accessible, interoperable and reusable) principles, which raises questions about data quality, accuracy and availability. The 21 century has markedly been a new era for data science and analytics and every effort to aggregate, standardise, filter and share biodiversity data from multiple sources have ‡ ‡ ‡ ‡ ‡ ‡,§ ‡ ‡ ‡,| ‡ ‡ ‡ ‡ ‡ ‡ ‡ ‡ ‡ ‡,¶ ‡ ‡ ‡,#,¤ st © Marques N et al. This is an open access article distributed under the terms of the Creative Commons Attribution License (CC BY 4.0), which permits unrestricted use, distribution, and reproduction in any medium, provided the original author and source are credited. become increasingly necessary. In this study, we propose a framework for refining and conforming secondary biodiversity data to FAIR standards to make them available for use such as macroecological modelling and other studies. We relied on a Darwin Core base model to standardise and further facilitate the curation and validation of data related includi"
+    },
+    {
+      "article_id": "art_f36f125bee8b",
+      "title": "UNIVERSIDADE FEDERAL DE OURO PRETO",
+      "source_file": "7.PDF",
+      "year": "2007",
+      "doi": [],
+      "themes": [
+        "herpetologia",
+        "ecologia",
+        "zoologia",
+        "biodiversity_informatics",
+        "serra_da_mantiqueira"
+      ],
+      "retrieval_priority": 0.96,
+      "context_for_chatbot": ".............................................................................................................................pág. 11."
+    },
+    {
+      "article_id": "art_f716ffd0363f",
+      "title": "Herpetofauna do Parque Estadual Carlos Botelho, São Paulo, Brasil",
+      "source_file": "8_compressed.pdf",
+      "year": "2000",
+      "doi": [],
+      "themes": [
+        "herpetologia",
+        "ecologia",
+        "zoologia",
+        "biodiversity_informatics",
+        "conservacao",
+        "mata_atlantica",
+        "serra_da_mantiqueira"
+      ],
+      "retrieval_priority": 0.96,
+      "context_for_chatbot": "?inventory+bn00210032010 http://www.biotaneotropica.org.br Biota Neotrop., vol. 10, no. 3 Herpetofauna do Parque Estadual Carlos Botelho, São Paulo, Brasil Maurício da Cruz Forlani1, Pedro Henrique Bernardo1, Celio Fenando Baptista Haddad2 & Hussam Zaher1,3 1Museu de Zoologia, Universidade de São Paulo – USP Av. Nazaré, 481, CEP 04263-000, São Paulo, SP, Brasil 2Universidade Estadual Paulista –UNESP, Campus Rio Claro, Av. 24-A, 1.515, Bela Vista, CEP 13506-900, Rio Claro, SP, Brasil 3Autor para correspondência: Hussam Zaher, e-mail: hzaher@usp.br FORLANI, M.C., BERNARDO, P.H., HADDAD, C.B.F. & ZAHER, H. Herpetofauna of the Carlos Botelho State Park, São Paulo State, Brazil. Biota Neotrop. 10(3): http://www.biotaneotropica.org.br/v10n3/en/abstra ct?inventory+bn00210032010. Abstract: The present work is a survey of the herpetofauna of Carlos Botelho State Park (CBSP), located in the region of Serra de Paranapiacaba, State of São Paulo, Brazil. Data were gathered from specimens collected in six areas within the park during a period of 76 days distributed in one year, and from three Brazilian scientific collections. We also offer photographs and information on the biology and occurrenc"
+    },
+    {
+      "article_id": "art_fcc3cd383d32",
+      "title": "Optimising occurrence data in species distribution models: sample size, positional uncertainty, and sampling bias matter",
+      "source_file": "9.pdf",
+      "year": "2024",
+      "doi": [
+        "10.1111/ecog.07294",
+        "10.13039/501100011033",
+        "10.1111/jbi.14854"
+      ],
+      "themes": [
+        "ecologia",
+        "biodiversity_informatics",
+        "sdm_modelagem_distribuicao",
+        "conservacao"
+      ],
+      "retrieval_priority": 0.94,
+      "context_for_chatbot": "www.ecography.org ECOGRAPHY Ecography Page 1 of 20 This is an open access article under the terms of the Creative Commons Attribution License, which permits use, distribution and reproduction in any medium, provided the original work is properly cited. Subject Editor: Miguel Araújo Editor-in-Chief: Miguel Araújo Accepted 1 July 2024 doi: 10.1111/ecog.07294 2024: e07294 © 2024 The Authors. Ecography published by John Wiley & Sons Ltd on behalf of Nordic Society Oikos Species distribution models (SDMs) have proven valuable in filling gaps in our knowledge of species occurrences. However, despite their broad applicability, SDMs exhibit critical shortcomings due to limitations in species occurrence data. These limitations include, in particular, issues related to sample size, positional uncertainty, and sampling bias. In addition, it is widely recognised that the quality of SDMs as well as the approaches used to mitigate the impact of the aforemen­ tioned data limitations depend on species ecology. While numerous studies have evaluated the effects of these data limitations on SDM performance, a synthesis of their results is lacking. However, without a comprehensive understanding of the"
+    },
+    {
+      "article_id": "art_7eb87491c290",
+      "title": "deb_pone.0111436 1..8",
+      "source_file": "10.pdf",
+      "year": "2014",
+      "doi": [
+        "10.1371/journal.pone",
+        "10.1371/journal.pone.0111436.g001",
+        "10.1371/journal.pone.0111436.t001",
+        "10.1371/journal.pone.0111436.g002",
+        "10.1371/journal.pone.0111436.t002",
+        "10.1371/journal.pone.0111436.t003",
+        "10.1111/2041-210X.12133",
+        "10.1111/1365-2664.12306"
+      ],
+      "themes": [
+        "herpetologia",
+        "ecologia",
+        "zoologia",
+        "conservacao"
+      ],
+      "retrieval_priority": 0.95,
+      "context_for_chatbot": "Detection in studies of species abundance and distribution is often imperfect. Assuming perfect detection introduces bias into estimation that can weaken inference upon which understanding and policy are based. Despite availability of numerous methods designed to address this assumption, many refereed papers in ecology fail to account for non-detection error. We conducted a quantitative literature review of 537 ecological articles to measure the degree to which studies of different taxa, at various scales, and over time have accounted for imperfect detection. Overall, just 23% of articles accounted for imperfect detection. The probability that an article incorporated imperfect detection increased with time and varied among taxa studied; studies of vertebrates were more likely to incorporate imperfect detection. Among articles that reported detection probability, 70% contained per-survey estimates of detection that were less than 0.5. For articles in which constancy of detection was tested, 86% reported significant variation. We hope that our findings prompt more ecologists to consider carefully the detection process when designing studies and analyzing results, especially for subdi"
+    },
+    {
+      "article_id": "art_06a5dcc99e23",
+      "title": "",
+      "source_file": "biz010.pdf",
+      "year": "2019",
+      "doi": [
+        "10.1093/biosci/biz010"
+      ],
+      "themes": [
+        "ecologia",
+        "zoologia",
+        "ciencia_cidada",
+        "biodiversity_informatics",
+        "conservacao"
+      ],
+      "retrieval_priority": 0.92,
+      "context_for_chatbot": "Overview Articles 170 BioScience • March 2019 / Vol. 69 No. 3 https://academic.oup.com/bioscience Using Semistructured Surveys to Improve Citizen Science Data for Monitoring Biodiversity STEVE KELLING, ALISON JOHNSTON, ALETTA BONN, DANIEL FINK, VIVIANA RUIZ-GUTIERREZ, RICK BONNEY, MIGUEL FERNANDEZ, WESLEY M. HOCHACHKA, ROMAIN JULLIARD, ROLAND KRAEMER, AND ROBERT GURALNICK Biodiversity is being lost at an unprecedented rate, and monitoring is crucial for understanding the causal drivers and assessing solutions. Most biodiversity monitoring data are collected by volunteers through citizen science projects, and often crucial information is lacking to account for the inevitable biases that observers introduce during data collection. We contend that citizen science projects intended to support biodiversity monitoring must gather information about the observation process as well as species occurrence. We illustrate this using eBird, a global citizen science project that collects information on bird occurrences as well as vital contextual information on the observation process while maintaining broad participation. Our fundamental argument is that regardless of what species are being moni"
+    },
+    {
+      "article_id": "art_d078cf54a116",
+      "title": "Co‐designing the environmental land management scheme in England: The why, who and how of engaging ‘harder to reach’ stakeholders",
+      "source_file": "People and Nature - 2022 - Hurley - Co‐designing the environmental land management scheme in England  The why  who and how.pdf",
+      "year": "2022",
+      "doi": [
+        "10.1002/pan3.10313"
+      ],
+      "themes": [
+        "ecologia",
+        "biodiversity_informatics",
+        "conservacao"
+      ],
+      "retrieval_priority": 0.92,
+      "context_for_chatbot": "Agriculture around the world needs to become more environmentally sustainable to limit further environmental degradation and impacts of climate change. 2. Many governments try to achieve this through enrolling farmers in agrienvironment schemes (AES) that encourage them to undertake conservation activities. 3. Studies show that AES can suffer from low uptake, meaning their environmental objectives remain unattained. To succeed for people and nature, policy-makers are increasingly adopting multi-actor approaches in the ‘co-design’ of AES to make them more attractive and inclusive of a full range of stakeholders, including ‘harder to reach’ farmers. 4. To address why some land managers (principally farmers) may be harder to reach in the context of co-designing England's new Environmental Land Management (ELM) approach, we undertook a quick scoping review of the literature, conducted 23 first-round and 24 s-round interviews with key informants, and held a workshop with 11 practitioners. 5. We outline why farming stakeholders may be harder to reach and how policymakers can adjust the engagement process to make co-design more inclusive. 6. Based on the results, we make recommendations t"
+    },
+    {
+      "article_id": "art_e59c8a902b56",
+      "title": "eBird: A citizen-based bird observation network in the biological sciences",
+      "source_file": "sullivan2009.pdf",
+      "year": "2009",
+      "doi": [
+        "10.1016/j.biocon.2009.05.006"
+      ],
+      "themes": [
+        "ecologia",
+        "zoologia",
+        "ciencia_cidada",
+        "biodiversity_informatics",
+        "conservacao"
+      ],
+      "retrieval_priority": 0.92,
+      "context_for_chatbot": "eBird: A citizen-based bird observation network in the biological sciences Brian L. Sullivan *, Christopher L. Wood, Marshall J. Iliff, Rick E. Bonney, Daniel Fink, Steve Kelling Cornell Lab of Ornithology, 159 Sapsucker Woods Road, Ithaca, NY 14850, USA a r t i c l e i n f o Article history: Received 4 December 2008 Received in revised form 1 May 2009 Accepted 5 May 2009 Available online 28 May 2009 Keywords: eBird Citizen-science Observation network Scale-dependent analysis Bird observations a b s t r a c t New technologies are rapidly changing the way we collect, archive, analyze, and share scientiﬁc data. For example, over the next several years it is estimated that more than one billion autonomous sensors will be deployed over large spatial and temporal scales, and will gather vast quantities of data. Networks of human observers play a major role in gathering scientiﬁc data, and whether in astronomy, meteorology, or observations of nature, they continue to contribute signiﬁcantly. In this paper we present an innovative use of the Internet and information technologies that better enhances the opportunity for citizens to contribute their observations to science and the conservat"
+    },
+    {
+      "article_id": "art_3a5cd95f5689",
+      "title": "Why Return? Birdwatching Tourists’ Revisit Intentions Based on Structural Equation Modelling",
+      "source_file": "sustainability-14-14632.pdf",
+      "year": "2022",
+      "doi": [
+        "10.3390/su142114632"
+      ],
+      "themes": [
+        "ecologia",
+        "conservacao"
+      ],
+      "retrieval_priority": 0.9,
+      "context_for_chatbot": ": Birdwatching tourism is a model of ecotourism that is beneﬁcial to the sustainable development of developing regions and is growing rapidly in China. In order to explore the development path of birdwatching tourism, this study constructs and tests a model of revisit intention from the birdwatching tourists’ perspective and aims to understand the factors inﬂuencing tourists’ revisit intention for birdwatching destinations. The researchers collected 328 valid questionnaires from birdwatching tourists in Mingxi County, Fujian Province, China, and used structural equation modelling to validate the relationships among the study constructs. Cognitive image had the largest inﬂuence on revisit intent (0.219), followed by tourist satisfaction (0.172), and perceived image (0.155). Tourist motivation indirectly affects revisit intention through the full mediating effect of the cognitive image."
+    },
+    {
+      "article_id": "art_c621c5078a77",
+      "title": "Challenges for leveraging citizen science to support statistically robust monitoring programs",
+      "source_file": "weiser2020.pdf",
+      "year": "2020",
+      "doi": [
+        "10.1016/j.biocon.2020.108411"
+      ],
+      "themes": [
+        "ecologia",
+        "ciencia_cidada",
+        "conservacao"
+      ],
+      "retrieval_priority": 0.9,
+      "context_for_chatbot": "Contents lists available at ScienceDirect Biological Conservation journal homepage: www.elsevier.com/locate/biocon Challenges for leveraging citizen science to support statistically robust monitoring programs Emily L. Weisera,⁎, Jay E. Diﬀendorferb, Laura Lopez-Hoﬀmanc, Darius Semmensb, Wayne E. Thogmartina a U.S. Geological Survey, Upper Midwest Environmental Sciences Center, La Crosse, WI, USA b U.S. Geological Survey, Geosciences and Environmental Change Science Center, Denver, CO, USA c School of Natural Resources and the Environment and Udall Center for Studies in Public Policy, The University of Arizona, Tucson, AZ, USA A R T I C L E I N F O Keywords: Bias Citizen science Community science Long-term monitoring Sampling design Population trend Monarch butterﬂy Danaus plexippus Milkweed Asclepias A B S T R A C T Large samples and long time series are often needed for eﬀective broad-scale monitoring of status and trends in wild populations. Obtaining those sample sizes can be more feasible when volunteers contribute to the dataset, but volunteer-selected sites are not always representative of a population. Previous work to account for biased site selection has relied on knowledg"
+    },
+    {
+      "article_id": "art_d3353c697c63",
+      "title": "The eBird enterprise: An integrated approach to development and application of citizen science",
+      "source_file": "2014_sullivan_biocon_ebird.pdf",
+      "year": "2014",
+      "doi": [
+        "10.1016/j.biocon.2013.11.003"
+      ],
+      "themes": [
+        "ecologia",
+        "zoologia",
+        "ciencia_cidada",
+        "biodiversity_informatics",
+        "sdm_modelagem_distribuicao",
+        "conservacao"
+      ],
+      "retrieval_priority": 0.94,
+      "context_for_chatbot": ", as well as their afﬁliation. These requests are individually reviewed to ensure validity, after which a data access key is granted. Once registered, users can access a series of online tools that allow queries to be written against the database to extract target datasets. eBird data are bundled with our terms of use policy, metadata descriptors, and recommended citations. 34 B.L. Sullivan et al. / Biological Conservation 169 (2014) 31–40 3.2. Core eBird data products The eBird observational dataset (EOD) contains primary species occurrence data deﬁned as a record of a particular taxon in a particular place at a particular point in time (Soberon and Peterson, 2009). eBird data consisting of location, date, and species are provided in the EOD to ensure that they can be integrated with other observational data and natural history collections data for estimating patterns in biodiversity (Jetz et al., 2012). The EOD is updated annually and is freely accessible via DataONE (dataone.org), the Global Biodiversity Information Facility (gbif.org), the Avian Knowledge Network (avianknowledge.net), and VertNet (vertnet.org). The 2012 version contains more than 100 million bird observation re"
+    },
+    {
+      "article_id": "art_67750200584b",
+      "title": "Levantamento de fauna na unidade de conservação ARIE do município de Cruzeiro/SP",
+      "source_file": "artigo_275.pdf",
+      "year": "2013",
+      "doi": [
+        "10.37002/biodiversidadebrasileira.v15i4.2756"
+      ],
+      "themes": [
+        "herpetologia",
+        "ecologia",
+        "zoologia",
+        "conservacao",
+        "mata_atlantica",
+        "serra_da_mantiqueira"
+      ],
+      "retrieval_priority": 0.96,
+      "context_for_chatbot": "The city of Cruzeiro/SP, located in the Paraíba do Sul river basin and on the slopes of the Mantiqueira Mountains, is home to the area of relevant ecological interest (ARIE) of the municipality of Cruzeiro, a municipal conservation unit with the objective of protecting a remnant of Atlantic Forest in the urban area. To date, there are no specific studies on the unit’s biodiversity. Instituto Chico Mendes de Conservação da Biodiversidade Biodiversidade Brasileira, 15(4): 1-22, 2025 https://doi.org/10.37002/biodiversidadebrasileira.v15i4.2756 2 Uso do Instagram como canal de comunicação pela gestão de unidades de conservação na Amazônia The present work aimed to carry out a survey of vertebrate species of medium and large size present in the ARIE of the city of Cruzeiro. For this, we used the method of sampling by camera trap, complemented by opportunistic meetings. Twenty-one distinct species were recorded, distributed among 10 mammals, nine birds and two reptiles. Among the recorded species, Callithrix aurita stands out, classified globally as \"endangered\" and two species categorized as \"near threatened\", Callicebus nigrifrons and Amazona aestiva. In addition, medium-sized mammals "
+    },
+    {
+      "article_id": "art_4ef2c6175481",
+      "title": "Ciência cidadã em um bioma ameaçado: uma perspectiva para a Mata Atlântica brasileira",
+      "source_file": "cienciacidadaemumbiomaameacado.pdf",
+      "year": "2024",
+      "doi": [
+        "10.3389/fevo.2021.693602"
+      ],
+      "themes": [
+        "ecologia",
+        "zoologia",
+        "ciencia_cidada",
+        "biodiversity_informatics",
+        "conservacao",
+        "mata_atlantica"
+      ],
+      "retrieval_priority": 0.92,
+      "context_for_chatbot": "Citizen science has enabled biodiversity research to enter the era of big data, as species occurrence data shared on online platforms become a valuable source of information for large-scale ecological studies, including those conducted at the biome level. Such broad-scale spatial assessments are pivotal for decision-making. Therefore, in the present work, we evaluate the contribution of iNaturalist users, and thereby the contribution of citizen science, to our knowledge of the biodiversity of the Brazilian Atlantic Forest. We quantitatively analyze temporal and spatial patterns in the iNaturalist dataset based on 877,301 observations from the biome until February 2023. Insects represented 49.7% of observations, while ray-finned fishes amounted to only 0.2%. Spatial gaps were predominant in the Central Biodiversity Corridor and in the western part of the biome. The dataset included “research grade” observations of 15,048 non-marine species, representing almost half of the species estimated to occur in the Atlantic Forest. Rarefaction curves and species richness maps indicated insufficient sampling for most taxa and low spatial representativeness of species. Through structured projec"
+    },
+    {
+      "article_id": "art_b6ae2b2d70d6",
+      "title": "Citizen Science as an Ecological Research Tool: Challenges and Benefits",
+      "source_file": "Citizen_Science_as_an_Ecological_Research_Tool_Cha.pdf",
+      "year": "2010",
+      "doi": [
+        "10.1146/annurev-ecolsys-102209-144636"
+      ],
+      "themes": [
+        "herpetologia",
+        "ecologia",
+        "zoologia",
+        "ciencia_cidada",
+        "biodiversity_informatics",
+        "sdm_modelagem_distribuicao",
+        "conservacao"
+      ],
+      "retrieval_priority": 0.95,
+      "context_for_chatbot": "Citizen science, the involvement of volunteers in research, has increased the scale of ecological ﬁeld studies with continent-wide, centralized monitoring efforts and, more rarely, tapping of volunteers to conduct large, coordinated, ﬁeld experiments. The unique beneﬁt for the ﬁeld of ecology lies in understanding processes occurring at broad geographic scales and on private lands, which are impossible to sample extensively with traditional ﬁeld research models. Citizen science produces large, longitudinal data sets, whose potential for error and bias is poorly understood. Because it does not usually aim to uncover mechanisms underlying ecological patterns, citizen science is best viewed as complementary to more localized, hypothesis-driven research. In the process of addressing the impacts of current, global “experiments” altering habitat and climate, large-scale citizen science has led to new, quantitative approaches to emerging questions about the distribution and abundance of organisms across space and time. 149 Annu. Rev. Ecol. Evol. Syst. 2010.41:149-172. Downloaded from www.annualreviews.org by Dr. Thierry Backeljau on 11/19/10. For personal use only. Click here for quick li"
+    },
+    {
+      "article_id": "art_498a8d5fffc4",
+      "title": "Distorted Views of Biodiversity: Spatial and Temporal Bias in Species Occurrence Data",
+      "source_file": "file.pdf",
+      "year": "2010",
+      "doi": [
+        "10.1371/journal.pbio.1000385.g001"
+      ],
+      "themes": [
+        "herpetologia",
+        "ecologia",
+        "zoologia",
+        "biodiversity_informatics",
+        "sdm_modelagem_distribuicao",
+        "conservacao"
+      ],
+      "retrieval_priority": 0.95,
+      "context_for_chatbot": "Essay Distorted Views of Biodiversity: Spatial and Temporal Bias in Species Occurrence Data Elizabeth H. Boakes1*, Philip J. K. McGowan2, Richard A. Fuller3,4, Ding Chang-qing5, Natalie E. Clark1,2, Kim O’Connor1,6, Georgina M. Mace1 1 Natural Environment Research Council (NERC) Centre for Population Biology, Imperial College, Berkshire, United Kingdom, 2 World Pheasant Association, Newcastle University Biology Field Station, Newcastle upon Tyne, United Kingdom, 3 School of Biological Sciences, The University of Queensland, St. Lucia, Queensland, Australia, 4 The Commonwealth Science and Industrial Research Organisation (CSIRO) Climate Adaptation Flagship and CSIRO Sustainable Ecosystems, St. Lucia, Queensland, Australia, 5 College of Biological Sciences and Biotechnology, Beijing Forestry University, Beijing, China, 6 Aquatic Department, The London Aquarium, London, United Kingdom Historical as well as current data on species distributions are needed to track changes in biodiversity. Species distribution data are found in a variety of sources but it is likely that they include different biases towards certain time periods or places. By collating a large historical database of ,170"
+    },
+    {
+      "article_id": "art_c3ddd00fe49d",
+      "title": "iNaturalist as a tool to expand the research value of museum specimens",
+      "source_file": "iNaturalist_as_a_tool_to_expand_the_research_value.pdf",
+      "year": "2015",
+      "doi": [
+        "10.1002/aps3.1193"
+      ],
+      "themes": [
+        "ecologia",
+        "zoologia",
+        "ciencia_cidada",
+        "biodiversity_informatics",
+        "sdm_modelagem_distribuicao"
+      ],
+      "retrieval_priority": 0.94,
+      "context_for_chatbot": "1 of 8 Natural history collections, especially herbarium specimens, are receiving unprecedented attention due to recently developed technologies (e.g., next-­generation sequencing, niche modeling) that enable new areas of collections-­based study and widespread digitization initiatives that increase their accessibility (Soltis, 2017; James et al., 2018). The diverse applications of herbarium data are rapidly evolving, especially unanticipated uses in the context of studying global change, with many specimen uses arising only recently (Heberling and Isaac, 2017). Despite this renewed appreciation of the value of existing specimens to study plant diversity across space and time in ways that would otherwise not be possible, the standard process for collecting new specimens has changed remarkably little through time. Major changes to plant collection practices in recent decades include the routine inclusion of geographic coordinates with the advent of GPS technologies and, to a lesser extent, tissue sampling for DNA analyses. Therefore, an open re-­evaluation of collection methods is needed to maximize future use of herbarium data (Heberling and Isaac, 2017; Morrison et al., 2017; Schi"
+    },
+    {
+      "article_id": "art_f0f40d9e7cce",
+      "title": "Statistics for citizen science: extracting signals of change from noisy ecological data",
+      "source_file": "Methods Ecol Evol - 2014 - Isaac - Statistics for citizen science  extracting signals of change from noisy ecological data.pdf",
+      "year": "2014",
+      "doi": [
+        "10.1111/2041-210X.12254"
+      ],
+      "themes": [
+        "ecologia",
+        "zoologia",
+        "ciencia_cidada",
+        "biodiversity_informatics",
+        "sdm_modelagem_distribuicao"
+      ],
+      "retrieval_priority": 0.94,
+      "context_for_chatbot": "Statistics for citizen science: extracting signals of change from noisy ecological data Nick J. B. Isaac1*, Arco J. van Strien2, Tom A. August1, Marnix P. de Zeeuw2 and David B. Roy1 1NERC Centre for Ecology & Hydrology, Crowmarsh Gifford, Maclean Building, Wallingford, OX10 8BB, UK; and 2Statistics Netherlands, PO Box 24500, 2490 HA The Hague, The Netherlands Summary 1. Policy-makers increasingly demand robust measures of biodiversity change over short time periods. Longterm monitoring schemes provide high-quality data, often on an annual basis, but are taxonomically and geographically restricted. By contrast, opportunistic biological records are relatively unstructured but vast in quantity. Recently, these data have been applied to increasingly elaborate science and policy questions, using a range of methods. At present, we lack a ﬁrm understanding of which methods, if any, are capable of delivering unbiased trend estimates on policy-relevant time-scales. 2. We identiﬁed a set of candidate methods that employ data ﬁltering criteria and/or correction factors to deal with variation in recorder activity. We designed a computer simulation to compare the statistical properties of thes"
+    },
+    {
+      "article_id": "art_eb1f3bb4eb28",
+      "title": "O cenário acadêmico brasileiro ao aplicar ciência cidadã em pesquisas ecológicas",
+      "source_file": "O_cenario_academico_Brasileiro_ao_aplicar_ciencia_cidada.pdf",
+      "year": "2025",
+      "doi": [
+        "10.1590/s0103-4014.202539114.015"
+      ],
+      "themes": [
+        "ecologia",
+        "zoologia",
+        "ciencia_cidada",
+        "conservacao",
+        "glossario_terminologia"
+      ],
+      "retrieval_priority": 0.9,
+      "context_for_chatbot": "Citizen science is a promising way to strengthen the relationship between academia and society. Although it is becoming popular worldwide, it may not be straightforward to perform it within the current modus operandi of Brazilian institutions for research and higher education in scientist-led projects aimed to promote knowledge for environmental conservation. In this article, we conceptualize ‘citizen science’ and ‘open science’ and we propose thoughts of three scenarios in which Brazilians academics are facing when trying to promote an accessible and inclusive science. Each scenario has its positive and negative aspects for formal researchers (e.g., scientific productivity) as well as for society (e.g., applied knowledge). In order to enhance citizen science, we suggest adjustments within Brazilians institutions regarding the assessment of researchers and ways to optimize research projects of this nature."
+    },
+    {
+      "article_id": "art_045fdd3f31e2",
+      "title": "Observing the Observers: How Participants Contribute Data to iNaturalist and Implications for Biodiversity Science",
+      "source_file": "Observing_the_Observers_How.pdf",
+      "year": "2021",
+      "doi": [
+        "10.1093/biosci/biab093"
+      ],
+      "themes": [
+        "herpetologia",
+        "ecologia",
+        "zoologia",
+        "ciencia_cidada",
+        "biodiversity_informatics",
+        "sdm_modelagem_distribuicao",
+        "conservacao"
+      ],
+      "retrieval_priority": 0.95,
+      "context_for_chatbot": "Biologist’s Toolbox https://academic.oup.com/bioscience November 2021 / Vol. 71 No. 11 • BioScience 1179 BioScience 71: 1179–1188. © The Author(s) 2021. Published by Oxford University Press on behalf of the American Institute of Biological Sciences. All rights reserved. For Permissions, please e-mail: journals.permissions@oup.com. https://doi.org/10.1093/biosci/biab093\b Advance Access publication 8 September 2021 Observing the Observers: How Participants Contribute Data to iNaturalist and Implications for Biodiversity Science GRACE J. DI CECCO , VIJAY BARVE , MICHAEL W. BELITZ, BRIAN J. STUCKY, ROBERT P. GURALNICK , AND ALLEN H. HURLBERT The availability of citizen science data has resulted in growing applications in biodiversity science. One widely used platform, iNaturalist, provides millions of digitally vouchered observations submitted by a global user base. These observation records include a date and a location but otherwise do not contain any information about the sampling process. As a result, sampling biases must be inferred from the data themselves. In the present article, we examine spatial and temporal biases in iNaturalist observations from the platform’s launch in 200"
+    }
+  ],
+  "semantic_relations": [
+    {
+      "subject": "art_dbf00a492399",
+      "predicate": "has_theme",
+      "object": "herpetologia",
+      "confidence": 0.85
+    },
+    {
+      "subject": "art_dbf00a492399",
+      "predicate": "has_theme",
+      "object": "ecologia",
+      "confidence": 0.85
+    },
+    {
+      "subject": "art_dbf00a492399",
+      "predicate": "has_theme",
+      "object": "zoologia",
+      "confidence": 0.85
+    },
+    {
+      "subject": "art_dbf00a492399",
+      "predicate": "has_theme",
+      "object": "biodiversity_informatics",
+      "confidence": 0.85
+    },
+    {
+      "subject": "art_dbf00a492399",
+      "predicate": "has_theme",
+      "object": "sdm_modelagem_distribuicao",
+      "confidence": 0.85
+    },
+    {
+      "subject": "art_dbf00a492399",
+      "predicate": "has_theme",
+      "object": "conservacao",
+      "confidence": 0.85
+    },
+    {
+      "subject": "art_dbf00a492399",
+      "predicate": "has_doi",
+      "object": "10.1177/0309133309355630",
+      "confidence": 0.95
+    },
+    {
+      "subject": "art_127c0d29161d",
+      "predicate": "has_theme",
+      "object": "ecologia",
+      "confidence": 0.85
+    },
+    {
+      "subject": "art_127c0d29161d",
+      "predicate": "has_theme",
+      "object": "biodiversity_informatics",
+      "confidence": 0.85
+    },
+    {
+      "subject": "art_127c0d29161d",
+      "predicate": "has_theme",
+      "object": "sdm_modelagem_distribuicao",
+      "confidence": 0.85
+    },
+    {
+      "subject": "art_127c0d29161d",
+      "predicate": "has_theme",
+      "object": "conservacao",
+      "confidence": 0.85
+    },
+    {
+      "subject": "art_596f85f1591a",
+      "predicate": "has_theme",
+      "object": "herpetologia",
+      "confidence": 0.85
+    },
+    {
+      "subject": "art_596f85f1591a",
+      "predicate": "has_theme",
+      "object": "ecologia",
+      "confidence": 0.85
+    },
+    {
+      "subject": "art_596f85f1591a",
+      "predicate": "has_theme",
+      "object": "zoologia",
+      "confidence": 0.85
+    },
+    {
+      "subject": "art_596f85f1591a",
+      "predicate": "has_theme",
+      "object": "ciencia_cidada",
+      "confidence": 0.85
+    },
+    {
+      "subject": "art_596f85f1591a",
+      "predicate": "has_theme",
+      "object": "biodiversity_informatics",
+      "confidence": 0.85
+    },
+    {
+      "subject": "art_596f85f1591a",
+      "predicate": "has_theme",
+      "object": "conservacao",
+      "confidence": 0.85
+    },
+    {
+      "subject": "art_596f85f1591a",
+      "predicate": "has_doi",
+      "object": "10.1038/s41598-017-09084-6",
+      "confidence": 0.95
+    },
+    {
+      "subject": "art_d65af6fd931f",
+      "predicate": "has_theme",
+      "object": "herpetologia",
+      "confidence": 0.85
+    },
+    {
+      "subject": "art_d65af6fd931f",
+      "predicate": "has_theme",
+      "object": "ecologia",
+      "confidence": 0.85
+    },
+    {
+      "subject": "art_d65af6fd931f",
+      "predicate": "has_theme",
+      "object": "zoologia",
+      "confidence": 0.85
+    },
+    {
+      "subject": "art_d65af6fd931f",
+      "predicate": "has_theme",
+      "object": "ciencia_cidada",
+      "confidence": 0.85
+    },
+    {
+      "subject": "art_d65af6fd931f",
+      "predicate": "has_theme",
+      "object": "biodiversity_informatics",
+      "confidence": 0.85
+    },
+    {
+      "subject": "art_d65af6fd931f",
+      "predicate": "has_theme",
+      "object": "conservacao",
+      "confidence": 0.85
+    },
+    {
+      "subject": "art_d65af6fd931f",
+      "predicate": "has_doi",
+      "object": "10.1038/s41598-017-13130-8",
+      "confidence": 0.95
+    },
+    {
+      "subject": "art_b97b211b14bd",
+      "predicate": "has_theme",
+      "object": "ecologia",
+      "confidence": 0.85
+    },
+    {
+      "subject": "art_b97b211b14bd",
+      "predicate": "has_theme",
+      "object": "zoologia",
+      "confidence": 0.85
+    },
+    {
+      "subject": "art_b97b211b14bd",
+      "predicate": "has_theme",
+      "object": "ciencia_cidada",
+      "confidence": 0.85
+    },
+    {
+      "subject": "art_b97b211b14bd",
+      "predicate": "has_theme",
+      "object": "sdm_modelagem_distribuicao",
+      "confidence": 0.85
+    },
+    {
+      "subject": "art_b97b211b14bd",
+      "predicate": "has_theme",
+      "object": "conservacao",
+      "confidence": 0.85
+    },
+    {
+      "subject": "art_b97b211b14bd",
+      "predicate": "has_doi",
+      "object": "10.1038/s41598-020-67658-3",
+      "confidence": 0.95
+    },
+    {
+      "subject": "art_b88b32c75a6b",
+      "predicate": "has_theme",
+      "object": "ecologia",
+      "confidence": 0.85
+    },
+    {
+      "subject": "art_b88b32c75a6b",
+      "predicate": "has_theme",
+      "object": "zoologia",
+      "confidence": 0.85
+    },
+    {
+      "subject": "art_b88b32c75a6b",
+      "predicate": "has_theme",
+      "object": "ciencia_cidada",
+      "confidence": 0.85
+    },
+    {
+      "subject": "art_b88b32c75a6b",
+      "predicate": "has_theme",
+      "object": "biodiversity_informatics",
+      "confidence": 0.85
+    },
+    {
+      "subject": "art_b88b32c75a6b",
+      "predicate": "has_theme",
+      "object": "conservacao",
+      "confidence": 0.85
+    },
+    {
+      "subject": "art_b88b32c75a6b",
+      "predicate": "has_doi",
+      "object": "10.1038/s41598-022-15218-2",
+      "confidence": 0.95
+    },
+    {
+      "subject": "art_7c19925972fe",
+      "predicate": "has_theme",
+      "object": "ecologia",
+      "confidence": 0.85
+    },
+    {
+      "subject": "art_7c19925972fe",
+      "predicate": "has_theme",
+      "object": "zoologia",
+      "confidence": 0.85
+    },
+    {
+      "subject": "art_7c19925972fe",
+      "predicate": "has_theme",
+      "object": "ciencia_cidada",
+      "confidence": 0.85
+    },
+    {
+      "subject": "art_7c19925972fe",
+      "predicate": "has_theme",
+      "object": "biodiversity_informatics",
+      "confidence": 0.85
+    },
+    {
+      "subject": "art_7c19925972fe",
+      "predicate": "has_theme",
+      "object": "conservacao",
+      "confidence": 0.85
+    },
+    {
+      "subject": "art_c105a9625b2a",
+      "predicate": "has_theme",
+      "object": "ecologia",
+      "confidence": 0.85
+    },
+    {
+      "subject": "art_c105a9625b2a",
+      "predicate": "has_theme",
+      "object": "zoologia",
+      "confidence": 0.85
+    },
+    {
+      "subject": "art_c105a9625b2a",
+      "predicate": "has_theme",
+      "object": "ciencia_cidada",
+      "confidence": 0.85
+    },
+    {
+      "subject": "art_c105a9625b2a",
+      "predicate": "has_theme",
+      "object": "biodiversity_informatics",
+      "confidence": 0.85
+    },
+    {
+      "subject": "art_c105a9625b2a",
+      "predicate": "has_theme",
+      "object": "sdm_modelagem_distribuicao",
+      "confidence": 0.85
+    },
+    {
+      "subject": "art_c105a9625b2a",
+      "predicate": "has_theme",
+      "object": "conservacao",
+      "confidence": 0.85
+    },
+    {
+      "subject": "art_c105a9625b2a",
+      "predicate": "has_doi",
+      "object": "10.1016/j.ecolmodel.2021.109453",
+      "confidence": 0.95
+    },
+    {
+      "subject": "art_fb1c8cf1cd52",
+      "predicate": "has_theme",
+      "object": "herpetologia",
+      "confidence": 0.85
+    },
+    {
+      "subject": "art_fb1c8cf1cd52",
+      "predicate": "has_theme",
+      "object": "ecologia",
+      "confidence": 0.85
+    },
+    {
+      "subject": "art_fb1c8cf1cd52",
+      "predicate": "has_theme",
+      "object": "zoologia",
+      "confidence": 0.85
+    },
+    {
+      "subject": "art_fb1c8cf1cd52",
+      "predicate": "has_theme",
+      "object": "conservacao",
+      "confidence": 0.85
+    },
+    {
+      "subject": "art_fb1c8cf1cd52",
+      "predicate": "has_theme",
+      "object": "mata_atlantica",
+      "confidence": 0.85
+    },
+    {
+      "subject": "art_fb1c8cf1cd52",
+      "predicate": "has_theme",
+      "object": "serra_da_mantiqueira",
+      "confidence": 0.85
+    },
+    {
+      "subject": "art_fb1c8cf1cd52",
+      "predicate": "has_doi",
+      "object": "10.3897/zookeys.797.24549",
+      "confidence": 0.95
+    },
+    {
+      "subject": "art_2dc4c21d5470",
+      "predicate": "has_theme",
+      "object": "ecologia",
+      "confidence": 0.85
+    },
+    {
+      "subject": "art_2dc4c21d5470",
+      "predicate": "has_theme",
+      "object": "zoologia",
+      "confidence": 0.85
+    },
+    {
+      "subject": "art_2dc4c21d5470",
+      "predicate": "has_theme",
+      "object": "biodiversity_informatics",
+      "confidence": 0.85
+    },
+    {
+      "subject": "art_2dc4c21d5470",
+      "predicate": "has_theme",
+      "object": "sdm_modelagem_distribuicao",
+      "confidence": 0.85
+    },
+    {
+      "subject": "art_2dc4c21d5470",
+      "predicate": "has_theme",
+      "object": "conservacao",
+      "confidence": 0.85
+    },
+    {
+      "subject": "art_2dc4c21d5470",
+      "predicate": "has_doi",
+      "object": "10.1371/journal.pone.0050346.g001",
+      "confidence": 0.95
+    },
+    {
+      "subject": "art_6a985f3e3c56",
+      "predicate": "has_theme",
+      "object": "ecologia",
+      "confidence": 0.85
+    },
+    {
+      "subject": "art_6a985f3e3c56",
+      "predicate": "has_theme",
+      "object": "zoologia",
+      "confidence": 0.85
+    },
+    {
+      "subject": "art_6a985f3e3c56",
+      "predicate": "has_theme",
+      "object": "biodiversity_informatics",
+      "confidence": 0.85
+    },
+    {
+      "subject": "art_6a985f3e3c56",
+      "predicate": "has_theme",
+      "object": "sdm_modelagem_distribuicao",
+      "confidence": 0.85
+    },
+    {
+      "subject": "art_6a985f3e3c56",
+      "predicate": "has_doi",
+      "object": "10.1371/journal.pone.0151232",
+      "confidence": 0.95
+    },
+    {
+      "subject": "art_fa2198a1cc30",
+      "predicate": "has_theme",
+      "object": "zoologia",
+      "confidence": 0.85
+    },
+    {
+      "subject": "art_fa2198a1cc30",
+      "predicate": "has_theme",
+      "object": "biodiversity_informatics",
+      "confidence": 0.85
+    },
+    {
+      "subject": "art_fa2198a1cc30",
+      "predicate": "has_doi",
+      "object": "10.1371/j",
+      "confidence": 0.95
+    },
+    {
+      "subject": "art_29fdc17ec7f7",
+      "predicate": "has_theme",
+      "object": "zoologia",
+      "confidence": 0.85
+    },
+    {
+      "subject": "art_29fdc17ec7f7",
+      "predicate": "has_theme",
+      "object": "biodiversity_informatics",
+      "confidence": 0.85
+    },
+    {
+      "subject": "art_29fdc17ec7f7",
+      "predicate": "has_theme",
+      "object": "conservacao",
+      "confidence": 0.85
+    },
+    {
+      "subject": "art_29fdc17ec7f7",
+      "predicate": "has_doi",
+      "object": "10.1371/journal.pone.0029715",
+      "confidence": 0.95
+    },
+    {
+      "subject": "art_377a60493aec",
+      "predicate": "has_theme",
+      "object": "ecologia",
+      "confidence": 0.85
+    },
+    {
+      "subject": "art_377a60493aec",
+      "predicate": "has_theme",
+      "object": "zoologia",
+      "confidence": 0.85
+    },
+    {
+      "subject": "art_377a60493aec",
+      "predicate": "has_theme",
+      "object": "biodiversity_informatics",
+      "confidence": 0.85
+    },
+    {
+      "subject": "art_377a60493aec",
+      "predicate": "has_doi",
+      "object": "10.1016/j.ecoinf.2014.08.004",
+      "confidence": 0.95
+    },
+    {
+      "subject": "art_cd5523bf7455",
+      "predicate": "has_theme",
+      "object": "ecologia",
+      "confidence": 0.85
+    },
+    {
+      "subject": "art_cd5523bf7455",
+      "predicate": "has_theme",
+      "object": "ciencia_cidada",
+      "confidence": 0.85
+    },
+    {
+      "subject": "art_cd5523bf7455",
+      "predicate": "has_theme",
+      "object": "sdm_modelagem_distribuicao",
+      "confidence": 0.85
+    },
+    {
+      "subject": "art_cd5523bf7455",
+      "predicate": "has_theme",
+      "object": "conservacao",
+      "confidence": 0.85
+    },
+    {
+      "subject": "art_cd5523bf7455",
+      "predicate": "has_doi",
+      "object": "10.1016/j.ecolmodel.2019.108927",
+      "confidence": 0.95
+    },
+    {
+      "subject": "art_dcf1815a8dae",
+      "predicate": "has_theme",
+      "object": "ecologia",
+      "confidence": 0.85
+    },
+    {
+      "subject": "art_dcf1815a8dae",
+      "predicate": "has_theme",
+      "object": "zoologia",
+      "confidence": 0.85
+    },
+    {
+      "subject": "art_dcf1815a8dae",
+      "predicate": "has_theme",
+      "object": "biodiversity_informatics",
+      "confidence": 0.85
+    },
+    {
+      "subject": "art_dcf1815a8dae",
+      "predicate": "has_theme",
+      "object": "conservacao",
+      "confidence": 0.85
+    },
+    {
+      "subject": "art_dcf1815a8dae",
+      "predicate": "has_doi",
+      "object": "10.1016/j.tree.2010.12.009",
+      "confidence": 0.95
+    },
+    {
+      "subject": "art_60b23b1bb321",
+      "predicate": "has_theme",
+      "object": "ecologia",
+      "confidence": 0.85
+    },
+    {
+      "subject": "art_60b23b1bb321",
+      "predicate": "has_theme",
+      "object": "sdm_modelagem_distribuicao",
+      "confidence": 0.85
+    },
+    {
+      "subject": "art_60b23b1bb321",
+      "predicate": "has_doi",
+      "object": "10.1016/j.ecoinf.2020.101086",
+      "confidence": 0.95
+    },
+    {
+      "subject": "art_84e3d63e5237",
+      "predicate": "has_theme",
+      "object": "herpetologia",
+      "confidence": 0.85
+    },
+    {
+      "subject": "art_84e3d63e5237",
+      "predicate": "has_theme",
+      "object": "ecologia",
+      "confidence": 0.85
+    },
+    {
+      "subject": "art_84e3d63e5237",
+      "predicate": "has_theme",
+      "object": "conservacao",
+      "confidence": 0.85
+    },
+    {
+      "subject": "art_84e3d63e5237",
+      "predicate": "has_theme",
+      "object": "glossario_terminologia",
+      "confidence": 0.85
+    },
+    {
+      "subject": "art_84e3d63e5237",
+      "predicate": "has_theme",
+      "object": "mata_atlantica",
+      "confidence": 0.85
+    },
+    {
+      "subject": "art_1ccb674cff56",
+      "predicate": "has_theme",
+      "object": "herpetologia",
+      "confidence": 0.85
+    },
+    {
+      "subject": "art_1ccb674cff56",
+      "predicate": "has_theme",
+      "object": "ecologia",
+      "confidence": 0.85
+    },
+    {
+      "subject": "art_1ccb674cff56",
+      "predicate": "has_theme",
+      "object": "zoologia",
+      "confidence": 0.85
+    },
+    {
+      "subject": "art_1ccb674cff56",
+      "predicate": "has_theme",
+      "object": "biodiversity_informatics",
+      "confidence": 0.85
+    },
+    {
+      "subject": "art_1ccb674cff56",
+      "predicate": "has_theme",
+      "object": "conservacao",
+      "confidence": 0.85
+    },
+    {
+      "subject": "art_1ccb674cff56",
+      "predicate": "has_theme",
+      "object": "mata_atlantica",
+      "confidence": 0.85
+    },
+    {
+      "subject": "art_1ccb674cff56",
+      "predicate": "has_doi",
+      "object": "10.2994/057.006.0301",
+      "confidence": 0.95
+    },
+    {
+      "subject": "art_ec1da0932247",
+      "predicate": "has_theme",
+      "object": "zoologia",
+      "confidence": 0.85
+    },
+    {
+      "subject": "art_ec1da0932247",
+      "predicate": "has_theme",
+      "object": "biodiversity_informatics",
+      "confidence": 0.85
+    },
+    {
+      "subject": "art_ec1da0932247",
+      "predicate": "has_doi",
+      "object": "10.1093/database/bax100",
+      "confidence": 0.95
+    },
+    {
+      "subject": "art_867bb67cbbbc",
+      "predicate": "has_theme",
+      "object": "ecologia",
+      "confidence": 0.85
+    },
+    {
+      "subject": "art_867bb67cbbbc",
+      "predicate": "has_theme",
+      "object": "zoologia",
+      "confidence": 0.85
+    },
+    {
+      "subject": "art_867bb67cbbbc",
+      "predicate": "has_theme",
+      "object": "biodiversity_informatics",
+      "confidence": 0.85
+    },
+    {
+      "subject": "art_867bb67cbbbc",
+      "predicate": "has_doi",
+      "object": "10.3897/BDJ.6.e26741",
+      "confidence": 0.95
+    },
+    {
+      "subject": "art_16ebf616c28f",
+      "predicate": "has_theme",
+      "object": "ecologia",
+      "confidence": 0.85
+    },
+    {
+      "subject": "art_16ebf616c28f",
+      "predicate": "has_theme",
+      "object": "zoologia",
+      "confidence": 0.85
+    },
+    {
+      "subject": "art_16ebf616c28f",
+      "predicate": "has_theme",
+      "object": "biodiversity_informatics",
+      "confidence": 0.85
+    },
+    {
+      "subject": "art_16ebf616c28f",
+      "predicate": "has_theme",
+      "object": "conservacao",
+      "confidence": 0.85
+    },
+    {
+      "subject": "art_16ebf616c28f",
+      "predicate": "has_doi",
+      "object": "10.3897/BDJ.12.e133775",
+      "confidence": 0.95
+    },
+    {
+      "subject": "art_f36f125bee8b",
+      "predicate": "has_theme",
+      "object": "herpetologia",
+      "confidence": 0.85
+    },
+    {
+      "subject": "art_f36f125bee8b",
+      "predicate": "has_theme",
+      "object": "ecologia",
+      "confidence": 0.85
+    },
+    {
+      "subject": "art_f36f125bee8b",
+      "predicate": "has_theme",
+      "object": "zoologia",
+      "confidence": 0.85
+    },
+    {
+      "subject": "art_f36f125bee8b",
+      "predicate": "has_theme",
+      "object": "biodiversity_informatics",
+      "confidence": 0.85
+    },
+    {
+      "subject": "art_f36f125bee8b",
+      "predicate": "has_theme",
+      "object": "serra_da_mantiqueira",
+      "confidence": 0.85
+    },
+    {
+      "subject": "art_f716ffd0363f",
+      "predicate": "has_theme",
+      "object": "herpetologia",
+      "confidence": 0.85
+    },
+    {
+      "subject": "art_f716ffd0363f",
+      "predicate": "has_theme",
+      "object": "ecologia",
+      "confidence": 0.85
+    },
+    {
+      "subject": "art_f716ffd0363f",
+      "predicate": "has_theme",
+      "object": "zoologia",
+      "confidence": 0.85
+    },
+    {
+      "subject": "art_f716ffd0363f",
+      "predicate": "has_theme",
+      "object": "biodiversity_informatics",
+      "confidence": 0.85
+    },
+    {
+      "subject": "art_f716ffd0363f",
+      "predicate": "has_theme",
+      "object": "conservacao",
+      "confidence": 0.85
+    },
+    {
+      "subject": "art_f716ffd0363f",
+      "predicate": "has_theme",
+      "object": "mata_atlantica",
+      "confidence": 0.85
+    },
+    {
+      "subject": "art_f716ffd0363f",
+      "predicate": "has_theme",
+      "object": "serra_da_mantiqueira",
+      "confidence": 0.85
+    },
+    {
+      "subject": "art_fcc3cd383d32",
+      "predicate": "has_theme",
+      "object": "ecologia",
+      "confidence": 0.85
+    },
+    {
+      "subject": "art_fcc3cd383d32",
+      "predicate": "has_theme",
+      "object": "biodiversity_informatics",
+      "confidence": 0.85
+    },
+    {
+      "subject": "art_fcc3cd383d32",
+      "predicate": "has_theme",
+      "object": "sdm_modelagem_distribuicao",
+      "confidence": 0.85
+    },
+    {
+      "subject": "art_fcc3cd383d32",
+      "predicate": "has_theme",
+      "object": "conservacao",
+      "confidence": 0.85
+    },
+    {
+      "subject": "art_fcc3cd383d32",
+      "predicate": "has_doi",
+      "object": "10.1111/ecog.07294",
+      "confidence": 0.95
+    },
+    {
+      "subject": "art_7eb87491c290",
+      "predicate": "has_theme",
+      "object": "herpetologia",
+      "confidence": 0.85
+    },
+    {
+      "subject": "art_7eb87491c290",
+      "predicate": "has_theme",
+      "object": "ecologia",
+      "confidence": 0.85
+    },
+    {
+      "subject": "art_7eb87491c290",
+      "predicate": "has_theme",
+      "object": "zoologia",
+      "confidence": 0.85
+    },
+    {
+      "subject": "art_7eb87491c290",
+      "predicate": "has_theme",
+      "object": "conservacao",
+      "confidence": 0.85
+    },
+    {
+      "subject": "art_7eb87491c290",
+      "predicate": "has_doi",
+      "object": "10.1371/journal.pone",
+      "confidence": 0.95
+    },
+    {
+      "subject": "art_06a5dcc99e23",
+      "predicate": "has_theme",
+      "object": "ecologia",
+      "confidence": 0.85
+    },
+    {
+      "subject": "art_06a5dcc99e23",
+      "predicate": "has_theme",
+      "object": "zoologia",
+      "confidence": 0.85
+    },
+    {
+      "subject": "art_06a5dcc99e23",
+      "predicate": "has_theme",
+      "object": "ciencia_cidada",
+      "confidence": 0.85
+    },
+    {
+      "subject": "art_06a5dcc99e23",
+      "predicate": "has_theme",
+      "object": "biodiversity_informatics",
+      "confidence": 0.85
+    },
+    {
+      "subject": "art_06a5dcc99e23",
+      "predicate": "has_theme",
+      "object": "conservacao",
+      "confidence": 0.85
+    },
+    {
+      "subject": "art_06a5dcc99e23",
+      "predicate": "has_doi",
+      "object": "10.1093/biosci/biz010",
+      "confidence": 0.95
+    },
+    {
+      "subject": "art_d078cf54a116",
+      "predicate": "has_theme",
+      "object": "ecologia",
+      "confidence": 0.85
+    },
+    {
+      "subject": "art_d078cf54a116",
+      "predicate": "has_theme",
+      "object": "biodiversity_informatics",
+      "confidence": 0.85
+    },
+    {
+      "subject": "art_d078cf54a116",
+      "predicate": "has_theme",
+      "object": "conservacao",
+      "confidence": 0.85
+    },
+    {
+      "subject": "art_d078cf54a116",
+      "predicate": "has_doi",
+      "object": "10.1002/pan3.10313",
+      "confidence": 0.95
+    },
+    {
+      "subject": "art_e59c8a902b56",
+      "predicate": "has_theme",
+      "object": "ecologia",
+      "confidence": 0.85
+    },
+    {
+      "subject": "art_e59c8a902b56",
+      "predicate": "has_theme",
+      "object": "zoologia",
+      "confidence": 0.85
+    },
+    {
+      "subject": "art_e59c8a902b56",
+      "predicate": "has_theme",
+      "object": "ciencia_cidada",
+      "confidence": 0.85
+    },
+    {
+      "subject": "art_e59c8a902b56",
+      "predicate": "has_theme",
+      "object": "biodiversity_informatics",
+      "confidence": 0.85
+    },
+    {
+      "subject": "art_e59c8a902b56",
+      "predicate": "has_theme",
+      "object": "conservacao",
+      "confidence": 0.85
+    },
+    {
+      "subject": "art_e59c8a902b56",
+      "predicate": "has_doi",
+      "object": "10.1016/j.biocon.2009.05.006",
+      "confidence": 0.95
+    },
+    {
+      "subject": "art_3a5cd95f5689",
+      "predicate": "has_theme",
+      "object": "ecologia",
+      "confidence": 0.85
+    },
+    {
+      "subject": "art_3a5cd95f5689",
+      "predicate": "has_theme",
+      "object": "conservacao",
+      "confidence": 0.85
+    },
+    {
+      "subject": "art_3a5cd95f5689",
+      "predicate": "has_doi",
+      "object": "10.3390/su142114632",
+      "confidence": 0.95
+    },
+    {
+      "subject": "art_c621c5078a77",
+      "predicate": "has_theme",
+      "object": "ecologia",
+      "confidence": 0.85
+    },
+    {
+      "subject": "art_c621c5078a77",
+      "predicate": "has_theme",
+      "object": "ciencia_cidada",
+      "confidence": 0.85
+    },
+    {
+      "subject": "art_c621c5078a77",
+      "predicate": "has_theme",
+      "object": "conservacao",
+      "confidence": 0.85
+    },
+    {
+      "subject": "art_c621c5078a77",
+      "predicate": "has_doi",
+      "object": "10.1016/j.biocon.2020.108411",
+      "confidence": 0.95
+    },
+    {
+      "subject": "art_d3353c697c63",
+      "predicate": "has_theme",
+      "object": "ecologia",
+      "confidence": 0.85
+    },
+    {
+      "subject": "art_d3353c697c63",
+      "predicate": "has_theme",
+      "object": "zoologia",
+      "confidence": 0.85
+    },
+    {
+      "subject": "art_d3353c697c63",
+      "predicate": "has_theme",
+      "object": "ciencia_cidada",
+      "confidence": 0.85
+    },
+    {
+      "subject": "art_d3353c697c63",
+      "predicate": "has_theme",
+      "object": "biodiversity_informatics",
+      "confidence": 0.85
+    },
+    {
+      "subject": "art_d3353c697c63",
+      "predicate": "has_theme",
+      "object": "sdm_modelagem_distribuicao",
+      "confidence": 0.85
+    },
+    {
+      "subject": "art_d3353c697c63",
+      "predicate": "has_theme",
+      "object": "conservacao",
+      "confidence": 0.85
+    },
+    {
+      "subject": "art_d3353c697c63",
+      "predicate": "has_doi",
+      "object": "10.1016/j.biocon.2013.11.003",
+      "confidence": 0.95
+    },
+    {
+      "subject": "art_67750200584b",
+      "predicate": "has_theme",
+      "object": "herpetologia",
+      "confidence": 0.85
+    },
+    {
+      "subject": "art_67750200584b",
+      "predicate": "has_theme",
+      "object": "ecologia",
+      "confidence": 0.85
+    },
+    {
+      "subject": "art_67750200584b",
+      "predicate": "has_theme",
+      "object": "zoologia",
+      "confidence": 0.85
+    },
+    {
+      "subject": "art_67750200584b",
+      "predicate": "has_theme",
+      "object": "conservacao",
+      "confidence": 0.85
+    },
+    {
+      "subject": "art_67750200584b",
+      "predicate": "has_theme",
+      "object": "mata_atlantica",
+      "confidence": 0.85
+    },
+    {
+      "subject": "art_67750200584b",
+      "predicate": "has_theme",
+      "object": "serra_da_mantiqueira",
+      "confidence": 0.85
+    },
+    {
+      "subject": "art_67750200584b",
+      "predicate": "has_doi",
+      "object": "10.37002/biodiversidadebrasileira.v15i4.2756",
+      "confidence": 0.95
+    },
+    {
+      "subject": "art_4ef2c6175481",
+      "predicate": "has_theme",
+      "object": "ecologia",
+      "confidence": 0.85
+    },
+    {
+      "subject": "art_4ef2c6175481",
+      "predicate": "has_theme",
+      "object": "zoologia",
+      "confidence": 0.85
+    },
+    {
+      "subject": "art_4ef2c6175481",
+      "predicate": "has_theme",
+      "object": "ciencia_cidada",
+      "confidence": 0.85
+    },
+    {
+      "subject": "art_4ef2c6175481",
+      "predicate": "has_theme",
+      "object": "biodiversity_informatics",
+      "confidence": 0.85
+    },
+    {
+      "subject": "art_4ef2c6175481",
+      "predicate": "has_theme",
+      "object": "conservacao",
+      "confidence": 0.85
+    },
+    {
+      "subject": "art_4ef2c6175481",
+      "predicate": "has_theme",
+      "object": "mata_atlantica",
+      "confidence": 0.85
+    },
+    {
+      "subject": "art_4ef2c6175481",
+      "predicate": "has_doi",
+      "object": "10.3389/fevo.2021.693602",
+      "confidence": 0.95
+    },
+    {
+      "subject": "art_b6ae2b2d70d6",
+      "predicate": "has_theme",
+      "object": "herpetologia",
+      "confidence": 0.85
+    },
+    {
+      "subject": "art_b6ae2b2d70d6",
+      "predicate": "has_theme",
+      "object": "ecologia",
+      "confidence": 0.85
+    },
+    {
+      "subject": "art_b6ae2b2d70d6",
+      "predicate": "has_theme",
+      "object": "zoologia",
+      "confidence": 0.85
+    },
+    {
+      "subject": "art_b6ae2b2d70d6",
+      "predicate": "has_theme",
+      "object": "ciencia_cidada",
+      "confidence": 0.85
+    },
+    {
+      "subject": "art_b6ae2b2d70d6",
+      "predicate": "has_theme",
+      "object": "biodiversity_informatics",
+      "confidence": 0.85
+    },
+    {
+      "subject": "art_b6ae2b2d70d6",
+      "predicate": "has_theme",
+      "object": "sdm_modelagem_distribuicao",
+      "confidence": 0.85
+    },
+    {
+      "subject": "art_b6ae2b2d70d6",
+      "predicate": "has_theme",
+      "object": "conservacao",
+      "confidence": 0.85
+    },
+    {
+      "subject": "art_b6ae2b2d70d6",
+      "predicate": "has_doi",
+      "object": "10.1146/annurev-ecolsys-102209-144636",
+      "confidence": 0.95
+    },
+    {
+      "subject": "art_498a8d5fffc4",
+      "predicate": "has_theme",
+      "object": "herpetologia",
+      "confidence": 0.85
+    },
+    {
+      "subject": "art_498a8d5fffc4",
+      "predicate": "has_theme",
+      "object": "ecologia",
+      "confidence": 0.85
+    },
+    {
+      "subject": "art_498a8d5fffc4",
+      "predicate": "has_theme",
+      "object": "zoologia",
+      "confidence": 0.85
+    },
+    {
+      "subject": "art_498a8d5fffc4",
+      "predicate": "has_theme",
+      "object": "biodiversity_informatics",
+      "confidence": 0.85
+    },
+    {
+      "subject": "art_498a8d5fffc4",
+      "predicate": "has_theme",
+      "object": "sdm_modelagem_distribuicao",
+      "confidence": 0.85
+    },
+    {
+      "subject": "art_498a8d5fffc4",
+      "predicate": "has_theme",
+      "object": "conservacao",
+      "confidence": 0.85
+    },
+    {
+      "subject": "art_498a8d5fffc4",
+      "predicate": "has_doi",
+      "object": "10.1371/journal.pbio.1000385.g001",
+      "confidence": 0.95
+    },
+    {
+      "subject": "art_c3ddd00fe49d",
+      "predicate": "has_theme",
+      "object": "ecologia",
+      "confidence": 0.85
+    },
+    {
+      "subject": "art_c3ddd00fe49d",
+      "predicate": "has_theme",
+      "object": "zoologia",
+      "confidence": 0.85
+    },
+    {
+      "subject": "art_c3ddd00fe49d",
+      "predicate": "has_theme",
+      "object": "ciencia_cidada",
+      "confidence": 0.85
+    },
+    {
+      "subject": "art_c3ddd00fe49d",
+      "predicate": "has_theme",
+      "object": "biodiversity_informatics",
+      "confidence": 0.85
+    },
+    {
+      "subject": "art_c3ddd00fe49d",
+      "predicate": "has_theme",
+      "object": "sdm_modelagem_distribuicao",
+      "confidence": 0.85
+    },
+    {
+      "subject": "art_c3ddd00fe49d",
+      "predicate": "has_doi",
+      "object": "10.1002/aps3.1193",
+      "confidence": 0.95
+    },
+    {
+      "subject": "art_f0f40d9e7cce",
+      "predicate": "has_theme",
+      "object": "ecologia",
+      "confidence": 0.85
+    },
+    {
+      "subject": "art_f0f40d9e7cce",
+      "predicate": "has_theme",
+      "object": "zoologia",
+      "confidence": 0.85
+    },
+    {
+      "subject": "art_f0f40d9e7cce",
+      "predicate": "has_theme",
+      "object": "ciencia_cidada",
+      "confidence": 0.85
+    },
+    {
+      "subject": "art_f0f40d9e7cce",
+      "predicate": "has_theme",
+      "object": "biodiversity_informatics",
+      "confidence": 0.85
+    },
+    {
+      "subject": "art_f0f40d9e7cce",
+      "predicate": "has_theme",
+      "object": "sdm_modelagem_distribuicao",
+      "confidence": 0.85
+    },
+    {
+      "subject": "art_f0f40d9e7cce",
+      "predicate": "has_doi",
+      "object": "10.1111/2041-210X.12254",
+      "confidence": 0.95
+    },
+    {
+      "subject": "art_eb1f3bb4eb28",
+      "predicate": "has_theme",
+      "object": "ecologia",
+      "confidence": 0.85
+    },
+    {
+      "subject": "art_eb1f3bb4eb28",
+      "predicate": "has_theme",
+      "object": "zoologia",
+      "confidence": 0.85
+    },
+    {
+      "subject": "art_eb1f3bb4eb28",
+      "predicate": "has_theme",
+      "object": "ciencia_cidada",
+      "confidence": 0.85
+    },
+    {
+      "subject": "art_eb1f3bb4eb28",
+      "predicate": "has_theme",
+      "object": "conservacao",
+      "confidence": 0.85
+    },
+    {
+      "subject": "art_eb1f3bb4eb28",
+      "predicate": "has_theme",
+      "object": "glossario_terminologia",
+      "confidence": 0.85
+    },
+    {
+      "subject": "art_eb1f3bb4eb28",
+      "predicate": "has_doi",
+      "object": "10.1590/s0103-4014.202539114.015",
+      "confidence": 0.95
+    },
+    {
+      "subject": "art_045fdd3f31e2",
+      "predicate": "has_theme",
+      "object": "herpetologia",
+      "confidence": 0.85
+    },
+    {
+      "subject": "art_045fdd3f31e2",
+      "predicate": "has_theme",
+      "object": "ecologia",
+      "confidence": 0.85
+    },
+    {
+      "subject": "art_045fdd3f31e2",
+      "predicate": "has_theme",
+      "object": "zoologia",
+      "confidence": 0.85
+    },
+    {
+      "subject": "art_045fdd3f31e2",
+      "predicate": "has_theme",
+      "object": "ciencia_cidada",
+      "confidence": 0.85
+    },
+    {
+      "subject": "art_045fdd3f31e2",
+      "predicate": "has_theme",
+      "object": "biodiversity_informatics",
+      "confidence": 0.85
+    },
+    {
+      "subject": "art_045fdd3f31e2",
+      "predicate": "has_theme",
+      "object": "sdm_modelagem_distribuicao",
+      "confidence": 0.85
+    },
+    {
+      "subject": "art_045fdd3f31e2",
+      "predicate": "has_theme",
+      "object": "conservacao",
+      "confidence": 0.85
+    },
+    {
+      "subject": "art_045fdd3f31e2",
+      "predicate": "has_doi",
+      "object": "10.1093/biosci/biab093",
+      "confidence": 0.95
+    }
+  ],
+  "extracted_entities": {
+    "methods_platforms_tools": [
+      {
+        "name": "GBIF",
+        "mentions_in_sample": 219
+      },
+      {
+        "name": "Darwin Core",
+        "mentions_in_sample": 175
+      },
+      {
+        "name": "TraitBank",
+        "mentions_in_sample": 92
+      },
+      {
+        "name": "Maxent",
+        "mentions_in_sample": 91
+      },
+      {
+        "name": "species distribution models",
+        "mentions_in_sample": 57
+      },
+      {
+        "name": "background data",
+        "mentions_in_sample": 48
+      },
+      {
+        "name": "occupancy models",
+        "mentions_in_sample": 19
+      },
+      {
+        "name": "pseudo-absence",
+        "mentions_in_sample": 17
+      },
+      {
+        "name": "eBird",
+        "mentions_in_sample": 15
+      },
+      {
+        "name": "FAIR",
+        "mentions_in_sample": 15
+      },
+      {
+        "name": "pitfall traps",
+        "mentions_in_sample": 13
+      },
+      {
+        "name": "cluster analysis",
+        "mentions_in_sample": 12
+      },
+      {
+        "name": "iNaturalist",
+        "mentions_in_sample": 10
+      },
+      {
+        "name": "drift fences",
+        "mentions_in_sample": 5
+      },
+      {
+        "name": "ecological niche modelling",
+        "mentions_in_sample": 4
+      },
+      {
+        "name": "auditive surveys",
+        "mentions_in_sample": 2
+      },
+      {
+        "name": "visual surveys",
+        "mentions_in_sample": 1
+      }
+    ],
+    "concepts": [
+      {
+        "name": "data quality",
+        "mentions_in_sample": 142
+      },
+      {
+        "name": "spatial bias",
+        "mentions_in_sample": 67
+      },
+      {
+        "name": "metadata",
+        "mentions_in_sample": 57
+      },
+      {
+        "name": "sampling bias",
+        "mentions_in_sample": 48
+      },
+      {
+        "name": "sample selection bias",
+        "mentions_in_sample": 45
+      },
+      {
+        "name": "taxonomic bias",
+        "mentions_in_sample": 43
+      },
+      {
+        "name": "natural history collections",
+        "mentions_in_sample": 33
+      },
+      {
+        "name": "presence-only data",
+        "mentions_in_sample": 27
+      },
+      {
+        "name": "fitness for use",
+        "mentions_in_sample": 24
+      },
+      {
+        "name": "temporal bias",
+        "mentions_in_sample": 14
+      },
+      {
+        "name": "biodiversity monitoring",
+        "mentions_in_sample": 8
+      },
+      {
+        "name": "georeferencing",
+        "mentions_in_sample": 8
+      },
+      {
+        "name": "opportunistic data",
+        "mentions_in_sample": 7
+      },
+      {
+        "name": "semistructured surveys",
+        "mentions_in_sample": 2
+      },
+      {
+        "name": "imperfect detection",
+        "mentions_in_sample": 1
+      }
+    ],
+    "places_regions": [
+      {
+        "name": "São Paulo",
+        "mentions_in_sample": 260
+      },
+      {
+        "name": "Brasil",
+        "mentions_in_sample": 248
+      },
+      {
+        "name": "Brazil",
+        "mentions_in_sample": 230
+      },
+      {
+        "name": "Mata Atlântica",
+        "mentions_in_sample": 141
+      },
+      {
+        "name": "Piedade",
+        "mentions_in_sample": 98
+      },
+      {
+        "name": "Tapiraí",
+        "mentions_in_sample": 97
+      },
+      {
+        "name": "Minas Gerais",
+        "mentions_in_sample": 78
+      },
+      {
+        "name": "Atlantic Forest",
+        "mentions_in_sample": 61
+      },
+      {
+        "name": "Vale do Paraíba",
+        "mentions_in_sample": 56
+      },
+      {
+        "name": "São José do Barreiro",
+        "mentions_in_sample": 29
+      },
+      {
+        "name": "Serra da Mantiqueira",
+        "mentions_in_sample": 20
+      },
+      {
+        "name": "Serra do Papagaio",
+        "mentions_in_sample": 17
+      },
+      {
+        "name": "Parque Estadual do Jurupará",
+        "mentions_in_sample": 8
+      },
+      {
+        "name": "Parque Estadual Carlos Botelho",
+        "mentions_in_sample": 6
+      },
+      {
+        "name": "Serra da Bocaina",
+        "mentions_in_sample": 6
+      },
+      {
+        "name": "Itatiaia",
+        "mentions_in_sample": 3
+      }
+    ],
+    "scientific_name_candidates": [
+      {
+        "name": "Bothrops jararaca",
+        "mentions_in_sample": 82,
+        "warning": "candidato extraído automaticamente; validar antes de uso taxonômico formal"
+      },
+      {
+        "name": "Crotalus durissus",
+        "mentions_in_sample": 51,
+        "warning": "candidato extraído automaticamente; validar antes de uso taxonômico formal"
+      },
+      {
+        "name": "Usnea longissima",
+        "mentions_in_sample": 49,
+        "warning": "candidato extraído automaticamente; validar antes de uso taxonômico formal"
+      },
+      {
+        "name": "Natural history",
+        "mentions_in_sample": 37,
+        "warning": "candidato extraído automaticamente; validar antes de uso taxonômico formal"
+      },
+      {
+        "name": "This species",
+        "mentions_in_sample": 36,
+        "warning": "candidato extraído automaticamente; validar antes de uso taxonômico formal"
+      },
+      {
+        "name": "Bothrops jararacussu",
+        "mentions_in_sample": 36,
+        "warning": "candidato extraído automaticamente; validar antes de uso taxonômico formal"
+      },
+      {
+        "name": "Chironius bicarinatus",
+        "mentions_in_sample": 33,
+        "warning": "candidato extraído automaticamente; validar antes de uso taxonômico formal"
+      },
+      {
+        "name": "Spilotes pullatus",
+        "mentions_in_sample": 31,
+        "warning": "candidato extraído automaticamente; validar antes de uso taxonômico formal"
+      },
+      {
+        "name": "Micrurus corallinus",
+        "mentions_in_sample": 29,
+        "warning": "candidato extraído automaticamente; validar antes de uso taxonômico formal"
+      },
+      {
+        "name": "Tomodon dorsatus",
+        "mentions_in_sample": 28,
+        "warning": "candidato extraído automaticamente; validar antes de uso taxonômico formal"
+      },
+      {
+        "name": "Xenodon neuwiedii",
+        "mentions_in_sample": 27,
+        "warning": "candidato extraído automaticamente; validar antes de uso taxonômico formal"
+      },
+      {
+        "name": "Thamnodynastes strigatus",
+        "mentions_in_sample": 25,
+        "warning": "candidato extraído automaticamente; validar antes de uso taxonômico formal"
+      },
+      {
+        "name": "Altitudinal variation",
+        "mentions_in_sample": 25,
+        "warning": "candidato extraído automaticamente; validar antes de uso taxonômico formal"
+      },
+      {
+        "name": "Liophis atraventer",
+        "mentions_in_sample": 21,
+        "warning": "candidato extraído automaticamente; validar antes de uso taxonômico formal"
+      },
+      {
+        "name": "Brachycephalus hermogenesi",
+        "mentions_in_sample": 20,
+        "warning": "candidato extraído automaticamente; validar antes de uso taxonômico formal"
+      },
+      {
+        "name": "Xenodon merremii",
+        "mentions_in_sample": 19,
+        "warning": "candidato extraído automaticamente; validar antes de uso taxonômico formal"
+      },
+      {
+        "name": "Physalaemus olfersii",
+        "mentions_in_sample": 19,
+        "warning": "candidato extraído automaticamente; validar antes de uso taxonômico formal"
+      },
+      {
+        "name": "Cycloramphus acangatan",
+        "mentions_in_sample": 19,
+        "warning": "candidato extraído automaticamente; validar antes de uso taxonômico formal"
+      },
+      {
+        "name": "Odontophrynus americanus",
+        "mentions_in_sample": 19,
+        "warning": "candidato extraído automaticamente; validar antes de uso taxonômico formal"
+      },
+      {
+        "name": "Scinax rizibilis",
+        "mentions_in_sample": 19,
+        "warning": "candidato extraído automaticamente; validar antes de uso taxonômico formal"
+      },
+      {
+        "name": "Leptodactylus fuscus",
+        "mentions_in_sample": 19,
+        "warning": "candidato extraído automaticamente; validar antes de uso taxonômico formal"
+      },
+      {
+        "name": "Chiasmocleis leucosticta",
+        "mentions_in_sample": 19,
+        "warning": "candidato extraído automaticamente; validar antes de uso taxonômico formal"
+      },
+      {
+        "name": "Placosoma glabellum",
+        "mentions_in_sample": 19,
+        "warning": "candidato extraído automaticamente; validar antes de uso taxonômico formal"
+      },
+      {
+        "name": "Echinanthera undulata",
+        "mentions_in_sample": 19,
+        "warning": "candidato extraído automaticamente; validar antes de uso taxonômico formal"
+      },
+      {
+        "name": "Philodryas patagoniensis",
+        "mentions_in_sample": 18,
+        "warning": "candidato extraído automaticamente; validar antes de uso taxonômico formal"
+      },
+      {
+        "name": "Bothrops fonsecai",
+        "mentions_in_sample": 18,
+        "warning": "candidato extraído automaticamente; validar antes de uso taxonômico formal"
+      },
+      {
+        "name": "Rhinella ornata",
+        "mentions_in_sample": 18,
+        "warning": "candidato extraído automaticamente; validar antes de uso taxonômico formal"
+      },
+      {
+        "name": "Rhinella icterica",
+        "mentions_in_sample": 18,
+        "warning": "candidato extraído automaticamente; validar antes de uso taxonômico formal"
+      },
+      {
+        "name": "Ischnocnema guentheri",
+        "mentions_in_sample": 18,
+        "warning": "candidato extraído automaticamente; validar antes de uso taxonômico formal"
+      },
+      {
+        "name": "Hyalinobatrachium uranoscopum",
+        "mentions_in_sample": 18,
+        "warning": "candidato extraído automaticamente; validar antes de uso taxonômico formal"
+      },
+      {
+        "name": "Haddadus binotatus",
+        "mentions_in_sample": 18,
+        "warning": "candidato extraído automaticamente; validar antes de uso taxonômico formal"
+      },
+      {
+        "name": "Macrogenioglottus alipioi",
+        "mentions_in_sample": 18,
+        "warning": "candidato extraído automaticamente; validar antes de uso taxonômico formal"
+      },
+      {
+        "name": "Proceratophrys boiei",
+        "mentions_in_sample": 18,
+        "warning": "candidato extraído automaticamente; validar antes de uso taxonômico formal"
+      },
+      {
+        "name": "Aplastodiscus leucopygius",
+        "mentions_in_sample": 18,
+        "warning": "candidato extraído automaticamente; validar antes de uso taxonômico formal"
+      },
+      {
+        "name": "Aplastodiscus perviridis",
+        "mentions_in_sample": 18,
+        "warning": "candidato extraído automaticamente; validar antes de uso taxonômico formal"
+      },
+      {
+        "name": "Bokermannohyla circumdata",
+        "mentions_in_sample": 18,
+        "warning": "candidato extraído automaticamente; validar antes de uso taxonômico formal"
+      },
+      {
+        "name": "Bokermannohyla hylax",
+        "mentions_in_sample": 18,
+        "warning": "candidato extraído automaticamente; validar antes de uso taxonômico formal"
+      },
+      {
+        "name": "Dendropsophus sanborni",
+        "mentions_in_sample": 18,
+        "warning": "candidato extraído automaticamente; validar antes de uso taxonômico formal"
+      },
+      {
+        "name": "Hypsiboas albomarginatus",
+        "mentions_in_sample": 18,
+        "warning": "candidato extraído automaticamente; validar antes de uso taxonômico formal"
+      },
+      {
+        "name": "Hypsiboas albopunctatus",
+        "mentions_in_sample": 18,
+        "warning": "candidato extraído automaticamente; validar antes de uso taxonômico formal"
+      },
+      {
+        "name": "Hypsiboas caingua",
+        "mentions_in_sample": 18,
+        "warning": "candidato extraído automaticamente; validar antes de uso taxonômico formal"
+      },
+      {
+        "name": "Hypsiboas pardalis",
+        "mentions_in_sample": 18,
+        "warning": "candidato extraído automaticamente; validar antes de uso taxonômico formal"
+      },
+      {
+        "name": "Hypsiboas prasinus",
+        "mentions_in_sample": 18,
+        "warning": "candidato extraído automaticamente; validar antes de uso taxonômico formal"
+      },
+      {
+        "name": "Scinax crospedospilus",
+        "mentions_in_sample": 18,
+        "warning": "candidato extraído automaticamente; validar antes de uso taxonômico formal"
+      },
+      {
+        "name": "Scinax perereca",
+        "mentions_in_sample": 18,
+        "warning": "candidato extraído automaticamente; validar antes de uso taxonômico formal"
+      },
+      {
+        "name": "Sphaenorhynchus surdus",
+        "mentions_in_sample": 18,
+        "warning": "candidato extraído automaticamente; validar antes de uso taxonômico formal"
+      },
+      {
+        "name": "Crossodactylus caramaschii",
+        "mentions_in_sample": 18,
+        "warning": "candidato extraído automaticamente; validar antes de uso taxonômico formal"
+      },
+      {
+        "name": "Physalaemus cuvieri",
+        "mentions_in_sample": 18,
+        "warning": "candidato extraído automaticamente; validar antes de uso taxonômico formal"
+      },
+      {
+        "name": "Leptodactylus mystacinus",
+        "mentions_in_sample": 18,
+        "warning": "candidato extraído automaticamente; validar antes de uso taxonômico formal"
+      },
+      {
+        "name": "Myersiella microps",
+        "mentions_in_sample": 18,
+        "warning": "candidato extraído automaticamente; validar antes de uso taxonômico formal"
+      },
+      {
+        "name": "Siphonops annulatus",
+        "mentions_in_sample": 18,
+        "warning": "candidato extraído automaticamente; validar antes de uso taxonômico formal"
+      },
+      {
+        "name": "Colobodactylus taunayi",
+        "mentions_in_sample": 18,
+        "warning": "candidato extraído automaticamente; validar antes de uso taxonômico formal"
+      },
+      {
+        "name": "Ecpleopus gaudichaudii",
+        "mentions_in_sample": 18,
+        "warning": "candidato extraído automaticamente; validar antes de uso taxonômico formal"
+      },
+      {
+        "name": "Enyalius iheringii",
+        "mentions_in_sample": 18,
+        "warning": "candidato extraído automaticamente; validar antes de uso taxonômico formal"
+      },
+      {
+        "name": "Enyalius perditus",
+        "mentions_in_sample": 18,
+        "warning": "candidato extraído automaticamente; validar antes de uso taxonômico formal"
+      },
+      {
+        "name": "Urostrophus vautieri",
+        "mentions_in_sample": 18,
+        "warning": "candidato extraído automaticamente; validar antes de uso taxonômico formal"
+      },
+      {
+        "name": "Atractus trihedrurus",
+        "mentions_in_sample": 18,
+        "warning": "candidato extraído automaticamente; validar antes de uso taxonômico formal"
+      },
+      {
+        "name": "Hydromedusa tectifera",
+        "mentions_in_sample": 18,
+        "warning": "candidato extraído automaticamente; validar antes de uso taxonômico formal"
+      },
+      {
+        "name": "Species distribution",
+        "mentions_in_sample": 17,
+        "warning": "candidato extraído automaticamente; validar antes de uso taxonômico formal"
+      },
+      {
+        "name": "Citizen science",
+        "mentions_in_sample": 17,
+        "warning": "candidato extraído automaticamente; validar antes de uso taxonômico formal"
+      },
+      {
+        "name": "Liophis miliaris",
+        "mentions_in_sample": 17,
+        "warning": "candidato extraído automaticamente; validar antes de uso taxonômico formal"
+      },
+      {
+        "name": "Dendropsophus microps",
+        "mentions_in_sample": 17,
+        "warning": "candidato extraído automaticamente; validar antes de uso taxonômico formal"
+      },
+      {
+        "name": "Hypsiboas faber",
+        "mentions_in_sample": 17,
+        "warning": "candidato extraído automaticamente; validar antes de uso taxonômico formal"
+      },
+      {
+        "name": "Hypsiboas semillineatus",
+        "mentions_in_sample": 17,
+        "warning": "candidato extraído automaticamente; validar antes de uso taxonômico formal"
+      },
+      {
+        "name": "Scinax fuscomarginatus",
+        "mentions_in_sample": 17,
+        "warning": "candidato extraído automaticamente; validar antes de uso taxonômico formal"
+      },
+      {
+        "name": "Liophis poecylogirus",
+        "mentions_in_sample": 17,
+        "warning": "candidato extraído automaticamente; validar antes de uso taxonômico formal"
+      },
+      {
+        "name": "Erythrolamprus aesculapii",
+        "mentions_in_sample": 17,
+        "warning": "candidato extraído automaticamente; validar antes de uso taxonômico formal"
+      },
+      {
+        "name": "Helicops modestus",
+        "mentions_in_sample": 16,
+        "warning": "candidato extraído automaticamente; validar antes de uso taxonômico formal"
+      },
+      {
+        "name": "Sibynomorphus mikanii",
+        "mentions_in_sample": 15,
+        "warning": "candidato extraído automaticamente; validar antes de uso taxonômico formal"
+      },
+      {
+        "name": "Oxyrhopus guibei",
+        "mentions_in_sample": 15,
+        "warning": "candidato extraído automaticamente; validar antes de uso taxonômico formal"
+      },
+      {
+        "name": "Mastigodryas bifossatus",
+        "mentions_in_sample": 15,
+        "warning": "candidato extraído automaticamente; validar antes de uso taxonômico formal"
+      },
+      {
+        "name": "Atractus zebrinus",
+        "mentions_in_sample": 14,
+        "warning": "candidato extraído automaticamente; validar antes de uso taxonômico formal"
+      },
+      {
+        "name": "Piedade http",
+        "mentions_in_sample": 14,
+        "warning": "candidato extraído automaticamente; validar antes de uso taxonômico formal"
+      },
+      {
+        "name": "Philodryas olfersii",
+        "mentions_in_sample": 14,
+        "warning": "candidato extraído automaticamente; validar antes de uso taxonômico formal"
+      },
+      {
+        "name": "Corresponding author",
+        "mentions_in_sample": 13,
+        "warning": "candidato extraído automaticamente; validar antes de uso taxonômico formal"
+      },
+      {
+        "name": "Chironius quadricarinatus",
+        "mentions_in_sample": 13,
+        "warning": "candidato extraído automaticamente; validar antes de uso taxonômico formal"
+      },
+      {
+        "name": "Taxonomic bias",
+        "mentions_in_sample": 12,
+        "warning": "candidato extraído automaticamente; validar antes de uso taxonômico formal"
+      },
+      {
+        "name": "Piedade municipalities",
+        "mentions_in_sample": 12,
+        "warning": "candidato extraído automaticamente; validar antes de uso taxonômico formal"
+      },
+      {
+        "name": "This study",
+        "mentions_in_sample": 11,
+        "warning": "candidato extraído automaticamente; validar antes de uso taxonômico formal"
+      },
+      {
+        "name": "Snakes from",
+        "mentions_in_sample": 11,
+        "warning": "candidato extraído automaticamente; validar antes de uso taxonômico formal"
+      },
+      {
+        "name": "Sibynomorphus neuwiedi",
+        "mentions_in_sample": 11,
+        "warning": "candidato extraído automaticamente; validar antes de uso taxonômico formal"
+      },
+      {
+        "name": "Downloaded from",
+        "mentions_in_sample": 11,
+        "warning": "candidato extraído automaticamente; validar antes de uso taxonômico formal"
+      },
+      {
+        "name": "Sample selection",
+        "mentions_in_sample": 10,
+        "warning": "candidato extraído automaticamente; validar antes de uso taxonômico formal"
+      },
+      {
+        "name": "Atlantic forest",
+        "mentions_in_sample": 10,
+        "warning": "candidato extraído automaticamente; validar antes de uso taxonômico formal"
+      },
+      {
+        "name": "Case context",
+        "mentions_in_sample": 10,
+        "warning": "candidato extraído automaticamente; validar antes de uso taxonômico formal"
+      },
+      {
+        "name": "Retrieving biodiversity",
+        "mentions_in_sample": 10,
+        "warning": "candidato extraído automaticamente; validar antes de uso taxonômico formal"
+      },
+      {
+        "name": "Xenodon neuwiedi",
+        "mentions_in_sample": 10,
+        "warning": "candidato extraído automaticamente; validar antes de uso taxonômico formal"
+      },
+      {
+        "name": "Commons license",
+        "mentions_in_sample": 9,
+        "warning": "candidato extraído automaticamente; validar antes de uso taxonômico formal"
+      },
+      {
+        "name": "Echinanthera cephalostriata",
+        "mentions_in_sample": 9,
+        "warning": "candidato extraído automaticamente; validar antes de uso taxonômico formal"
+      },
+      {
+        "name": "Gomesophis brasiliensis",
+        "mentions_in_sample": 9,
+        "warning": "candidato extraído automaticamente; validar antes de uso taxonômico formal"
+      },
+      {
+        "name": "Oxyrhopus clathratus",
+        "mentions_in_sample": 9,
+        "warning": "candidato extraído automaticamente; validar antes de uso taxonômico formal"
+      },
+      {
+        "name": "Bothrops neuwiedi",
+        "mentions_in_sample": 9,
+        "warning": "candidato extraído automaticamente; validar antes de uso taxonômico formal"
+      },
+      {
+        "name": "Atlas data",
+        "mentions_in_sample": 9,
+        "warning": "candidato extraído automaticamente; validar antes de uso taxonômico formal"
+      },
+      {
+        "name": "This approach",
+        "mentions_in_sample": 8,
+        "warning": "candidato extraído automaticamente; validar antes de uso taxonômico formal"
+      },
+      {
+        "name": "Predicting species",
+        "mentions_in_sample": 8,
+        "warning": "candidato extraído automaticamente; validar antes de uso taxonômico formal"
+      },
+      {
+        "name": "Maxent models",
+        "mentions_in_sample": 8,
+        "warning": "candidato extraído automaticamente; validar antes de uso taxonômico formal"
+      },
+      {
+        "name": "Likert scale",
+        "mentions_in_sample": 8,
+        "warning": "candidato extraído automaticamente; validar antes de uso taxonômico formal"
+      },
+      {
+        "name": "Boiruna maculata",
+        "mentions_in_sample": 8,
+        "warning": "candidato extraído automaticamente; validar antes de uso taxonômico formal"
+      },
+      {
+        "name": "Micrurus decoratus",
+        "mentions_in_sample": 8,
+        "warning": "candidato extraído automaticamente; validar antes de uso taxonômico formal"
+      },
+      {
+        "name": "Reptiles species",
+        "mentions_in_sample": 8,
+        "warning": "candidato extraído automaticamente; validar antes de uso taxonômico formal"
+      }
+    ]
+  },
+  "recommended_response_blueprints": {
+    "definition": [
+      "definição direta",
+      "contexto ecológico/zoológico",
+      "exemplo",
+      "fonte"
+    ],
+    "scientific_synthesis": [
+      "síntese",
+      "evidências",
+      "limitações",
+      "aplicação prática"
+    ],
+    "methodological_guidance": [
+      "quando usar",
+      "requisitos",
+      "riscos/viés",
+      "procedimento recomendado"
+    ],
+    "herpetology_inventory": [
+      "área de estudo",
+      "grupos taxonômicos",
+      "métodos",
+      "riqueza/composição",
+      "conservação"
+    ]
+  },
+  "quality_diagnostics": {
+    "article_count": 40,
+    "chunk_count": 3772,
+    "glossary_entry_count": 571,
+    "sampled_chunks_for_entity_extraction": 1000,
+    "record_type_counts": {
+      "article_chunk": 1803,
+      "glossary_entry": 571,
+      "glossary_source_chunk": 1398
+    },
+    "theme_counts": {
+      "zoologia": 2917,
+      "biodiversity_informatics": 2480,
+      "glossario_terminologia": 2121,
+      "herpetologia": 1995,
+      "ecologia": 1987,
+      "ciencia_cidada": 1809,
+      "conservacao": 1460,
+      "sdm_modelagem_distribuicao": 623,
+      "mata_atlantica": 452,
+      "serra_da_mantiqueira": 381,
+      "nao_classificado": 319
+    },
+    "warnings": [
+      "Nomes científicos são candidatos extraídos automaticamente.",
+      "Este complemento melhora RAG, mas não substitui validação taxonômica externa.",
+      "Alguns metadados podem conter ruído herdado de PDF/OCR."
+    ]
+  },
+  "provenance": {
+    "based_on": [
+      "base_cientifica_master_unificada.json",
+      "base_cientifica_chunks_rag.jsonl",
+      "glossario_ecologia_zoologia_normalizado.json"
+    ]
+  }
+}

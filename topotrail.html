@@ -1,0 +1,636 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>TopoTrail | HerpetoMantiqueira</title>
+  <style>
+    :root {
+      --forest: #2f5334;
+      --leaf: #6f8f5f;
+      --moss: #d9e8cf;
+      --cream: #fbf8ef;
+      --paper: #fffdf6;
+      --ink: #263526;
+      --muted: #68766a;
+      --line: #c8d7c3;
+      --trail: #ec1c84;
+      --corridor: #00b2d6;
+      --zone: #ffb02e;
+      --risk: #b41d4b;
+      --warning: #ff9a2e;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      background: var(--cream);
+      color: var(--ink);
+      font-family: "Segoe UI", Arial, sans-serif;
+      line-height: 1.55;
+    }
+
+    header {
+      background: linear-gradient(135deg, var(--forest), #183523);
+      color: white;
+      padding: 44px 24px 36px;
+    }
+
+    .wrap {
+      width: min(1120px, calc(100% - 32px));
+      margin: 0 auto;
+    }
+
+    .hero {
+      display: grid;
+      grid-template-columns: 132px 1fr;
+      gap: 24px;
+      align-items: center;
+    }
+
+    .hero img {
+      width: 132px;
+      height: 132px;
+      object-fit: contain;
+      background: var(--paper);
+      border: 1px solid rgba(255, 255, 255, 0.35);
+      border-radius: 18px;
+      padding: 12px;
+    }
+
+    h1, h2, h3 {
+      line-height: 1.12;
+      margin: 0 0 12px;
+    }
+
+    h1 {
+      font-size: clamp(2.2rem, 5vw, 4rem);
+      letter-spacing: 0;
+    }
+
+    h2 {
+      color: var(--forest);
+      font-size: clamp(1.45rem, 2.4vw, 2.1rem);
+      margin-top: 10px;
+    }
+
+    h3 {
+      color: var(--forest);
+      font-size: 1.08rem;
+    }
+
+    .subtitle {
+      max-width: 850px;
+      margin: 0;
+      font-size: 1.08rem;
+      color: rgba(255, 255, 255, 0.88);
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 20px;
+    }
+
+    .hero-action {
+      display: inline-flex;
+      min-height: 44px;
+      align-items: center;
+      padding: 0 16px;
+      border: 1px solid rgba(255, 255, 255, .32);
+      border-radius: 6px;
+      color: white;
+      background: rgba(255, 255, 255, .08);
+      font-size: .76rem;
+      font-weight: 800;
+      letter-spacing: .45px;
+      text-decoration: none;
+      text-transform: uppercase;
+    }
+
+    .hero-action--primary {
+      border-color: var(--zone);
+      color: #182418;
+      background: var(--zone);
+    }
+
+    .hero-action:hover {
+      transform: translateY(-1px);
+      filter: brightness(1.06);
+    }
+
+    .citation-box {
+      display: grid;
+      gap: 14px;
+      padding: clamp(20px, 4vw, 32px);
+      border: 1px solid var(--line);
+      border-left: 5px solid var(--forest);
+      border-radius: 8px;
+      background: var(--paper);
+      box-shadow: 0 18px 42px rgba(38, 53, 38, .08);
+    }
+
+    .citation-box p {
+      margin: 0;
+      color: var(--ink);
+      font-family: Georgia, serif;
+      font-size: clamp(1rem, 2vw, 1.22rem);
+      line-height: 1.65;
+    }
+
+    .citation-box a,
+    .publication-link {
+      color: var(--forest);
+      font-weight: 700;
+      overflow-wrap: anywhere;
+    }
+
+    main {
+      padding: 26px 0 46px;
+    }
+
+    section {
+      padding: 26px 0;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+
+    .card {
+      background: var(--paper);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 18px;
+    }
+
+    .card p {
+      margin: 0;
+    }
+
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 14px;
+      counter-reset: step;
+    }
+
+    .step {
+      background: white;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 16px;
+      position: relative;
+    }
+
+    .step::before {
+      counter-increment: step;
+      content: counter(step);
+      display: inline-grid;
+      place-items: center;
+      width: 30px;
+      height: 30px;
+      margin-bottom: 10px;
+      border-radius: 999px;
+      background: var(--forest);
+      color: white;
+      font-weight: 700;
+    }
+
+    .logo-card {
+      width: min(320px, 100%);
+      min-height: 210px;
+      display: grid;
+      grid-template-rows: 1fr auto;
+      gap: 12px;
+      align-items: center;
+      text-align: center;
+      background: white;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 16px;
+    }
+
+    .logo-card img {
+      max-width: 100%;
+      max-height: 142px;
+      object-fit: contain;
+      margin: 0 auto;
+    }
+
+    .logo-card span {
+      font-size: 0.9rem;
+      color: var(--muted);
+    }
+
+    .palette {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 12px;
+    }
+
+    .swatch {
+      background: white;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      overflow: hidden;
+    }
+
+    .swatch-color {
+      height: 76px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .swatch-text {
+      padding: 10px;
+      font-size: 0.9rem;
+    }
+
+    .swatch-text strong,
+    .swatch-text code {
+      display: block;
+    }
+
+    .swatch-text span {
+      display: block;
+      margin-top: 6px;
+      color: var(--muted);
+      font-size: 0.84rem;
+    }
+
+    code {
+      color: #334437;
+      background: #eef4e8;
+      border-radius: 4px;
+      padding: 1px 4px;
+    }
+
+    .mockup {
+      background: #1f2a24;
+      border: 1px solid #324339;
+      border-radius: 10px;
+      padding: 14px;
+      overflow: auto;
+    }
+
+    .window {
+      min-width: 920px;
+      background: #f4f7f0;
+      border: 1px solid #a8b9a6;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 18px 46px rgba(0, 0, 0, 0.22);
+    }
+
+    .window-title {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 14px 16px;
+      background: #e5ecdf;
+      border-bottom: 1px solid #c8d7c3;
+      font-weight: 700;
+      color: var(--forest);
+    }
+
+    .window-title img {
+      width: 42px;
+      height: 42px;
+      object-fit: contain;
+      background: white;
+      border-radius: 8px;
+      padding: 5px;
+    }
+
+    .hud-grid {
+      display: grid;
+      grid-template-columns: 3fr 2fr;
+      gap: 14px;
+      padding: 16px;
+    }
+
+    .panel {
+      background: var(--paper);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 14px;
+    }
+
+    .field-row {
+      display: grid;
+      grid-template-columns: 190px 1fr 44px 90px;
+      gap: 8px;
+      align-items: center;
+      margin: 8px 0;
+      font-size: 0.9rem;
+    }
+
+    .input {
+      height: 30px;
+      border: 1px solid #b9cbb3;
+      border-radius: 6px;
+      background: white;
+    }
+
+    .btn {
+      display: grid;
+      place-items: center;
+      min-height: 30px;
+      border: 1px solid #a9bea1;
+      border-radius: 6px;
+      background: #dfead7;
+      color: var(--forest);
+      font-weight: 700;
+      font-size: 0.86rem;
+    }
+
+    .generate {
+      margin: 0 16px 16px;
+      padding: 13px;
+      text-align: center;
+      background: var(--leaf);
+      color: white;
+      border-radius: 7px;
+      font-weight: 800;
+    }
+
+    .note {
+      color: var(--muted);
+      font-size: 0.92rem;
+      margin-top: 10px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      background: white;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      overflow: hidden;
+    }
+
+    th, td {
+      padding: 11px 12px;
+      border-bottom: 1px solid var(--line);
+      text-align: left;
+      vertical-align: top;
+    }
+
+    th {
+      background: #eef4e8;
+      color: var(--forest);
+    }
+
+    tr:last-child td {
+      border-bottom: 0;
+    }
+
+    footer {
+      padding: 26px 0 38px;
+      color: var(--muted);
+      font-size: 0.94rem;
+    }
+
+    @media (max-width: 820px) {
+      .hero,
+      .grid,
+      .steps,
+      .palette {
+        grid-template-columns: 1fr;
+      }
+
+      .hero img {
+        width: 104px;
+        height: 104px;
+      }
+    }
+  
+    .product-site-nav {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      display: flex;
+      min-height: 74px;
+      align-items: center;
+      gap: 8px;
+      padding: 10px clamp(20px, 5vw, 76px);
+      border-bottom: 1px solid var(--product-nav-line);
+      background: var(--product-nav-bg);
+      color: var(--product-nav-text);
+      box-shadow: 0 12px 30px rgba(0,0,0,.14);
+      backdrop-filter: blur(18px);
+    }
+    .product-site-brand { display:flex; min-width:0; align-items:center; gap:11px; color:inherit; text-decoration:none; }
+    .product-site-brand img { width:46px; height:46px; flex:0 0 auto; border-radius:50%; object-fit:cover; box-shadow:0 0 0 1px rgba(223,165,61,.52),0 0 18px rgba(223,142,35,.2); }
+    .product-site-brand span { display:grid; min-width:0; line-height:1.05; }
+    .product-site-brand strong { color:#f3d38e; font-family:Georgia,serif; font-size:18px; font-weight:600; white-space:nowrap; }
+    .product-site-brand small { margin-top:3px; color:var(--product-nav-muted); font-family:Arial,sans-serif; font-size:9px; font-weight:700; letter-spacing:1px; text-transform:uppercase; white-space:nowrap; }
+    .product-switcher { position:relative; margin-left:auto; }
+    .product-switcher summary, .product-site-home { display:flex; min-height:38px; align-items:center; border:1px solid var(--product-nav-line); border-radius:6px; padding:0 12px; color:inherit; background:var(--product-nav-chip); font-family:Arial,sans-serif; font-size:10px; font-weight:700; letter-spacing:.35px; text-decoration:none; text-transform:uppercase; cursor:pointer; list-style:none; }
+    .product-switcher summary::-webkit-details-marker { display:none; }
+    .product-switcher summary::after { margin-left:8px; content:"+"; color:var(--product-accent); font-size:16px; }
+    .product-switcher[open] summary::after { content:"-"; }
+    .product-switcher-menu { position:absolute; top:calc(100% + 8px); right:0; display:grid; width:min(360px, calc(100vw - 28px)); gap:4px; padding:8px; border:1px solid var(--product-nav-line); border-radius:8px; background:var(--product-menu-bg); box-shadow:0 22px 60px rgba(0,0,0,.24); }
+    .product-switcher-menu a { display:grid; gap:4px; padding:12px; border-radius:6px; color:var(--product-menu-text); text-decoration:none; }
+    .product-switcher-menu a:hover { background:var(--product-menu-hover); }
+    .product-switcher-menu strong { font-size:13px; }
+    .product-switcher-menu span { color:var(--product-menu-muted); font-size:11px; line-height:1.35; }
+    @media (max-width: 680px) {
+      .product-site-nav { min-height:64px; gap:8px; padding:8px 10px; }
+      .product-site-brand strong { font-size:13px; }
+      .product-site-brand small, .product-site-home { display:none; }
+      .product-switcher summary { min-height:40px; padding:0 12px; }
+      .product-switcher-menu { position:fixed; top:68px; right:10px; left:10px; width:auto; }
+    }
+
+    :root { --product-nav-bg:rgba(24,53,35,.96); --product-nav-line:rgba(200,215,195,.24); --product-nav-text:#fff; --product-nav-muted:#C8D7C3; --product-nav-chip:rgba(255,255,255,.07); --product-accent:#FFB02E; --product-menu-bg:#183523; --product-menu-text:#fff; --product-menu-muted:#C8D7C3; --product-menu-hover:rgba(111,143,95,.18); }
+    .topotrail-page header { padding-top:52px; }
+    .topotrail-page section { scroll-margin-top:84px; }
+    .topotrail-page .mockup { scrollbar-color:var(--leaf) #1f2a24; }
+    @media (max-width: 680px) {
+      .topotrail-page header { padding:36px 18px 30px; }
+      .topotrail-page .wrap { width:min(100% - 28px,1120px); }
+      .topotrail-page section { padding:22px 0; }
+      .topotrail-page table { font-size:12px; }
+      .topotrail-page th, .topotrail-page td { padding:10px 8px; }
+    }
+
+  </style>
+</head>
+<body class="topotrail-page">
+  <nav class="product-site-nav" aria-label="Navegação de ferramentas HerpetoMantiqueira">
+    <a class="product-site-brand" href="index.html#inicio">
+      <img src="assets/herpeto-mantiqueira-logo.png" alt="">
+      <span><strong>HerpetoMantiqueira</strong><small>Ferramentas científicas gratuitas</small></span>
+    </a>
+    <details class="product-switcher">
+      <summary>Ferramentas</summary>
+      <div class="product-switcher-menu">
+        <a href="sobre-gold.html"><strong>Gold AI Ecológica</strong><span>Assistente científico conversacional</span></a>
+        <a href="oikos-fieldbook.html"><strong>Oikos FieldBook</strong><span>Caderno de campo digital</span></a>
+        <a href="sigmai.html"><strong>SIGMAI</strong><span>Interface segura entre IA e QGIS</span></a>
+        <a href="topotrail.html"><strong>TopoTrail</strong><span>Planejamento topográfico de trilhas</span></a>
+        <a href="herpetofauna-cruzeiro.html"><strong>Herpetofauna de Cruzeiro</strong><span>Álbum educativo interativo</span></a>
+      </div>
+    </details>
+    <a class="product-site-home" href="index.html#inicio">Início</a>
+  </nav>
+
+  <header>
+    <div class="wrap hero">
+      <img src="assets/topotrail/logo.png" alt="Logo do TopoTrail">
+      <div>
+        <h1>TopoTrail</h1>
+        <p class="subtitle">Plugin QGIS para planejamento preliminar de trilhas, acessos e corredores de deslocamento em áreas naturais, usando análise topográfica com DEM, declividade e curvaturas do relevo.</p>
+        <div class="hero-actions">
+          <a class="hero-action hero-action--primary" href="https://plugins.qgis.org/plugins/TopoTrail/" target="_blank" rel="noopener noreferrer">Baixar no QGIS</a>
+          <a class="hero-action" href="#como-citar">Como citar</a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <section>
+      <h2>Objetivo do aplicativo</h2>
+      <div class="grid">
+        <article class="card">
+          <h3>Planejamento de campo</h3>
+          <p>O TopoTrail apoia a escolha preliminar de rotas, trilhas e acessos em terrenos naturais, especialmente quando a topografia influencia o deslocamento.</p>
+        </article>
+        <article class="card">
+          <h3>Leitura topográfica</h3>
+          <p>O plugin transforma DEM, declividade e curvaturas em uma superfície de adequabilidade topográfica, destacando zonas mais favoráveis e áreas de maior dificuldade.</p>
+        </article>
+        <article class="card">
+          <h3>Apoio tecnico</h3>
+          <p>Os resultados funcionam como evidência geoespacial de apoio. Eles não substituem validação de campo nem análises legais, ambientais ou fundiárias.</p>
+        </article>
+      </div>
+    </section>
+
+    <section>
+      <h2>Como funciona</h2>
+      <div class="steps">
+        <div class="step"><h3>Entradas</h3><p>O usuario informa DEM/MDE, raster de declividade, curvatura horizontal e curvatura vertical, todos com CRS definido.</p></div>
+        <div class="step"><h3>Parametros</h3><p>Define limites de altitude, declividade maxima, pesos dos criterios, threshold, area minima e opcoes de rota.</p></div>
+        <div class="step"><h3>Processamento</h3><p>O algoritmo valida grade, CRS e resolucao, alinha rasters quando necessario e calcula adequabilidade, risco relativo e custo de deslocamento.</p></div>
+        <div class="step"><h3>Saidas</h3><p>Gera raster continuo de adequabilidade, raster de risco, zonas vetoriais, rota sugerida, corredor de acesso e log tecnico.</p></div>
+      </div>
+    </section>
+
+    <section>
+      <h2>Funções principais</h2>
+      <table>
+        <thead>
+          <tr><th>Funcao</th><th>Descricao</th><th>Uso pratico</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Adequabilidade topografica</td><td>Combina altitude, declividade e curvaturas por pesos definidos pelo usuario.</td><td>Identificar areas com relevo mais favoravel ao deslocamento.</td></tr>
+          <tr><td>Risco topografico relativo</td><td>Combina declividade e rugosidade/curvatura em uma camada complementar.</td><td>Visualizar areas potencialmente mais criticas ou exigentes.</td></tr>
+          <tr><td>Zonas potenciais</td><td>Converte o raster de adequabilidade em areas vetoriais, com filtro de area minima.</td><td>Apoiar mapas de contexto e selecao de trechos promissores.</td></tr>
+          <tr><td>Rota sugerida</td><td>Calcula caminho de menor custo entre origem e destino usando a superficie topografica.</td><td>Planejar acessos preliminares para campo.</td></tr>
+          <tr><td>Corredor de acesso</td><td>Gera uma faixa ao redor da rota sugerida.</td><td>Delimitar area de avaliacao em torno do caminho proposto.</td></tr>
+          <tr><td>Interface bilingue</td><td>HUD com alternancia PT-BR / ENG.</td><td>Facilitar uso local e revisao externa.</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section>
+      <h2>Paleta de cores preferencial</h2>
+      <p>Na interface, o TopoTrail respeita a paleta ativa do QGIS/Qt para funcionar bem em temas claro e escuro. Para materiais graficos, documentacao e apresentacoes, a paleta abaixo preserva a identidade visual do plugin e das camadas cartograficas.</p>
+      <div class="palette">
+        <div class="swatch"><div class="swatch-color" style="background:#2f5334"></div><div class="swatch-text"><strong>Verde floresta</strong><code>#2F5334</code><span>Uso: identidade principal, titulos e assinatura visual do TopoTrail.</span></div></div>
+        <div class="swatch"><div class="swatch-color" style="background:#6f8f5f"></div><div class="swatch-text"><strong>Verde folha</strong><code>#6F8F5F</code><span>Uso: botoes principais, acoes positivas e destaque da interface.</span></div></div>
+        <div class="swatch"><div class="swatch-color" style="background:#fbf8ef"></div><div class="swatch-text"><strong>Marfim cartografico</strong><code>#FBF8EF</code><span>Uso: fundos claros, areas de leitura e materiais de apresentacao.</span></div></div>
+        <div class="swatch"><div class="swatch-color" style="background:#263526"></div><div class="swatch-text"><strong>Verde tinta</strong><code>#263526</code><span>Uso: texto principal, labels e contraste em fundos claros.</span></div></div>
+        <div class="swatch"><div class="swatch-color" style="background:#ffb02e"></div><div class="swatch-text"><strong>Amarelo zona</strong><code>#FFB02E</code><span>Uso: preenchimento das zonas potenciais de trilha/acesso no mapa.</span></div></div>
+        <div class="swatch"><div class="swatch-color" style="background:#ec1c84"></div><div class="swatch-text"><strong>Magenta rota</strong><code>#EC1C84</code><span>Uso: linha da rota sugerida de menor custo topografico.</span></div></div>
+        <div class="swatch"><div class="swatch-color" style="background:#00b2d6"></div><div class="swatch-text"><strong>Ciano corredor</strong><code>#00B2D6</code><span>Uso: preenchimento do corredor de acesso ao redor da rota.</span></div></div>
+        <div class="swatch"><div class="swatch-color" style="background:#b41d4b"></div><div class="swatch-text"><strong>Vinho risco</strong><code>#B41D4B</code><span>Uso: classe maxima do raster de risco topografico relativo.</span></div></div>
+        <div class="swatch"><div class="swatch-color" style="background:#ff9a2e"></div><div class="swatch-text"><strong>Laranja alerta</strong><code>#FF9A2E</code><span>Uso: classes intermediarias/altas de risco e pontos de atencao.</span></div></div>
+        <div class="swatch"><div class="swatch-color" style="background:#c8d7c3"></div><div class="swatch-text"><strong>Verde neblina</strong><code>#C8D7C3</code><span>Uso: bordas, separadores, contornos suaves e estrutura da HUD.</span></div></div>
+      </div>
+    </section>
+
+    <section>
+      <h2>Logo do aplicativo</h2>
+      <figure class="logo-card"><img src="assets/topotrail/logo.png" alt="Logo principal TopoTrail"><span>Identidade visual oficial do TopoTrail</span></figure>
+    </section>
+
+    <section>
+      <h2>Preview visual da HUD</h2>
+      <p>Esta imagem e uma representacao visual em HTML baseada na interface real do plugin. Uma captura real deve ser feita dentro do QGIS quando o plugin estiver aberto no ambiente de teste.</p>
+      <div class="mockup" aria-label="Representacao visual da interface do TopoTrail">
+        <div class="window">
+          <div class="window-title"><img src="assets/topotrail/logo.png" alt="">TopoTrail - Planejamento de trilhas e acessos</div>
+          <div class="hud-grid">
+            <div>
+              <div class="panel">
+                <h3>Dados de entrada</h3>
+                <div class="field-row"><span>Modelo Digital de Elevacao</span><div class="input"></div><div class="btn">...</div><span>CRS: -</span></div>
+                <div class="field-row"><span>Declividade</span><div class="input"></div><div class="btn">...</div><span>CRS: -</span></div>
+                <div class="field-row"><span>Curvatura horizontal</span><div class="input"></div><div class="btn">...</div><span>CRS: -</span></div>
+                <div class="field-row"><span>Curvatura vertical</span><div class="input"></div><div class="btn">...</div><span>CRS: -</span></div>
+              </div>
+              <div class="panel" style="margin-top:14px">
+                <h3>Planejamento de acesso</h3>
+                <div class="field-row"><span>Origem</span><div class="input"></div><div class="btn">...</div><div class="btn">Mapa</div></div>
+                <div class="field-row"><span>Destino</span><div class="input"></div><div class="btn">...</div><div class="btn">Mapa</div></div>
+              </div>
+            </div>
+            <div>
+              <div class="panel">
+                <h3>Parametros</h3>
+                <div class="field-row" style="grid-template-columns: 1fr 110px"><span>Altitude minima</span><div class="input"></div></div>
+                <div class="field-row" style="grid-template-columns: 1fr 110px"><span>Declividade maxima</span><div class="input"></div></div>
+                <div class="field-row" style="grid-template-columns: 1fr 110px"><span>Peso declividade</span><div class="input"></div></div>
+                <div class="field-row" style="grid-template-columns: 1fr 110px"><span>Percentil automatico</span><div class="input"></div></div>
+              </div>
+              <div class="panel" style="margin-top:14px">
+                <h3>Saida</h3>
+                <div class="field-row" style="grid-template-columns: 1fr 1fr 44px"><span>GeoPackage</span><div class="input"></div><div class="btn">...</div></div>
+              </div>
+            </div>
+          </div>
+          <div class="generate">Gerar resultados TopoTrail</div>
+        </div>
+      </div>
+      <p class="note">A HUD real e responsiva, possui rolagem horizontal quando necessario e usa cores derivadas do tema ativo do QGIS para preservar contraste.</p>
+    </section>
+
+    <section>
+      <h2>Compatibilidade e publicação</h2>
+      <table>
+        <tbody>
+          <tr><th>Versao</th><td>0.5.1</td></tr>
+          <tr><th>QGIS minimo</th><td>3.22</td></tr>
+          <tr><th>QGIS maximo declarado</th><td>4.99</td></tr>
+          <tr><th>Licenca</th><td>MIT</td></tr>
+          <tr><th>Repositorio</th><td>https://github.com/LuanCortesM/Topotrail</td></tr>
+          <tr><th>Download oficial</th><td><a class="publication-link" href="https://plugins.qgis.org/plugins/TopoTrail/" target="_blank" rel="noopener noreferrer">QGIS Python Plugins Repository</a></td></tr>
+          <tr><th>Dependencias esperadas</th><td>GDAL, NumPy, SciPy, Pandas, GeoPandas e Shapely no Python do QGIS.</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section id="como-citar">
+      <h2>Como citar</h2>
+      <div class="citation-box">
+        <p>MACIEL, L. S. C. (2026). TopoTrail: a QGIS plugin for preliminary trail planning using digital elevation models (0.5.0). Zenodo. <a href="https://doi.org/10.5281/zenodo.20320495" target="_blank" rel="noopener noreferrer">https://doi.org/10.5281/zenodo.20320495</a></p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="wrap">
+    TopoTrail foi desenvolvido por Luan da Silva Cortes Maciel (MACIEL, L. S.) no contexto de pesquisa em Biodiversidade em Unidades de Conservacao, associado a ENBT/JBRJ e ao projeto Herpeto Mantiqueira.
+  </footer>
+</body>
+</html>

@@ -1,0 +1,776 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>SIGMAI | HerpetoMantiqueira</title>
+  <style>
+    :root {
+      --sigmai-navy: #062A3A;
+      --sigmai-teal: #075D68;
+      --sigmai-green: #00A86B;
+      --sigmai-mint: #20E39A;
+      --sigmai-mint-soft: #DDF8EC;
+      --sigmai-surface: #F6F8FA;
+      --sigmai-white: #FFFFFF;
+      --sigmai-line: #D8E1E8;
+      --sigmai-bluegray: #BFD8DE;
+      --sigmai-text: #1E2A32;
+      --sigmai-muted: #6B7A86;
+      --sigmai-danger: #B42323;
+      --sigmai-danger-dark: #7A1010;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: "Segoe UI", Inter, Arial, sans-serif;
+      background: var(--sigmai-surface);
+      color: var(--sigmai-text);
+      line-height: 1.55;
+    }
+
+    a {
+      color: var(--sigmai-teal);
+    }
+
+    .hero {
+      background:
+        radial-gradient(circle at 85% 20%, rgba(32, 227, 154, 0.18), transparent 32%),
+        linear-gradient(135deg, var(--sigmai-navy), #0A3C49 55%, var(--sigmai-teal));
+      color: var(--sigmai-white);
+      padding: 56px 7vw 48px;
+    }
+
+    .hero-grid {
+      max-width: 1180px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: minmax(0, 1.25fr) minmax(280px, 0.75fr);
+      gap: 36px;
+      align-items: center;
+    }
+
+    .brand-mark {
+      max-width: 360px;
+      width: 100%;
+      background: rgba(255, 255, 255, 0.95);
+      border-radius: 18px;
+      padding: 22px;
+      box-shadow: 0 20px 56px rgba(0, 0, 0, 0.2);
+    }
+
+    .eyebrow {
+      color: var(--sigmai-mint);
+      font-size: 0.82rem;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin: 0 0 10px;
+    }
+
+    h1 {
+      font-size: clamp(2.25rem, 5vw, 4.8rem);
+      line-height: 0.95;
+      margin: 0;
+      letter-spacing: 0;
+    }
+
+    .subtitle {
+      font-size: clamp(1.05rem, 2.1vw, 1.45rem);
+      color: #D8E1E8;
+      margin: 16px 0 0;
+      max-width: 760px;
+    }
+
+    .hero-badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 26px;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 18px;
+    }
+
+    .hero-action {
+      display: inline-flex;
+      min-height: 44px;
+      align-items: center;
+      padding: 0 16px;
+      border: 1px solid rgba(216, 225, 232, .45);
+      border-radius: 6px;
+      color: white;
+      background: rgba(255, 255, 255, .08);
+      font-size: .76rem;
+      font-weight: 800;
+      letter-spacing: .45px;
+      text-decoration: none;
+      text-transform: uppercase;
+    }
+
+    .hero-action--primary {
+      border-color: var(--sigmai-mint);
+      color: var(--sigmai-navy);
+      background: var(--sigmai-mint);
+    }
+
+    .hero-action:hover {
+      transform: translateY(-1px);
+      filter: brightness(1.06);
+    }
+
+    .badge {
+      border: 1px solid rgba(216, 225, 232, 0.45);
+      background: rgba(255, 255, 255, 0.08);
+      color: var(--sigmai-white);
+      border-radius: 999px;
+      padding: 8px 13px;
+      font-weight: 700;
+      font-size: 0.9rem;
+    }
+
+    main {
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 40px 7vw 72px;
+    }
+
+    section {
+      margin: 0 0 42px;
+    }
+
+    h2 {
+      color: var(--sigmai-navy);
+      font-size: clamp(1.55rem, 3vw, 2.35rem);
+      margin: 0 0 16px;
+      letter-spacing: 0;
+    }
+
+    h3 {
+      color: var(--sigmai-teal);
+      font-size: 1.05rem;
+      margin: 0 0 8px;
+    }
+
+    .lead {
+      font-size: 1.12rem;
+      color: #33434B;
+      max-width: 940px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .grid.two {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .card {
+      background: var(--sigmai-white);
+      border: 1px solid var(--sigmai-line);
+      border-radius: 16px;
+      padding: 22px;
+      box-shadow: 0 14px 38px rgba(6, 42, 58, 0.06);
+    }
+
+    .card p {
+      margin: 0;
+      color: #40515A;
+    }
+
+    .feature-list {
+      margin: 12px 0 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .feature-list li {
+      padding: 8px 0 8px 22px;
+      position: relative;
+      border-bottom: 1px solid #EEF2F5;
+    }
+
+    .feature-list li::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 16px;
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--sigmai-green);
+    }
+
+    .architecture {
+      display: grid;
+      grid-template-columns: repeat(5, minmax(120px, 1fr));
+      gap: 10px;
+      align-items: stretch;
+    }
+
+    .step {
+      background: var(--sigmai-white);
+      border: 1px solid var(--sigmai-bluegray);
+      border-radius: 14px;
+      padding: 16px;
+      text-align: center;
+      font-weight: 800;
+      color: var(--sigmai-teal);
+    }
+
+    .step small {
+      display: block;
+      color: var(--sigmai-muted);
+      font-weight: 600;
+      margin-top: 6px;
+    }
+
+    .palette {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .swatch {
+      overflow: hidden;
+      background: var(--sigmai-white);
+      border: 1px solid var(--sigmai-line);
+      border-radius: 14px;
+    }
+
+    .swatch-color {
+      height: 84px;
+      border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+    }
+
+    .swatch-info {
+      padding: 13px;
+    }
+
+    .swatch-info strong,
+    .swatch-info code {
+      display: block;
+    }
+
+    .swatch-info code {
+      margin-top: 4px;
+      color: var(--sigmai-muted);
+      font-family: Consolas, "JetBrains Mono", monospace;
+    }
+
+    .logo-gallery,
+    .image-gallery {
+      display: grid;
+      gap: 18px;
+    }
+
+    .logo-gallery {
+      grid-template-columns: minmax(0, 1.25fr) minmax(240px, 0.75fr);
+      align-items: stretch;
+    }
+
+    .image-gallery {
+      grid-template-columns: minmax(0, 1fr);
+      max-width: 1040px;
+    }
+
+    figure {
+      margin: 0;
+      background: var(--sigmai-white);
+      border: 1px solid var(--sigmai-line);
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 12px 34px rgba(6, 42, 58, 0.07);
+    }
+
+    figure img {
+      width: 100%;
+      display: block;
+      object-fit: contain;
+      background: #FFFFFF;
+    }
+
+    .logo-gallery figure img {
+      height: 260px;
+      padding: 28px;
+    }
+
+    .logo-gallery figure:first-child img {
+      padding: 36px;
+    }
+
+    .image-gallery figure img {
+      aspect-ratio: 16 / 10;
+      object-fit: cover;
+    }
+
+    .image-gallery figure {
+      display: grid;
+      grid-template-columns: minmax(0, 1.6fr) minmax(260px, 0.4fr);
+      align-items: stretch;
+    }
+
+    .image-gallery figure img {
+      height: 100%;
+      min-height: 360px;
+    }
+
+    .image-gallery figcaption {
+      border-top: 0;
+      border-left: 1px solid #EEF2F5;
+      display: flex;
+      align-items: center;
+      font-size: 1rem;
+    }
+
+    figcaption {
+      padding: 13px 15px 16px;
+      color: #40515A;
+      font-size: 0.95rem;
+      border-top: 1px solid #EEF2F5;
+    }
+
+    .mockup {
+      background: var(--sigmai-white);
+      border: 1px solid var(--sigmai-line);
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 18px 48px rgba(6, 42, 58, 0.12);
+    }
+
+    .mockup-header {
+      background: var(--sigmai-navy);
+      color: white;
+      padding: 18px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .mockup-title {
+      font-weight: 900;
+      font-size: 1.4rem;
+    }
+
+    .status-pill {
+      background: var(--sigmai-mint-soft);
+      color: #006B45;
+      border: 1px solid var(--sigmai-mint);
+      border-radius: 999px;
+      padding: 6px 11px;
+      font-weight: 800;
+      font-size: 0.82rem;
+    }
+
+    .mockup-body {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      padding: 18px;
+    }
+
+    .mock-panel {
+      border: 1px solid var(--sigmai-line);
+      border-radius: 14px;
+      padding: 14px;
+      min-height: 148px;
+      background: #FBFCFD;
+    }
+
+    .mock-button {
+      display: inline-block;
+      margin: 6px 6px 0 0;
+      padding: 8px 10px;
+      border-radius: 10px;
+      border: 1px solid var(--sigmai-bluegray);
+      color: var(--sigmai-teal);
+      font-weight: 800;
+      font-size: 0.82rem;
+    }
+
+    .mock-button.primary {
+      background: var(--sigmai-green);
+      color: white;
+      border-color: var(--sigmai-green);
+    }
+
+    .mock-button.danger {
+      background: #FFF5F5;
+      color: var(--sigmai-danger);
+      border-color: #F0B8B8;
+    }
+
+    .note {
+      background: #EEF8F5;
+      border-left: 4px solid var(--sigmai-green);
+      color: #21443D;
+      padding: 16px 18px;
+      border-radius: 12px;
+    }
+
+    .citation-box {
+      display: grid;
+      gap: 14px;
+      padding: clamp(20px, 4vw, 32px);
+      border: 1px solid var(--sigmai-line);
+      border-left: 5px solid var(--sigmai-green);
+      border-radius: 8px;
+      background: white;
+      box-shadow: 0 18px 42px rgba(6, 42, 58, .08);
+    }
+
+    .citation-box p {
+      margin: 0;
+      color: var(--sigmai-navy);
+      font-family: Georgia, serif;
+      font-size: clamp(1rem, 2vw, 1.22rem);
+      line-height: 1.65;
+    }
+
+    .citation-box a,
+    .publication-link {
+      color: var(--sigmai-green);
+      font-weight: 800;
+      overflow-wrap: anywhere;
+    }
+
+    footer {
+      background: var(--sigmai-navy);
+      color: #D8E1E8;
+      padding: 28px 7vw;
+      font-size: 0.95rem;
+    }
+
+    footer strong {
+      color: white;
+    }
+
+    @media (max-width: 900px) {
+      .hero-grid,
+      .grid,
+      .grid.two,
+      .logo-gallery,
+      .image-gallery,
+      .image-gallery figure,
+      .mockup-body {
+        grid-template-columns: 1fr;
+      }
+
+      .image-gallery figcaption {
+        border-left: 0;
+        border-top: 1px solid #EEF2F5;
+      }
+
+      .image-gallery figure img {
+        min-height: 0;
+      }
+
+      .architecture,
+      .palette {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 560px) {
+      .hero,
+      main,
+      footer {
+        padding-left: 20px;
+        padding-right: 20px;
+      }
+
+      .architecture,
+      .palette {
+        grid-template-columns: 1fr;
+      }
+    }
+  
+    .product-site-nav {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      display: flex;
+      min-height: 74px;
+      align-items: center;
+      gap: 8px;
+      padding: 10px clamp(20px, 5vw, 76px);
+      border-bottom: 1px solid var(--product-nav-line);
+      background: var(--product-nav-bg);
+      color: var(--product-nav-text);
+      box-shadow: 0 12px 30px rgba(0,0,0,.14);
+      backdrop-filter: blur(18px);
+    }
+    .product-site-brand { display:flex; min-width:0; align-items:center; gap:11px; color:inherit; text-decoration:none; }
+    .product-site-brand img { width:46px; height:46px; flex:0 0 auto; border-radius:50%; object-fit:cover; box-shadow:0 0 0 1px rgba(223,165,61,.52),0 0 18px rgba(223,142,35,.2); }
+    .product-site-brand span { display:grid; min-width:0; line-height:1.05; }
+    .product-site-brand strong { color:#f3d38e; font-family:Georgia,serif; font-size:18px; font-weight:600; white-space:nowrap; }
+    .product-site-brand small { margin-top:3px; color:var(--product-nav-muted); font-family:Arial,sans-serif; font-size:9px; font-weight:700; letter-spacing:1px; text-transform:uppercase; white-space:nowrap; }
+    .product-switcher { position:relative; margin-left:auto; }
+    .product-switcher summary, .product-site-home { display:flex; min-height:38px; align-items:center; border:1px solid var(--product-nav-line); border-radius:6px; padding:0 12px; color:inherit; background:var(--product-nav-chip); font-family:Arial,sans-serif; font-size:10px; font-weight:700; letter-spacing:.35px; text-decoration:none; text-transform:uppercase; cursor:pointer; list-style:none; }
+    .product-switcher summary::-webkit-details-marker { display:none; }
+    .product-switcher summary::after { margin-left:8px; content:"+"; color:var(--product-accent); font-size:16px; }
+    .product-switcher[open] summary::after { content:"-"; }
+    .product-switcher-menu { position:absolute; top:calc(100% + 8px); right:0; display:grid; width:min(360px, calc(100vw - 28px)); gap:4px; padding:8px; border:1px solid var(--product-nav-line); border-radius:8px; background:var(--product-menu-bg); box-shadow:0 22px 60px rgba(0,0,0,.24); }
+    .product-switcher-menu a { display:grid; gap:4px; padding:12px; border-radius:6px; color:var(--product-menu-text); text-decoration:none; }
+    .product-switcher-menu a:hover { background:var(--product-menu-hover); }
+    .product-switcher-menu strong { font-size:13px; }
+    .product-switcher-menu span { color:var(--product-menu-muted); font-size:11px; line-height:1.35; }
+    @media (max-width: 680px) {
+      .product-site-nav { min-height:64px; gap:8px; padding:8px 10px; }
+      .product-site-brand strong { font-size:13px; }
+      .product-site-brand small, .product-site-home { display:none; }
+      .product-switcher summary { min-height:40px; padding:0 12px; }
+      .product-switcher-menu { position:fixed; top:68px; right:10px; left:10px; width:auto; }
+    }
+
+    :root { --product-nav-bg:rgba(6,42,58,.96); --product-nav-line:rgba(32,227,154,.24); --product-nav-text:#fff; --product-nav-muted:#BFD8DE; --product-nav-chip:rgba(255,255,255,.07); --product-accent:#20E39A; --product-menu-bg:#062A3A; --product-menu-text:#fff; --product-menu-muted:#BFD8DE; --product-menu-hover:rgba(32,227,154,.1); }
+    .sigmai-page .hero { background:linear-gradient(135deg,var(--sigmai-navy),#0A3C49 55%,var(--sigmai-teal)); }
+    .sigmai-page .brand-mark { border-radius:8px; }
+    .sigmai-page .card, .sigmai-page figure, .sigmai-page .swatch, .sigmai-page .step { border-radius:8px; }
+    .sigmai-page section { scroll-margin-top:84px; }
+
+  </style>
+</head>
+<body class="sigmai-page">
+  <nav class="product-site-nav" aria-label="Navegação de ferramentas HerpetoMantiqueira">
+    <a class="product-site-brand" href="index.html#inicio">
+      <img src="assets/herpeto-mantiqueira-logo.png" alt="">
+      <span><strong>HerpetoMantiqueira</strong><small>Ferramentas científicas gratuitas</small></span>
+    </a>
+    <details class="product-switcher">
+      <summary>Ferramentas</summary>
+      <div class="product-switcher-menu">
+        <a href="sobre-gold.html"><strong>Gold AI Ecológica</strong><span>Assistente científico conversacional</span></a>
+        <a href="oikos-fieldbook.html"><strong>Oikos FieldBook</strong><span>Caderno de campo digital</span></a>
+        <a href="sigmai.html"><strong>SIGMAI</strong><span>Interface segura entre IA e QGIS</span></a>
+        <a href="topotrail.html"><strong>TopoTrail</strong><span>Planejamento topográfico de trilhas</span></a>
+        <a href="herpetofauna-cruzeiro.html"><strong>Herpetofauna de Cruzeiro</strong><span>Álbum educativo interativo</span></a>
+      </div>
+    </details>
+    <a class="product-site-home" href="index.html#inicio">Início</a>
+  </nav>
+
+  <header class="hero">
+    <div class="hero-grid">
+      <div>
+        <p class="eyebrow">Plugin QGIS público · IA local · Automação SIG segura</p>
+        <h1>SIGMAI</h1>
+        <p class="subtitle">Secure GIS-AI Interface: uma ponte local, auditável e protegida entre agentes de IA e o QGIS.</p>
+        <div class="hero-badges">
+          <span class="badge">QGIS 3.28+</span>
+          <span class="badge">Compatibilidade QGIS 4 preparada</span>
+          <span class="badge">Token local</span>
+          <span class="badge">127.0.0.1</span>
+          <span class="badge">GPL-3.0-or-later</span>
+        </div>
+        <div class="hero-actions">
+          <a class="hero-action hero-action--primary" href="https://plugins.qgis.org/plugins/sigmai/" target="_blank" rel="noopener noreferrer">Baixar no QGIS</a>
+          <a class="hero-action" href="#como-citar">Como citar</a>
+        </div>
+      </div>
+      <img class="brand-mark" src="assets/sigmai/sigmai-logo-full.png" alt="Logo horizontal do SIGMAI">
+    </div>
+  </header>
+
+  <main>
+    <section>
+      <h2>Sobre o Aplicativo</h2>
+      <p class="lead">
+        O SIGMAI é um plugin para QGIS criado para permitir que agentes de IA, ferramentas de desenvolvimento e clientes locais interajam com projetos GIS por comandos estruturados. Em vez de depender de automação visual frágil ou execução arbitrária de código, o SIGMAI oferece uma camada de tradução segura entre linguagem natural, JSON, PyQGIS, QGIS Processing, layouts cartográficos, camadas vetoriais, rasters, relatórios e workflows.
+      </p>
+      <div class="note">
+        <strong>Ideia central:</strong> usar IA dentro do QGIS sem abrir mão de segurança, rastreabilidade, permissões, logs, dry-run e controle local pelo usuário.
+      </div>
+    </section>
+
+    <section>
+      <h2>Objetivo</h2>
+      <div class="grid">
+        <div class="card">
+          <h3>Operar o QGIS com IA</h3>
+          <p>Permitir que IA consulte camadas, CRS, projetos, layouts, logs, plugins e ambiente QGIS por uma API local clara e auditável.</p>
+        </div>
+        <div class="card">
+          <h3>Gerar produtos cartográficos</h3>
+          <p>Criar mapas técnicos, layouts profissionais, relatórios, exportações PDF/PNG e fluxos cartográficos com avaliação visual.</p>
+        </div>
+        <div class="card">
+          <h3>Apoiar desenvolvimento de plugins</h3>
+          <p>Inspecionar, testar, empacotar e diagnosticar plugins QGIS, com modo desenvolvedor explícito e protegido por confirmação.</p>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2>Como Funciona</h2>
+      <div class="architecture">
+        <div class="step">IA / Cliente<small>Codex, MCP, CLI, VS Code</small></div>
+        <div class="step">JSON Seguro<small>schema, request_id, dry_run</small></div>
+        <div class="step">Bridge Local<small>127.0.0.1 + token</small></div>
+        <div class="step">QGIS / PyQGIS<small>camadas, Processing, layouts</small></div>
+        <div class="step">Produto Final<small>mapas, relatórios, dados</small></div>
+      </div>
+    </section>
+
+    <section>
+      <h2>Funções Principais</h2>
+      <div class="grid two">
+        <div class="card">
+          <h3>GIS e Cartografia</h3>
+          <ul class="feature-list">
+            <li>Listagem e inspeção de camadas do projeto.</li>
+            <li>Diagnóstico de CRS e reprojeção segura.</li>
+            <li>Validação e correção de geometrias.</li>
+            <li>Ferramentas vetoriais: buffer, clip, dissolve, intersection, union, difference e centroids.</li>
+            <li>Geração de layouts, legendas, escala, norte, grade, créditos e exportação PDF/PNG.</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>IA, Segurança e Desenvolvimento</h3>
+          <ul class="feature-list">
+            <li>Bridge local com token bearer por sessão.</li>
+            <li>Session discovery para clientes locais confiáveis.</li>
+            <li>Permissions, confirmations, dry-run e logs auditáveis.</li>
+            <li>Inventário e diagnóstico de plugins QGIS instalados.</li>
+            <li>Modo DEV explícito para desenvolvimento PyQGIS, desativado por padrão.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2>Paleta Visual</h2>
+      <p class="lead">A identidade visual do SIGMAI usa uma base técnica e escura, com verde como cor de ação/segurança, cinzas para superfícies e vermelho apenas para alertas e Developer Mode.</p>
+      <div class="palette">
+        <div class="swatch"><div class="swatch-color" style="background:#062A3A"></div><div class="swatch-info"><strong>Azul meia-noite</strong><code>#062A3A</code></div></div>
+        <div class="swatch"><div class="swatch-color" style="background:#075D68"></div><div class="swatch-info"><strong>Azul-Petróleo</strong><code>#075D68</code></div></div>
+        <div class="swatch"><div class="swatch-color" style="background:#00A86B"></div><div class="swatch-info"><strong>Verde jade</strong><code>#00A86B</code></div></div>
+        <div class="swatch"><div class="swatch-color" style="background:#20E39A"></div><div class="swatch-info"><strong>Verde menta</strong><code>#20E39A</code></div></div>
+        <div class="swatch"><div class="swatch-color" style="background:#DDF8EC"></div><div class="swatch-info"><strong>Menta claro</strong><code>#DDF8EC</code></div></div>
+        <div class="swatch"><div class="swatch-color" style="background:#F6F8FA"></div><div class="swatch-info"><strong>Cinza névoa</strong><code>#F6F8FA</code></div></div>
+        <div class="swatch"><div class="swatch-color" style="background:#D8E1E8"></div><div class="swatch-info"><strong>Cinza azulado</strong><code>#D8E1E8</code></div></div>
+        <div class="swatch"><div class="swatch-color" style="background:#B42323"></div><div class="swatch-info"><strong>Vermelho escarlate</strong><code>#B42323</code></div></div>
+      </div>
+    </section>
+
+    <section>
+      <h2>Logos</h2>
+      <div class="logo-gallery">
+        <figure>
+          <img src="assets/sigmai/sigmai-logo-full.png" alt="Logo horizontal SIGMAI">
+          <figcaption>Logo horizontal principal para documentação, README, telas de apresentação e materiais institucionais.</figcaption>
+        </figure>
+        <figure>
+          <img src="assets/sigmai/sigmai-icon.png" alt="Ícone SIGMAI">
+          <figcaption>Ícone do plugin para o QGIS Plugin Manager, toolbar e atalhos dentro do QGIS.</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section>
+      <h2>Interface do Plugin</h2>
+      <p class="lead">A HUD do SIGMAI foi desenhada para funcionar como painel técnico: status da Bridge, token de sessão, comandos rápidos, logs, ferramentas GIS, modo cartográfico, modo desenvolvedor e recursos para integração com IA.</p>
+      <div class="mockup" aria-label="Representação visual da HUD do SIGMAI">
+        <div class="mockup-header">
+          <div>
+            <div class="mockup-title">SIGMAI</div>
+            <div>Secure GIS-AI Interface</div>
+          </div>
+          <span class="status-pill">Bridge Online</span>
+        </div>
+        <div class="mockup-body">
+          <div class="mock-panel">
+            <h3>Connection</h3>
+            <p>Host local: 127.0.0.1 · Token por sessão · Pairing code · Logs</p>
+            <span class="mock-button primary">Start Bridge</span>
+            <span class="mock-button">Copy Token</span>
+            <span class="mock-button">Capabilities</span>
+          </div>
+          <div class="mock-panel">
+            <h3>GIS Tools</h3>
+            <p>Camadas, CRS, vetores, raster, layouts, workflows, plugins e relatórios.</p>
+            <span class="mock-button">List Layers</span>
+            <span class="mock-button">Generate Map</span>
+            <span class="mock-button danger">DEV MODE</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2>Resultados e Exemplos Visuais</h2>
+      <p class="lead">O exemplo abaixo mostra um produto cartográfico montado durante o desenvolvimento do SIGMAI. Neste caso, o SIGMAI atua como a ponte que permite à IA controlar o QGIS, organizar camadas, acionar ferramentas e compor o layout final; as camadas analíticas de áreas trilhaveis, risco e zonas potenciais são produzidas por plugins e ferramentas especializadas, como o TopoTrail.</p>
+      <div class="image-gallery">
+        <figure>
+          <img src="assets/sigmai/mapa-topotrail-hibrido.png" alt="Mapa híbrido TopoTrail produzido com apoio do SIGMAI">
+          <figcaption>Mapa ambiental com risco topográfico, zonas potenciais e trilhas, usado para testar clareza visual e hierarquia cartográfica.</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section>
+      <h2>Segurança e Privacidade</h2>
+      <div class="grid">
+        <div class="card">
+          <h3>Local por padrão</h3>
+          <p>A Bridge trabalha em `127.0.0.1`, sem expor servidor público para a rede.</p>
+        </div>
+        <div class="card">
+          <h3>Token por sessão</h3>
+          <p>Clientes precisam de bearer token, e logs/relatórios não devem revelar tokens completos.</p>
+        </div>
+        <div class="card">
+          <h3>Modo DEV protegido</h3>
+          <p>Execução Python só fica disponível quando o usuário ativa explicitamente o Developer Mode e confirma digitando “SIM”.</p>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2>Autoria e Contexto</h2>
+      <div class="card">
+        <p>
+          <strong>Autor do plugin:</strong> MACIEL, L. S. C.<br>
+          <strong>E-mail:</strong> herpetomantiqueira@gmail.com<br>
+          <strong>Desenvolvido por:</strong> Luan da Silva Cortes Maciel.<br>
+          <strong>Contexto:</strong> ferramenta de pesquisa associada ao projeto Herpeto Mantiqueira.
+        </p>
+        <p style="margin-top:14px">
+          O SIGMAI diferencia autoria do plugin e autoria dos mapas gerados. Mapas finais devem creditar o autor informado pelo usuário, a organização, a fonte de dados e a linha “Criado com SIGMAI/QGIS”, sem atribuir automaticamente todos os mapas ao autor do plugin.
+        </p>
+      </div>
+    </section>
+
+    <section>
+      <h2>Publicação e download</h2>
+      <div class="card">
+        <p><strong>Download oficial:</strong> <a class="publication-link" href="https://plugins.qgis.org/plugins/sigmai/" target="_blank" rel="noopener noreferrer">QGIS Python Plugins Repository</a></p>
+      </div>
+    </section>
+
+    <section id="como-citar">
+      <h2>Como citar</h2>
+      <div class="citation-box">
+        <p>MACIEL, L. S. C. (2026). SIGMAI: Local AI-QGIS interface with auditable commands. (V0.1.0). Zenodo. <a href="https://doi.org/10.5281/zenodo.20389287" target="_blank" rel="noopener noreferrer">https://doi.org/10.5281/zenodo.20389287</a></p>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <strong>SIGMAI — Secure GIS-AI Interface</strong><br>
+    Versão documentada: 0.1.1 · QGIS Plugin · GPL-3.0-or-later · Repositório: https://github.com/LuanCortesM/SIGMAI
+  </footer>
+</body>
+</html>

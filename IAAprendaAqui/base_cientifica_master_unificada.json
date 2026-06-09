@@ -1,0 +1,2121 @@
+{
+  "schema_name": "herpeto_mantiqueira_scientific_knowledge_base",
+  "schema_version": "2.0",
+  "created_at_utc": "2026-05-31T20:41:42.953920+00:00",
+  "purpose": "Base consolidada para chatbot científico/RAG em ecologia, zoologia, herpetologia, ciência cidadã, biodiversidade e modelagem de distribuição de espécies.",
+  "design_note": "O arquivo master contém metadados e previews. O texto integral foi convertido em chunks no arquivo JSONL para uso eficiente em busca semântica/RAG. Glossários foram separados em estrutura terminológica própria.",
+  "input_files_report": [
+    {
+      "file": "artigos_lote5_completo_21_30(1).json",
+      "status": "ok",
+      "kind": "articles",
+      "sha256": "1f634cd2cbdbdb0d0ba5e2bf0fa2783ce86218bfd4f7312ca03866df5c1a23e5",
+      "size_bytes": 1563922
+    },
+    {
+      "file": "artigos_biodiversidade_lote4_completo(1).json",
+      "status": "ok",
+      "kind": "articles",
+      "sha256": "7cece40e5c6be06f7d6d88d7040051a79bc1bc34a4f050220bc9bd74fa52ee5d",
+      "size_bytes": 883575
+    },
+    {
+      "file": "artigos_herpetologia_lote3_json_unico(1).json",
+      "status": "ok",
+      "kind": "articles",
+      "sha256": "3d9940b0ea1e7e69fd8a937fd29de68a4f7e58e7c28b099cf8ddb311c8b3f299",
+      "size_bytes": 1194034
+    },
+    {
+      "file": "artigos_ciencia_cidada_lote2_json_unico(1).json",
+      "status": "ok",
+      "kind": "articles",
+      "sha256": "5d4fd972166ebc1fad525d089b9364775cac346b0740e44bc9bce9b16604b833",
+      "size_bytes": 721713
+    },
+    {
+      "file": "artigos_ciencia_cidada_json_unico(1).json",
+      "status": "ok",
+      "kind": "articles",
+      "sha256": "dcbe22551fc47f0d0f00a102c9c5976d57d34bbfbdf614627266f24dde51ee8e",
+      "size_bytes": 1443453
+    },
+    {
+      "file": "Biota-glossario.json",
+      "status": "ok",
+      "kind": "segments_glossary",
+      "sha256": "69f8d41aa50801c34eb4655575f3d748111582ad5945dc4c3c236ff3302806f2",
+      "size_bytes": 64073
+    },
+    {
+      "file": "1.json",
+      "status": "ok",
+      "kind": "segments_glossary",
+      "sha256": "202c1c5a1352a568d7d3dcf825770dc67f065a1a22daafa1bcd54ecfa6bd5c61",
+      "size_bytes": 5456165
+    },
+    {
+      "file": "CONC_BASICOS_ECOLOGIA_V1.json",
+      "status": "ok",
+      "kind": "segments_glossary",
+      "sha256": "fd1c6d6be72037813e0dcc7834b62f340cf4a43a6729ef572dff0c16122e332c",
+      "size_bytes": 511680
+    },
+    {
+      "file": "Introdução-à-Ecologia.json",
+      "status": "ok",
+      "kind": "segments_glossary",
+      "sha256": "a9408794a9caa662e748ce433049d1fbc65d636b7a7fe65252d46c0ca468234d",
+      "size_bytes": 341409
+    },
+    {
+      "file": "Glossário de termos mais usados em ecologia.json",
+      "status": "ok",
+      "kind": "segments_glossary",
+      "sha256": "2d3800997f1891596e3bcbb00d0c1d188fe2614339f111cf6cdcaaf9ae5bf7d9",
+      "size_bytes": 24894
+    },
+    {
+      "file": "Glossario.json",
+      "status": "ok",
+      "kind": "segments_glossary",
+      "sha256": "6b820ada91d7044bb9c8ede3e62b19f6b737b63b136f07e71958d8160bc67076",
+      "size_bytes": 191938
+    }
+  ],
+  "counts": {
+    "input_json_files": 11,
+    "loaded_json_files": 11,
+    "articles_raw": 45,
+    "articles_deduplicated": 40,
+    "duplicates_detected": 5,
+    "glossary_entries_detected": 571,
+    "chunks_total": 3772,
+    "glossary_source_documents": 6,
+    "raw_documents": 0
+  },
+  "theme_counts": {
+    "glossario_terminologia": 589,
+    "nao_classificado": 319,
+    "zoologia": 193,
+    "ecologia": 124,
+    "herpetologia": 43,
+    "conservacao": 40,
+    "biodiversity_informatics": 39,
+    "ciencia_cidada": 19,
+    "sdm_modelagem_distribuicao": 17,
+    "mata_atlantica": 9,
+    "serra_da_mantiqueira": 5
+  },
+  "recommended_use": {
+    "chatbot": "Use o arquivo JSONL de chunks para embeddings e busca semântica. Use o master para filtros, metadados e citações. Use o glossário normalizado para respostas terminológicas.",
+    "retrieval_strategy": "Buscar primeiro em chunks por similaridade semântica; filtrar por themes quando o usuário especificar área; retornar respostas com source_file, page e title.",
+    "chunk_size": "Aproximadamente até 1800 caracteres por chunk.",
+    "deduplication": "Duplicatas removidas preferencialmente por DOI, depois hash textual e título."
+  },
+  "duplicates": [
+    {
+      "duplicate_article_id": "art_dbad131502ab",
+      "kept_article_id": "art_fb1c8cf1cd52",
+      "title": "Composition and natural history of the snakes from",
+      "source_json": "artigos_lote5_completo_21_30(1).json"
+    },
+    {
+      "duplicate_article_id": "art_d7763e228b5e",
+      "kept_article_id": "art_fa2198a1cc30",
+      "title": "The next generation of natural history",
+      "source_json": "artigos_biodiversidade_lote4_completo(1).json"
+    },
+    {
+      "duplicate_article_id": "art_f439cfcaee94",
+      "kept_article_id": "art_fa2198a1cc30",
+      "title": "Declining growth of natural history collections",
+      "source_json": "artigos_biodiversidade_lote4_completo(1).json"
+    },
+    {
+      "duplicate_article_id": "art_929aa78651a6",
+      "kept_article_id": "art_1ccb674cff56",
+      "title": "research libraries, and research funders in the common goal of maximizing access to critical research",
+      "source_json": "artigos_herpetologia_lote3_json_unico(1).json"
+    },
+    {
+      "duplicate_article_id": "art_99f352c5e9b8",
+      "kept_article_id": "art_4ef2c6175481",
+      "title": "A Framework of Observer-Based Biases in Citizen Science Biodiversity Monitoring: Semi-Structuring Unstructured Biodiversity Monitoring Protocols",
+      "source_json": "artigos_ciencia_cidada_json_unico(1).json"
+    }
+  ],
+  "articles": [
+    {
+      "article_id": "art_dbf00a492399",
+      "record_type": "article",
+      "source_json": "artigos_lote5_completo_21_30(1).json",
+      "source_file": "21.pdf",
+      "title": "Progress in Physical Geography",
+      "year": "2010",
+      "doi": [
+        "10.1177/0309133309355630"
+      ],
+      "keywords": [
+        "ecological niche modelling",
+        "georeferencing",
+        "gis",
+        "museum data",
+        "natural history collections",
+        "species"
+      ],
+      "themes": [
+        "herpetologia",
+        "ecologia",
+        "zoologia",
+        "biodiversity_informatics",
+        "sdm_modelagem_distribuicao",
+        "conservacao"
+      ],
+      "abstract": "To conserve biodiversity, it is necessary to understand how species are distributed and which aspects of the\nenvironment determine distributions. In large parts of the world and for the majority of species, data\ndescribing distributions are very scarce. Museums, private collections and the historical literature offer a\nvast source of information on distributions. Records of the occurrence of species from these sources are\nincreasingly being captured in electronic databases and made available over the internet. These records\nmay be very valuable in conservation efforts. However, there are a number of limitations with museum\ndata. These limitations are dealt with in the first part of this review. Even if the limitations of museum\ndata can be overcome, these data present a far-from-complete picture of the distributions of species. Species\ndistribution models offer a means to extrapolate limited information in order to estimate the distributions of\nspecies over large areas. The second part of this paper reviews the challenges of developing species distribution models for use with museum data and describes some of the questions that species distribution models have been used to address. Given the rapidly increasing number of museum records of species occurrence\navailable over the internet, a review of their usefulness in conservation and ecology is timely.",
+      "page_count": 21,
+      "text_length": 70608,
+      "text_sha256": "5606a7bd858e42a6365764a12bb122507740f09b5c75dd56523030f155333857",
+      "metadata": {},
+      "text_preview": "http://ppg.sagepub.com/\nProgress in Physical Geography\nhttp://ppg.sagepub.com/content/34/1/3\nThe online version of this article can be found at:\nDOI: 10.1177/0309133309355630\n2010 34: 3Progress in Physical Geography\nTim Newbold\nattention to species distribution models\nApplications and limitations of museum data for conservation and ecology, with particular\nPublished by:\nhttp://www.sagepublications.com\ncan be found at:Progress in Physical GeographyAdditional services and information for\nhttp://ppg.sagepub.com/cgi/alertsEmail Alerts:\nhttp://ppg.sagepub.com/subscriptionsSubscriptions:\nhttp://www.sagepub.com/journalsReprints.navReprints:\nhttp://www.sagepub.com/journalsPermissions.navPermissions:\nhttp://ppg.sagepub.com/content/34/1/3.refs.htmlCitations:\nWhat is This?\n- Jan 22, 2010Version of Record >>\nat BROWN UNIVERSITY on January 12, 2013ppg.sagepub.comDownloaded from\nArticle\nApplications and limitations of\nmuseum data for conservation\nand ecology, with particular\nattention to species distribution\nmodels\nTim Newbold\nUniversity of Nottingham, UK\nAbstract\nTo conserve biodiversity, it is necessary to understand how species are distributed and which aspects of the\nenvironment determine di"
+    },
+    {
+      "article_id": "art_127c0d29161d",
+      "record_type": "article",
+      "source_json": "artigos_lote5_completo_21_30(1).json",
+      "source_file": "22.pdf",
+      "title": "Ecological Applications, 19(1), 2009, pp. 181–197",
+      "year": "2009",
+      "doi": [],
+      "keywords": [],
+      "themes": [
+        "ecologia",
+        "biodiversity_informatics",
+        "sdm_modelagem_distribuicao",
+        "conservacao"
+      ],
+      "abstract": ". Most methods for modeling species distributions from occurrence records\nrequire additional data representing the range of environmental conditions in the modeled\nregion. These data, called background or pseudo-absence data, are usually drawn at random\nfrom the entire region, whereas occurrence collection is often spatially biased toward easily\naccessed areas. Since the spatial bias generally results in environmental bias, the difference\nbetween occurrence collection and background sampling may lead to inaccurate models. To\ncorrect the estimation, we propose choosing background data with the same bias as occurrence\ndata. We investigate theoretical and practical implications of this approach. Accurate\ninformation about spatial bias is usually lacking, so explicit biased sampling of background\nsites may not be possible. However, it is likely that an entire target group of species observed\nby similar methods will share similar bias. We therefore explore the use of all occurrences\nwithin a target group as biased background data. We compare model performance using\ntarget-group background and randomly sampled background on a comprehensive collection\nof data for 226 species from diverse regions of the world. We ﬁnd that target-group\nbackground improves average performance for all the modeling methods we consider, with the\nchoice of background data having as large an effect on predictive performance as the choice of\nmodeling method. The performance improvement due to target-group background is greatest\nwhen there is strong bias in the target-group presence records. Our approach applies to\nregression-based modeling methods that have been adapted for use with occurrence data, such\nas generalized linear or additive models and boosted regression trees, and to Maxent, a\nprobability density estimation method. We argue that increased awareness of the implications\nof spatial bias in surveys, and possible modeling remedies, will substantially improve\npredictions of species distributions.\nKey words: background data; presence-only distribution models; niche modeling; pseudo-absence;\nsample selection bias; species distribution modeling; target group.",
+      "page_count": 17,
+      "text_length": 85108,
+      "text_sha256": "22191ed529fa3e33e3a3b2bc552fcad843e18a8f5b33c8f8f1d12a48aa082bca",
+      "metadata": {},
+      "text_preview": "Ecological Applications, 19(1), 2009, pp. 181–197\n/C2112009 by the Ecological Society of America\nSample selection bias and presence-only distribution models:\nimplications for background and pseudo-absence data\nSTEVEN J. PHILLIPS,1,8 MIROSLAV DUDI´K,2 JANE ELITH,3 CATHERINE H. GRAHAM,4 ANTHONY LEHMANN,5\nJOHN LEATHWICK,6 AND SIMON FERRIER7\n1AT&T Labs—Research, 180 Park Avenue, Florham Park, New Jersey 07932 USA\n2Computer Science Department, Princeton University, 35 Olden Street, Princeton, New Jersey 08544 USA\n3School of Botany, University of Melbourne, Parkville, Victoria 3010 Australia\n4Department of Ecology and Evolution, 650 Life Sciences Building, Stony Brook University, New York 11794 USA\n5Climatic Change and Climate Impacts, University of Geneva, 7 Route de Drize, 1227 Carouge, Switzerland\n6NIWA, Hamilton, New Zealand\n7New South Wales Department of Environment and Climate Change, P.O. Box 402, Armidale 2350 Australia\nAbstract. Most methods for modeling species distributions from occurrence records\nrequire additional data representing the range of environmental conditions in the modeled\nregion. These data, called background or pseudo-absence data, are usually drawn at random\nfr"
+    },
+    {
+      "article_id": "art_596f85f1591a",
+      "record_type": "article",
+      "source_json": "artigos_lote5_completo_21_30(1).json",
+      "source_file": "23.pdf",
+      "title": "ScIentIfIc REPORTS | 7: 9132 | DOI:10.1038/s41598-017-09084-6",
+      "year": "1992",
+      "doi": [
+        "10.1038/s41598-017-09084-6"
+      ],
+      "keywords": [],
+      "themes": [
+        "herpetologia",
+        "ecologia",
+        "zoologia",
+        "ciencia_cidada",
+        "biodiversity_informatics",
+        "conservacao"
+      ],
+      "abstract": "",
+      "page_count": 14,
+      "text_length": 59353,
+      "text_sha256": "b1e55c815c422d7137a95476b9d493fb4aa357dca627f4c40a25b911322f86f8",
+      "metadata": {},
+      "text_preview": "1\nScIentIfIc REPORTS | 7: 9132 | DOI:10.1038/s41598-017-09084-6\nwww.nature.com/scientificreports\nTaxonomic bias in biodiversity data\nand societal preferences\nJulien Troudet1, Philippe Grandcolas1, Amandine Blin2, Régine Vignes-Lebbe1 &\nFrédéric Legendre 1\nStudying and protecting each and every living species on Earth is a major challenge of the 21st century.\nYet, most species remain unknown or unstudied, while others attract most of the public, scientific\nand government attention. Although known to be detrimental, this taxonomic bias continues to be\npervasive in the scientific literature, but is still poorly studied and understood. Here, we used 626\nmillion occurrences from the Global Biodiversity Information Facility (GBIF), the biggest biodiversity\ndata portal, to characterize the taxonomic bias in biodiversity data. We also investigated how societal\npreferences and taxonomic research relate to biodiversity data gathering. For each species belonging\nto 24 taxonomic classes, we used the number of publications from Web of Science and the number of\nweb pages from Bing searches to approximate research activity and societal preferences. Our results\nshow that societal preferences, rath"
+    },
+    {
+      "article_id": "art_d65af6fd931f",
+      "record_type": "article",
+      "source_json": "artigos_lote5_completo_21_30(1).json",
+      "source_file": "24.pdf",
+      "title": "Scientific RepoRts | 7: 12832 | DOI:10.1038/s41598-017-13130-8",
+      "year": "2017",
+      "doi": [
+        "10.1038/s41598-017-13130-8"
+      ],
+      "keywords": [],
+      "themes": [
+        "herpetologia",
+        "ecologia",
+        "zoologia",
+        "ciencia_cidada",
+        "biodiversity_informatics",
+        "conservacao"
+      ],
+      "abstract": "",
+      "page_count": 9,
+      "text_length": 33288,
+      "text_sha256": "2dcf74b274491df887077700ac8078174829ec8b5f0eab44493357bec1e8ffa6",
+      "metadata": {},
+      "text_preview": "1\nScientific RepoRts | 7: 12832 | DOI:10.1038/s41598-017-13130-8\nwww.nature.com/scientificreports\nSpatial distribution of citizen\nscience casuistic observations for\ndifferent taxonomic groups\nPatrícia Tiago1,2, Ana Ceia-Hasse2,3, Tiago A. Marques 4,5, César Capinha6 & Henrique M.\nPereira 2,3,7\nOpportunistic citizen science databases are becoming an important way of gathering information on\nspecies distributions. These data are temporally and spatially dispersed and could have limitations\nregarding biases in the distribution of the observations in space and/or time. In this work, we test the\ninfluence of landscape variables in the distribution of citizen science observations for eight taxonomic\ngroups. We use data collected through a Portuguese citizen science database (biodiversity4all.org).\nWe use a zero-inflated negative binomial regression to model the distribution of observations as a\nfunction of a set of variables representing the landscape features plausibly influencing the spatial\ndistribution of the records. Results suggest that the density of paths is the most important variable,\nhaving a statistically significant positive relationship with number of observations for seven"
+    },
+    {
+      "article_id": "art_b97b211b14bd",
+      "record_type": "article",
+      "source_json": "artigos_lote5_completo_21_30(1).json",
+      "source_file": "25.pdf",
+      "title": "Vol.:(0123456789)Scientific RepoRtS | (2020) 10:11009 | https://doi.org/10.1038/s41598-020-67658-3",
+      "year": "2020",
+      "doi": [
+        "10.1038/s41598-020-67658-3"
+      ],
+      "keywords": [],
+      "themes": [
+        "ecologia",
+        "zoologia",
+        "ciencia_cidada",
+        "sdm_modelagem_distribuicao",
+        "conservacao"
+      ],
+      "abstract": "",
+      "page_count": 12,
+      "text_length": 53985,
+      "text_sha256": "5adf660fce531e966eefac74cd7f35b815c2f076b81f41640de976d8f9c946c6",
+      "metadata": {},
+      "text_preview": "1\nVol.:(0123456789)Scientific RepoRtS | (2020) 10:11009 | https://doi.org/10.1038/s41598-020-67658-3\nwww.nature.com/scientificreports\nData‑derived metrics describing\nthe behaviour of field‑based\ncitizen scientists provide insights\nfor project design and modelling\nbias\ntom August1*, Richard fox2, David B. Roy1 & Michael J. O. Pocock1\nAround the world volunteers and non‑professionals collect data as part of environmental citizen\nscience projects, collecting wildlife observations, measures of water quality and much more. However,\nwhere projects allow flexibility in how, where, and when data are collected there will be variation in\nthe behaviour of participants which results in biases in the datasets collected. We develop a method\nto quantify this behavioural variation, describing the key drivers and providing a tool to account\nfor biases in models that use these data. We used a suite of metrics to describe the temporal and\nspatial behaviour of participants, as well as variation in the data they collected. These were applied\nto 5,268 users of the iRecord Butterflies mobile phone app, a multi‑species environmental citizen\nscience project. in contrast to previous studies, after removing "
+    },
+    {
+      "article_id": "art_b88b32c75a6b",
+      "record_type": "article",
+      "source_json": "artigos_lote5_completo_21_30(1).json",
+      "source_file": "26.pdf",
+      "title": "Vol.:(0123456789)Scientific Reports | (2022) 12:11069 | https://doi.org/10.1038/s41598-022-15218-2",
+      "year": "2022",
+      "doi": [
+        "10.1038/s41598-022-15218-2"
+      ],
+      "keywords": [],
+      "themes": [
+        "ecologia",
+        "zoologia",
+        "ciencia_cidada",
+        "biodiversity_informatics",
+        "conservacao"
+      ],
+      "abstract": "",
+      "page_count": 11,
+      "text_length": 55959,
+      "text_sha256": "8bf5ff909e850f80c567487144ded5a8a4384b995aff7ebad17e2b034c01c4ce",
+      "metadata": {},
+      "text_preview": "1\nVol.:(0123456789)Scientific Reports | (2022) 12:11069 | https://doi.org/10.1038/s41598-022-15218-2\nwww.nature.com/scientificreports\nDecision‑making of citizen\nscientists when recording species\nobservations\nDiana E. Bowler1,2,3*, Netra Bhandari1, Lydia Repke4, Christoph Beuthner4,\nCorey T. Callaghan1,5, David Eichenberg1,3, Klaus Henle6, Reinhard Klenke1,5, Anett Richter7,\nFlorian Jansen8, Helge Bruelheide1,5 & Aletta Bonn1,2,3\nCitizen scientists play an increasingly important role in biodiversity monitoring. Most of the data,\nhowever, are unstructured—collected by diverse methods that are not documented with the\ndata. Insufficient understanding of the data collection processes presents a major barrier to the\nuse of citizen science data in biodiversity research. We developed a questionnaire to ask citizen\nscientists about their decision‑making before, during and after collecting and reporting species\nobservations, using Germany as a case study. We quantified the greatest sources of variability\namong respondents and assessed whether motivations and experience related to any aspect of data\ncollection. Our questionnaire was answered by almost 900 people, with varying taxonomic foci a"
+    },
+    {
+      "article_id": "art_7c19925972fe",
+      "record_type": "article",
+      "source_json": "artigos_lote5_completo_21_30(1).json",
+      "source_file": "27.pdf",
+      "title": "TraitBank: Practical semantics for organism attribute data Cynthia S. Parra,c, Katja Schulz§a, Jennifer Hammocka, Nathan Wilsonbd, Patrick Learybe, Jeremy Riceb, Robert J. Corrigan Jr.a a National Museum of Natural History, Smithsonian Institution, Washington, D. C., USA b Marine Biological Laboratory, Woods Hole, Massachusetts, USA c Current address: United States Department of Agriculture, Agricultural Research Service, Beltsville, Maryland, USA d Current address: MassChallenge, Boston, Massachusetts, USA e Current address: California Academy of Sciences, San Francisco, California, USA §Corresponding author, schulzk@si.edu",
+      "year": "",
+      "doi": [],
+      "keywords": [
+        "biodiversity",
+        "ontologies",
+        "semantic web",
+        "traits",
+        "ecology",
+        "evolution",
+        "taxonomy",
+        "aggregation"
+      ],
+      "themes": [
+        "ecologia",
+        "zoologia",
+        "ciencia_cidada",
+        "biodiversity_informatics",
+        "conservacao"
+      ],
+      "abstract": ". Encyclopedia of Life (EOL) has developed a new repository for organism attribute (trait) data called TraitBank (http://eol.org/traitbank). TraitBank aggregates, manages and serves attribute data for organisms across the tree of life, includ-ing life history characteristics, habitats, distributions, ecological relationships and other data types. We describe how Trait-Bank ingests and manages these data in a way that leverages EOL’s existing infrastructure and semantic annotations to facili-tate reasoning across the TraitBank corpus and interoperability with other resources. We also discuss TraitBank’s impact on users and collaborators and the challenges and benefits of our lightweight, scalable approach to the integration of biodiversity data. Keywords: biodiversity, ontologies, Semantic Web, traits, ecology, evolution, taxonomy, aggregation",
+      "page_count": 13,
+      "text_length": 51374,
+      "text_sha256": "5ebddd93325eaa4cbb5a9cf8f656b6eabc861345bf125a4ebce0d911fd7c26b3",
+      "metadata": {},
+      "text_preview": "TraitBank: Practical semantics for organism attribute data Cynthia S. Parra,c, Katja Schulz§a, Jennifer Hammocka, Nathan Wilsonbd, Patrick Learybe, Jeremy Riceb, Robert J. Corrigan Jr.a a National Museum of Natural History, Smithsonian Institution, Washington, D. C., USA b Marine Biological Laboratory, Woods Hole, Massachusetts, USA c Current address: United States Department of Agriculture, Agricultural Research Service, Beltsville, Maryland, USA d Current address: MassChallenge, Boston, Massachusetts, USA e Current address: California Academy of Sciences, San Francisco, California, USA §Corresponding author, schulzk@si.edu\nAbstract. Encyclopedia of Life (EOL) has developed a new repository for organism attribute (trait) data called TraitBank (http://eol.org/traitbank). TraitBank aggregates, manages and serves attribute data for organisms across the tree of life, includ-ing life history characteristics, habitats, distributions, ecological relationships and other data types. We describe how Trait-Bank ingests and manages these data in a way that leverages EOL’s existing infrastructure and semantic annotations to facili-tate reasoning across the TraitBank corpus and interoperability"
+    },
+    {
+      "article_id": "art_c105a9625b2a",
+      "record_type": "article",
+      "source_json": "artigos_lote5_completo_21_30(1).json",
+      "source_file": "28.pdf",
+      "title": "Ecological Modelling 444 (2021) 109453",
+      "year": "2021",
+      "doi": [
+        "10.1016/j.ecolmodel.2021.109453"
+      ],
+      "keywords": [
+        "data quality filtering"
+      ],
+      "themes": [
+        "ecologia",
+        "zoologia",
+        "ciencia_cidada",
+        "biodiversity_informatics",
+        "sdm_modelagem_distribuicao",
+        "conservacao"
+      ],
+      "abstract": "Opportunistically collected species occurrence data are often used for species distribution models (SDMs) when\nhigh-quality data collected through standardized recording protocols are unavailable. While opportunistic data\nare abundant, uncertainty is usually high, e.g. due to observer effects or a lack of metadata. To increase data\nquality and improve model performance, we filtered species records based on record attributes that provide\ninformation on the observation process or post-entry data validation. Data filtering does not only increase the\nquality of species records, it simultaneously reduces sample size, a trade-off that remains relatively unexplored.\nBy controlling for sample size in a dataset of 255 species, we were able to explore the combined impact of data\nquality and sample size on model performance. We applied three data quality filters based on observers ’ activity,\nthe validation status of a record in the database and the detail of a submitted record, and analyzed changes in\nAUC, Sensitivity and Specificity using Maxent with and without filtering. The impact of stringent filtering on\nmodel performance depended on (1) the quality of the filtered data: records validated as correct and more\ndetailed records lead to higher model performance, (2) the proportional reduction in sample size caused by\nfiltering and the remaining absolute sample size: filters causing small reductions that lead to sample sizes of more\nthan 100 presences generally benefitted model performance and (3) the taxonomic group: plant and dragonfly\nmodels benefitted more from data quality filtering compared to bird and butterfly models. Our results also\nindicate that recommendations for quality filtering depend on the goal of the study, e.g. increasing Sensitivity\nand/or Specificity. Further research must identify what drives species ’ sensitivity to data quality. Nonetheless,\nour study confirms that large quantities of volunteer generated and opportunistically collected data can make a\nvaluable contribution to ecological research and species conservation.",
+      "page_count": 11,
+      "text_length": 76382,
+      "text_sha256": "605a9d024b3791421e9b773b09d9f7a0589b8dbf126dce4ee6a2f7fe5322aed8",
+      "metadata": {},
+      "text_preview": "Ecological Modelling 444 (2021) 109453\nAvailable online 2 February 2021\n0304-3800/© 2021 The Authors. Published by Elsevier B.V. This is an open access article under the CC BY license (http://creativecommons.org/licenses/by/4.0/).\nThe impact of data quality filtering of opportunistic citizen science data on\nspecies distribution model performance\nCamille Van Eupen\na , b , *\n, Dirk Maes\nc\n, Marc Herremans\nd\n, Kristijn R.R. Swinnen\nd\n, Ben Somers\nb , #\n,\nStijn Luca\na , #\na\nGhent University, Department of Data Analysis and Mathematical Modelling, Coupure Links 653, B-9000 Ghent, Belgium\nb\nKU Leuven, Department of Earth and Environmental Sciences, Division Forest Nature and Landscape, Celestijnenlaan 200E, B-3001 Heverlee, Belgium\nc\nResearch Institute for Nature and Forest (INBO), Species Diversity Group, Herman Teirlinckgebouw, Havenlaan 88, bus 73, B-1000 Brussels, Belgium\nd\nNatuurpunt Studie, Coxiestraat 11, 2800 Mechelen, Belgium\nARTICLE INFO\nKeywords:\nData quality filtering\nMaxent\nOpportunistic data\nPresence-only\nSample size\nSpecies distribution models\nABSTRACT\nOpportunistically collected species occurrence data are often used for species distribution models (SDMs) when\nhigh-qualit"
+    },
+    {
+      "article_id": "art_fb1c8cf1cd52",
+      "record_type": "article",
+      "source_json": "artigos_lote5_completo_21_30(1).json",
+      "source_file": "29.pdf",
+      "title": "Composition and natural history of the snakes from",
+      "year": "2018",
+      "doi": [
+        "10.3897/zookeys.797.24549"
+      ],
+      "keywords": [
+        "araucaria forests",
+        "atlantic rainforest",
+        "cluster analysis",
+        "serpentes",
+        "southeastern brazil"
+      ],
+      "themes": [
+        "herpetologia",
+        "ecologia",
+        "zoologia",
+        "conservacao",
+        "mata_atlantica",
+        "serra_da_mantiqueira"
+      ],
+      "abstract": "The Serra da Mantiqueira is one of the least inventoried physiographic areas of southeastern Brazil. There\nis great potential for detection of endemic species for which little or nothing is known about basic aspects\nof natural history. The Parque Estadual da Serra do Papagaio (PESP) within the Serra da Mantiqueira is\nan area of extreme biological importance because it houses mixed formations of grasslands, ombrophilous\nforests, and enclaves of Araucaria forests (mixed ombrophilous forest). Currently, the mixed ombrophilous\nforest covers less than 5% of its original range and areas occupied by this forest type, and associated eco systems constitute refuges, housing several endemic, high altitude species. Between September 2015 and\nApril 2016, field samplings were performed in the PESP using four distinct methods. The objective was to\ndetermine the composition and natural history of snakes from an isolated, high altitude area of the Serra\nda Mantiqueira. In PESP and surrounding areas, 80 individuals representing 24 species, 19 genera, and\nthree families were recorded. Data are presented on abundance, habitat, daily activity, diet, reproduction,\nand defense. Comparison of the PESP snake assemblage with 30 other Atlantic Forest areas in southeastern\nBrazil indicate the Serra da Mantiqueira presents particular characteristics regarding snake composition.\nZooKeys 797: 117–160 (2018)\ndoi: 10.3897/zookeys.797.24549\nhttp://zookeys.pensoft.net\nCopyright F.A. Menezes et al. This is an open access article distributed under the terms of the Creative Commons Attribution License (CC BY\n4.0), which permits unrestricted use, distribution, and reproduction in any medium, provided the original author and source are credited.\nRESEARCH ARTICLE\nLaunched to accelerate biodiversity research\nA peer-reviewed open-access journal\nF .A. Menezes et al. / ZooKeys 797: 117–160 (2018)\n118",
+      "page_count": 44,
+      "text_length": 131005,
+      "text_sha256": "5486554f8ad8982c60a66887dbc90b5ddb0a5a4aedef1334131572f97c2d7b02",
+      "metadata": {},
+      "text_preview": "Composition and natural history of the snakes from...\n117\nComposition and natural history of the snakes from\nthe Parque Estadual da Serra do Papagaio, southern\nMinas Gerais, Serra da Mantiqueira, Brazil\nFrederico de Alcântara Menezes1, Arthur Diesel Abegg2, Bruno Rocha da Silva2,\nFrancisco Luís Franco2, Renato Neves Feio1\n1 Universidade Federal de Viçosa, Departamento de Biologia Animal, Avenida P .H. Rolfs, S/N, Campus Universitário, CEP 36571-000, Viçosa, MG, Brazil 2 Instituto Butantan, Laboratório Especial de Coleções Zo ológicas, Avenida Vital Brasil, 1.500, Butantã, CEP 05503-900, São Paulo, SP , Brazil\nCorresponding author: Frederico de Alcântara Menezes (fred-alcantara@hotmail.com)\nAcademic editor: Robert Jadin  |  Received 19 February 2018  |  Accepted 27 August 2018  |  Published 19 November 2018\nhttp://zoobank.org/26CC9F84-21C3-46CA-A4DD-00915D394FFD\nCitation: Menezes FA, Abegg AD, Silva BR, Franco FL, Feio RN (2018) Composition and natural history of the\nsnakes from the Parque Estadual da Serra do Papagaio, southern Minas Gerais, Serra da Mantiqueira, Brazil. ZooKeys\n797: 117–160. https://doi.org/10.3897/zookeys.797.24549\nAbstract\nThe Serra da Mantiqueira is one of the "
+    },
+    {
+      "article_id": "art_2dc4c21d5470",
+      "record_type": "article",
+      "source_json": "artigos_biodiversidade_lote4_completo(1).json",
+      "source_file": "11.pdf",
+      "title": "More Than Just Records: Analysing Natural History",
+      "year": "2012",
+      "doi": [
+        "10.1371/journal.pone.0050346.g001",
+        "10.1371/journal.pone.0050346.g002",
+        "10.1371/journal.pone.0050346.g003",
+        "10.1371/journal.pone.0050346.g004"
+      ],
+      "keywords": [],
+      "themes": [
+        "ecologia",
+        "zoologia",
+        "biodiversity_informatics",
+        "sdm_modelagem_distribuicao",
+        "conservacao"
+      ],
+      "abstract": "Natural History Collections (NHCs) play a central role as sources of data for biodiversity and conservation. Yet, few NHCs\nhave examined whether the data they contain is adequately representative of local biodiversity. I examined over 15,000\ndatabased records of Hymenoptera from 1435 locations across New Zealand collected over the past 90 years. These records\nare assessed in terms of their geographical, temporal, and environmental coverage across New Zealand. Results showed\nthat the spatial coverage of records was significantly biased, with the top four areas contributing over 51% of all records.\nTemporal biases were also evident, with a large proportion (40%) of records collected within a short time period. The lack of\nrepeat visits to specific locations indicated that the current set of NHC records would be of limited use for long-term\necological research. Consequently, analyses and interpretation of historical data, for example, shifts in community\ncomposition, would be limited. However, in general, NHC records provided good coverage of the diversity of New Zealand\nhabitats and climatic environments, although fewer NHC records were represented at cooler temperatures (,5uC) and the\nhighest rainfalls (.5000 mm/yr). Analyses of NHCs can be greatly enhanced by using simple techniques that examine\ncollection records in terms of environmental and geographical space. NHCs that initiate a systematic sampling strategy will\nprovide higher quality data for biodiversity research than ad hoc or point samples, as is currently the norm. Although NHCs\nprovide a rich source of information they could be far better utilised in a range of large-scale ecological and conservation\nstudies.\nCitation: Ward DF (2012) More Than Just Records: Analysing Natural History Collections for Biodiversity Planning. PLoS ONE 7(11): e50346. doi:10.1371/\njournal.pone.0050346\nEditor: M. Alex Smith, University of Guelph, Canada\nReceived July 25, 2012;Accepted October 18, 2012;Published November 21, 2012\nCopyright: /C2232012 Darren F. Ward. This is an open-access article distributed under the terms of the Creative Commons Attribution License, which permits\nunrestricted use, distribution, and reproduction in any medium, provided the original author and source are credited.\nFunding: This research (including database entry and georeferencing) was funded by the Terrestrial and Freshwater Biodiversity Information System Program,\nthe Foundation for Research, Science and Technology (contract FRST C09X0507), and by Core funding for Crown Research Institutes from the Ministry ofBusiness,\nInnovation and Employment’s Science and Innovation Group, through the Defining New Zealand’s Land Biota Portfolio. The funders had no role in study design,\ndata collection and analysis, decision to publish, or preparation of the manuscript.\nCompeting Interests:The author has declared that no competing interests exist.\n* E-mail: wardda@landcareresearch.co.nz",
+      "page_count": 8,
+      "text_length": 37033,
+      "text_sha256": "92a74f38e10f19c6897433b7cdca5ae01737664d828b94c011e66dd148d2dee0",
+      "metadata": {},
+      "text_preview": "More Than Just Records: Analysing Natural History\nCollections for Biodiversity Planning\nDarren F. Ward*\nNew Zealand Arthropod Collection, Landcare Research, Auckland, New Zealand\nAbstract\nNatural History Collections (NHCs) play a central role as sources of data for biodiversity and conservation. Yet, few NHCs\nhave examined whether the data they contain is adequately representative of local biodiversity. I examined over 15,000\ndatabased records of Hymenoptera from 1435 locations across New Zealand collected over the past 90 years. These records\nare assessed in terms of their geographical, temporal, and environmental coverage across New Zealand. Results showed\nthat the spatial coverage of records was significantly biased, with the top four areas contributing over 51% of all records.\nTemporal biases were also evident, with a large proportion (40%) of records collected within a short time period. The lack of\nrepeat visits to specific locations indicated that the current set of NHC records would be of limited use for long-term\necological research. Consequently, analyses and interpretation of historical data, for example, shifts in community\ncomposition, would be limited. However, in gen"
+    },
+    {
+      "article_id": "art_6a985f3e3c56",
+      "record_type": "article",
+      "source_json": "artigos_biodiversidade_lote4_completo(1).json",
+      "source_file": "12.pdf",
+      "title": "From GenBank to GBIF: Phylogeny-Based",
+      "year": "2016",
+      "doi": [
+        "10.1371/journal.pone.0151232",
+        "10.1371/journal.pone.0151232.g001",
+        "10.1371/journal.pone.0151232.g002"
+      ],
+      "keywords": [],
+      "themes": [
+        "ecologia",
+        "zoologia",
+        "biodiversity_informatics",
+        "sdm_modelagem_distribuicao"
+      ],
+      "abstract": "Accuracy of taxonomic identifications is crucial to data quality in online repositories of species\noccurrence data, such as the Global Biodiversity Information Facility (GBIF), which have accumulated several hundred million records over the past 15 years. These data serve as basis for\nlarge scale analyses of macroecological and biogeographic patterns and to document environmental changes over time. However, taxonomic identifications are often unreliable, especially\nfor non-vascular plants and fungi including lichens, which may lack critical revisions of voucher\nspecimens. Due to the scale of the problem, restudy of millions of collections is unrealistic and\nother strategies are needed. Here we propose to use verified, georeferenced occurrence data\nof a given species to apply predictive niche modeling that can then be used to evaluate unverified occurrences of that species. Selecting the charismatic lichen fungus,Usnea longissima,\nas a case study, we used georeferenced occurrence records based on sequenced specimens\nto model its predicted niche. Our results suggest that the target species is largely restricted to\na narrow range of boreal and temperate forest in the Northern Hemisphere and that occurrence records in GBIF from tropical regions and the Southern Hemisphere do not represent\nthis taxon, a prediction tested by comparison with taxonomic revisions ofUsnea for these\nregions. As a novel approach, we employed Principal Component Analysis on the environmental grid data used for predictive modeling to visualize potential ecogeographical barriers\nfor the target species; we found that tropical regions conform a strong barrier, explaining why\npotential niches in the Southern Hemisphere were not colonized byUsnea longissimaand\ninstead by morphologically similar species. This approach is an example of how data from two\nof the most important biodiversity repositories, GenBank and GBIF, can be effectively combined to remotely address the problem of inaccuracy of taxonomic identifications in occurrence\ndata repositories and to provide a filtering mechanism which can considerably reduce the\nnumber of voucher specimens that need critical revision, in this case from 4,672 to about 100.\nPLOS ONE | DOI:10.1371/journal.pone.0151232 March 11, 2016 1/1 5\nOPEN ACCESS\nCitation: Smith BE, Johnston MK, Lücking R (2016)\nFrom GenBank to GBIF: Phylogeny-Based Predictive\nNiche Modeling Tests Accuracy of Taxonomic\nIdentifications in Large Occurrence Data\nRepositories. PLoS ONE 11(3): e0151232.\ndoi:10.1371/journal.pone.0151232\nEditor: Stefan Lötters, Trier University, GERMANY\nReceived: April 12, 2015\nAccepted: February 25, 2016\nPublished: March 11, 2016\nCopyright: © 2016 Smith et al. This is an open\naccess article distributed under the terms of the\nCreative Commons Attribution License, which permits\nunrestricted use, distribution, and reproduction in any\nmedium, provided the original author and source are\ncredited.\nData Availability Statement:All relevant data are\nwithin the paper and its Supporting Information files\nor can be downloaded from GenBank (http://www.\nncbi.nlm.nih.gov/genbank) using the accession\nnumbers inTable 1provided or from WorldClim\n(http://www.worldclim.org).\nFunding: This study was conceived as part of a large\ndigitization project of North American lichen and\nbryophyte collections funded by the National Science\nFoundation: Digitization TCN Collaborative Research:\nNorth American Lichens and Bryophytes: Sensitive\nIndicators of Environmental Quality and Change\n(NSF-EF 1115002 to The Field Museum; PI Robert",
+      "page_count": 15,
+      "text_length": 53464,
+      "text_sha256": "3a1284b5a6d24260b0a1fd63419692d9c38596feb7c21fae192285a5fd5997e5",
+      "metadata": {},
+      "text_preview": "RESEARCH ARTICLE\nFrom GenBank to GBIF: Phylogeny-Based\nPredictive Niche Modeling Tests Accuracy of\nTaxonomic Identifications in Large\nOccurrence Data Repositories\nB. Eugene Smith1, Mark K. Johnston2, Robert Lücking1,3*\n1 Integrative Research Center & Gantz Family Collections Center, Science & Education, The Field Museum,\n1400 South Lake Shore Drive, Chicago, Illinois, 60605–2496, United States of America,2 Science Action\nCenter, Science & Education, The Field Museum, 1400 South Lake Shore Drive, Chicago, Illinois, 60605–\n2496, United States of America,3 Botanical Garden and Botanical Museum, Königin-Luise-Str. 6–8, 14195,\nBerlin, Germany\n* rlucking@fieldmuseum.org; r.luecking@bgbm.org\nAbstract\nAccuracy of taxonomic identifications is crucial to data quality in online repositories of species\noccurrence data, such as the Global Biodiversity Information Facility (GBIF), which have accumulated several hundred million records over the past 15 years. These data serve as basis for\nlarge scale analyses of macroecological and biogeographic patterns and to document environmental changes over time. However, taxonomic identifications are often unreliable, especially\nfor non-vascular plants and"
+    },
+    {
+      "article_id": "art_fa2198a1cc30",
+      "record_type": "article",
+      "source_json": "artigos_biodiversidade_lote4_completo(1).json",
+      "source_file": "13.pdf",
+      "title": "A conceptual framework for quality",
+      "year": "2017",
+      "doi": [
+        "10.1371/j"
+      ],
+      "keywords": [],
+      "themes": [
+        "zoologia",
+        "biodiversity_informatics"
+      ],
+      "abstract": "The increasing availability of digitized biodiversity data worldwide, provided by an increasing\nnumber of institutions and researchers , and the growing use of those data for a variety of\npurposes have raised concerns related to the \"fitness for use\" of such data and the impact\nof data quality (DQ) on the outcomes of analyses, reports, and decisions. A consistent\napproach to assess and manage data quality is currently critical for biodiversity data users.\nHowever, achieving this goal has been particularly challenging because of idiosyncrasies\ninherent in the concept of quality. DQ assessment and management cannot be performed if\nwe have not clearly established the quality needs from a data user’s standpoint. This paper\ndefines a formal conceptual framework to support the biodiversity informatics community\nallowing for the description of the meaning of \"fitness for use\" from a data user’s perspective\nin a common and standardized manner. This proposed framework defines nine concepts\norganized into three classes: DQ Needs, DQ Solutions and DQ Report. The framework is\nintended to formalize human thinking into well-defined components to make it possible to\nshare and reuse concepts of DQ needs, solutions and reports in a common way among\nuser communities. With this framework, we establish a common ground for the collaborative\ndevelopment of solutions for DQ assessment and management based on data fitness for\nuse principles. To validate the framework , we present a proof of concept based on a case\nstudy at the Museum of Comparative Zoology of Harvard University. In future work, we will\nuse the framework to engage the biodiversity informatics community to formalize and share\nDQ profiles related to DQ needs across the community.",
+      "page_count": 20,
+      "text_length": 67497,
+      "text_sha256": "453be7e8c2777c4b947c1f0b6a9ad3c0ec6752cade24a723b36dfd2f3a1dc045",
+      "metadata": {},
+      "text_preview": "RESEA RCH ARTICL E\nA conceptual framework for quality\nassessment and management of biodiversity\ndata\nAllan Koch Veiga\n1\n*, Antonio Mauro Saraiva\n1\n*, Arthur David Chapman\n2\n, Paul\nJohn Morris\n3\n, Christian Gendreau\n4\n, Dmitry Schigel\n5\n, Tim James Robertson\n5\n1 University of São Paulo, Research Center on Biodivers ity and Computing, São Paulo, São Paulo, Brazil,\n2 Australian Biodive rsity Informatio n Services, Ballan, Victoria, Australia, 3 Harvard University, Museum of\nComparativ e Zoology, Cambridge , Massachu setts, United States of America, 4 Universite ´ de Montre ´ al,\nInstitut de Recherch e en Biologie Ve ´ ge ´ tale, Montre ´ al, Que ´ bec, Canada, 5 Global Biodiversity Information\nFacility, Secreta riat, Copenhag en, Denmark\n* allan.kv@ gmail.com (AKV); saraiva@usp.b r (AMS)\nAbstract\nThe increasing availability of digitized biodiversity data worldwide, provided by an increasing\nnumber of institutions and researchers , and the growing use of those data for a variety of\npurposes have raised concerns related to the \"fitness for use\" of such data and the impact\nof data quality (DQ) on the outcomes of analyses, reports, and decisions. A consistent\napproach to assess and manage"
+    },
+    {
+      "article_id": "art_29fdc17ec7f7",
+      "record_type": "article",
+      "source_json": "artigos_biodiversidade_lote4_completo(1).json",
+      "source_file": "14.pdf",
+      "title": "Darwin Core: An Evolving Community-Developed",
+      "year": "2012",
+      "doi": [
+        "10.1371/journal.pone.0029715",
+        "10.1371/journal.pone.0029715.g001",
+        "10.1371/journal.pone.0029715.g002"
+      ],
+      "keywords": [],
+      "themes": [
+        "zoologia",
+        "biodiversity_informatics",
+        "conservacao"
+      ],
+      "abstract": "Biodiversity data derive from myriad sources stored in various formats on many distinct hardware and software platforms.\nAn essential step towards understanding global patterns of biodiversity is to provide a standardized view of these\nheterogeneous data sources to improve interoperability. Fundamental to this advance are definitions of common terms.\nThis paper describes the evolution and development of Darwin Core, a data standard for publishing and integrating\nbiodiversity information. We focus on the categories of terms that define the standard, differences between simple and\nrelational Darwin Core, how the standard has been implemented, and the community processes that are essential for\nmaintenance and growth of the standard. We present case-study extensions of the Darwin Core into new research\ncommunities, including metagenomics and genetic resources. We close by showing how Darwin Core records are\nintegrated to create new knowledge products documenting species distributions and changes due to environmental\nperturbations.\nCitation: Wieczorek J, Bloom D, Guralnick R, Blum S, Do¨ ring M, et al. (2012) Darwin Core: An Evolving Community-Developed Biodiversity Data Standard. PLoS\nONE 7(1): e29715. doi:10.1371/journal.pone.0029715\nEditor: Indra Neil Sarkar, University of Vermont, United States of America\nReceived September 19, 2011;Accepted December 1, 2011;Published January 6, 2012\nCopyright: /C2232012 Wieczorek et al. This is an open-access article distributed under the terms of the Creative Commons Attribution License, which permits\nunrestricted use, distribution, and reproduction in any medium, provided the original author and source are credited.\nFunding: The U.S. National Science Foundation (http://www.nsf.gov/) funded three individual projects that contributed to Darwin Core: Species Analyst Project\n(NSF-9808739), ORNIS (DBI-0345448), and MaNIS (DBI-0108161). The Gordon and Betty Moore Foundation provided individual grants to the BioGeomancer Project\nand to TDWG, both of which had influence on the Darwin Core (http://www.moore.org/). Global Biodiversity Information Facility, GBIF, sponsored a workshop to\nprepare Darwin Core for the standards track, in February 2009 (http://www.gbif.org/). The funders had no role in study design, data collection and analysis,\ndecision to publish, or preparation of the manuscript.\nCompeting Interests:The authors have declared that no competing interests exist.\n* E-mail: dbloom@vertnet.org",
+      "page_count": 8,
+      "text_length": 51550,
+      "text_sha256": "ce3ee0b6e598f4597d6e3e261de1367fab0e2ed48a7983d877016efcf1a216b5",
+      "metadata": {},
+      "text_preview": "Darwin Core: An Evolving Community-Developed\nBiodiversity Data Standard\nJohn Wieczorek1, David Bloom1*, Robert Guralnick2, Stan Blum3, Markus Do¨ ring4, Renato Giovanni5,\nTim Robertson4, David Vieglais6\n1 University of California, Berkeley, California, United States of America,2 University of Colorado, Boulder, Colorado, United States of America,3 California Academy of\nSciences, San Francisco, California, United States of America,4 Global Biodiversity Information Facility, Copenhagen, Denmark,5 Centro de Refereˆncia em Informac¸a˜o\nAmbiental, Campinas, Sa˜o Paulo, Brasil,6 University of Kansas, Lawrence, Kansas, United States of America\nAbstract\nBiodiversity data derive from myriad sources stored in various formats on many distinct hardware and software platforms.\nAn essential step towards understanding global patterns of biodiversity is to provide a standardized view of these\nheterogeneous data sources to improve interoperability. Fundamental to this advance are definitions of common terms.\nThis paper describes the evolution and development of Darwin Core, a data standard for publishing and integrating\nbiodiversity information. We focus on the categories of terms that define the s"
+    },
+    {
+      "article_id": "art_377a60493aec",
+      "record_type": "article",
+      "source_json": "artigos_biodiversidade_lote4_completo(1).json",
+      "source_file": "16.pdf",
+      "title": "Vesper: Visualising species archives",
+      "year": "2014",
+      "doi": [
+        "10.1016/j.ecoinf.2014.08.004"
+      ],
+      "keywords": [
+        "information visualisation"
+      ],
+      "themes": [
+        "ecologia",
+        "zoologia",
+        "biodiversity_informatics"
+      ],
+      "abstract": "article info\nArticle history:\nReceived 30 April 2014\nReceived in revised form 12 August 2014\nAccepted 17 August 2014\nAvailable online 30 August 2014",
+      "page_count": 16,
+      "text_length": 61706,
+      "text_sha256": "cf3fb5a12dfe017a470a4efd6ef93200609d638df5346d361508b0f67813e81f",
+      "metadata": {},
+      "text_preview": "Vesper: Visualising species archives\nMartin Graham⁎, Jessie Kennedy\nSchool of Computing, Edinburgh Napier University, 10 Colinton Road, Edinburgh EH10 5DT, UK\nabstractarticle info\nArticle history:\nReceived 30 April 2014\nReceived in revised form 12 August 2014\nAccepted 17 August 2014\nAvailable online 30 August 2014\nKeywords:\nInformation visualisation\nData quality\nDarwin Core Archive\nOpen source\nBiodiversity\nVesper (Visual Exploration of SPEcies-referenced Repositories) is a tool that visualises Darwin Core Archive\n(DwC-A) datasets, and is aimed at reducing the amount of time and effort expended by biologists to ascertain\nthe quality of data they are generating or using. Currently, DwC-A quality checking is limited to table outputs\nof data‘existence’ and compliance with DwC-A format guidelines via the online DwC-A archive validator and\nreader. Whilst these tools thoroughly examine the presence of data, and the correctness of data structure against\nthe DwC-A schema, they do not give any insight into the underlying quality of the data itself.\nBuilt on top of the D3 JavaScript library, Vesper analyses and displays DwC-A datasets in three fundamental\ndimensions—taxonomic, geographic and "
+    },
+    {
+      "article_id": "art_cd5523bf7455",
+      "record_type": "article",
+      "source_json": "artigos_biodiversidade_lote4_completo(1).json",
+      "source_file": "17.pdf",
+      "title": "Contents lists available atScienceDirect",
+      "year": "2007",
+      "doi": [
+        "10.1016/j.ecolmodel.2019.108927"
+      ],
+      "keywords": [
+        "birdtrack"
+      ],
+      "themes": [
+        "ecologia",
+        "ciencia_cidada",
+        "sdm_modelagem_distribuicao",
+        "conservacao"
+      ],
+      "abstract": "Ecological citizen science data are rapidly growing in availability and use in ecology and conservation. Many\ncitizen science projects have theﬂexibility for participants to select where they survey, resulting in more participants, but also spatially biased data. It is important to assess the extent to which these spatially biased data\ncan provide reliable estimates of species distributions. Here we quantify the extent of site selection bias in a\ncitizen science project and the implications of this spatial bias in species distribution models. Using data from the\nBirdTrack citizen science project in Great Britain from 2007 to 2011, we modelled the spatial bias of data\nsubmissions. We next produced species occupancy models for 138 bird species, and assessed the impact of\naccounting for spatial bias. We compared the distributions to those produced using unbiased data from an Atlas\nsurvey from the same region and time period. Averaging across 138 species, models with spatially biased data\nproduced accurate and precise estimates of species occupancy for most locations in Great Britain. However, these\ndistributions were both less accurate and less precise in the Scottish Highlands, showing on average a positive\nbias. Accounting for the spatially biased sampling with weights led to on average greater accuracy in the Scottish\nHighlands, but did not increase precision. This region is both distinct in environmental characteristics and has a\nlow density of observations, making it diﬃcult to characterise environmental relationships with species occupancy. Accounting for the spatially biased sampling did not aﬀect average accuracy or precision throughout most\nof the country. Spatially biased citizen science data can be used to estimate species occupancy in regions with\nstationary environmental relationships and good sampling across environmental space. The reliability of estimated species distributions from spatially biased data should be further validated and tested under a range of\ndiﬀerent scenarios.",
+      "page_count": 10,
+      "text_length": 61055,
+      "text_sha256": "cc67e49a0678beb3fd454677ce8425469d3b8518b2691b447c3f0c224d141bb8",
+      "metadata": {},
+      "text_preview": "Contents lists available atScienceDirect\nEcological Modelling\njournal homepage: www.elsevier.com/locate/ecolmodel\nEstimating species distributions from spatially biased citizen science data\nAlison Johnstona,*, Nick Morana, Andy Musgrovea, Daniel Finkb, Stephen R. Bailliea\na British Trust for Ornithology, The Nunnery, Thetford, IP24 2PU, UK\nb Cornell Lab of Ornithology, 159 Sapsucker Woods Road, Cornell University, Ithaca, NY, 14850, USA\nARTICLE INFO\nKeywords:\nBirdTrack\nCitizen science\nOccupancy models\nPreferential sampling\nSpatial bias\nSpecies distribution models\nABSTRACT\nEcological citizen science data are rapidly growing in availability and use in ecology and conservation. Many\ncitizen science projects have theﬂexibility for participants to select where they survey, resulting in more participants, but also spatially biased data. It is important to assess the extent to which these spatially biased data\ncan provide reliable estimates of species distributions. Here we quantify the extent of site selection bias in a\ncitizen science project and the implications of this spatial bias in species distribution models. Using data from the\nBirdTrack citizen science project in Great Britain f"
+    },
+    {
+      "article_id": "art_dcf1815a8dae",
+      "record_type": "article",
+      "source_json": "artigos_biodiversidade_lote4_completo(1).json",
+      "source_file": "19.pdf",
+      "title": "Natural history collections as sources of long-term",
+      "year": "2010",
+      "doi": [
+        "10.1016/j.tree.2010.12.009"
+      ],
+      "keywords": [],
+      "themes": [
+        "ecologia",
+        "zoologia",
+        "biodiversity_informatics",
+        "conservacao"
+      ],
+      "abstract": "",
+      "page_count": 2,
+      "text_length": 10996,
+      "text_sha256": "a559fb9d8f1d924f9433cb781cd981196dbf4e72825c999f4851336a20967bd7",
+      "metadata": {},
+      "text_preview": "Letters\nNatural history collections as sources of long-term\ndatasets\nAdrian M. Lister and Climate Change Research Group*\nNatural History Museum, Cromwell Road, London SW7 5BD, UK\nIn the otherwise excellent special issue of Trends in\nEcology and Evolutionon long-term ecological research\n(TREE 25(10), 2010), none of the contributors mentioned\nthe importance of natural history collections (NHCs) as\nsources of data that can strongly complement past and\nongoing survey data. Whereas very few ﬁeld surveys\nhave operated for more than a few decades, NHCs,\nconserved in museums and other institutions, comprise\nsamples of the Earth’s biota typically extending back\nwell into the nineteenth century and, in some cases,\nbefore this time. They therefore span the period of\naccelerated anthropogenic habitat destruction, climate\nwarming and ocean acidiﬁcation, in many cases reﬂecting baseline conditions before the major impact of these\nfactors.\nNatural history collections (NHCs) provide a rich source of\ndata at the taxic and community levels, and can contribute\nto a wide range of studies[1]. These include biogeographic\nrange changes (spatial and/or altitudinal)[2]; phenological\nshifts (e.g. in ﬂowerin"
+    },
+    {
+      "article_id": "art_60b23b1bb321",
+      "record_type": "article",
+      "source_json": "artigos_biodiversidade_lote4_completo(1).json",
+      "source_file": "20.pdf",
+      "title": "Contents lists available atScienceDirect",
+      "year": "2007",
+      "doi": [
+        "10.1016/j.ecoinf.2020.101086"
+      ],
+      "keywords": [
+        "sampling bias"
+      ],
+      "themes": [
+        "ecologia",
+        "sdm_modelagem_distribuicao"
+      ],
+      "abstract": "",
+      "page_count": 10,
+      "text_length": 47995,
+      "text_sha256": "8b391c90f6e0a5195218d8da106dc0ad57ca188d18ea41659400256c2ab8bd2f",
+      "metadata": {},
+      "text_preview": "Contents lists available atScienceDirect\nEcological Informatics\njournal homepage: www.elsevier.com/locate/ecolinf\nCorrecting the eﬀect of sampling bias in species distribution modeling– A\nnew method in the case of a low number of presence data\nYi Mouaa,b,⁎\n, Emmanuel Rouxb, Frédérique Seylerb, Sébastien Briolantc,d\na ESPACE-DEV, UMR 228 (IRD, UM, UR, UA, UG), Université de Guyane, Cayenne, French Guiana\nb ESPACE-DEV (IRD, Univ Montpellier, Univ La Réunion, Univ Guyane, Univ des Antilles), Institut de Recherche pour le Développement (IRD), Montpellier, France\nc Unité de Parasitologie et Entomologie, Département des Maladies Infectieuses, Institut de Recherche Biomédicale des Armées, 19-21 Boulevard Jean Moulin, 13005\nMarseille, France\nd IRD, AP-HM, SSA, UMR Vecteurs– Infections Tropicales et Méditerranéennes (VITROME), IHU - Méditerranée Infection, Aix Marseille Université, 19-21 bd Jean Moulin,\n13385 Marseille Cedex 5, France\nARTICLE INFO\nKeywords:\nSampling bias\nData scarcity\nSpecies distribution models\nMaxent\nABSTRACT\nSpecies distribution models that only require presence data provide potentially inaccurate results due to sampling bias and presence data scarcity. Methods have been"
+    },
+    {
+      "article_id": "art_84e3d63e5237",
+      "record_type": "article",
+      "source_json": "artigos_herpetologia_lote3_json_unico(1).json",
+      "source_file": "1.pdf",
+      "title": "Herpetofauna dos remanescentes de Mata Atlântica da",
+      "year": "2009",
+      "doi": [],
+      "keywords": [
+        "frogs",
+        "reptiles",
+        "diversity",
+        "atlantic forest",
+        "conservation",
+        "parque estadual do jurupará",
+        "condez",
+        "t.h",
+        "sawaya",
+        "r.j. & dixo",
+        "m. 2009. herpetofauna dos remanescentes de mata atlântica da",
+        "região de tapiraí e piedade",
+        "sp",
+        "sudeste do brasil. biota neotrop. 9(1): http://www.biotaneotropica.org.br/",
+        "v9n1/pt/abstract?inventory+bn01809012009",
+        "anfíbios",
+        "répteis",
+        "diversidade",
+        "mata atlântica",
+        "conservação"
+      ],
+      "themes": [
+        "herpetologia",
+        "ecologia",
+        "conservacao",
+        "glossario_terminologia",
+        "mata_atlantica"
+      ],
+      "abstract": "?inventory+bn01809012009\nhttp://www.biotaneotropica.org.br\nBiota Neotrop., vol. 9, no. 1, Jan./Mar. 2009\nHerpetofauna dos remanescentes de Mata Atlântica da\nregião de Tapiraí e Piedade, SP, sudeste do Brasil\nThais Helena Condez1,3, Ricardo Jannini Sawaya1 & Marianna Dixo2\n1Laboratório Especial de Ecologia e Evolução, Instituto Butantan,\nAv. Dr. Vital Brazil, 1500, CEP 05503-900, São Paulo, SP, Brasil\n2Departamento de Ecologia, Instituto de Biociências, Universidade de São Paulo – USP,\nRua do Matão, 321, travessa 14, CEP 05508-900, São Paulo, SP, Brasil\n3Autor para correspondência: Thais Helena Condez, e-mail: thacondez@yahoo.com.br\nCONDEZ, T.H, SAWAYA, R.J. & DIXO, M. 2009. Herpetofauna of the Atlantic Forest remnants of Tapiraí\nand Piedade region, São Paulo state, southeastern Brazil. Biota Neotrop. 9(1): http://www.biotaneotropica.\norg.br/v9n1/en/abstract?inventory+bn01809012009.\nAbstract: We present the species list of amphibians and reptiles registered in continuous and fragmented Atlantic\nForest remnants at Tapiraí and Piedade municipalities, Atlantic Plateau of São Paulo, Brazil. We sampled\n21 localities, 15 located within unprotetcted forest fragments and six located at Parque Estadual do Jurupará,\nthe single legal protected area in this region and surroundings. We recorded 47 anurans, one gymnophiona,\nseven lizards, one amphisbenian, 46 snakes, and one turtle. The specimes were captured by pitfall traps with\ndrift fences, visual and auditive surveys, incidental encounters, local collectors, and, for snakes, by recording\nscientiﬁc collection records. Sampling methods were effective in documenting local herpetofauna, showing the\nadequacy of the use of complementary methods. Forest remnants at Tapiraí and Piedade have typical species of\nAtlantic Forest areas, and show higher species richness in comparison with other lists in the Atlantic Plateau.\nThe presence of species known from few localities, or present in threatened species lists, shows that the Atlantic\nForest remnants in this region need conservation attention. Although still harboring high herpetofaunal diversity,\nthe remnants are threatened by the effects of forest fragmentation.",
+      "page_count": 29,
+      "text_length": 173857,
+      "text_sha256": "189d5b507872847f0d9b328132b3d5f9c49fc8f60d6ea69672bc949cd49f78e6",
+      "metadata": {
+        "pdf_metadata": {
+          "format": "PDF 1.4",
+          "title": "",
+          "author": "Cubo Multimídia",
+          "subject": "",
+          "keywords": "",
+          "creator": "Adobe InDesign CS3 (5.0)",
+          "producer": "Mac OS X 10.5.6 Quartz PDFContext",
+          "creationDate": "D:20090428053050Z00'00'",
+          "modDate": "D:20090428053050Z00'00'",
+          "trapped": "",
+          "encryption": null
+        }
+      },
+      "text_preview": "http://www.biotaneotropica.org.br/v9n1/pt/abstract?inventory+bn01809012009\nhttp://www.biotaneotropica.org.br\nBiota Neotrop., vol. 9, no. 1, Jan./Mar. 2009\nHerpetofauna dos remanescentes de Mata Atlântica da\nregião de Tapiraí e Piedade, SP, sudeste do Brasil\nThais Helena Condez1,3, Ricardo Jannini Sawaya1 & Marianna Dixo2\n1Laboratório Especial de Ecologia e Evolução, Instituto Butantan,\nAv. Dr. Vital Brazil, 1500, CEP 05503-900, São Paulo, SP, Brasil\n2Departamento de Ecologia, Instituto de Biociências, Universidade de São Paulo – USP,\nRua do Matão, 321, travessa 14, CEP 05508-900, São Paulo, SP, Brasil\n3Autor para correspondência: Thais Helena Condez, e-mail: thacondez@yahoo.com.br\nCONDEZ, T.H, SAWAYA, R.J. & DIXO, M. 2009. Herpetofauna of the Atlantic Forest remnants of Tapiraí\nand Piedade region, São Paulo state, southeastern Brazil. Biota Neotrop. 9(1): http://www.biotaneotropica.\norg.br/v9n1/en/abstract?inventory+bn01809012009.\nAbstract: We present the species list of amphibians and reptiles registered in continuous and fragmented Atlantic\nForest remnants at Tapiraí and Piedade municipalities, Atlantic Plateau of São Paulo, Brazil. We sampled\n21 localities, 15 located within unp"
+    },
+    {
+      "article_id": "art_1ccb674cff56",
+      "record_type": "article",
+      "source_json": "artigos_herpetologia_lote3_json_unico(1).json",
+      "source_file": "2.pdf",
+      "title": "Introduction",
+      "year": "2000",
+      "doi": [
+        "10.2994/057.006.0301",
+        "10.1111/jbi.12900",
+        "10.2994/SAJH-D-16-00034.1",
+        "10.5007/2175-7925.2010v23n2p135"
+      ],
+      "keywords": [
+        "atlantic rainforest",
+        "inventory",
+        "reptiles",
+        "serra da bocaina",
+        "flora roncolatto ortiz et al",
+        "480",
+        "rodrigues",
+        "2006). vitt and vangilder (1983) emphasize",
+        "that rapid modification of natural environments and",
+        "loss of habitat may prevent the discovery of the natural",
+        "fauna. areas altered by anthropic action normally",
+        "have lowered species richness and an increase in the",
+        "abundance of a few species. in addition",
+        "species vary",
+        "in their adaptive plasticity and in their ability to persist",
+        "in altered environments (primack and rodrigues",
+        "2006)",
+        "these scenarios have become increasingly common for",
+        "brazilian snakes (bernarde et al",
+        "2012)",
+        "currently",
+        "there are 392 species of snakes known",
+        "from brazil",
+        "representing about 10% of the world’s",
+        "ophidian fauna (uetz et al"
+      ],
+      "themes": [
+        "herpetologia",
+        "ecologia",
+        "zoologia",
+        "biodiversity_informatics",
+        "conservacao",
+        "mata_atlantica"
+      ],
+      "abstract": ". The municipality of São José do Barreiro is located in the Paraíba Valley, São Paulo, Brazil, and is characterized by\ntopographic complexity, wide altitudinal variation, and remarkable climatic diversity, which contribute to a high diversity of\nspecies. Studies that provide basic data about herpetofauna are important for understanding the structure and composition of\ncommunities. The present study aims to describe a snake inventory in the municipality of São José do Barreiro for characterizing\nthe richness and abundance of species. Data were collected from scientific collections (207 specimens) and via fieldwork (48\nspecimens) through active surveys, incidental encounters, and pitfall traps. A total of 255 individual snakes belonging to 33\nspecies from four families were recorded: Colubridae (N = 5), Dipsadidae (N = 130), Elapidae (N = 5), and Viperidae (N\n= 112). The most abundant species was Crotalus durissus terrificus (n = 58), followed by Bothrops jararaca (N = 25) and\nAtractus zebrinus (N = 24). Viperidae was the family with the highest number of individuals and the second highest number of\nspecies. The abundance of viperids may be because of the fact that Butantan Institute suppliers collect more venomous animals\nbecause of their risk. When compared to other Atlantic Forest regions where herpetofauna inventories have been carried out,\nSão José do Barreiro has a high species richness, emphasizing the importance of conserving natural remnants of habitat in the\nregion.",
+      "page_count": 8,
+      "text_length": 30247,
+      "text_sha256": "9d2b3d94be5409215bd7cc56aaa5fd7f667dffdc6aba9bcf236507d2a76fb858",
+      "metadata": {
+        "pdf_metadata": {
+          "format": "PDF 1.4",
+          "title": "",
+          "author": "",
+          "subject": "",
+          "keywords": "",
+          "creator": "Adobe InDesign CS2 (4.0)",
+          "producer": "Adobe PDF Library 7.0",
+          "creationDate": "D:20170913172641+02'00'",
+          "modDate": "D:20170913174116+02'00'",
+          "trapped": "",
+          "encryption": null
+        }
+      },
+      "text_preview": "Introduction\nThe Atlantic Forest Phytogeographical Domain is\nconsidered one of the top twenty-five hotspots of\ndiversity globally due to its high species richness and\nthe large number of endemic species, but the high\ndegree of threat due to human economic activities\nalso makes it a priority area for conservation (Myers\net al., 2000; Mittermeier et al., 2004). Originally, the\nAtlantic Forest covered 1.48 million km2, totalling\n17% of Brazil’s land area. However, only 160,000 km2\nof forest remain, which corresponds to 11-12% of its\noriginal size (Fundação SOS Mata Atlântica and INPE,\n2008). Currently, the Atlantic Forest is characterized by\na mosaic of vegetation fragments of different sizes and\ndegrees of conservation (Fundação SOS Mata Atlântica\nand INPE, 2008).\nAnthropogenic landscape change negatively affects\nthe structure of communities, as habitat loss is\nconsidered the main threat to biodiversity (Primack and\nHerpetology Notes, volume 10: 479-486 (2017) (published online on 13 September 2017)\nSnakes from the Municipality of São José do Barreiro,\nState of São Paulo, Brazil\nFlora Roncolatto Ortiz1, Herbert Serafim de Freitas2, Angelita Pereira Rodrigues2, Arthur Diesel Abegg1,*\n"
+    },
+    {
+      "article_id": "art_ec1da0932247",
+      "record_type": "article",
+      "source_json": "artigos_herpetologia_lote3_json_unico(1).json",
+      "source_file": "4.pdf",
+      "title": "OP-DABA170104 1..12",
+      "year": "2017",
+      "doi": [
+        "10.1093/database/bax100",
+        "10.1093/database/bax100/4791171",
+        "10.15468/dl.zhyqxp",
+        "10.1093/data"
+      ],
+      "keywords": [],
+      "themes": [
+        "zoologia",
+        "biodiversity_informatics"
+      ],
+      "abstract": "Growing concerns about the quality of aggregated biodiversity data are lowering trust in\nlarge-scale data networks. Aggregators frequently respond to quality concerns by recommending that biologists work with original data providers to correct errors ‘at the source.’\nWe show that this strategy falls systematically short of a full diagnosis of the underlying\ncauses of distrust. In particular, trust in an aggregator is not just a feature of the data signal quality provided by the sources to the aggregator, but also a consequence of the\nsocial design of the aggregation process and the resulting power balance between individual data contributors and aggregators. The latter have created an accountability\ngap by downplaying the authorship and signiﬁcance of the taxonomic hierarchies—\nfrequently called ‘backbones’—they generate, and which are in effect novel classiﬁcation\ntheories that operate at the core of data-structuring process. The Darwin Core standard\nfor sharing occurrence records plays an under-appreciated role in maintaining the accountability gap, because this standard lacks the syntactic structure needed to preserve\nthe taxonomic coherence of data packages submitted for aggregation, potentially leading\nto inferences that no individual source would support. Since high-quality data packages\ncan mirror competing and conﬂicting classiﬁcations, i.e. unsettled systematic research,\nthis plurality must be accommodated in the design of biodiversity data integration.\nLooking forward, a key directive is to develop new technical pathways and social incentives for experts to contribute directly to the validation of taxonomically coherent data\npackages as part of a greater, trustworthy aggregation process.",
+      "page_count": 12,
+      "text_length": 67149,
+      "text_sha256": "9bf2f27a7b06f0cacf0a0c076b5087458eab3883f76ea4a22d5ddf43c271edfd",
+      "metadata": {
+        "pdf_metadata": {
+          "format": "PDF 1.3",
+          "title": "OP-DABA170104 1..12",
+          "author": "",
+          "subject": "",
+          "keywords": "",
+          "creator": "Arbortext Advanced Print Publisher 9.0.114/W",
+          "producer": "Adobe LiveCycle PDF Generator; modified using iTextSharp.LGPLv2.Core 3.7.4.0",
+          "creationDate": "D:20171228181608+05'30'",
+          "modDate": "D:20260510221556+00'00'",
+          "trapped": "",
+          "encryption": null
+        }
+      },
+      "text_preview": "Perspective/Opinion\nTo increase trust, change the social design\nbehind aggregated biodiversity data\nNico M. Franz* and Beckett W. Sterner\nSchool of Life Sciences, Arizona State University, Tempe, AZ 85287, USA\n*Corresponding author: Tel: (480) 965-2036; Fax: (480) 965-6899; Email: nico.franz@asu.edu\nCitation details: Franz,N.M. and Sterner,B.W. To increase trust, change the social design behind aggregated biodiversity\ndata. Database (2017) Vol. 2017: article ID bax100; doi:10.1093/database/bax100.\nReceived 14 July 2017; Revised 5 December 2017; Accepted 6 December 2017\nAbstract\nGrowing concerns about the quality of aggregated biodiversity data are lowering trust in\nlarge-scale data networks. Aggregators frequently respond to quality concerns by recommending that biologists work with original data providers to correct errors ‘at the source.’\nWe show that this strategy falls systematically short of a full diagnosis of the underlying\ncauses of distrust. In particular, trust in an aggregator is not just a feature of the data signal quality provided by the sources to the aggregator, but also a consequence of the\nsocial design of the aggregation process and the resulting power balance be"
+    },
+    {
+      "article_id": "art_867bb67cbbbc",
+      "record_type": "article",
+      "source_json": "artigos_herpetologia_lote3_json_unico(1).json",
+      "source_file": "5.pdf",
+      "title": "Visualizing natural history collection data provides",
+      "year": "2018",
+      "doi": [
+        "10.3897/BDJ.6.e26741",
+        "10.17161/bi.v7i2.3991",
+        "10.1371/journal.pbio.1000385",
+        "10.1111/nph.14855",
+        "10.1111/ddi.12489",
+        "10.1038/s41598-017-09084-6"
+      ],
+      "keywords": [
+        "natural history collections",
+        "data bias",
+        "biodiversity informatics",
+        "visualization"
+      ],
+      "themes": [
+        "ecologia",
+        "zoologia",
+        "biodiversity_informatics"
+      ],
+      "abstract": "Natural history collections contain estimated billions of records representing a large body of\nknowledge about the diversity and distribution of life on Earth. Assessments of various\nforms of bias within the aggregated data associated with specimens in these collections\nhave been conducted across temporal, taxonomic, and spatial domains. Considering that\nthese biases are the sum of biases across all contributing collections to aggregate\ndatasets, the assessment of bias at the collection level is warranted. Interactive\nvisualization provides a powerful tool for the assessment of these biases and insight into\nthe historical development of natural history collections, providing context for where\nsources of bias may originate and developing historical narratives to clarify our\nunderstanding of our own knowledge about life on Earth. Here, I present a case study on\nusing Sankey diagrams to illustrate the development of the entomology type collection at\nthe Academy of Natural Sciences of Drexel University in Philadelphia, Pennsylvania with\nthe hope that extensions of these practices among individual natural history collections are\nmodiﬁed and adopted.\n‡, §\n© Shirey V. This is an open access article distributed under the terms of the Creative Commons Attribution License (CC BY 4.0),\nwhich permits unrestricted use, distribution, and reproduction in any medium, provided the original author and source are credited.",
+      "page_count": 8,
+      "text_length": 17084,
+      "text_sha256": "5b41289a9dc937c0662a6ff1d2c73c9f4869d68f55e2d305ceb07ce82d045a4c",
+      "metadata": {
+        "pdf_metadata": {
+          "format": "PDF 1.5",
+          "title": "",
+          "author": "",
+          "subject": "description",
+          "keywords": "keywords",
+          "creator": "",
+          "producer": "WeasyPrint 0.31 (http://weasyprint.org/)",
+          "creationDate": "",
+          "modDate": "",
+          "trapped": "",
+          "encryption": null
+        }
+      },
+      "text_preview": "Biodiversity Data Journal 6: e26741\ndoi: 10.3897/BDJ.6.e26741\nForum Paper\nVisualizing natural history collection data provides\ninsight into collection development and bias\nVaughn Shirey\n‡ Department of Entomology, The Academy of Natural Sciences of Drexel University, Philadelphia, United States of America\n§ Department of Biology, Georgetown University, Washington, D.C., United States of America\nCorresponding author: Vaughn Shirey (vmshirey@gmail.com)\nAcademic editor: Benjamin Price\nReceived: 17 May 2018 | Accepted: 28 Sep 2018 | Published: 02 Oct 2018\nCitation: Shirey V (2018) Visualizing natural history collection data provides insight into collection development\nand bias. Biodiversity Data Journal 6: e26741. https://doi.org/10.3897/BDJ.6.e26741\nZooBank: urn:lsid:zoobank.org:pub:9EC2D85E-799D-4579-9736-C5043D6AF1D4\nAbstract\nNatural history collections contain estimated billions of records representing a large body of\nknowledge about the diversity and distribution of life on Earth. Assessments of various\nforms of bias within the aggregated data associated with specimens in these collections\nhave been conducted across temporal, taxonomic, and spatial domains. Considering that\nthese "
+    },
+    {
+      "article_id": "art_16ebf616c28f",
+      "record_type": "article",
+      "source_json": "artigos_herpetologia_lote3_json_unico(1).json",
+      "source_file": "6.pdf",
+      "title": "Retrieving biodiversity data from multiple sources: making secondary data standardised and accessible",
+      "year": "2024",
+      "doi": [
+        "10.3897/BDJ.12.e133775",
+        "10.1093/biosci/biw022",
+        "10.3389/fevo.2018.00239",
+        "10.1002/ecs2.3184",
+        "10.1371/journal.pbio.1000385",
+        "10.1111/ecog.02493",
+        "10.1007/s41060-016-0006-1",
+        "10.1016/j.cub.2023.06.077",
+        "10.4322/natcon",
+        "10.1016/j.tree.2013.05.002"
+      ],
+      "keywords": [
+        "keywords were defined considering each biotic group (suppl. material",
+        "1). the keywords must include the name of the biotic group (e.g. amphibians) and",
+        "the study area (e.g. maranhão) and may vary according to the needs of each",
+        "biotic group",
+        "darwin core standard",
+        "fair data",
+        "golfão maranhense",
+        "secondary data"
+      ],
+      "themes": [
+        "ecologia",
+        "zoologia",
+        "biodiversity_informatics",
+        "conservacao"
+      ],
+      "abstract": "Biodiversity data, particularly species occurrence and abundance, are indispensable for\ntesting empirical hypothesis in natural sciences. However, datasets built for research\nprogrammes do not often meet FAIR (findable, accessible, interoperable and reusable)\nprinciples, which raises questions about data quality, accuracy and availability. The 21\ncentury has markedly been a new era for data science and analytics and every effort to\naggregate, standardise, filter and share biodiversity data from multiple sources have\n‡\n‡\n‡\n‡\n‡\n‡,§\n‡\n‡\n‡,|\n‡\n‡\n‡\n‡\n‡\n‡\n‡\n‡\n‡\n‡,¶\n‡\n‡\n‡,#,¤\nst\n© Marques N et al. This is an open access article distributed under the terms of the Creative Commons Attribution License (CC\nBY 4.0), which permits unrestricted use, distribution, and reproduction in any medium, provided the original author and source\nare credited.\nbecome increasingly necessary. In this study, we propose a framework for refining and\nconforming secondary biodiversity data to FAIR standards to make them available for use\nsuch as macroecological modelling and other studies. We relied on a Darwin Core base\nmodel to standardise and further facilitate the curation and validation of data related\nincluding the occurrence and abundance of multiple taxa of a region that encompasses\nestuarine ecosystems in an ecotonal area bordering the easternmost Amazonia. We\nfurther discuss the significance of feeding standardised public data repositories to\nadvance scientific progress and highlight their role in contributing to the biodiversity\nmanagement and conservation.",
+      "page_count": 18,
+      "text_length": 46540,
+      "text_sha256": "d3703d7854242c3981ad1679c2c13b91025f4b28813bb2891da67c3302f34de6",
+      "metadata": {
+        "pdf_metadata": {
+          "format": "PDF 1.3",
+          "title": "Retrieving biodiversity data from multiple sources: making secondary data standardised and accessible",
+          "author": "",
+          "subject": "description",
+          "keywords": "keywords",
+          "creator": "",
+          "producer": "WeasyPrint 0.41 (http://weasyprint.org/)",
+          "creationDate": "D:20240920112257+03'00",
+          "modDate": "",
+          "trapped": "",
+          "encryption": null
+        }
+      },
+      "text_preview": "Biodiversity Data Journal 12: e133775\ndoi: 10.3897/BDJ.12.e133775\nResearch Article\nRetrieving biodiversity data from multiple\nsources: making secondary data standardised and\naccessible\nNubia Marques , Carla Danielle de Melo Soares , Daniel de Melo Casali , Erick Cristofore Guimarães\nFernanda Guimarães Fava , João Marcelo da Silva Abreu\n, Ligiane Martins Moras , Letícia Gomes\nda Silva , Raphael Matias , Rafael Leandro de Assis , Rafael Fraga , Sara Miranda Almeida ,\nVanessa Guimarães Lopes , Verônica Oliveira , Rafaela Missagia , Eduardo Costa Carvalho , Nikolas\nJorge Carneiro , Ronnie Alves , Pedro Souza-Filho\n, Guilherme Oliveira , Margarida Miranda ,\nValéria da Cunha Tavares\n‡ Vale Institute of Technology, Belém, Brazil\n§ Universidade Estadual do Maranhão, São Luís, Brazil\n| Federal University of Jataí, Jataí, Brazil\n¶ Instituto de Geociências, Universidade Federal do Pará, Pará, Brazil\n# Museu Paraense Emílio Goeldi, MPEG, Pós-graduação em Biodiversidade e Evolução, Belém, Brazil\n¤ Pós-Graduação em Zoologia & Laboratório de Mamíferos, Departamento de Sistemática e Ecologia, Universidade\nFederal da Paraíba, João Pessoa, Brazil\nCorresponding author: Nubia Marques (nubia.marques@pq"
+    },
+    {
+      "article_id": "art_f36f125bee8b",
+      "record_type": "article",
+      "source_json": "artigos_herpetologia_lote3_json_unico(1).json",
+      "source_file": "7.PDF",
+      "title": "UNIVERSIDADE FEDERAL DE OURO PRETO",
+      "year": "2007",
+      "doi": [],
+      "keywords": [],
+      "themes": [
+        "herpetologia",
+        "ecologia",
+        "zoologia",
+        "biodiversity_informatics",
+        "serra_da_mantiqueira"
+      ],
+      "abstract": ".............................................................................................................................pág. 11.",
+      "page_count": 80,
+      "text_length": 151742,
+      "text_sha256": "fd26fd0867a74fca3ef10974a313065d093d6a8f1472ef73af6f1d04b45a89b3",
+      "metadata": {
+        "pdf_metadata": {
+          "format": "PDF 1.6",
+          "title": "",
+          "author": "Thales",
+          "subject": "",
+          "keywords": "",
+          "creator": "Microsoft® Office Word 2007",
+          "producer": "Microsoft® Office Word 2007",
+          "creationDate": "D:20121119130607-02'00'",
+          "modDate": "D:20130314143741-03'00'",
+          "trapped": "",
+          "encryption": "Standard V4 R4 128-bit AES"
+        }
+      },
+      "text_preview": "UNIVERSIDADE FEDERAL DE OURO PRETO\nDEPARTAMENTO DE EVOLUÇÃO, BIODIVERSIDADE E MEIO AMBIENTE\nMESTRADO EM ECOLOGIA DE BIOMAS TROPICAIS\nJosé Thales da Motta Portillo\nComposição, etnoecologia e etnotaxonomia de serpentes\nno Vale do Paraíba, Estado de São Paulo\nDissertação apresentada ao Programa de PósGraduação em Ecologia de Biomas Tropicais do\nDepartamento de Biodiversidade, Evolução e\nMeio Ambiente da Universidade Federal de Ouro\nPreto como parte dos requisitos para obtenção do\nTítulo de Mestre em Ecologia.\nOrientadora: Profa. Dra. Maria Rita Silvério Pires\nOuro Preto\n2012\n2\n3\nAgradecimentos\n Primeiramente gostaria de agradecer a Deus e minha família. Meus pais Maria Silvia e\nJosé Antônio, minha irmã Maíra e à memória de meus avós.\n Agradeço a todos da família República Peripatus pelo acolhimento, amizade e muitos\nrocks. Sempre mostrando muito serviço.\n À Lorena Cristina Lana Pinto. Foi ela quem incentivou o projeto e incentivou a minha\nentrada no Biomas. Muito obrigado!\n Agradecimentos especiais para o MSc. Marcelo Ribeiro Duarte. Ele me deu a primeira\noportunidade e sempre colaborou com amizade, revisões de textos e incentivo.\n Ao Dr. Francisco Luis Franco, pela revisão da li"
+    },
+    {
+      "article_id": "art_f716ffd0363f",
+      "record_type": "article",
+      "source_json": "artigos_herpetologia_lote3_json_unico(1).json",
+      "source_file": "8_compressed.pdf",
+      "title": "Herpetofauna do Parque Estadual Carlos Botelho, São Paulo, Brasil",
+      "year": "2000",
+      "doi": [],
+      "keywords": [
+        "amphibians",
+        "reptiles",
+        "herpetology",
+        "diversity",
+        "atlantic forest",
+        "carlos botelho state park",
+        "forlani",
+        "m.c",
+        "bernardo",
+        "p.h",
+        "haddad",
+        "c.b.f. & zaher",
+        "h. herpetofauna do parque estadual",
+        "carlos botelho",
+        "são paulo",
+        "brasil. biota neotrop. 10(3): http://www.biotaneotropica.org.br/v10n3/pt/abstrac",
+        "t?inventory+bn00210032010",
+        "anfíbios",
+        "répteis",
+        "herpetofauna",
+        "diversidade",
+        "mata atlântica",
+        "parque estadual carlos botelho",
+        "266"
+      ],
+      "themes": [
+        "herpetologia",
+        "ecologia",
+        "zoologia",
+        "biodiversity_informatics",
+        "conservacao",
+        "mata_atlantica",
+        "serra_da_mantiqueira"
+      ],
+      "abstract": "?inventory+bn00210032010\nhttp://www.biotaneotropica.org.br\nBiota Neotrop., vol. 10, no. 3\nHerpetofauna do Parque Estadual Carlos Botelho, São Paulo, Brasil\nMaurício da Cruz Forlani1, Pedro Henrique Bernardo1, Celio Fenando Baptista Haddad2 & Hussam Zaher1,3\n1Museu de Zoologia, Universidade de São Paulo – USP\nAv. Nazaré, 481, CEP 04263-000, São Paulo, SP, Brasil\n2Universidade Estadual Paulista –UNESP, Campus Rio Claro,\nAv. 24-A, 1.515, Bela Vista, CEP 13506-900, Rio Claro, SP, Brasil\n3Autor para correspondência: Hussam Zaher, e-mail: hzaher@usp.br\nFORLANI, M.C., BERNARDO, P.H., HADDAD, C.B.F. & ZAHER, H. Herpetofauna of the Carlos Botelho\nState Park, São Paulo State, Brazil. Biota Neotrop. 10(3): http://www.biotaneotropica.org.br/v10n3/en/abstra\nct?inventory+bn00210032010.\nAbstract: The present work is a survey of the herpetofauna of Carlos Botelho State Park (CBSP), located in the\nregion of Serra de Paranapiacaba, State of São Paulo, Brazil. Data were gathered from specimens collected in\nsix areas within the park during a period of 76 days distributed in one year, and from three Brazilian scientific\ncollections. We also offer photographs and information on the biology and occurrence of species within the park\nand among Brazilian biomes. The herpetofauna of CBSP may be considered one of the most diverse in the State\nof São Paulo, with 65 species of amphibians and 59 species of reptiles recorded in the present study. From the\n65 species of amphibia recorded, 84% (55 spp.) are endemic from forested areas of the Atlantic forest. We also\ndistinguished different altitudinal patterns within the amphibian assemblage, with 46% being recorded only at\naltitudes above 500 m, while 9% are exclusive of areas under 400 m and 45% occur in all altitudes within the\npark. The reptile fauna of PECB is composed of 59 species, including 10 species of lizards, 48 snakes, and one\nchelonian. Among the snakes collected at the CBSP, the Lancehead Bothrops jararaca was the most frequent,\nwith 26,9% (N = 14) of the total of the collected specimens. Species that are considered difficult to sample, such\nas Echinanthera cephalostriata (13,5%; N = 7) and Taeniophallus affinis (7,7%; N = 4), were also numerous in\nPECB. Among lizards, Enyalius iheringii was the most abundant species, representing 50% (N = 16) of sampled\nspecimens. We also performed a cluster analysis comparing 25 amphibian assemblages from different localities in\nthe Atlantic Forest, and including the PECB, which resulted in the clustering of four main groups. The anurofauna\nof PECB presented high similarity with the assemblages of Jacupiranga (0,68) and Intervales (0,66) State Parks.\nThese places are geographically close and constitute one of the largest preserved forest fragments of Atlantic\nrainforest in Brazil. The present work provides at the first time a list of reptiles for the CBSP, and complements\nthe knowledge about the amphibian fauna at the CBSP.",
+      "page_count": 45,
+      "text_length": 211464,
+      "text_sha256": "c1f827be878d7aaf13a594862a6da42564a48df8bc42afce6fcdcb00ea47fd23",
+      "metadata": {
+        "pdf_metadata": {
+          "format": "PDF 1.6",
+          "title": "",
+          "author": "Cubo Multimídia",
+          "subject": "",
+          "keywords": "",
+          "creator": "Adobe InDesign CS3 (5.0)",
+          "producer": "iLovePDF",
+          "creationDate": "D:20101111170113-02'00'",
+          "modDate": "D:20260510225826Z",
+          "trapped": "",
+          "encryption": null
+        }
+      },
+      "text_preview": "http://www.biotaneotropica.org.br/v10n3/pt/abstract?inventory+bn00210032010\nhttp://www.biotaneotropica.org.br\nBiota Neotrop., vol. 10, no. 3\nHerpetofauna do Parque Estadual Carlos Botelho, São Paulo, Brasil\nMaurício da Cruz Forlani1, Pedro Henrique Bernardo1, Celio Fenando Baptista Haddad2 & Hussam Zaher1,3\n1Museu de Zoologia, Universidade de São Paulo – USP\nAv. Nazaré, 481, CEP 04263-000, São Paulo, SP, Brasil\n2Universidade Estadual Paulista –UNESP, Campus Rio Claro,\nAv. 24-A, 1.515, Bela Vista, CEP 13506-900, Rio Claro, SP, Brasil\n3Autor para correspondência: Hussam Zaher, e-mail: hzaher@usp.br\nFORLANI, M.C., BERNARDO, P.H., HADDAD, C.B.F. & ZAHER, H. Herpetofauna of the Carlos Botelho\nState Park, São Paulo State, Brazil. Biota Neotrop. 10(3): http://www.biotaneotropica.org.br/v10n3/en/abstra\nct?inventory+bn00210032010.\nAbstract: The present work is a survey of the herpetofauna of Carlos Botelho State Park (CBSP), located in the\nregion of Serra de Paranapiacaba, State of São Paulo, Brazil. Data were gathered from specimens collected in\nsix areas within the park during a period of 76 days distributed in one year, and from three Brazilian scientific\ncollections. We also offer photo"
+    },
+    {
+      "article_id": "art_fcc3cd383d32",
+      "record_type": "article",
+      "source_json": "artigos_herpetologia_lote3_json_unico(1).json",
+      "source_file": "9.pdf",
+      "title": "Optimising occurrence data in species distribution models: sample size, positional uncertainty, and sampling bias matter",
+      "year": "2024",
+      "doi": [
+        "10.1111/ecog.07294",
+        "10.13039/501100011033",
+        "10.1111/jbi.14854"
+      ],
+      "keywords": [
+        "data quality",
+        "ecological niche modelling",
+        "filtering",
+        "sampling",
+        "spatial scale",
+        "validation"
+      ],
+      "themes": [
+        "ecologia",
+        "biodiversity_informatics",
+        "sdm_modelagem_distribuicao",
+        "conservacao"
+      ],
+      "abstract": "",
+      "page_count": 20,
+      "text_length": 115415,
+      "text_sha256": "3c3b5b588de0f3e9008b544e7feb894b100a92043dd584c58da1da3da4acef23",
+      "metadata": {
+        "pdf_metadata": {
+          "format": "PDF 1.4",
+          "title": "Optimising occurrence data in species distribution models: sample size, positional uncertainty, and sampling bias matter",
+          "author": "",
+          "subject": "Ecography 2024.2024:e07294",
+          "keywords": "",
+          "creator": "Adobe InDesign 19.0 (Windows)",
+          "producer": "Adobe PDF Library 17.0; modified using iText 4.2.0 by 1T3XT",
+          "creationDate": "D:20241120143626+05'30'",
+          "modDate": "D:20260510151140-07'00'",
+          "trapped": "",
+          "encryption": null
+        }
+      },
+      "text_preview": "www.ecography.org\nECOGRAPHY\nEcography\nPage 1 of 20\nThis is an open access article under the terms of the Creative Commons\nAttribution License, which permits use, distribution and reproduction in any\nmedium, provided the original work is properly cited.\nSubject Editor: Miguel Araújo\nEditor-in-Chief: Miguel Araújo\nAccepted 1 July 2024\ndoi: 10.1111/ecog.07294\n2024: e07294\n© 2024 The Authors. Ecography published by John Wiley & Sons Ltd on behalf of Nordic Society\nOikos\nSpecies distribution models (SDMs) have proven valuable in filling gaps in our\nknowledge of species occurrences. However, despite their broad applicability,\nSDMs exhibit critical shortcomings due to limitations in species occurrence data.\nThese limitations include, in particular, issues related to sample size, positional\nuncertainty, and sampling bias. In addition, it is widely recognised that the quality\nof SDMs as well as the approaches used to mitigate the impact of the aforemen­\ntioned data limitations depend on species ecology. While numerous studies have\nevaluated the effects of these data limitations on SDM performance, a synthesis\nof their results is lacking. However, without a comprehensive understanding of\nthe"
+    },
+    {
+      "article_id": "art_7eb87491c290",
+      "record_type": "article",
+      "source_json": "artigos_herpetologia_lote3_json_unico(1).json",
+      "source_file": "10.pdf",
+      "title": "deb_pone.0111436 1..8",
+      "year": "2014",
+      "doi": [
+        "10.1371/journal.pone",
+        "10.1371/journal.pone.0111436.g001",
+        "10.1371/journal.pone.0111436.t001",
+        "10.1371/journal.pone.0111436.g002",
+        "10.1371/journal.pone.0111436.t002",
+        "10.1371/journal.pone.0111436.t003",
+        "10.1111/2041-210X.12133",
+        "10.1111/1365-2664.12306"
+      ],
+      "keywords": [],
+      "themes": [
+        "herpetologia",
+        "ecologia",
+        "zoologia",
+        "conservacao"
+      ],
+      "abstract": "Detection in studies of species abundance and distribution is often imperfect. Assuming perfect detection introduces bias\ninto estimation that can weaken inference upon which understanding and policy are based. Despite availability of\nnumerous methods designed to address this assumption, many refereed papers in ecology fail to account for non-detection\nerror. We conducted a quantitative literature review of 537 ecological articles to measure the degree to which studies of\ndifferent taxa, at various scales, and over time have accounted for imperfect detection. Overall, just 23% of articles\naccounted for imperfect detection. The probability that an article incorporated imperfect detection increased with time and\nvaried among taxa studied; studies of vertebrates were more likely to incorporate imperfect detection. Among articles that\nreported detection probability, 70% contained per-survey estimates of detection that were less than 0.5. For articles in\nwhich constancy of detection was tested, 86% reported significant variation. We hope that our findings prompt more\necologists to consider carefully the detection process when designing studies and analyzing results, especially for subdisciplines where incorporation of imperfect detection in study design and analysis so far has been lacking.\nCitation: Kellner KF, Swihart RK (2014) Accounting for Imperfect Detection in Ecology: A Quantitative Review. PLoS ONE 9(10): e111436. doi:10.1371/journal.pone.\n0111436\nEditor: Jeffrey Buckel, North Carolina State University, United States of America\nReceived August 15, 2014; Accepted October 2, 2014; Published October 30, 2014\nCopyright: \u0001 2014 Kellner, Swihart. This is an open-access article distributed under the terms of the Creative Commons Attribution License, which permits\nunrestricted use, distribution, and reproduction in any medium, provided the original author and source are credited.\nData Availability: The authors confirm that all data underlying the findings are fully available without restriction. All relevant data are within the paper and its\nSupporting Information files.\nFunding: Funding was provided by the Purdue University Graduate School and the Purdue Department of Forestry and Natural Resources. The funders had no\nrole in study design, data collection and analysis, decision to publish, or preparation of the manuscript.\nCompeting Interests: The authors have declared that no competing interests exist.\n* Email: kkellner@purdue.edu",
+      "page_count": 8,
+      "text_length": 48707,
+      "text_sha256": "69e52a66e1a6b0a378863fe8d961117ef876227140fcad573f4ea5695540c6b5",
+      "metadata": {
+        "pdf_metadata": {
+          "format": "PDF 1.5",
+          "title": "deb_pone.0111436 1..8",
+          "author": "",
+          "subject": "",
+          "keywords": "",
+          "creator": "3B2 Total Publishing System 7.51n/W",
+          "producer": "Acrobat Distiller 5.0 (Windows); modified using iText 5.0.3 (c) 1T3XT BVBA",
+          "creationDate": "D:20141014152154Z",
+          "modDate": "D:20141026225050-07'00'",
+          "trapped": "",
+          "encryption": null
+        }
+      },
+      "text_preview": "Accounting for Imperfect Detection in Ecology: A\nQuantitative Review\nKenneth F. Kellner*, Robert K. Swihart\nDepartment of Forestry and Natural Resources, Purdue University, West Lafayette, Indiana, United States of America\nAbstract\nDetection in studies of species abundance and distribution is often imperfect. Assuming perfect detection introduces bias\ninto estimation that can weaken inference upon which understanding and policy are based. Despite availability of\nnumerous methods designed to address this assumption, many refereed papers in ecology fail to account for non-detection\nerror. We conducted a quantitative literature review of 537 ecological articles to measure the degree to which studies of\ndifferent taxa, at various scales, and over time have accounted for imperfect detection. Overall, just 23% of articles\naccounted for imperfect detection. The probability that an article incorporated imperfect detection increased with time and\nvaried among taxa studied; studies of vertebrates were more likely to incorporate imperfect detection. Among articles that\nreported detection probability, 70% contained per-survey estimates of detection that were less than 0.5. For articles in\nwhic"
+    },
+    {
+      "article_id": "art_06a5dcc99e23",
+      "record_type": "article",
+      "source_json": "artigos_ciencia_cidada_lote2_json_unico(1).json",
+      "source_file": "biz010.pdf",
+      "title": "",
+      "year": "2019",
+      "doi": [
+        "10.1093/biosci/biz010"
+      ],
+      "keywords": [
+        "citizen science",
+        "biodiversity monitoring",
+        "species distributions",
+        "citizen",
+        "science survey design",
+        "iodiversity monitoring provides essential information",
+        "and evidence to develop species conservation strate",
+        "gies and inform the sustainable use of natural resources",
+        "traditionally",
+        "monitoring programs rely on humans to",
+        "collect field observations (kelling et al. 2013)",
+        "however",
+        "recent advances in machine learning are improving the abil",
+        "ity of automated systems to detect and classify organisms",
+        "(schneider et al. 2018",
+        "zhang et al. 2018). because govern",
+        "ments and scientific agencies often lack resources to support",
+        "long-term biodiversity assessments by professional scientists",
+        "(balmford and gaston 1999",
+        "bland et al. 2015)",
+        "many orga",
+        "nizations recruit volunteers—both beginners and highly",
+        "skilled ones—to meet these assessment goals (danielsen",
+        "et al. 2014",
+        "pimm et al. 2015). worldwide"
+      ],
+      "themes": [
+        "ecologia",
+        "zoologia",
+        "ciencia_cidada",
+        "biodiversity_informatics",
+        "conservacao"
+      ],
+      "abstract": "",
+      "page_count": 10,
+      "text_length": 44526,
+      "text_sha256": "c460a9e507343445a06ca4ab1bb8091018f6693d83ff64c44493065de9c82287",
+      "metadata": {
+        "pdf_metadata": {
+          "format": "PDF 1.4",
+          "creator": "Adobe InDesign CS6 (Macintosh)",
+          "producer": "Adobe PDF Library 10.0.1; modified using iTextSharp.LGPLv2.Core 3.7.4.0",
+          "creationDate": "D:20190312061027+05'30'",
+          "modDate": "D:20260510154718+00'00'",
+          "trapped": "False"
+        },
+        "detected": {
+          "title": "Overview Articles",
+          "doi": [
+            "10.1093/biosci/biz010"
+          ],
+          "keywords": [
+            "citizen science",
+            "biodiversity monitoring",
+            "species distributions",
+            "citizen",
+            "science survey design"
+          ],
+          "abstract": "",
+          "sections_detected": []
+        }
+      },
+      "text_preview": "Overview Articles\n170 BioScience • March 2019 / Vol. 69 No. 3\nhttps://academic.oup.com/bioscience\nUsing Semistructured Surveys to\nImprove Citizen Science Data for\nMonitoring Biodiversity\nSTEVE KELLING, ALISON JOHNSTON, ALETTA BONN, DANIEL FINK, VIVIANA RUIZ-GUTIERREZ,\nRICK BONNEY, MIGUEL FERNANDEZ, WESLEY M. HOCHACHKA, ROMAIN JULLIARD, ROLAND KRAEMER, AND\nROBERT GURALNICK\nBiodiversity is being lost at an unprecedented rate, and monitoring is crucial for understanding the causal drivers and assessing solutions. Most\nbiodiversity monitoring data are collected by volunteers through citizen science projects, and often crucial information is lacking to account for\nthe inevitable biases that observers introduce during data collection. We contend that citizen science projects intended to support biodiversity\nmonitoring must gather information about the observation process as well as species occurrence. We illustrate this using eBird, a global citizen\nscience project that collects information on bird occurrences as well as vital contextual information on the observation process while maintaining\nbroad participation. Our fundamental argument is that regardless of what species are being moni"
+    },
+    {
+      "article_id": "art_d078cf54a116",
+      "record_type": "article",
+      "source_json": "artigos_ciencia_cidada_lote2_json_unico(1).json",
+      "source_file": "People and Nature - 2022 - Hurley - Co‐designing the environmental land management scheme in England  The why  who and how.pdf",
+      "title": "Co‐designing the environmental land management scheme in England: The why, who and how of engaging ‘harder to reach’ stakeholders",
+      "year": "2022",
+      "doi": [
+        "10.1002/pan3.10313"
+      ],
+      "keywords": [],
+      "themes": [
+        "ecologia",
+        "biodiversity_informatics",
+        "conservacao"
+      ],
+      "abstract": "Agriculture around the world needs to become more environmentally sustainable to limit further environmental degradation and impacts of climate change.\n2. Many governments try to achieve this through enrolling farmers in agrienvironment schemes (AES) that encourage them to undertake conservation\nactivities.\n3. Studies show that AES can suffer from low uptake, meaning their environmental\nobjectives remain unattained. To succeed for people and nature, policy-makers\nare increasingly adopting multi-actor approaches in the ‘co-design’ of AES to\nmake them more attractive and inclusive of a full range of stakeholders, including ‘harder to reach’ farmers.\n4. To address why some land managers (principally farmers) may be harder to reach\nin the context of co-designing England's new Environmental Land Management\n(ELM) approach, we undertook a quick scoping review of the literature, conducted 23 first-round and 24 s-round interviews with key informants, and held a\nworkshop with 11 practitioners.\n5. We outline why farming stakeholders may be harder to reach and how policymakers can adjust the engagement process to make co-design more inclusive.\n6. Based on the results, we make recommendations that could help policy-makers\nto design better, more inclusive AES that would attract greater uptake and increase their chances of success.\nRead the free Plain Language Summary for this article on the Journal blog.",
+      "page_count": 14,
+      "text_length": 83264,
+      "text_sha256": "ab1edb71bbae891422a3dc7836837cd4e29b861160b6cd5781103b7e6c67aafa",
+      "metadata": {
+        "pdf_metadata": {
+          "format": "PDF 1.6",
+          "title": "Co‐designing the environmental land management scheme in England: The why, who and how of engaging ‘harder to reach’ stakeholders",
+          "subject": "People and Nature 2022.4:744-757",
+          "creator": "Adobe InDesign 15.0 (Windows)",
+          "producer": "Adobe PDF Library 15.0; modified using iText 4.2.0 by 1T3XT",
+          "creationDate": "D:20220530211732+05'30'",
+          "modDate": "D:20260510104558-07'00'"
+        },
+        "detected": {
+          "title": "Co‐designing the environmental land management scheme in England: The why, who and how of engaging ‘harder to reach’ stakeholders",
+          "doi": [
+            "10.1002/pan3.10313"
+          ],
+          "keywords": [],
+          "abstract": "Agriculture around the world needs to become more environmentally sustain-\nable to limit further environmental degradation and impacts of climate change.\n2. Many governments try to achieve this through enrolling farmers in agri-\nenvironment schemes (AES) that encourage them to undertake conservation \nactivities.\n3. Studies show that AES can suffer from low uptake, meaning their environmental \nobjectives remain unattained. To succeed for people and nature, policy-makers \nare increasingly adopting multi-actor approaches in the ‘co-design’ of AES to \nmake them more attractive and inclusive of a full range of stakeholders, includ-\ning ‘harder to reach’ farmers.\n4. To address why some land managers (principally farmers) may be harder to reach \nin the context of co-designing England's new Environmental Land Management \n(ELM) approach, we undertook a quick scoping review of the literature, con-\nducted 23 first-round and 24 s-round interviews with key informants, and held a \nworkshop with 11 practitioners.\n5. We outline why farming stakeholders may be harder to reach and how policy-\nmakers can adjust the engagement process to make co-design more inclusive.\n6. Based on the results, we make recommendations that could help policy-makers \nto design better, more inclusive AES that would attract greater uptake and in-\ncrease their chances of success.\nRead the free Plain Language Summary for this article on the Journal blog.",
+          "sections_detected": [
+            "Abstract",
+            "ACKNOWLEDGEMENTS",
+            "3 The research was conducted using short-term, responsive-mode QR",
+            "REFERENCES"
+          ]
+        }
+      },
+      "text_preview": "744 |\n\b\nPeople and Nature. 2022;4:744–757.\nwileyonlinelibrary.com/journal/pan3\nReceived: 2 August 2021 | Accepted: 7 February 2022\nDOI: 10.1002/pan3.10313\nR E S E A R C H A R T I C L E\nCo-designing the environmental land management scheme in\nEngland: The why, who and how of engaging ‘harder to reach’\nstakeholders\nPaul Hurley1,2,3 | Jessica Lyon1 | Jilly Hall4 | Ruth Little1\n| Judith Tsouvalis1\n|\nVeronica White1 | David Christian Rose3\nThis is an open access article under the terms of the Creative Commons Attribution License, which permits use, distribution and reproduction in any medium,\nprovided the original work is properly cited.\n© 2022 The Authors. People and Nature published by John Wiley & Sons Ltd on behalf of British Ecological Society.\nPaul Hurley, Jessica Lyon and David Christian Rose co-lead authors\n1Department of Geography, University of\nSheffield, Sheffield, UK\n2Visiting Fellow, Geography and\nEnvironmental Science, University of\nSouthampton, Southampton, UK\n3School of Agriculture, Policy and\nDevelopment, University of Reading,\nReading, UK\n4SPSN: Supporting the People who\nSupport Nature, Cambridge, UK\nCorrespondence\nRuth Little\nEmail: ruth.little@sheffield.ac.uk\nDavid C"
+    },
+    {
+      "article_id": "art_e59c8a902b56",
+      "record_type": "article",
+      "source_json": "artigos_ciencia_cidada_lote2_json_unico(1).json",
+      "source_file": "sullivan2009.pdf",
+      "title": "eBird: A citizen-based bird observation network in the biological sciences",
+      "year": "2009",
+      "doi": [
+        "10.1016/j.biocon.2009.05.006"
+      ],
+      "keywords": [
+        "ebird",
+        "citizen-science"
+      ],
+      "themes": [
+        "ecologia",
+        "zoologia",
+        "ciencia_cidada",
+        "biodiversity_informatics",
+        "conservacao"
+      ],
+      "abstract": "",
+      "page_count": 11,
+      "text_length": 57771,
+      "text_sha256": "2f59d16a87775430a844084fae5af1a438dfea8840fc5ece266a2f38621dabd6",
+      "metadata": {
+        "pdf_metadata": {
+          "format": "PDF 1.4",
+          "title": "eBird: A citizen-based bird observation network in the biological sciences",
+          "author": "\"Brian L. Sullivan; Christopher L. Wood; Marshall J. Iliff; Rick E. Bonney; Daniel Fink; Steve Kelling\"",
+          "creator": "Elsevier",
+          "producer": "Acrobat Distiller 8.1.0 (Windows)",
+          "creationDate": "D:20090807182726+05'30'",
+          "modDate": "D:20090807182809+05'30'"
+        },
+        "detected": {
+          "title": "eBird: A citizen-based bird observation network in the biological sciences",
+          "doi": [
+            "10.1016/j.biocon.2009.05.006"
+          ],
+          "keywords": [
+            "eBird"
+          ],
+          "abstract": "",
+          "sections_detected": [
+            "Acknowledgements",
+            "References"
+          ]
+        }
+      },
+      "text_preview": "eBird: A citizen-based bird observation network in the biological sciences\nBrian L. Sullivan *, Christopher L. Wood, Marshall J. Iliff, Rick E. Bonney, Daniel Fink, Steve Kelling\nCornell Lab of Ornithology, 159 Sapsucker Woods Road, Ithaca, NY 14850, USA\na r t i c l e\ni n f o\nArticle history:\nReceived 4 December 2008\nReceived in revised form 1 May 2009\nAccepted 5 May 2009\nAvailable online 28 May 2009\nKeywords:\neBird\nCitizen-science\nObservation network\nScale-dependent analysis\nBird observations\na b s t r a c t\nNew technologies are rapidly changing the way we collect, archive, analyze, and share scientiﬁc data. For\nexample, over the next several years it is estimated that more than one billion autonomous sensors will\nbe deployed over large spatial and temporal scales, and will gather vast quantities of data. Networks of\nhuman observers play a major role in gathering scientiﬁc data, and whether in astronomy, meteorology,\nor observations of nature, they continue to contribute signiﬁcantly. In this paper we present an innovative use of the Internet and information technologies that better enhances the opportunity for citizens to\ncontribute their observations to science and the conservat"
+    },
+    {
+      "article_id": "art_3a5cd95f5689",
+      "record_type": "article",
+      "source_json": "artigos_ciencia_cidada_lote2_json_unico(1).json",
+      "source_file": "sustainability-14-14632.pdf",
+      "title": "Why Return? Birdwatching Tourists’ Revisit Intentions Based on Structural Equation Modelling",
+      "year": "2022",
+      "doi": [
+        "10.3390/su142114632"
+      ],
+      "keywords": [
+        "birdwatching tourism",
+        "revisit intention",
+        "cognitive image",
+        "perceived image",
+        "tourism",
+        "motivation",
+        "structural equation modelling"
+      ],
+      "themes": [
+        "ecologia",
+        "conservacao"
+      ],
+      "abstract": ": Birdwatching tourism is a model of ecotourism that is beneﬁcial to the sustainable development of developing regions and is growing rapidly in China. In order to explore the development\npath of birdwatching tourism, this study constructs and tests a model of revisit intention from the\nbirdwatching tourists’ perspective and aims to understand the factors inﬂuencing tourists’ revisit\nintention for birdwatching destinations. The researchers collected 328 valid questionnaires from birdwatching tourists in Mingxi County, Fujian Province, China, and used structural equation modelling\nto validate the relationships among the study constructs. Cognitive image had the largest inﬂuence\non revisit intent (0.219), followed by tourist satisfaction (0.172), and perceived image (0.155). Tourist\nmotivation indirectly affects revisit intention through the full mediating effect of the cognitive image.",
+      "page_count": 17,
+      "text_length": 64345,
+      "text_sha256": "cdb9303c180a4ae281c986bf9f766d2646b9b990bcfaffeea69fb735bdcfd0a3",
+      "metadata": {
+        "pdf_metadata": {
+          "format": "PDF 1.7",
+          "title": "Why Return? Birdwatching Tourists’ Revisit Intentions Based on Structural Equation Modelling",
+          "author": "Jie Ren, Kaiwen Su, Yihui Zhou, Yilei Hou and Yali Wen",
+          "subject": "Birdwatching tourism is a model of ecotourism that is beneficial to the sustainable development of developing regions and is growing rapidly in China. In order to explore the development path of birdwatching tourism, this study constructs and tests a model of revisit intention from the birdwatching tourists’ perspective and aims to understand the factors influencing tourists’ revisit intention for birdwatching destinations. The researchers collected 328 valid questionnaires from birdwatching tourists in Mingxi County, Fujian Province, China, and used structural equation modelling to validate the relationships among the study constructs. Cognitive image had the largest influence on revisit intent (0.219), followed by tourist satisfaction (0.172), and perceived image (0.155). Tourist motivation indirectly affects revisit intention through the full mediating effect of the cognitive image. This study provides some insights and references for policymakers and tourism project managers to design or adjust the construction plan of birdwatching-tourism sites.",
+          "keywords": "birdwatching tourism; revisit intention; cognitive image; perceived image; tourism motivation; structural equation modelling",
+          "creator": "LaTeX with hyperref",
+          "producer": "pdfTeX-1.40.21",
+          "creationDate": "D:20221107185930+08'00'",
+          "modDate": "D:20221107132649+01'00'"
+        },
+        "detected": {
+          "title": "Why Return? Birdwatching Tourists’ Revisit Intentions Based on Structural Equation Modelling",
+          "doi": [
+            "10.3390/su142114632"
+          ],
+          "keywords": [
+            "birdwatching tourism",
+            "revisit intention",
+            "cognitive image",
+            "perceived image",
+            "tourism"
+          ],
+          "abstract": ": Birdwatching tourism is a model of ecotourism that is beneﬁcial to the sustainable develop-\nment of developing regions and is growing rapidly in China. In order to explore the development\npath of birdwatching tourism, this study constructs and tests a model of revisit intention from the\nbirdwatching tourists’ perspective and aims to understand the factors inﬂuencing tourists’ revisit\nintention for birdwatching destinations. The researchers collected 328 valid questionnaires from bird-\nwatching tourists in Mingxi County, Fujian Province, China, and used structural equation modelling\nto validate the relationships among the study constructs. Cognitive image had the largest inﬂuence\non revisit intent (0.219), followed by tourist satisfaction (0.172), and perceived image (0.155). Tourist\nmotivation indirectly affects revisit intention through the full mediating effect of the cognitive image.",
+          "sections_detected": [
+            "References"
+          ]
+        }
+      },
+      "text_preview": "Citation: Ren, J.; Su, K.; Zhou, Y.;\nHou, Y.; Wen, Y. Why Return?\nBirdwatching Tourists’ Revisit\nIntentions Based on Structural\nEquation Modelling. Sustainability\n2022, 14, 14632. https://doi.org/\n10.3390/su142114632\nAcademic Editor: Jonathon Day\nReceived: 9 October 2022\nAccepted: 2 November 2022\nPublished: 7 November 2022\nPublisher’s Note: MDPI stays neutral\nwith regard to jurisdictional claims in\npublished maps and institutional afﬁliations.\nCopyright:\n© 2022 by the authors.\nLicensee MDPI, Basel, Switzerland.\nThis article is an open access article\ndistributed\nunder\nthe\nterms\nand\nconditions of the Creative Commons\nAttribution (CC BY) license (https://\ncreativecommons.org/licenses/by/\n4.0/).\nsustainability\nArticle\nWhy Return? Birdwatching Tourists’ Revisit Intentions Based\non Structural Equation Modelling\nJie Ren, Kaiwen Su, Yihui Zhou\n, Yilei Hou and Yali Wen *\nSchool of Economics and Management, Beijing Forestry University, Beijing 100083, China\n* Correspondence: wenyali@bjfu.edu.cn\nAbstract: Birdwatching tourism is a model of ecotourism that is beneﬁcial to the sustainable development of developing regions and is growing rapidly in China. In order to explore the development\npath"
+    },
+    {
+      "article_id": "art_c621c5078a77",
+      "record_type": "article",
+      "source_json": "artigos_ciencia_cidada_lote2_json_unico(1).json",
+      "source_file": "weiser2020.pdf",
+      "title": "Challenges for leveraging citizen science to support statistically robust monitoring programs",
+      "year": "2020",
+      "doi": [
+        "10.1016/j.biocon.2020.108411"
+      ],
+      "keywords": [
+        "bias"
+      ],
+      "themes": [
+        "ecologia",
+        "ciencia_cidada",
+        "conservacao"
+      ],
+      "abstract": "",
+      "page_count": 10,
+      "text_length": 60268,
+      "text_sha256": "eb0b2f017aa59be944ee24f33deb86a819035729d2c142cf7d1a88991d76c45e",
+      "metadata": {
+        "pdf_metadata": {
+          "format": "PDF 1.7",
+          "title": "Challenges for leveraging citizen science to support statistically robust monitoring programs",
+          "author": "Emily L. Weiser",
+          "subject": "Biological Conservation, 242 (2020) 108411. doi:10.1016/j.biocon.2020.108411",
+          "keywords": "Bias; Citizen science; Community science; Long-term monitoring; Sampling design; Population trend; Monarch butterfly; Danaus plexippus; Milkweed; Asclepias; ",
+          "creator": "Elsevier",
+          "creationDate": "D:20200109045911Z",
+          "modDate": "D:20200109045911Z"
+        },
+        "detected": {
+          "title": "Challenges for leveraging citizen science to support statistically robust monitoring programs",
+          "doi": [
+            "10.1016/j.biocon.2020.108411"
+          ],
+          "keywords": [
+            "Bias"
+          ],
+          "abstract": "",
+          "sections_detected": [
+            "References"
+          ]
+        }
+      },
+      "text_preview": "Contents lists available at ScienceDirect\nBiological Conservation\njournal homepage: www.elsevier.com/locate/biocon\nChallenges for leveraging citizen science to support statistically robust\nmonitoring programs\nEmily L. Weisera,⁎, Jay E. Diﬀendorferb, Laura Lopez-Hoﬀmanc, Darius Semmensb,\nWayne E. Thogmartina\na U.S. Geological Survey, Upper Midwest Environmental Sciences Center, La Crosse, WI, USA\nb U.S. Geological Survey, Geosciences and Environmental Change Science Center, Denver, CO, USA\nc School of Natural Resources and the Environment and Udall Center for Studies in Public Policy, The University of Arizona, Tucson, AZ, USA\nA R T I C L E I N F O\nKeywords:\nBias\nCitizen science\nCommunity science\nLong-term monitoring\nSampling design\nPopulation trend\nMonarch butterﬂy\nDanaus plexippus\nMilkweed\nAsclepias\nA B S T R A C T\nLarge samples and long time series are often needed for eﬀective broad-scale monitoring of status and trends in\nwild populations. Obtaining those sample sizes can be more feasible when volunteers contribute to the dataset,\nbut volunteer-selected sites are not always representative of a population. Previous work to account for biased\nsite selection has relied on knowledg"
+    },
+    {
+      "article_id": "art_d3353c697c63",
+      "record_type": "article",
+      "source_json": "artigos_ciencia_cidada_json_unico(1).json",
+      "source_file": "2014_sullivan_biocon_ebird.pdf",
+      "title": "The eBird enterprise: An integrated approach to development and application of citizen science",
+      "year": "2014",
+      "doi": [
+        "10.1016/j.biocon.2013.11.003"
+      ],
+      "keywords": [
+        "ebird",
+        "citizen-science",
+        "a b s t r a c t",
+        "conservation",
+        "taking a novel",
+        "ﬁelds: population and distributions",
+        "conservation biologists",
+        "quantitative ecologists",
+        "statisticians",
+        "computer scientists",
+        "gis and informatics specialists",
+        "application developers",
+        "and data administrators. the goal",
+        "is to increase data quantity through participant recruitment and engagement",
+        "but also to quantify and",
+        "control for data quality issues such as observer variability",
+        "imperfect detection of species",
+        "and both spatial",
+        "and temporal bias in data collection. advances at the interface among ecology",
+        "statistics",
+        "and computer",
+        "science all"
+      ],
+      "themes": [
+        "ecologia",
+        "zoologia",
+        "ciencia_cidada",
+        "biodiversity_informatics",
+        "sdm_modelagem_distribuicao",
+        "conservacao"
+      ],
+      "abstract": ", as well as their afﬁliation. These requests are individually\nreviewed to ensure validity, after which a data access key is\ngranted. Once registered, users can access a series of online tools\nthat allow queries to be written against the database to extract target datasets. eBird data are bundled with our terms of use policy,\nmetadata descriptors, and recommended citations.\n34\nB.L. Sullivan et al. / Biological Conservation 169 (2014) 31–40\n3.2. Core eBird data products\nThe eBird observational dataset (EOD) contains primary species\noccurrence data deﬁned as a record of a particular taxon in a particular place at a particular point in time (Soberon and Peterson,\n2009). eBird data consisting of location, date, and species are provided in the EOD to ensure that they can be integrated with other\nobservational data and natural history collections data for estimating patterns in biodiversity (Jetz et al., 2012). The EOD is updated\nannually and is freely accessible via DataONE (dataone.org), the\nGlobal\nBiodiversity\nInformation Facility\n(gbif.org), the\nAvian\nKnowledge Network (avianknowledge.net), and VertNet (vertnet.org). The 2012 version contains more than 100 million bird\nobservation records. Although data usage reports of the EOD are\nnot provided by these data clearinghouses, EOD data from GBIF\nare used in other initiatives such as the NSF funded Lifemapper\nProject (lifemapper.org), and the United States Geological Survey’s\nBiodiversity Information Serving Our Nation (BISON) facility (bison.usgs.ornl.gov), and use of the EOD in ecological studies is widespread (e.g., Klicka et al., 2011; Lait et al., 2012; Davis et al., 2013).\nThe eBird basic dataset (EBD) contains data in the form of\nchecklists: counts of all bird species observed during a single\nsearch event (Sullivan et al., 2009). The EBD contains counts of species detected, the location where the search took place, the time\nthe search was initiated, and the duration and length of the search.\nOne value of grouping species within sets checklists in the EBD is\nthe ability to identify associations between species. The EBD is updated quarterly and is available on the eBird website. As of August\n2013 the EBD contained 134 million observation records.\n3.3. Value-added eBird data products\nMany ecological and conservation problems require comprehensive, high-resolution information about the spatial and temporal distribution of populations. This poses a challenge because\nspecies observation data are often sparsely and irregularly distributed, especially for widely distributed species. To address this challenge, species distribution models are used to estimate species’\ndistributions in unobserved locations and times. In this section\nwe describe two ‘‘value-added’’ eBird data products used for species distribution modeling and analysis.\nThe eBird reference dataset (ERD) consists of the EBD with two\nadditional types of information: species absence information and a\nsuite of variables that describe the local environment. Species absence information is included to facilitate the control of biases\nassociated with the imperfect detection of birds. The importance\nof controlling for biases in detection with wildlife survey data is\nwell known (MacKenzie et al., 2006), and is typically dependent\non knowing when a species was observed as well as when it was\nnot observed. By limiting the ERD to the set of checklists where\nparticipants conﬁrmed that they were reporting all species identiﬁed, zero counts can be included for unreported species. These\nzeros are sometimes referred to as ‘‘pseudo-absences’’ and indicate\na lack of detection or identiﬁcation. The pseudo-absences are valuable because they convey partial information about absence, which\ncan be combined with participant-recorded information on search\neffort to capture and control for sources of variation associated\nwith the detection process. The second set of variables included\nin the ERD describes the local environment where searches took\nplace (e.g., landcover and climate). This information is provided\nto link species’ distributions to the environments on which they\ndepend. The ERD is updated annually, covers the western hemisphere, and contains 89 million observations. The ERD is available\nvia the eBird web site.\nBy relating environmental predictors to observed occurrences,\nspecies distribution models can make predictions at unsampled\nlocations and times. Elith and Leathwick (2009) provide a good\nreview of the literature on species distribution models, using conventional analytical methods. Our early work with such methods\nrevealed that they were not able to consistently produce accurate\ndistribution models, and the creation of novel analytical techniques (Spatio-Temporal Exploratory Models (STEM); Fink et al.,\n2010, 2013) has led to an extensive engagement of statisticians\nand computer scientists in the eBird project. The resultant STEM\nmodels currently provide seasonal estimates of species’ distributions across th",
+      "page_count": 10,
+      "text_length": 63767,
+      "text_sha256": "38f6dc0a5bacf93bb63eabcf8cb7afc1eddc8ffae227355fedae4a544d770361",
+      "metadata": {
+        "pdf_metadata": {
+          "format": "PDF 1.7",
+          "title": "The eBird enterprise: An integrated approach to development and application of citizen science",
+          "author": "Brian L. Sullivan",
+          "subject": "Biological Conservation, 169 (2014) 31-40. doi:10.1016/j.biocon.2013.11.003",
+          "creator": "Elsevier",
+          "producer": "Acrobat Distiller 8.0.0 (Windows)",
+          "creationDate": "D:20140225130207+05'30'",
+          "modDate": "D:20140225130450+05'30'"
+        },
+        "extracted_metadata": {
+          "title": "The eBird enterprise: An integrated approach to development and application of citizen science",
+          "year": "2013",
+          "doi": "10.1016/j.biocon.2013.11.003",
+          "keywords": [
+            "eBird",
+            "Citizen-science",
+            "a b s t r a c t",
+            "conservation",
+            "taking a novel",
+            "ﬁelds: population and distributions",
+            "conservation biologists",
+            "quantitative ecologists",
+            "statisticians",
+            "computer scientists",
+            "GIS and informatics specialists",
+            "application developers",
+            "and data administrators. The goal",
+            "is to increase data quantity through participant recruitment and engagement",
+            "but also to quantify and",
+            "control for data quality issues such as observer variability",
+            "imperfect detection of species",
+            "and both spatial",
+            "and temporal bias in data collection. Advances at the interface among ecology",
+            "statistics",
+            "and computer",
+            "science all"
+          ],
+          "abstract_or_resumo": ", as well as their afﬁliation. These requests are individually\nreviewed to ensure validity, after which a data access key is\ngranted. Once registered, users can access a series of online tools\nthat allow queries to be written against the database to extract target datasets. eBird data are bundled with our terms of use policy,\nmetadata descriptors, and recommended citations.\n34\nB.L. Sullivan et al. / Biological Conservation 169 (2014) 31–40\n\n3.2. Core eBird data products\nThe eBird observational dataset (EOD) contains primary species\noccurrence data deﬁned as a record of a particular taxon in a particular place at a particular point in time (Soberon and Peterson,\n2009). eBird data consisting of location, date, and species are provided in the EOD to ensure that they can be integrated with other\nobservational data and natural history collections data for estimating patterns in biodiversity (Jetz et al., 2012). The EOD is updated\nannually and is freely accessible via DataONE (dataone.org), the\nGlobal\nBiodiversity\nInformation Facility\n(gbif.org), the\nAvian\nKnowledge Network (avianknowledge.net), and VertNet (vertnet.org). The 2012 version contains more than 100 million bird\nobservation records. Although data usage reports of the EOD are\nnot provided by these data clearinghouses, EOD data from GBIF\nare used in other initiatives such as the NSF funded Lifemapper\nProject (lifemapper.org), and the United States Geological Survey’s\nBiodiversity Information Serving Our Nation (BISON) facility (bison.usgs.ornl.gov), and use of the EOD in ecological studies is widespread (e.g., Klicka et al., 2011; Lait et al., 2012; Davis et al., 2013).\nThe eBird basic dataset (EBD) contains data in the form of\nchecklists: counts of all bird species observed during a single\nsearch event (Sullivan et al., 2009). The EBD contains counts of species detected, the location where the search took place, the time\nthe search was initiated, and the duration and length of the search.\nOne value of grouping species within sets checklists in the EBD is\nthe ability to identify associations between species. The EBD is updated quarterly and is available on the eBird website. As of August\n2013 the EBD contained 134 million observation records.\n3.3. Value-added eBird data products\nMany ecological and conservation problems require comprehensive, high-resolution information about the spatial and temporal distribution of populations. This poses a challenge because\nspecies observation data are often sparsely and irregularly distributed, especially for widely distributed species. To address this challenge, species distribution models are used to estimate species’\ndistributions in unobserved locations and times. In this section\nwe describe two ‘‘value-added’’ eBird data products used for species distribution modeling and analysis.\nThe eBird reference dataset (ERD) consists of the EBD with two\nadditional types of information: species absence information and a\nsuite of variables that describe the local environment. Species absence information is included to facilitate the control of biases\nassociated with the imperfect detection of birds. The importance\nof controlling for biases in detection with wildlife survey data is\nwell known (MacKenzie et al., 2006), and is typically dependent\non knowing when a species was observed as well as when it was\nnot observed. By limiting the ERD to the set of checklists where\nparticipants conﬁrmed that they were reporting all species identi-\nﬁed, zero counts can be included for unreported species. These\nzeros are sometimes referred to as ‘‘pseudo-absences’’ and indicate\na lack of detection or identiﬁcation. The pseudo-absences are valuable because they convey partial information about absence, which\ncan be combined with participant-recorded information on search\neffort to capture and control for sources of variation associated\nwith the detection process. The second set of variables included\nin the ERD describes the local environment where searches took\nplace (e.g., landcover and climate). This information is provided\nto link species’ distributions to the environments on which they\ndepend. The ERD is updated annually, covers the western hemisphere, and contains 89 million observations. The ERD is available\nvia the eBird web site.\nBy relating environmental predictors to observed occurrences,\nspecies distribution models can make predictions at unsampled\nlocations and times. Elith and Leathwick (2009) provide a good\nreview of the literature on species distribution models, using conventional analytical methods. Our early work with such methods\nrevealed that they were not able to consistently produce accurate\ndistribution models, and the creation of novel analytical techniques (Spatio-Temporal Exploratory Models (STEM); Fink et al.,\n2010, 2013) has led to an extensive engagement of statisticians\nand computer scientists in the eBird project. The resultant STEM\nmodels currently provide seasonal estimates of species’ distributions across th"
+        }
+      },
+      "text_preview": "Review\nThe eBird enterprise: An integrated approach to development\nand application of citizen science\nBrian L. Sullivan a,⇑, Jocelyn L. Aycrigg b, Jessie H. Barry a, Rick E. Bonney a, Nicholas Bruns a\nCaren B. Cooper a, Theo Damoulas c, André A. Dhondt a, Tom Dietterich d, Andrew Farnsworth a\nDaniel Fink a, John W. Fitzpatrick a, Thomas Fredericks a, Jeff Gerbracht a, Carla Gomes c\nWesley M. Hochachka a, Marshall J. Iliff a, Carl Lagoze e, Frank A. La Sorte a, Matthew Merriﬁeld f\nWill Morris a, Tina B. Phillips a, Mark Reynolds f, Amanda D. Rodewald a, Kenneth V. Rosenberg a\nNancy M. Trautmann a, Andrea Wiggins g, David W. Winkler h, Weng-Keen Wong d\nChristopher L. Wood a, Jun Yu d, Steve Kelling a\na Cornell Lab of Ornithology, 159 Sapsucker Woods Road, Ithaca, NY 14850, USA\nb National Gap Analysis Program, University of Idaho, 530 S. Asbury Street, Moscow, ID 83843, USA\nc Department of Computer Science, Cornell University, 5133 Upson Hall, Ithaca, NY 14853, USA\nd Oregon State University, 1148 Kelley Engineering Center, Corvallis, OR 97331, USA\ne University Of Michigan School of Information, 115 S. State Street, Ann Arbor, MI 48103, USA\nf The Nature Conservancy, California Program,"
+    },
+    {
+      "article_id": "art_67750200584b",
+      "record_type": "article",
+      "source_json": "artigos_ciencia_cidada_json_unico(1).json",
+      "source_file": "artigo_275.pdf",
+      "title": "Levantamento de fauna na unidade de conservação ARIE do município de Cruzeiro/SP",
+      "year": "2013",
+      "doi": [
+        "10.37002/biodiversidadebrasileira.v15i4.2756"
+      ],
+      "keywords": [
+        "mata atlântica",
+        "biodiversidade",
+        "armadilhas fotográficas",
+        "extinção",
+        "fauna survey in the arie conservation unit of the municipality of cruzeiro/sp",
+        "atlantic forest",
+        "biodiversity",
+        "camera traps",
+        "extinction",
+        "resumen – la ciudad de cruzeiro/sp",
+        "ubicada en la cuenca del río paraíba do sul y en las",
+        "laderas de la serra da mantiqueira",
+        "es el hogar del área de relevante interés ecológico (arie) del",
+        "municipio de cruzeiro",
+        "una unidad municipal de conservación con el objetivo de proteger un",
+        "de cruzeiro. para ello",
+        "utilizamos el método de muestreo por cámara trampa",
+        "complementado con",
+        "reuniones oportunistas. se registraron 21 especies distintas",
+        "distribuidas entre 10 mamíferos",
+        "nueve aves y dos reptiles. entre las especies registradas",
+        "destaca callithrix aurita",
+        "clasificada",
+        "globalmen"
+      ],
+      "themes": [
+        "herpetologia",
+        "ecologia",
+        "zoologia",
+        "conservacao",
+        "mata_atlantica",
+        "serra_da_mantiqueira"
+      ],
+      "abstract": "The city of Cruzeiro/SP, located in the Paraíba do Sul river basin and on the slopes\nof the Mantiqueira Mountains, is home to the area of relevant ecological interest (ARIE) of the\nmunicipality of Cruzeiro, a municipal conservation unit with the objective of protecting a remnant\nof Atlantic Forest in the urban area. To date, there are no specific studies on the unit’s biodiversity.\nInstituto Chico Mendes de Conservação da Biodiversidade Biodiversidade Brasileira, 15(4): 1-22, 2025\nhttps://doi.org/10.37002/biodiversidadebrasileira.v15i4.2756\n2\nUso do Instagram como canal de comunicação pela gestão de unidades de conservação na Amazônia\nThe present work aimed to carry out a survey of vertebrate species of medium and large size\npresent in the ARIE of the city of Cruzeiro. For this, we used the method of sampling by camera\ntrap, complemented by opportunistic meetings. Twenty-one distinct species were recorded,\ndistributed among 10 mammals, nine birds and two reptiles. Among the recorded species,\nCallithrix aurita stands out, classified globally as \"endangered\" and two species categorized as\n\"near threatened\", Callicebus nigrifrons and Amazona aestiva. In addition, medium-sized\nmammals such as Cerdocyon thous and other vertebrate species representative of different trophic\nlevels were observed, such as Sylvilagus minensis, Didelphis aurita, Galictis cuja, Penelope\nobscura, Turdus rufiventris, Mesembrinibis cayennensis and Salvator merianae that contribute to\nthe ecological balance of the unit. The presence of exotic species, such as Felis catus and\nCallithrix penicillata, highlights the need for monitoring and conservation programs. The survey\nof local fauna contributes to the knowledge of the biodiversity of the Atlantic Forest in the region\nand reinforces the importance of ARIE as a conservation unit, which has legal instruments to\nensure its protection and long-term preservation.",
+      "page_count": 22,
+      "text_length": 55300,
+      "text_sha256": "ca51e3e87289d3caacfd8a1d9b9af7e2e4c1290e1c791f289e1dafd16cf08870",
+      "metadata": {
+        "pdf_metadata": {
+          "format": "PDF 1.5",
+          "title": "Uso do Instagram como canal de comunicação pela gestão de unidades de conservação na Amazônia",
+          "author": "Camilla Angelica Lima",
+          "creator": "Microsoft® Word 2013",
+          "producer": "Microsoft® Word 2013",
+          "creationDate": "D:20251124120317-03'00'",
+          "modDate": "D:20251124120317-03'00'"
+        },
+        "extracted_metadata": {
+          "title": "Levantamento de fauna na unidade de conservação ARIE do município de Cruzeiro/SP",
+          "year": "2025",
+          "doi": "10.37002/biodiversidadebrasileira.v15i4.2756",
+          "keywords": [
+            "Mata Atlântica",
+            "biodiversidade",
+            "armadilhas fotográficas",
+            "extinção",
+            "Fauna survey in the ARIE conservation unit of the municipality of Cruzeiro/SP"
+          ],
+          "abstract_or_resumo": "The city of Cruzeiro/SP, located in the Paraíba do Sul river basin and on the slopes \nof the Mantiqueira Mountains, is home to the area of relevant ecological interest (ARIE) of the \nmunicipality of Cruzeiro, a municipal conservation unit with the objective of protecting a remnant \nof Atlantic Forest in the urban area. To date, there are no specific studies on the unit’s biodiversity.\n\nInstituto Chico Mendes de Conservação da Biodiversidade Biodiversidade Brasileira, 15(4): 1-22, 2025 \nhttps://doi.org/10.37002/biodiversidadebrasileira.v15i4.2756 \n2 \nUso do Instagram como canal de comunicação pela gestão de unidades de conservação na Amazônia \nThe present work aimed to carry out a survey of vertebrate species of medium and large size \npresent in the ARIE of the city of Cruzeiro. For this, we used the method of sampling by camera \ntrap, complemented by opportunistic meetings. Twenty-one distinct species were recorded, \ndistributed among 10 mammals, nine birds and two reptiles. Among the recorded species, \nCallithrix aurita stands out, classified globally as \"endangered\" and two species categorized as \n\"near threatened\", Callicebus nigrifrons and Amazona aestiva. In addition, medium-sized \nmammals such as Cerdocyon thous and other vertebrate species representative of different trophic \nlevels were observed, such as Sylvilagus minensis, Didelphis aurita, Galictis cuja, Penelope \nobscura, Turdus rufiventris, Mesembrinibis cayennensis and Salvator merianae that contribute to \nthe ecological balance of the unit. The presence of exotic species, such as Felis catus and \nCallithrix penicillata, highlights the need for monitoring and conservation programs. The survey \nof local fauna contributes to the knowledge of the biodiversity of the Atlantic Forest in the region \nand reinforces the importance of ARIE as a conservation unit, which has legal instruments to \nensure its protection and long-term preservation."
+        }
+      },
+      "text_preview": "Instituto Chico Mendes de Conservação da Biodiversidade Biodiversidade Brasileira, 15(4): 1-22, 2025\nhttps://doi.org/10.37002/biodiversidadebrasileira.v15i4.2756\nLevantamento de fauna na unidade de conservação ARIE do município de Cruzeiro/SP\nShayenne Elizianne Ramos1*\n, Ana Luisa Monteiro Ribeiro dos Santos1\n, Oscarina Teodora Prado Santos Silva2\n*Contato principal\n1 Secretaria Municipal de Meio Ambiente de Cruzeiro/SEMA, Brasil. < shayenneramos@yahoo.com.br, analuisamrs@gmail.com >.\n1 Universidade Federal do ABC/UFABC, Brasil. < oscarine@gmail.com >.\nComo citar:\nRamos SE, Santos ALMR, Silva OTPS. Levantamento de\nfauna na unidade de conservação ARIE do município de\nCruzeiro/SP. Biodivers. Bras. [Internet]. 2025; 15(4):\ne2756. doi:10.37002/biodiversidadebrasileira.v15i4.2756\nRecebido em 15/10/2024– Aceito em 29/05/2025\nRESUMO – A cidade de Cruzeiro/SP, localizada na bacia hidrográfica do rio Paraíba do Sul e\nnas encostas da Serra da Mantiqueira, abriga a área de relevante interesse ecológico (ARIE) do\nmunicípio de Cruzeiro, uma unidade de conservação municipal com o objetivo de proteger um\nremanescente de Mata Atlântica na zona urbana. Até o momento, não existem estudos específicos"
+    },
+    {
+      "article_id": "art_4ef2c6175481",
+      "record_type": "article",
+      "source_json": "artigos_ciencia_cidada_json_unico(1).json",
+      "source_file": "cienciacidadaemumbiomaameacado.pdf",
+      "title": "Ciência cidadã em um bioma ameaçado: uma perspectiva para a Mata Atlântica brasileira",
+      "year": "2024",
+      "doi": [
+        "10.3389/fevo.2021.693602"
+      ],
+      "keywords": [
+        "biodiversidade",
+        "dados coletados por voluntários",
+        "espécies",
+        "ameaçadas",
+        "inaturalist",
+        "pesquisa em larga escala",
+        "pesquisa participativa",
+        "1 departamento de biociências",
+        "universidade federal rural do semi-árido",
+        "av. francisco mota",
+        "572",
+        "mossoró",
+        "rio",
+        "grande do norte",
+        "brasil",
+        "59625-900",
+        "2 programa de pós-graduação em ecologia: teoria",
+        "aplicações e valores",
+        "instituto de biologia",
+        "universidade federal",
+        "da bahia",
+        "rua barão de jeremoabo",
+        "668",
+        "campus de ondina",
+        "salvador",
+        "bahia",
+        "40170-115",
+        "3 graduação em ecologia",
+        "universidade",
+        "biodiversity",
+        "endangered species",
+        "large-scale",
+        "research",
+        "participatory research",
+        "volunteer-collected data",
+        "introdução",
+        "a participação pública em levantamentos de espécies",
+        "tem fornecido uma grande quantidade de dados (bonney",
+        "2021). essa abordagem",
+        "chamada de ciência cidadã"
+      ],
+      "themes": [
+        "ecologia",
+        "zoologia",
+        "ciencia_cidada",
+        "biodiversity_informatics",
+        "conservacao",
+        "mata_atlantica"
+      ],
+      "abstract": "Citizen science has enabled biodiversity research to enter the era of big data,\nas species occurrence data shared on online platforms become a valuable\nsource of information for large-scale ecological studies, including those\nconducted at the biome level. Such broad-scale spatial assessments are\npivotal for decision-making. Therefore, in the present work, we evaluate\nthe contribution of iNaturalist users, and thereby the contribution of citizen\nscience, to our knowledge of the biodiversity of the Brazilian Atlantic Forest.\nWe quantitatively analyze temporal and spatial patterns in the iNaturalist\ndataset based on 877,301 observations from the biome until February 2023.\nInsects represented 49.7% of observations, while ray-finned fishes amounted\nto only 0.2%. Spatial gaps were predominant in the Central Biodiversity\nCorridor and in the western part of the biome. The dataset included “research\ngrade” observations of 15,048 non-marine species, representing almost half\nof the species estimated to occur in the Atlantic Forest. Rarefaction curves\nand species richness maps indicated insufficient sampling for most taxa\nand low spatial representativeness of species. Through structured projects,\ngroups of iNaturalist observers could collect more observations from remote\nareas, particularly in protected areas further from urban centers, to reduce\nspatial gaps in the dataset. Despite these shortfalls, citizen science has made\na spectacular contribution and is expected to become the main source of\nbiodiversity data from the Atlantic Forest, as well as other threatened biomes\nin the near future.",
+      "page_count": 27,
+      "text_length": 74909,
+      "text_sha256": "3f698fa3dc4da11e35c6c0d8b60e8a1fe8b4f473dec448639e7bc09eb596d8ac",
+      "metadata": {
+        "pdf_metadata": {
+          "format": "PDF 1.7",
+          "producer": "iLovePDF",
+          "modDate": "D:20251210083754Z"
+        },
+        "extracted_metadata": {
+          "title": "Ciência cidadã em um bioma ameaçado: uma perspectiva para a Mata Atlântica brasileira",
+          "year": "2024",
+          "doi": "10.3389/fevo.2021.693602",
+          "keywords": [
+            "Biodiversidade",
+            "dados coletados por voluntários",
+            "espécies",
+            "ameaçadas",
+            "iNaturalist",
+            "pesquisa em larga escala",
+            "pesquisa participativa",
+            "1 Departamento de Biociências",
+            "Universidade Federal Rural do Semi-Árido",
+            "Av. Francisco Mota",
+            "572",
+            "Mossoró",
+            "Rio",
+            "Grande do Norte",
+            "Brasil",
+            "59625-900",
+            "2 Programa de Pós-Graduação em Ecologia: Teoria",
+            "Aplicações e Valores",
+            "Instituto de Biologia",
+            "Universidade Federal",
+            "da Bahia",
+            "Rua Barão de Jeremoabo",
+            "668",
+            "Campus de Ondina",
+            "Salvador",
+            "Bahia",
+            "Brasil",
+            "40170-115",
+            "3 Graduação em Ecologia",
+            "Universidade"
+          ],
+          "abstract_or_resumo": "Citizen science has enabled biodiversity research to enter the era of big data, \nas species occurrence data shared on online platforms become a valuable \nsource of information for large-scale ecological studies, including those \nconducted at the biome level. Such broad-scale spatial assessments are \npivotal for decision-making. Therefore, in the present work, we evaluate \nthe contribution of iNaturalist users, and thereby the contribution of citizen \nscience, to our knowledge of the biodiversity of the Brazilian Atlantic Forest. \nWe quantitatively analyze temporal and spatial patterns in the iNaturalist \ndataset based on 877,301 observations from the biome until February 2023. \nInsects represented 49.7% of observations, while ray-finned fishes amounted \nto only 0.2%. Spatial gaps were predominant in the Central Biodiversity \nCorridor and in the western part of the biome. The dataset included “research \ngrade” observations of 15,048 non-marine species, representing almost half \nof the species estimated to occur in the Atlantic Forest. Rarefaction curves \nand species richness maps indicated insufficient sampling for most taxa \nand low spatial representativeness of species. Through structured projects, \ngroups of iNaturalist observers could collect more observations from remote \nareas, particularly in protected areas further from urban centers, to reduce \nspatial gaps in the dataset. Despite these shortfalls, citizen science has made \na spectacular contribution and is expected to become the main source of \nbiodiversity data from the Atlantic Forest, as well as other threatened biomes \nin the near future."
+        }
+      },
+      "text_preview": "46\nBOL. MUS. BIOL. PROF. MELLO LEITÃO (SÉRIE INMA), V. 1, N. 2, SETEMBRO 2024\nVOLTAR AO SUMÁRIO\nCiência cidadã em um bioma ameaçado: uma\nperspectiva para a Mata Atlântica brasileira\nResumo\nA ciência cidadã levou a pesquisa da biodiversidade para a era do big data, uma\nvez que dados sobre ocorrência de espécies compartilhados em plataformas\nonline são uma fonte promissora de informações para estudos ecológicos em\nlarga escala, como aqueles aplicados à biomas. Estudos em escalas espaciais\nmais amplas são fundamentais para a tomada de decisões. Desta forma, no\npresente trabalho avaliamos a contribuição dos usuários do iNaturalist para\nentender até que ponto a ciência cidadã está contribuindo para o conhecimento\nsobre a biodiversidade da Mata Atlântica brasileira. Fornecemos aqui uma\nanálise quantitativa dos padrões temporais e espaciais no conjunto de dados\ndo iNaturalist, incluindo uma ênfase particular em espécies globalmente ameaçadas e quase ameaçadas. Obtivemos um banco de dados bruto com 877.301\nobservações para o bioma até fevereiro de 2023. Os insetos representaram\n49,7% das observações, enquanto os peixes de nadadeiras raiadas representaram apenas 0,2%. Encontramos lacunas es"
+    },
+    {
+      "article_id": "art_b6ae2b2d70d6",
+      "record_type": "article",
+      "source_json": "artigos_ciencia_cidada_json_unico(1).json",
+      "source_file": "Citizen_Science_as_an_Ecological_Research_Tool_Cha.pdf",
+      "title": "Citizen Science as an Ecological Research Tool: Challenges and Benefits",
+      "year": "2010",
+      "doi": [
+        "10.1146/annurev-ecolsys-102209-144636"
+      ],
+      "keywords": [
+        "biodiversity",
+        "climate change",
+        "crowdsourcing",
+        "fragmentation",
+        "geographical",
+        "ecology",
+        "habitat loss",
+        "invasive species",
+        "macroecology",
+        "monitoring",
+        "observer",
+        "quality",
+        "population ecology",
+        "sampling bias",
+        "sampling error",
+        "spatial ecology"
+      ],
+      "themes": [
+        "herpetologia",
+        "ecologia",
+        "zoologia",
+        "ciencia_cidada",
+        "biodiversity_informatics",
+        "sdm_modelagem_distribuicao",
+        "conservacao"
+      ],
+      "abstract": "Citizen science, the involvement of volunteers in research, has increased the\nscale of ecological ﬁeld studies with continent-wide, centralized monitoring\nefforts and, more rarely, tapping of volunteers to conduct large, coordinated, ﬁeld experiments. The unique beneﬁt for the ﬁeld of ecology lies in\nunderstanding processes occurring at broad geographic scales and on private\nlands, which are impossible to sample extensively with traditional ﬁeld research models. Citizen science produces large, longitudinal data sets, whose\npotential for error and bias is poorly understood. Because it does not usually\naim to uncover mechanisms underlying ecological patterns, citizen science\nis best viewed as complementary to more localized, hypothesis-driven research. In the process of addressing the impacts of current, global “experiments” altering habitat and climate, large-scale citizen science has led to\nnew, quantitative approaches to emerging questions about the distribution\nand abundance of organisms across space and time.\n149\nAnnu. Rev. Ecol. Evol. Syst. 2010.41:149-172. Downloaded from www.annualreviews.org\nby Dr. Thierry Backeljau on 11/19/10. For personal use only.\nClick here for quick links to\nAnnual Reviews content online,\nincluding:\n• Other articles in this volume\n• Top cited articles\n• Top downloaded articles\n• Our comprehensive search\nFurther\nANNUAL\nREVIEWS\nCrowdsourcing:\ngetting an undeﬁned\npublic to do work,\nusually directed by\ndesignated individuals\nor professionals\nCBC: Christmas Bird\nCount (USA; run by\nthe National Audubon\nSociety)\nBBS: North American\nBreeding Bird Survey\n(run by USGS,\nPatuxent, MD)",
+      "page_count": 26,
+      "text_length": 93086,
+      "text_sha256": "63f4e81fefcf3478a67e50f6238c83cde0852c97c4fea0f6be5744ed82dc7633",
+      "metadata": {
+        "pdf_metadata": {
+          "format": "PDF 1.4",
+          "title": "Citizen Science as an Ecological Research Tool: Challenges and Benefits",
+          "author": "Janis L. Dickinson,1,2 Benjamin Zuckerberg,1 and David N. Bonter1",
+          "subject": "Annu. Rev. Ecol. Evol. Syst. 2010.41:149-172",
+          "producer": "iText 2.1.5 (by lowagie.com)",
+          "creationDate": "D:20101119002557-08'00'",
+          "modDate": "D:20101119002557-08'00'"
+        },
+        "extracted_metadata": {
+          "title": "Citizen Science as an Ecological Research Tool: Challenges and Benefits",
+          "year": "2010",
+          "doi": "10.1146/annurev-ecolsys-102209-144636",
+          "keywords": [
+            "biodiversity",
+            "climate change",
+            "crowdsourcing",
+            "fragmentation",
+            "geographical",
+            "ecology",
+            "habitat loss",
+            "invasive species",
+            "macroecology",
+            "monitoring",
+            "observer",
+            "quality",
+            "population ecology",
+            "sampling bias",
+            "sampling error",
+            "spatial ecology"
+          ],
+          "abstract_or_resumo": "Citizen science, the involvement of volunteers in research, has increased the\nscale of ecological ﬁeld studies with continent-wide, centralized monitoring\nefforts and, more rarely, tapping of volunteers to conduct large, coordinated, ﬁeld experiments. The unique beneﬁt for the ﬁeld of ecology lies in\nunderstanding processes occurring at broad geographic scales and on private\nlands, which are impossible to sample extensively with traditional ﬁeld research models. Citizen science produces large, longitudinal data sets, whose\npotential for error and bias is poorly understood. Because it does not usually\naim to uncover mechanisms underlying ecological patterns, citizen science\nis best viewed as complementary to more localized, hypothesis-driven research. In the process of addressing the impacts of current, global “experiments” altering habitat and climate, large-scale citizen science has led to\nnew, quantitative approaches to emerging questions about the distribution\nand abundance of organisms across space and time.\n149\nAnnu. Rev. Ecol. Evol. Syst. 2010.41:149-172. Downloaded from www.annualreviews.org\nby Dr. Thierry Backeljau on 11/19/10. For personal use only.\nClick here for quick links to \nAnnual Reviews content online, \nincluding:\n• Other articles in this volume\n• Top cited articles\n• Top downloaded articles\n• Our comprehensive search\nFurther\nANNUAL\nREVIEWS\n\nCrowdsourcing:\ngetting an undeﬁned\npublic to do work,\nusually directed by\ndesignated individuals\nor professionals\nCBC: Christmas Bird\nCount (USA; run by\nthe National Audubon\nSociety)\nBBS: North American\nBreeding Bird Survey\n(run by USGS,\nPatuxent, MD)"
+        }
+      },
+      "text_preview": "Citizen Science as an Ecological\nResearch Tool: Challenges\nand Beneﬁts\nJanis L. Dickinson,1,2 Benjamin Zuckerberg,1\nand David N. Bonter1\n1Cornell Lab of Ornithology, Ithaca, New York 14850; email: jld84@cornell.edu,\nbz73@cornell.edu, dnb23@cornell.edu\n2Department of Natural Resources and Graduate Field of Neurobiology and Behavior,\nCornell University, Ithaca, New York 14853\nAnnu. Rev. Ecol. Evol. Syst. 2010. 41:149–72\nFirst published online as a Review in Advance on\nAugust 11, 2010\nThe Annual Review of Ecology, Evolution, and\nSystematics is online at ecolsys.annualreviews.org\nThis article’s doi:\n10.1146/annurev-ecolsys-102209-144636\nCopyright c⃝2010 by Annual Reviews.\nAll rights reserved\n1543-592X/10/1201-0149$20.00\nKey Words\nbiodiversity, climate change, crowdsourcing, fragmentation, geographical\necology, habitat loss, invasive species, macroecology, monitoring, observer\nquality, population ecology, sampling bias, sampling error, spatial ecology\nAbstract\nCitizen science, the involvement of volunteers in research, has increased the\nscale of ecological ﬁeld studies with continent-wide, centralized monitoring\nefforts and, more rarely, tapping of volunteers to conduct large, coordinat"
+    },
+    {
+      "article_id": "art_498a8d5fffc4",
+      "record_type": "article",
+      "source_json": "artigos_ciencia_cidada_json_unico(1).json",
+      "source_file": "file.pdf",
+      "title": "Distorted Views of Biodiversity: Spatial and Temporal Bias in Species Occurrence Data",
+      "year": "2010",
+      "doi": [
+        "10.1371/journal.pbio.1000385.g001"
+      ],
+      "keywords": [],
+      "themes": [
+        "herpetologia",
+        "ecologia",
+        "zoologia",
+        "biodiversity_informatics",
+        "sdm_modelagem_distribuicao",
+        "conservacao"
+      ],
+      "abstract": "",
+      "page_count": 11,
+      "text_length": 48577,
+      "text_sha256": "88ab428ce98e444c45608d137d43c2592caec2b6ffd0a38264e22a9927393b58",
+      "metadata": {
+        "pdf_metadata": {
+          "format": "PDF 1.5",
+          "title": "pbio.1000385 1..11",
+          "creator": "3B2 Total Publishing System 7.51n/W",
+          "producer": "Acrobat Distiller 7.0 (Windows)",
+          "creationDate": "D:20100512104835+08'00'",
+          "modDate": "D:20100513122551+08'00'"
+        },
+        "extracted_metadata": {
+          "title": "Distorted Views of Biodiversity: Spatial and Temporal Bias in Species Occurrence Data",
+          "year": "2010",
+          "doi": "10.1371/journal.pbio.1000385.g001",
+          "keywords": [],
+          "abstract_or_resumo": ""
+        }
+      },
+      "text_preview": "Essay\nDistorted Views of Biodiversity: Spatial and Temporal\nBias in Species Occurrence Data\nElizabeth H. Boakes1*, Philip J. K. McGowan2, Richard A. Fuller3,4, Ding Chang-qing5, Natalie E. Clark1,2,\nKim O’Connor1,6, Georgina M. Mace1\n1 Natural Environment Research Council (NERC) Centre for Population Biology, Imperial College, Berkshire, United Kingdom, 2 World Pheasant Association, Newcastle\nUniversity Biology Field Station, Newcastle upon Tyne, United Kingdom, 3 School of Biological Sciences, The University of Queensland, St. Lucia, Queensland, Australia,\n4 The Commonwealth Science and Industrial Research Organisation (CSIRO) Climate Adaptation Flagship and CSIRO Sustainable Ecosystems, St. Lucia, Queensland,\nAustralia, 5 College of Biological Sciences and Biotechnology, Beijing Forestry University, Beijing, China, 6 Aquatic Department, The London Aquarium, London, United Kingdom\nHistorical as well as current data on species\ndistributions are needed to track changes in\nbiodiversity. Species distribution data are\nfound in a variety of sources but it is likely\nthat they include different biases towards\ncertain time periods or places. By collating a\nlarge historical database of ,170"
+    },
+    {
+      "article_id": "art_c3ddd00fe49d",
+      "record_type": "article",
+      "source_json": "artigos_ciencia_cidada_json_unico(1).json",
+      "source_file": "iNaturalist_as_a_tool_to_expand_the_research_value.pdf",
+      "title": "iNaturalist as a tool to expand the research value of museum specimens",
+      "year": "2015",
+      "doi": [
+        "10.1002/aps3.1193"
+      ],
+      "keywords": [
+        "citizen science",
+        "herbarium",
+        "inaturalist",
+        "natural history collections",
+        "applications in plant sciences 2018 6(11): e1193\b",
+        "heberling and isaac—linking herbaria with inaturalist  •  2 of 8",
+        "http://www.wileyonlinelibrary.com/journal/appsplantsci\b",
+        "© 2018 heberling and isaac",
+        "specimens are collected will likely require significant financial and",
+        "infrastructural support for collectors and herbaria",
+        "here",
+        "we introduce a practical method that utilizes the popular",
+        "biodiversity-­based citizen science platform inaturalist (inaturalist",
+        "2018) to facilitate plant specimen collecting and curate field images",
+        "alongside physical specimens",
+        "thereby augmenting their research",
+        "value. previous software applications have been developed to facilitate",
+        "data capture in the field (e.g",
+        "maya-­lastra",
+        "2016)",
+        "but none have yet",
+        "been widely adopted. although an important improvement",
+        "digital"
+      ],
+      "themes": [
+        "ecologia",
+        "zoologia",
+        "ciencia_cidada",
+        "biodiversity_informatics",
+        "sdm_modelagem_distribuicao"
+      ],
+      "abstract": "",
+      "page_count": 8,
+      "text_length": 46370,
+      "text_sha256": "106088fb905eb1f40822cc282aa7669fb62efad1685189956e0504347a6e80a9",
+      "metadata": {
+        "pdf_metadata": {
+          "format": "PDF 1.6",
+          "title": "iNaturalist as a tool to expand the research value of museum specimens",
+          "subject": "Applications in Plant Sciences 0.0:e01193",
+          "creator": "Adobe InDesign CC 2015 (Windows)",
+          "producer": "Adobe PDF Library 15.0; modified using iText 4.2.0 by 1T3XT",
+          "creationDate": "D:20181103090618+05'30'",
+          "modDate": "D:20181107165227-08'00'"
+        },
+        "extracted_metadata": {
+          "title": "iNaturalist as a tool to expand the research value of museum specimens",
+          "year": "2017",
+          "doi": "10.1002/aps3.1193",
+          "keywords": [
+            "citizen science",
+            "herbarium",
+            "iNaturalist",
+            "natural history collections",
+            "Applications in Plant Sciences 2018 6(11): e1193\b",
+            "Heberling and Isaac—Linking herbaria with iNaturalist  •  2 of 8",
+            "http://www.wileyonlinelibrary.com/journal/AppsPlantSci\b",
+            "© 2018 Heberling and Isaac",
+            "specimens are collected will likely require significant financial and",
+            "infrastructural support for collectors and herbaria",
+            "Here",
+            "we introduce a practical method that utilizes the popular",
+            "biodiversity-­based citizen science platform iNaturalist (iNaturalist",
+            "2018) to facilitate plant specimen collecting and curate field images",
+            "alongside physical specimens",
+            "thereby augmenting their research",
+            "value. Previous software applications have been developed to facilitate",
+            "data capture in the field (e.g",
+            "Maya-­Lastra",
+            "2016)",
+            "but none have yet",
+            "been widely adopted. Although an important improvement",
+            "digital"
+          ],
+          "abstract_or_resumo": ""
+        }
+      },
+      "text_preview": "1 of 8\nNatural history collections, especially herbarium specimens, are\nreceiving unprecedented attention due to recently developed technologies (e.g., next-­generation sequencing, niche modeling) that\nenable new areas of collections-­based study and widespread digitization initiatives that increase their accessibility (Soltis, 2017; James\net al., 2018). The diverse applications of herbarium data are rapidly evolving, especially unanticipated uses in the context of studying global change, with many specimen uses arising only recently\n(Heberling and Isaac, 2017). Despite this renewed appreciation of\nthe value of existing specimens to study plant diversity across space\nand time in ways that would otherwise not be possible, the standard\nprocess for collecting new specimens has changed remarkably little\nthrough time. Major changes to plant collection practices in recent\ndecades include the routine inclusion of geographic coordinates\nwith the advent of GPS technologies and, to a lesser extent, tissue\nsampling for DNA analyses. Therefore, an open re-­evaluation of\ncollection methods is needed to maximize future use of herbarium\ndata (Heberling and Isaac, 2017; Morrison et al., 2017; Schi"
+    },
+    {
+      "article_id": "art_f0f40d9e7cce",
+      "record_type": "article",
+      "source_json": "artigos_ciencia_cidada_json_unico(1).json",
+      "source_file": "Methods Ecol Evol - 2014 - Isaac - Statistics for citizen science  extracting signals of change from noisy ecological data.pdf",
+      "title": "Statistics for citizen science: extracting signals of change from noisy ecological data",
+      "year": "2014",
+      "doi": [
+        "10.1111/2041-210X.12254"
+      ],
+      "keywords": [],
+      "themes": [
+        "ecologia",
+        "zoologia",
+        "ciencia_cidada",
+        "biodiversity_informatics",
+        "sdm_modelagem_distribuicao"
+      ],
+      "abstract": "",
+      "page_count": 9,
+      "text_length": 50480,
+      "text_sha256": "3f12fe7168a465b6e61e16dbb06282c2508cb14f93e2d735d1988e03cba8c030",
+      "metadata": {
+        "pdf_metadata": {
+          "format": "PDF 1.3",
+          "title": "Statistics for citizen science: extracting signals of change from noisy ecological data",
+          "subject": "Methods Ecol Evol 2014.5:1052-1060",
+          "creator": "Arbortext Advanced Print Publisher 9.1.531/W Unicode",
+          "producer": "PDFlib PLOP 2.0.0p6 (SunOS)/Acrobat Distiller 10.1.1 (Windows); modified using iText 4.2.0 by 1T3XT",
+          "creationDate": "D:20141029161241+05'30'",
+          "modDate": "D:20260425163418-07'00'"
+        },
+        "extracted_metadata": {
+          "title": "Statistics for citizen science: extracting signals of change from noisy ecological data",
+          "year": "1991",
+          "doi": "10.1111/2041-210X.12254",
+          "keywords": [],
+          "abstract_or_resumo": ""
+        }
+      },
+      "text_preview": "Statistics for citizen science: extracting signals of\nchange from noisy ecological data\nNick J. B. Isaac1*, Arco J. van Strien2, Tom A. August1, Marnix P. de Zeeuw2 and David B. Roy1\n1NERC Centre for Ecology & Hydrology, Crowmarsh Gifford, Maclean Building, Wallingford, OX10 8BB, UK; and 2Statistics\nNetherlands, PO Box 24500, 2490 HA The Hague, The Netherlands\nSummary\n1. Policy-makers increasingly demand robust measures of biodiversity change over short time periods. Longterm monitoring schemes provide high-quality data, often on an annual basis, but are taxonomically and geographically restricted. By contrast, opportunistic biological records are relatively unstructured but vast in quantity. Recently, these data have been applied to increasingly elaborate science and policy questions, using a range\nof methods. At present, we lack a ﬁrm understanding of which methods, if any, are capable of delivering unbiased trend estimates on policy-relevant time-scales.\n2. We identiﬁed a set of candidate methods that employ data ﬁltering criteria and/or correction factors to deal\nwith variation in recorder activity. We designed a computer simulation to compare the statistical properties of\nthes"
+    },
+    {
+      "article_id": "art_eb1f3bb4eb28",
+      "record_type": "article",
+      "source_json": "artigos_ciencia_cidada_json_unico(1).json",
+      "source_file": "O_cenario_academico_Brasileiro_ao_aplicar_ciencia_cidada.pdf",
+      "title": "O cenário acadêmico brasileiro ao aplicar ciência cidadã em pesquisas ecológicas",
+      "year": "2025",
+      "doi": [
+        "10.1590/s0103-4014.202539114.015"
+      ],
+      "keywords": [
+        "conservação biológica",
+        "ensino",
+        "transdisciplinaridade",
+        "participação",
+        "pública",
+        "biological conservation",
+        "teaching",
+        "transdisciplinary",
+        "community engagement",
+        "eduardo roberto alexandrino é pós-doutorando no laboratório de ecologia",
+        "manejo e",
+        "conservação da fauna silvestre",
+        "localizado no departamento de ciências florestais da",
+        "escola superior de agricultura “luiz de queiroz”",
+        "universidade de são paulo",
+        "@ – eduardoalexandrino@hotmail.com / https://orcid.org/0000-0003-3088-4524",
+        "humanas da universidade federal do abc. @ – natalia.lopes@ufabc.edu.br /",
+        "https://orcid.org/0000-0001-6213-8871",
+        "estudos avançados 39 (114)",
+        "2025 e39114247",
+        "20",
+        "onde também coordena o laboratório de ecologia",
+        "manejo",
+        "e conservação da fauna silvestre. @ – katia.ferraz@usp.br /",
+        "https://orcid.org/0000-0002-7870-8696",
+        "recebido em 14.11"
+      ],
+      "themes": [
+        "ecologia",
+        "zoologia",
+        "ciencia_cidada",
+        "conservacao",
+        "glossario_terminologia"
+      ],
+      "abstract": "Citizen science is a promising way to strengthen the relationship between\nacademia and society. Although it is becoming popular worldwide, it may not be straightforward to perform it within the current modus operandi of Brazilian institutions for\nresearch and higher education in scientist-led projects aimed to promote knowledge for\nenvironmental conservation. In this article, we conceptualize ‘citizen science’ and ‘open\nscience’ and we propose thoughts of three scenarios in which Brazilians academics are\nfacing when trying to promote an accessible and inclusive science. Each scenario has its\npositive and negative aspects for formal researchers (e.g., scientific productivity) as well\nas for society (e.g., applied knowledge). In order to enhance citizen science, we suggest\nadjustments within Brazilians institutions regarding the assessment of researchers and\nways to optimize research projects of this nature.",
+      "page_count": 20,
+      "text_length": 57714,
+      "text_sha256": "09e38adb0924192de91c6f5e4a0b4e231fd30a95258de2b691cd036daff571e0",
+      "metadata": {
+        "pdf_metadata": {
+          "format": "PDF 1.3",
+          "title": "Artigo 14",
+          "creator": "Adobe InDesign 16.4 (Macintosh)",
+          "producer": "Adobe PDF Library 16.0",
+          "creationDate": "D:20250617114712-03'00'",
+          "modDate": "D:20250704183323-03'00'"
+        },
+        "extracted_metadata": {
+          "title": "O cenário acadêmico brasileiro ao aplicar ciência cidadã em pesquisas ecológicas",
+          "year": "2025",
+          "doi": "10.1590/s0103-4014.202539114.015",
+          "keywords": [
+            "Conservação biológica",
+            "Ensino",
+            "Transdisciplinaridade",
+            "Participação",
+            "pública"
+          ],
+          "abstract_or_resumo": "Citizen science is a promising way to strengthen the relationship between \nacademia and society. Although it is becoming popular worldwide, it may not be straightforward to perform it within the current modus operandi of Brazilian institutions for \nresearch and higher education in scientist-led projects aimed to promote knowledge for \nenvironmental conservation. In this article, we conceptualize ‘citizen science’ and ‘open \nscience’ and we propose thoughts of three scenarios in which Brazilians academics are \nfacing when trying to promote an accessible and inclusive science. Each scenario has its \npositive and negative aspects for formal researchers (e.g., scientific productivity) as well \nas for society (e.g., applied knowledge). In order to enhance citizen science, we suggest \nadjustments within Brazilians institutions regarding the assessment of researchers and \nways to optimize research projects of this nature."
+        }
+      },
+      "text_preview": "ESTUDOS AVANÇADOS 39 (114), 2025 e39114247\n1\nIntrodução\nas últimas décadas, variados textos acadêmicos provenientes de várias\npartes do mundo têm apontado a necessidade de tornar a investigação\ncientífica realizada na academia mais inclusiva à sociedade, a partir de um\nprocesso conhecido como “ciência cidadã” (e.g., Irwin, 1995; Ceccaroni et al.,\n2017; Fritz et al., 2019; Queiroz-Souza et al., 2023). Essa inclusão seria oportunizada com a adoção de alguns ajustes na forma convencional de se realizar ciência dentro das instituições, como criar meios para que cidadãos participem de\ndiferentes etapas de uma investigação científica, possibilitar acesso aos resultados\nda pesquisa e textos produzidos, possibilitar acesso às tecnologias, possibilitar a\neducação científica dos cidadãos interessados em ciência, entre outros. Embora\neste movimento por uma ciência mais inclusiva esteja se popularizando no mundo (Fritz et al., 2019; Haklay et al., 2021a), ainda hoje vários pesquisadores\nformais, ou profissionais em formação dentro das universidades, que se deparam\npela primeira vez com a ideia de contar com cidadãos interessados em ciência\n(mas não necessariamente familiarizados com os process"
+    },
+    {
+      "article_id": "art_045fdd3f31e2",
+      "record_type": "article",
+      "source_json": "artigos_ciencia_cidada_json_unico(1).json",
+      "source_file": "Observing_the_Observers_How.pdf",
+      "title": "Observing the Observers: How Participants Contribute Data to iNaturalist and Implications for Biodiversity Science",
+      "year": "2021",
+      "doi": [
+        "10.1093/biosci/biab093"
+      ],
+      "keywords": [
+        "citizen science",
+        "inaturalist",
+        "biodiversity",
+        "e are currently in a period of unprecedented",
+        "growth in the global availability of species occurrence",
+        "records as a result of data collected through citizen science",
+        "projects (sometimes known as community science or par­",
+        "ticipatory science",
+        "bonney et al. 2014",
+        "brown and williams",
+        "2019). although many of these records come from struc­",
+        "tured or semistructured surveys that include information on",
+        "the sampling effort (these records are particularly numerous",
+        "for birds)",
+        "the vast majority of observations for other taxo­",
+        "nomic groups are from unstructured",
+        "opportunistic obser­",
+        "vations that simply link a taxonomic entity to a particular",
+        "point in time and space (welvaert and caley 2016",
+        "pocock",
+        "et al. 2017",
+        "kelling et al. 2019). the lack of formal survey",
+        "procedures for contributing unstructured observations has",
+        "meant a low barrier of entry for participation and has",
+        "facilitated the accumulation of large amounts of data. these",
+        "opportunistic bio",
+        "bonney et al. 2014",
+        "et al. 2017",
+        "kelling et al. 2019). the lack of formal survey"
+      ],
+      "themes": [
+        "herpetologia",
+        "ecologia",
+        "zoologia",
+        "ciencia_cidada",
+        "biodiversity_informatics",
+        "sdm_modelagem_distribuicao",
+        "conservacao"
+      ],
+      "abstract": "",
+      "page_count": 10,
+      "text_length": 52046,
+      "text_sha256": "23c830728747c01b8562e8b78e79c11991ec048e0b15bd4ef48d15f6e4f684c9",
+      "metadata": {
+        "pdf_metadata": {
+          "format": "PDF 1.4",
+          "creator": "Adobe InDesign CS6 (Windows)",
+          "producer": "Adobe PDF Library 10.0.1; modified using iTextSharp.LGPLv2.Core 3.7.4.0",
+          "creationDate": "D:20211018181349+05'30'",
+          "modDate": "D:20260509224731+00'00'",
+          "trapped": "False"
+        },
+        "extracted_metadata": {
+          "title": "Observing the Observers: How Participants Contribute Data to iNaturalist and Implications for Biodiversity Science",
+          "year": "2021",
+          "doi": "10.1093/biosci/biab093",
+          "keywords": [
+            "citizen science",
+            "iNaturalist",
+            "biodiversity",
+            "e are currently in a period of unprecedented ",
+            "growth in the global availability of species occurrence",
+            "records as a result of data collected through citizen science",
+            "projects (sometimes known as community science or par­",
+            "ticipatory science",
+            "Bonney et al. 2014",
+            "Brown and Williams",
+            "2019). Although many of these records come from struc­",
+            "tured or semistructured surveys that include information on",
+            "the sampling effort (these records are particularly numerous",
+            "for birds)",
+            "the vast majority of observations for other taxo­",
+            "nomic groups are from unstructured",
+            "opportunistic obser­",
+            "vations that simply link a taxonomic entity to a particular",
+            "point in time and space (Welvaert and Caley 2016",
+            "Pocock",
+            "et al. 2017",
+            "Kelling et al. 2019). The lack of formal survey",
+            "procedures for contributing unstructured observations has",
+            "meant a low barrier of entry for participation and has",
+            "facilitated the accumulation of large amounts of data. These",
+            "opportunistic bio"
+          ],
+          "abstract_or_resumo": ""
+        }
+      },
+      "text_preview": "Biologist’s Toolbox\nhttps://academic.oup.com/bioscience\nNovember 2021 / Vol. 71 No. 11 • BioScience 1179\nBioScience 71: 1179–1188. © The Author(s) 2021. Published by Oxford University Press on behalf of the American Institute of Biological Sciences.\nAll rights reserved. For Permissions, please e-mail: journals.permissions@oup.com.\nhttps://doi.org/10.1093/biosci/biab093\b\nAdvance Access publication 8 September 2021\nObserving the Observers: How\nParticipants Contribute Data to\niNaturalist and Implications for\nBiodiversity Science\nGRACE J. DI CECCO\n, VIJAY BARVE\n, MICHAEL W. BELITZ, BRIAN J. STUCKY, ROBERT P. GURALNICK\n,\nAND ALLEN H. HURLBERT\nThe availability of citizen science data has resulted in growing applications in biodiversity science. One widely used platform, iNaturalist,\nprovides millions of digitally vouchered observations submitted by a global user base. These observation records include a date and a location\nbut otherwise do not contain any information about the sampling process. As a result, sampling biases must be inferred from the data themselves.\nIn the present article, we examine spatial and temporal biases in iNaturalist observations from the platform’s launch in 200"
+    }
+  ],
+  "glossary_sources": [
+    {
+      "source_json": "Biota-glossario.json",
+      "entry_count_detected": 123,
+      "text_length": 23888,
+      "text_sha256": "b935f20b61fc32897b213db63d2458e1885b1268282d02f787a280fd3e0f54fe",
+      "themes": [
+        "herpetologia",
+        "zoologia",
+        "glossario_terminologia",
+        "glossario_terminologia"
+      ]
+    },
+    {
+      "source_json": "1.json",
+      "entry_count_detected": 351,
+      "text_length": 2094537,
+      "text_sha256": "50a59a0cc3047b3cd280923fbb3da51b1c791cc3bd652874f163bff119b6132b",
+      "themes": [
+        "herpetologia",
+        "zoologia",
+        "ciencia_cidada",
+        "biodiversity_informatics",
+        "glossario_terminologia",
+        "glossario_terminologia"
+      ]
+    },
+    {
+      "source_json": "CONC_BASICOS_ECOLOGIA_V1.json",
+      "entry_count_detected": 43,
+      "text_length": 187030,
+      "text_sha256": "91d75f93ad426d469beade870780299e646247fae24a3c18ddd2e2be49bc03d1",
+      "themes": [
+        "ecologia",
+        "zoologia",
+        "glossario_terminologia"
+      ]
+    },
+    {
+      "source_json": "Introdução-à-Ecologia.json",
+      "entry_count_detected": 32,
+      "text_length": 124356,
+      "text_sha256": "97031287599437e489df4c0f66e76b6ee30f6c52fabe68f4fbf8d9b0b95cfae2",
+      "themes": [
+        "ecologia",
+        "zoologia",
+        "glossario_terminologia",
+        "glossario_terminologia"
+      ]
+    },
+    {
+      "source_json": "Glossário de termos mais usados em ecologia.json",
+      "entry_count_detected": 6,
+      "text_length": 9502,
+      "text_sha256": "4e706c872d35d144f37771205ee5c51413c0b6b998003abd1a5d8620a1724c99",
+      "themes": [
+        "ecologia",
+        "zoologia",
+        "glossario_terminologia",
+        "glossario_terminologia"
+      ]
+    },
+    {
+      "source_json": "Glossario.json",
+      "entry_count_detected": 16,
+      "text_length": 71802,
+      "text_sha256": "247f931d657f0816001e8cfb62c0f55036dc776c878e4fb48b93237c2eb7c583",
+      "themes": [
+        "ecologia",
+        "zoologia",
+        "conservacao",
+        "glossario_terminologia",
+        "glossario_terminologia"
+      ]
+    }
+  ],
+  "raw_documents": []
+}

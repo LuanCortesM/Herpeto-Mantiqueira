@@ -1,0 +1,212 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Oikos FieldBook | Herpeto Mantiqueira</title>
+    <link rel="stylesheet" href="css/styles.css?v=oikos-citation-compact-20260603">
+  </head>
+  <body>
+    <div class="oikos-page">
+      <header class="home-header is-scrolled">
+        <a class="home-brand" href="index.html#inicio" aria-label="Voltar para a página inicial">
+          <img class="home-brand__logo" src="assets/herpeto-mantiqueira-logo.png" alt="">
+          <span><strong>HerpetoMantiqueira</strong><small>Oikos FieldBook</small></span>
+        </a>
+        <nav class="home-nav gold-page-nav" aria-label="Navegação da página Oikos FieldBook">
+          <a href="index.html#inicio">Início</a>
+          <details class="home-products-menu">
+            <summary>Ferramentas</summary>
+            <div>
+              <a href="sobre-gold.html"><strong>Gold AI Ecológica</strong><small>Assistente científico</small></a>
+              <a href="oikos-fieldbook.html"><strong>Oikos FieldBook</strong><small>Caderno de campo digital</small></a>
+              <a href="sigmai.html"><strong>SIGMAI</strong><small>Interface segura entre IA e QGIS</small></a>
+              <a href="topotrail.html"><strong>TopoTrail</strong><small>Planejamento topográfico de trilhas</small></a>
+              <a href="herpetofauna-cruzeiro.html"><strong>Herpetofauna de Cruzeiro</strong><small>Álbum educativo interativo</small></a>
+            </div>
+          </details>
+          <a href="#objetivo">Objetivo</a>
+          <a href="#fluxo">Fluxo</a>
+          <a href="#funcoes">Funções</a>
+          <a href="#telas">Telas</a>
+          <a href="#identidade">Identidade</a>
+          <a href="#exportacoes">Exportações</a>
+        </nav>
+      </header>
+
+      <main>
+        <section class="oikos-hero" id="objetivo">
+          <div class="oikos-hero__content">
+            <p class="home-eyebrow">Ferramenta científica gratuita · Versão 0.1.2</p>
+            <h1>Oikos FieldBook</h1>
+            <p>Caderno de campo digital para biodiversidade, criado para registrar expedições, ocorrências, coordenadas, trilhas GPS, fotos e áudios em um fluxo offline, com exportação científica compatível com Darwin Core.</p>
+            <div class="oikos-tags" aria-label="Pontos principais">
+              <span>Offline</span>
+              <span>Darwin Core</span>
+              <span>GPS e trilhas</span>
+              <span>Fotos e áudio WAV</span>
+              <span>QGIS</span>
+            </div>
+          </div>
+          <div class="oikos-logo-card" aria-label="Marca Oikos FieldBook">
+            <img class="oikos-logo-img oikos-logo-img--hero" src="assets/oikos-fieldbook/oikos-logo-hero-official.png" alt="Logo Oikos FieldBook">
+          </div>
+        </section>
+
+        <section class="oikos-section oikos-two">
+          <div class="oikos-copy">
+            <p class="home-eyebrow">De pesquisador para pesquisador</p>
+            <h2>O dado de campo já nasce organizado.</h2>
+            <p>O Oikos FieldBook foi pensado para reduzir retrabalho em inventários, monitoramentos e expedições científicas. A coleta deixa de depender de anotações dispersas, nomes de arquivos improvisados e planilhas reconstruídas depois da saída de campo.</p>
+            <p>O pesquisador usa campos amigáveis na interface, enquanto a estrutura interna preserva termos padronizados como <strong>eventID</strong>, <strong>occurrenceID</strong>, <strong>decimalLatitude</strong>, <strong>decimalLongitude</strong> e <strong>associatedMedia</strong>.</p>
+          </div>
+          <aside class="oikos-note">
+            <strong>Propósito</strong>
+            <p>Registrar biodiversidade com rastreabilidade, padronização e vínculo claro entre ocorrência, localidade, mídia, expedição e projeto.</p>
+          </aside>
+        </section>
+
+        <section class="oikos-section" id="fluxo">
+          <div class="oikos-copy oikos-copy--wide">
+            <p class="home-eyebrow">Como funciona</p>
+            <h2>Fluxo de coleta em seis passos.</h2>
+          </div>
+          <div class="oikos-flow">
+            <article><span>01</span><h3>Criar projeto</h3><p>Define idioma, datum, formato de coordenadas, qualidade de foto e grupos de campos.</p></article>
+            <article><span>02</span><h3>Configurar campos</h3><p>Ativa módulos de fauna, flora, funga, ecologia, identificação e observações complementares.</p></article>
+            <article><span>03</span><h3>Abrir expedição</h3><p>A saída de campo vira um evento estruturado, com data, horário, localidade e identificadores.</p></article>
+            <article><span>04</span><h3>Registrar ocorrência</h3><p>Adiciona táxon, GPS, ambiente, mídia, notas, identificador e evidências associadas.</p></article>
+            <article><span>05</span><h3>Gravar trilha</h3><p>Registra o percurso em segundo plano, com pontos GPS ligados à expedição.</p></article>
+            <article><span>06</span><h3>Exportar</h3><p>Gera planilhas, JSON, GeoJSON e ZIP completo com mídias e manifesto.</p></article>
+          </div>
+        </section>
+
+        <section class="oikos-section" id="funcoes">
+          <div class="oikos-copy oikos-copy--wide">
+            <p class="home-eyebrow">Funções principais</p>
+            <h2>O que o aplicativo entrega.</h2>
+          </div>
+          <div class="oikos-feature-grid">
+            <article><h3>Projetos e expedições</h3><p>Organiza a pesquisa em projetos, expedições e ocorrências, mantendo a expedição mapeada internamente como evento Darwin Core.</p></article>
+            <article><h3>Coordenadas precisas</h3><p>Suporta SIRGAS 2000 e WGS84, graus decimais, DMS, DMM e UTM, preservando latitude e longitude em graus decimais.</p></article>
+            <article><h3>Trilha GPS</h3><p>Registra o caminho da expedição, mostra a linha no mapa e mantém vínculo entre percurso, pontos e ocorrências.</p></article>
+            <article><h3>Fotos e áudios</h3><p>Permite fotografar, anexar imagens, gravar WAV por padrão e manter MP3 como alternativa, sem salvar mídia dentro do SQLite.</p></article>
+            <article><h3>Exportação científica</h3><p>Gera CSV, XLSX, JSON, GeoJSON e ZIP completo com README, manifest.json e tabela de mídias.</p></article>
+            <article><h3>Uso em campo</h3><p>Funciona offline, usa alto contraste, botões grandes, tema escuro por padrão e interface pensada para celular.</p></article>
+          </div>
+        </section>
+
+        <section class="oikos-section" id="telas">
+          <div class="oikos-copy oikos-copy--wide">
+            <p class="home-eyebrow">Telas reais</p>
+            <h2>Experiência visual do aplicativo.</h2>
+            <p>As telas reais mostram a proposta central do aplicativo: interface escura, botões grandes, fluxo offline e organização científica sem perder usabilidade em campo.</p>
+          </div>
+          <div class="oikos-screen-layout">
+            <article class="oikos-phone oikos-phone--feature">
+              <img class="oikos-screenshot" src="assets/oikos-fieldbook/home.jpg" alt="Tela inicial do Oikos FieldBook com botão Criar projeto e indicadores Offline, Darwin Core e GPS" loading="lazy">
+              <h3>Tela inicial</h3>
+              <p>Entrada limpa com chamada principal, criação de projeto e indicadores rápidos de modo offline, Darwin Core e GPS.</p>
+            </article>
+            <div class="oikos-screen-grid">
+              <article class="oikos-phone"><img class="oikos-screenshot" src="assets/oikos-fieldbook/novo-projeto.jpg" alt="Tela Novo projeto com campos de idioma, datum padrão, formato de coordenadas e qualidade da foto" loading="lazy"><h3>Novo projeto</h3><p>Configuração inicial da coleta com idioma, datum, coordenadas e qualidade de foto.</p></article>
+              <article class="oikos-phone"><img class="oikos-screenshot" src="assets/oikos-fieldbook/nova-expedicao.jpg" alt="Tela Nova expedição com eventID, data, hora de início, hora de término, localidade e município" loading="lazy"><h3>Nova expedição</h3><p>Evento de campo com identificador, data padronizada, horário, localidade e município.</p></article>
+              <article class="oikos-phone"><img class="oikos-screenshot" src="assets/oikos-fieldbook/midias-ocorrencia.jpg" alt="Tela Nova ocorrência com seção de mídias vinculadas, foto, anexar foto, gravar WAV e anexar áudio" loading="lazy"><h3>Mídias da ocorrência</h3><p>Fotos e áudios vinculados ao projeto, expedição, occurrenceID, eventID e associatedMedia.</p></article>
+              <article class="oikos-phone"><img class="oikos-screenshot" src="assets/oikos-fieldbook/trilha-gps.jpg" alt="Tela da expedição com trilha GPS, mapa OpenStreetMap e botão Iniciar trilha" loading="lazy"><h3>Trilha GPS</h3><p>Mapa com percurso da expedição, estado da trilha, pontos GPS e base OpenStreetMap.</p></article>
+            </div>
+          </div>
+        </section>
+
+        <section class="oikos-section oikos-identity-section" id="identidade">
+          <div class="oikos-copy oikos-copy--wide">
+            <p class="home-eyebrow">Identidade visual</p>
+            <h2>Paleta de cores.</h2>
+          </div>
+          <div class="oikos-palette" aria-label="Paleta de cores do Oikos FieldBook">
+            <div class="oikos-swatch oikos-swatch--dark" style="--swatch:#0B0B0D"><span>Preto principal</span><code>#0B0B0D</code></div>
+            <div class="oikos-swatch oikos-swatch--dark" style="--swatch:#16161A"><span>Grafite escuro</span><code>#16161A</code></div>
+            <div class="oikos-swatch oikos-swatch--dark" style="--swatch:#202027"><span>Cinza card</span><code>#202027</code></div>
+            <div class="oikos-swatch oikos-swatch--dark" style="--swatch:#2E2E36"><span>Cinza borda</span><code>#2E2E36</code></div>
+            <div class="oikos-swatch oikos-swatch--light" style="--swatch:#F9F7F2"><span>Texto principal</span><code>#F9F7F2</code></div>
+            <div class="oikos-swatch oikos-swatch--muted" style="--swatch:#B8B8C3"><span>Texto secundário</span><code>#B8B8C3</code></div>
+            <div class="oikos-swatch oikos-swatch--orange" style="--swatch:#FF6A00"><span>Laranja principal</span><code>#FF6A00</code></div>
+            <div class="oikos-swatch oikos-swatch--warm" style="--swatch:#FFB066"><span>Laranja suave</span><code>#FFB066</code></div>
+            <div class="oikos-swatch oikos-swatch--light" style="--swatch:#FAF9F6"><span>Fundo claro</span><code>#FAF9F6</code></div>
+            <div class="oikos-swatch oikos-swatch--light" style="--swatch:#FFFFFF"><span>Card claro</span><code>#FFFFFF</code></div>
+            <div class="oikos-swatch oikos-swatch--dark" style="--swatch:#1C1C22"><span>Texto claro</span><code>#1C1C22</code></div>
+            <div class="oikos-swatch oikos-swatch--muted" style="--swatch:#E2E2E2"><span>Borda clara</span><code>#E2E2E2</code></div>
+          </div>
+        </section>
+
+        <section class="oikos-section">
+          <div class="oikos-copy oikos-copy--wide">
+            <p class="home-eyebrow">Logo</p>
+            <h2>Aplicação em modo escuro e claro.</h2>
+          </div>
+          <div class="oikos-theme-grid">
+            <article class="oikos-theme-card oikos-theme-card--dark">
+              <img class="oikos-logo-img" src="assets/oikos-fieldbook/oikos-logo-dark-normalized.png" alt="Logo Oikos FieldBook em aplicação escura">
+              <h3>Logo</h3>
+            </article>
+            <article class="oikos-theme-card oikos-theme-card--light">
+              <img class="oikos-logo-img oikos-logo-img--light" src="assets/oikos-fieldbook/oikos-logo-light-normalized.png" alt="Logo Oikos FieldBook em aplicação clara">
+              <h3>Logo modo claro</h3>
+            </article>
+          </div>
+        </section>
+
+        <section class="oikos-section" id="exportacoes">
+          <div class="oikos-copy oikos-copy--wide">
+            <p class="home-eyebrow">Dados prontos para análise</p>
+            <h2>Exportação pensada para ciência aberta e SIG.</h2>
+          </div>
+          <div class="oikos-two">
+            <article class="oikos-export">
+              <h3>Formatos de saída</h3>
+              <ul>
+                <li>CSV Darwin Core com cabeçalhos científicos.</li>
+                <li>XLSX com projeto, expedições, ocorrências, mídias e resumo.</li>
+                <li>JSON completo preservando a hierarquia do projeto.</li>
+                <li>GeoJSON compatível com QGIS, com ocorrências como pontos e trilhas como linhas.</li>
+                <li>ZIP completo com planilhas, mídias, README.txt e manifest.json.</li>
+              </ul>
+            </article>
+            <article class="oikos-export">
+              <h3>Vínculo entre dados e mídia</h3>
+              <p>Toda mídia exportada mantém relação clara com <strong>projectID</strong>, <strong>eventID</strong>, <strong>occurrenceID</strong> e <strong>mediaID</strong>. Na tabela principal, <strong>associatedMedia</strong> aponta para fotos e áudios por caminho relativo.</p>
+            </article>
+          </div>
+        </section>
+
+        <section class="oikos-section oikos-two">
+          <div class="oikos-copy">
+            <p class="home-eyebrow">Assinatura científica</p>
+            <h2>Desenvolvido dentro de uma pesquisa real.</h2>
+            <p>Ferramenta científica gratuita desenvolvida por Luan da Silva Cortes Maciel (MACIEL, L. S. C.), mestrando no Instituto de Pesquisa Jardim Botânico do Rio de Janeiro, sob orientação de Leandro Freitas e coorientação de Matheus de Toledo Moroti.</p>
+            <p>Aplicativo vinculado à pesquisa “Levantamento e Interações Ecológicas entre Anuros e Bromélias na RPPN Gigante do Itaguaré”.</p>
+          </div>
+          <aside class="oikos-note">
+            <strong>Crédito cartográfico</strong>
+            <p>Mapa base: OpenStreetMap contributors. Exportações geográficas preparadas para uso em QGIS e fluxos de análise espacial.</p>
+          </aside>
+        </section>
+
+        <section class="oikos-section oikos-citation-section" id="como-citar">
+          <div class="oikos-copy oikos-copy--wide">
+            <p class="home-eyebrow">Como citar</p>
+            <h2>Citação oficial</h2>
+          </div>
+          <div class="oikos-citation-box">
+            <p>MACIEL, L. S. C. (2026). Oikos FieldBook (0.1.2). Zenodo. <a href="https://doi.org/10.5281/zenodo.20526747" target="_blank" rel="noopener noreferrer">https://doi.org/10.5281/zenodo.20526747</a></p>
+          </div>
+        </section>
+      </main>
+
+      <footer class="home-footer oikos-footer">
+        <a class="home-brand" href="index.html#inicio"><img class="home-brand__logo" src="assets/herpeto-mantiqueira-logo.png" alt=""><span><strong>HerpetoMantiqueira</strong><small>Oikos FieldBook</small></span></a>
+        <p>Ferramenta científica gratuita · Caderno de campo digital para biodiversidade</p>
+        <p class="developer-signature">Developed by: <strong>MACIEL, L. S. C.</strong></p>
+      </footer>
+    </div>
+  </body>
+</html>
