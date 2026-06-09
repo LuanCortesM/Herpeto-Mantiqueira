@@ -346,6 +346,22 @@
       }
       return { speciesQuery: candidate, possibleSpeciesQuery: null, commonNameQuery: null, rejectedSpeciesCandidates };
     }
+    const explicitLowercase = normalizeText(raw).match(/\b(?:sobre|do|da|de|especie)\s+([a-z]{3,})\s+([a-z]{3,})\b/);
+    if (explicitLowercase) {
+      const [, genus, epithet] = explicitLowercase;
+      if (
+        !SPECIES_BLACKLIST.has(genus) &&
+        !SPECIES_SECOND_BLACKLIST.has(epithet) &&
+        !PREPOSITIONS.has(epithet)
+      ) {
+        return {
+          speciesQuery: `${genus[0].toUpperCase()}${genus.slice(1)} ${epithet}`,
+          possibleSpeciesQuery: null,
+          commonNameQuery: null,
+          rejectedSpeciesCandidates,
+        };
+      }
+    }
     const q = normalizeText(text);
     const commonNameQuery = /\bjararacas?\b/.test(q) ? "jararaca" : null;
     return { speciesQuery: null, possibleSpeciesQuery: null, commonNameQuery, rejectedSpeciesCandidates };
@@ -384,6 +400,8 @@
   function detectConversationTaxon(text) {
     const corrected = correctTaxonomicTypos(text).correctedText;
     const q = slangAndAbbreviationResolver(corrected);
+    const species = speciesQueryExtractor(corrected).speciesQuery;
+    if (species) return { raw: species, normalized: species, rank: "species" };
     const family = corrected.match(/\b([A-Z][a-z]+idae)\b/)?.[1];
     if (family) return { raw: family, normalized: family, rank: "family" };
     const explicit = corrected.match(/\b(?:g[eê]nero|esp[eé]cies?\s+de)\s+([A-Z][a-z]{2,})\b/i)?.[1];

@@ -142,6 +142,12 @@
           summary: `${mention.taxon.acceptedName} é um táxon de nível ${mention.taxon.rank}. Status local: ${mention.taxon.validationStatus}.`,
         };
       }
+      if (mention.type === "local_context_mention") {
+        return {
+          ...mention,
+          summary: `${mention.normalized} aparece no contexto taxonômico da biblioteca local como táxon de nível ${mention.rank}. Essa menção orienta a busca científica, mas não confirma ocorrência municipal.`,
+        };
+      }
       if (mention.type === "ocr_mention") return { ...mention, summary: `${mention.normalized}: menção recuperada da biblioteca local, não checklist oficial.` };
       return { ...mention, summary: `Não encontrei ${name} no backbone inicial nem no índice OCR local.` };
     }

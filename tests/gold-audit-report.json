@@ -1,13 +1,13 @@
 {
-  "generatedAt": "2026-06-09T22:47:12.868Z",
-  "totalQuestions": 51,
+  "generatedAt": "2026-06-09T23:51:58.982Z",
+  "totalQuestions": 57,
   "answersWithIssues": 0,
   "issueCounts": {},
   "classificationCounts": {
-    "general_taxon_question": 17,
+    "general_taxon_question": 24,
     "popular_name_question": 2,
     "general_scientific_question": 2,
-    "unknown": 7,
+    "unknown": 6,
     "methodology_question": 3,
     "safety_question": 3,
     "municipal_occurrence_query": 16,
@@ -324,13 +324,13 @@
   "orchestratorDiagnostics": [
     {
       "question": "Tem Bothrops jararaca em Cruzeiro?",
-      "answer": "Foram recuperados 1 táxons para os filtros informados. Interprete como registros disponíveis nas fontes consultadas, não como inventário completo.\n\n1. Bothrops jararaca - iNaturalist\n\nBase local: atualizada em 02/06/2026, 20:06:56.\n\nNotas: Ausência de retorno não significa ausência real na natureza. Observação do iNaturalist não é equivalente a voucher de coleção.",
+      "answer": "Foram recuperados 1 táxons para os filtros informados. Interprete como registros disponíveis nas fontes consultadas, não como inventário completo.\n\n1. Bothrops jararaca - iNaturalist\n\nBase local: atualizada em 02/06/2026, 20:06:56.\n\nNotas: Ausência de retorno não significa ausência real na natureza. Observação do iNaturalist não é equivalente a voucher de coleção. O cache local está antigo e deve ser atualizado.",
       "guardrails": true,
       "style": true
     },
     {
       "question": "Tem Brachycephalus rotenbergae em Cruzeiro?",
-      "answer": "Foram recuperados 1 táxons para os filtros informados. Interprete como registros disponíveis nas fontes consultadas, não como inventário completo.\n\n1. Brachycephalus rotenbergae - iNaturalist\n\nBase local: atualizada em 02/06/2026, 20:06:56.\n\nNotas: Ausência de retorno não significa ausência real na natureza. Observação do iNaturalist não é equivalente a voucher de coleção.",
+      "answer": "Foram recuperados 1 táxons para os filtros informados. Interprete como registros disponíveis nas fontes consultadas, não como inventário completo.\n\n1. Brachycephalus rotenbergae - iNaturalist\n\nBase local: atualizada em 02/06/2026, 20:06:56.\n\nNotas: Ausência de retorno não significa ausência real na natureza. Observação do iNaturalist não é equivalente a voucher de coleção. O cache local está antigo e deve ser atualizado.",
       "guardrails": true,
       "style": true
     }
@@ -475,9 +475,9 @@
       "scope": "general",
       "routeIntent": "SEARCH_SPECIES",
       "municipalities": [],
-      "taxon": "anfibio",
+      "taxon": "Brachycephalus rotenbergae",
       "issues": [],
-      "answer": "Amphibia é a classe dos anfíbios. Inclui Anura, Gymnophiona e Caudata. Em geral, anfíbios têm pele permeável e forte relação ecológica com umidade, embora exista grande diversidade de modos de vida e reprodução.",
+      "answer": "Reconheci o nome Brachycephalus rotenbergae, mas não encontrei evidência local específica e limpa o suficiente para descrevê-lo com segurança. Isso não significa que não existam estudos sobre a espécie; significa apenas que a biblioteca local atual não forneceu um trecho específico adequado para esta resposta.",
       "error": null
     },
     {
@@ -489,7 +489,79 @@
       "municipalities": [],
       "taxon": "Boana beckeri",
       "issues": [],
-      "answer": "Boana é um gênero de anuros da família Hylidae. Algumas espécies são chamadas popularmente de pererecas. Para espécies e distribuição, o Gold diferencia explicação geral, menções da biblioteca e registros municipais.",
+      "answer": "Reconheci Boana beckeri no contexto taxonômico da biblioteca local, mas não encontrei um trecho de artigo específico e limpo o suficiente para resumir a espécie com segurança. 1. Boana beckeri: Boana beckeri aparece no contexto taxonômico da biblioteca local como táxon de nível species. Essa menção orienta a busca científica, mas não confirma ocorrência municipal. Isso não significa que não existam estudos sobre a espécie; significa apenas que a biblioteca local atual não forneceu um trecho espe",
+      "error": null
+    },
+    {
+      "category": "species-literature",
+      "question": "Fale sobre Proceratophrys itamari.",
+      "classification": "general_taxon_question",
+      "scope": "general",
+      "routeIntent": "SEARCH_SPECIES",
+      "municipalities": [],
+      "taxon": "Proceratophrys itamari",
+      "issues": [],
+      "answer": "Reconheci Proceratophrys itamari no contexto taxonômico da biblioteca local, mas não encontrei um trecho de artigo específico e limpo o suficiente para resumir a espécie com segurança. 1. Proceratophrys itamari: Proceratophrys itamari aparece no contexto taxonômico da biblioteca local como táxon de nível species. Essa menção orienta a busca científica, mas não confirma ocorrência municipal. Isso não significa que não existam estudos sobre a espécie; significa apenas que a biblioteca local atual ",
+      "error": null
+    },
+    {
+      "category": "species-literature",
+      "question": "O que você sabe sobre Aplastodiscus arildae?",
+      "classification": "general_taxon_question",
+      "scope": "general",
+      "routeIntent": "SEARCH_SPECIES",
+      "municipalities": [],
+      "taxon": "Aplastodiscus arildae",
+      "issues": [],
+      "answer": "Encontrei material científico local que menciona especificamente Aplastodiscus arildae. 1. Redescription of the advertisement call of Aplastodiscus arildae (Cruz & Peixoto) and description of the call of Aplastodiscus weygoldti (Cruz & Peixoto) with general notes about the genus in Southeastern Brazil (Anura, Hylidae): 999 Redescription of the advertisement call of Aplastodiscus arildae and description... Revista Brasileira de Zoologia 23 (4): 994–1001, dezembro 2006 character. Both species pres",
+      "error": null
+    },
+    {
+      "category": "species-literature",
+      "question": "Fale sobre Brachycephalus rotenbergae.",
+      "classification": "general_taxon_question",
+      "scope": "general",
+      "routeIntent": "SEARCH_SPECIES",
+      "municipalities": [],
+      "taxon": "Brachycephalus rotenbergae",
+      "issues": [],
+      "answer": "Reconheci o nome Brachycephalus rotenbergae, mas não encontrei evidência local específica e limpa o suficiente para descrevê-lo com segurança. Isso não significa que não existam estudos sobre a espécie; significa apenas que a biblioteca local atual não forneceu um trecho específico adequado para esta resposta.",
+      "error": null
+    },
+    {
+      "category": "species-literature",
+      "question": "Qual a ecologia de Boana beckeri?",
+      "classification": "general_taxon_question",
+      "scope": "general",
+      "routeIntent": "SEARCH_SPECIES",
+      "municipalities": [],
+      "taxon": "Boana beckeri",
+      "issues": [],
+      "answer": "Reconheci Boana beckeri no contexto taxonômico da biblioteca local, mas não encontrei um trecho de artigo específico e limpo o suficiente para resumir a espécie com segurança. 1. Boana beckeri: Boana beckeri aparece no contexto taxonômico da biblioteca local como táxon de nível species. Essa menção orienta a busca científica, mas não confirma ocorrência municipal. Isso não significa que não existam estudos sobre a espécie; significa apenas que a biblioteca local atual não forneceu um trecho espe",
+      "error": null
+    },
+    {
+      "category": "species-literature",
+      "question": "O que sabe sobre Mussurana montana?",
+      "classification": "general_taxon_question",
+      "scope": "general",
+      "routeIntent": "SEARCH_SPECIES",
+      "municipalities": [],
+      "taxon": "Mussurana montana",
+      "issues": [],
+      "answer": "Encontrei material científico local que menciona especificamente Mussurana montana. 1. Composition and natural history of the snakes from: tos-Jr. 2008). Specimens identified as Mussurana montana (Franco, Marques & Puorto, 1997) by Hartmann et al. (2009b) belong to Pseudoboa serrana Morato, Moura-Leite, Prudente & Bérnils, 1995 (Francísco Luís Franco pers. obs.). Specimens identified as Atractus sp. by Hartmann et al. (2009b) were described as Atractus francoi Passos, Fernandes, Bérnils and... 2",
+      "error": null
+    },
+    {
+      "category": "species-literature",
+      "question": "Fale sobre aplastodiscus arildae.",
+      "classification": "general_taxon_question",
+      "scope": "general",
+      "routeIntent": "SEARCH_SPECIES",
+      "municipalities": [],
+      "taxon": "Aplastodiscus arildae",
+      "issues": [],
+      "answer": "Encontrei material científico local que menciona especificamente Aplastodiscus arildae. 1. Redescription of the advertisement call of Aplastodiscus arildae (Cruz & Peixoto) and description of the call of Aplastodiscus weygoldti (Cruz & Peixoto) with general notes about the genus in Southeastern Brazil (Anura, Hylidae): 999 Redescription of the advertisement call of Aplastodiscus arildae and description... Revista Brasileira de Zoologia 23 (4): 994–1001, dezembro 2006 character. Both species pres",
       "error": null
     },
     {
@@ -499,9 +571,9 @@
       "scope": "general",
       "routeIntent": "SEARCH_SPECIES",
       "municipalities": [],
-      "taxon": "Hylidae",
+      "taxon": "Bothrops jararaca",
       "issues": [],
-      "answer": "Bothrops é um gênero da família Viperidae. Reúne serpentes peçonhentas ecologicamente importantes como predadoras. Nomes populares como jararaca podem ser associados ao gênero, mas variam regionalmente. Como seleção introdutória, podem ser citadas Bothrops jararaca, Bothrops jararacussu, Bothrops alternatus, Bothrops moojeni, Bothrops neuwiedi, Bothrops atrox, Bothrops erythromelas e Bothrops leucurus. Essas são referências gerais, não checklist oficial nem confirmação de ocorrência municipal. P",
+      "answer": "Reconheci Bothrops jararaca no contexto taxonômico da biblioteca local, mas não encontrei um trecho de artigo específico e limpo o suficiente para resumir a espécie com segurança. 1. Bothrops jararaca: Bothrops jararaca é um táxon de nível species. Status local: pending. 2. Herpetology Engine local: Bothrops é um gênero da família Viperidae. Reúne serpentes peçonhentas ecologicamente importantes como predadoras. Nomes populares como jararaca podem ser associados ao gênero, mas variam regionalmen",
       "error": null
     },
     {
@@ -511,9 +583,9 @@
       "scope": "general",
       "routeIntent": "SEARCH_SPECIES",
       "municipalities": [],
-      "taxon": "Rhinella",
+      "taxon": "Rhinella icterica",
       "issues": [],
-      "answer": "Rhinella e um genero de anuros da familia Bufonidae. Muitas especies sao chamadas popularmente de sapos, mas nome popular sozinho nao confirma genero nem especie. Em inventarios, Rhinella pode ser registrada por observacao visual, fotos diagnosticas, vocalizacao em alguns contextos e localidade, sempre com cautela porque juvenis, especies parecidas e fotos ruins podem gerar identificacao incerta. Para o Gold, Rhinella deve ser tratado como genero: ele pode explicar o grupo, buscar especies ou me",
+      "answer": "Reconheci Rhinella icterica no contexto taxonômico da biblioteca local, mas não encontrei um trecho de artigo específico e limpo o suficiente para resumir a espécie com segurança. 1. Rhinella icterica: Rhinella icterica aparece no contexto taxonômico da biblioteca local como táxon de nível species. Essa menção orienta a busca científica, mas não confirma ocorrência municipal. Isso não significa que não existam estudos sobre a espécie; significa apenas que a biblioteca local atual não forneceu um",
       "error": null
     },
     {
@@ -595,7 +667,7 @@
       "scope": "unknown",
       "routeIntent": "SEARCH_SPECIES",
       "municipalities": [],
-      "taxon": "jararaca",
+      "taxon": "Uma jararaca",
       "issues": [],
       "answer": "Se houve picada ou suspeita de acidente com serpente, procure atendimento medico imediatamente. Nao faca torniquete, nao corte, nao fure, nao sugue e nao aplique substancias no local. Se for seguro, registre foto a distancia para ajudar na identificacao, mas nao tente capturar o animal.",
       "error": null
@@ -607,7 +679,7 @@
       "scope": "unknown",
       "routeIntent": "SEARCH_SPECIES",
       "municipalities": [],
-      "taxon": "serpente",
+      "taxon": "Posso matar",
       "issues": [],
       "answer": "Nao recomendo matar ou tentar manejar a serpente. Isso aumenta o risco de acidente e tambem causa dano ecologico, porque serpentes controlam presas e fazem parte da cadeia alimentar. Mantenha distancia, afaste criancas e animais domesticos, deixe uma rota livre para a serpente sair e, se ela permanecer em area de risco, acione bombeiros, defesa civil ou orgao ambiental local.",
       "error": null
@@ -651,7 +723,7 @@
       ],
       "taxon": "lagartos",
       "issues": [],
-      "answer": "Foram recuperados 3 táxons para os filtros informados. Interprete como registros disponíveis nas fontes consultadas, não como inventário completo. 1. Enyalius perditus - iNaturalist 2. Enyalius iheringii - iNaturalist 3. Tropidurus torquatus - iNaturalist Base local: atualizada em 02/06/2026, 20:06:56. Notas: Ausência de retorno não significa ausência real na natureza. Observação do iNaturalist não é equivalente a voucher de coleção.",
+      "answer": "Foram recuperados 3 táxons para os filtros informados. Interprete como registros disponíveis nas fontes consultadas, não como inventário completo. 1. Enyalius perditus - iNaturalist 2. Enyalius iheringii - iNaturalist 3. Tropidurus torquatus - iNaturalist Base local: atualizada em 02/06/2026, 20:06:56. Notas: Ausência de retorno não significa ausência real na natureza. Observação do iNaturalist não é equivalente a voucher de coleção. O cache local está antigo e deve ser atualizado.",
       "error": null
     },
     {
@@ -665,7 +737,7 @@
       ],
       "taxon": "quelonios",
       "issues": [],
-      "answer": "Nenhum registro correspondente foi retornado pelos filtros atuais. Isso não demonstra ausência real da espécie ou grupo no município. Base local: atualizada em 02/06/2026, 20:06:56. Notas: Ausência de retorno não significa ausência real na natureza. Observação do iNaturalist não é equivalente a voucher de coleção.",
+      "answer": "Nenhum registro correspondente foi retornado pelos filtros atuais. Isso não demonstra ausência real da espécie ou grupo no município. Base local: atualizada em 02/06/2026, 20:06:56. Notas: Ausência de retorno não significa ausência real na natureza. Observação do iNaturalist não é equivalente a voucher de coleção. O cache local está antigo e deve ser atualizado.",
       "error": null
     },
     {
@@ -677,9 +749,9 @@
       "municipalities": [
         "Cruzeiro-SP"
       ],
-      "taxon": "Bothrops",
+      "taxon": "Bothrops jararaca",
       "issues": [],
-      "answer": "Foram recuperados 1 táxons para os filtros informados. Interprete como registros disponíveis nas fontes consultadas, não como inventário completo. 1. Bothrops jararaca - iNaturalist Base local: atualizada em 02/06/2026, 20:06:56. Notas: Ausência de retorno não significa ausência real na natureza. Observação do iNaturalist não é equivalente a voucher de coleção.",
+      "answer": "Foram recuperados 1 táxons para os filtros informados. Interprete como registros disponíveis nas fontes consultadas, não como inventário completo. 1. Bothrops jararaca - iNaturalist Base local: atualizada em 02/06/2026, 20:06:56. Notas: Ausência de retorno não significa ausência real na natureza. Observação do iNaturalist não é equivalente a voucher de coleção. O cache local está antigo e deve ser atualizado.",
       "error": null
     },
     {
@@ -693,7 +765,7 @@
       ],
       "taxon": "Brachycephalus rotenbergae",
       "issues": [],
-      "answer": "Foram recuperados 1 táxons para os filtros informados. Interprete como registros disponíveis nas fontes consultadas, não como inventário completo. 1. Brachycephalus rotenbergae - iNaturalist Base local: atualizada em 02/06/2026, 20:06:56. Notas: Ausência de retorno não significa ausência real na natureza. Observação do iNaturalist não é equivalente a voucher de coleção.",
+      "answer": "Foram recuperados 1 táxons para os filtros informados. Interprete como registros disponíveis nas fontes consultadas, não como inventário completo. 1. Brachycephalus rotenbergae - iNaturalist Base local: atualizada em 02/06/2026, 20:06:56. Notas: Ausência de retorno não significa ausência real na natureza. Observação do iNaturalist não é equivalente a voucher de coleção. O cache local está antigo e deve ser atualizado.",
       "error": null
     },
     {
@@ -774,7 +846,7 @@
       ],
       "taxon": "Bothrops",
       "issues": [],
-      "answer": "Nenhum registro correspondente foi retornado pelos filtros atuais. Isso não demonstra ausência real da espécie ou grupo no município. Base local: atualizada em 02/06/2026, 20:06:56. Notas: Ausência de retorno não significa ausência real na natureza. Observação do iNaturalist não é equivalente a voucher de coleção.",
+      "answer": "Nenhum registro correspondente foi retornado pelos filtros atuais. Isso não demonstra ausência real da espécie ou grupo no município. Base local: atualizada em 02/06/2026, 20:06:56. Notas: Ausência de retorno não significa ausência real na natureza. Observação do iNaturalist não é equivalente a voucher de coleção. O cache local está antigo e deve ser atualizado.",
       "error": null
     },
     {
@@ -788,7 +860,7 @@
       ],
       "taxon": "anfibios",
       "issues": [],
-      "answer": "Nenhum registro correspondente foi retornado pelos filtros atuais. Isso não demonstra ausência real da espécie ou grupo no município. Base local: atualizada em 02/06/2026, 20:06:56. Notas: Ausência de retorno não significa ausência real na natureza. Observação do iNaturalist não é equivalente a voucher de coleção.",
+      "answer": "Nenhum registro correspondente foi retornado pelos filtros atuais. Isso não demonstra ausência real da espécie ou grupo no município. Base local: atualizada em 02/06/2026, 20:06:56. Notas: Ausência de retorno não significa ausência real na natureza. Observação do iNaturalist não é equivalente a voucher de coleção. O cache local está antigo e deve ser atualizado.",
       "error": null
     },
     {
@@ -802,7 +874,7 @@
       ],
       "taxon": "serpentes",
       "issues": [],
-      "answer": "Nenhum registro correspondente foi retornado pelos filtros atuais. Isso não demonstra ausência real da espécie ou grupo no município. Base local: atualizada em 02/06/2026, 20:06:56. Notas: Ausência de retorno não significa ausência real na natureza. Observação do iNaturalist não é equivalente a voucher de coleção.",
+      "answer": "Nenhum registro correspondente foi retornado pelos filtros atuais. Isso não demonstra ausência real da espécie ou grupo no município. Base local: atualizada em 02/06/2026, 20:06:56. Notas: Ausência de retorno não significa ausência real na natureza. Observação do iNaturalist não é equivalente a voucher de coleção. O cache local está antigo e deve ser atualizado.",
       "error": null
     },
     {
@@ -852,7 +924,7 @@
       ],
       "taxon": "Sapos",
       "issues": [],
-      "answer": "Nenhum registro correspondente foi retornado pelos filtros atuais. Isso não demonstra ausência real da espécie ou grupo no município. Base local: atualizada em 02/06/2026, 20:06:56. Notas: Ausência de retorno não significa ausência real na natureza. Observação do iNaturalist não é equivalente a voucher de coleção.",
+      "answer": "Nenhum registro correspondente foi retornado pelos filtros atuais. Isso não demonstra ausência real da espécie ou grupo no município. Base local: atualizada em 02/06/2026, 20:06:56. Notas: Ausência de retorno não significa ausência real na natureza. Observação do iNaturalist não é equivalente a voucher de coleção. O cache local está antigo e deve ser atualizado.",
       "error": null
     },
     {
@@ -876,9 +948,9 @@
       "scope": "general",
       "routeIntent": "SEARCH_SPECIES",
       "municipalities": [],
-      "taxon": "Bothrops",
+      "taxon": "Bothrops jararaca",
       "issues": [],
-      "answer": "Bothrops é um gênero da família Viperidae. Reúne serpentes peçonhentas ecologicamente importantes como predadoras. Nomes populares como jararaca podem ser associados ao gênero, mas variam regionalmente. Como seleção introdutória, podem ser citadas Bothrops jararaca, Bothrops jararacussu, Bothrops alternatus, Bothrops moojeni, Bothrops neuwiedi, Bothrops atrox, Bothrops erythromelas e Bothrops leucurus. Essas são referências gerais, não checklist oficial nem confirmação de ocorrência municipal. P",
+      "answer": "Encontrei material científico local que menciona especificamente Bothrops jararaca. 1. Herpetofauna de serrapilheira da Reserva Florestal de Morro Grande, Cotia (SP): 2001). Pode ser encontrada em áreas de Mata Atlântica do estado de Santa Catarina ao sul da Bahia (Melgarajo 2003). Bothrops jararaca (Wied) é uma espécie peçonhenta de porte médio, atingindo cerca de 1 m de comprimento. Caracteriza-se pela coloração clara à escura com padrão triangulado complexo no dorso. Possui hábito terrestre e",
       "error": null
     },
     {
@@ -904,7 +976,7 @@
       ],
       "taxon": null,
       "issues": [],
-      "answer": "Foram recuperados 1 táxons para os filtros informados. Interprete como registros disponíveis nas fontes consultadas, não como inventário completo. 1. Bothrops jararaca - iNaturalist Base local: atualizada em 02/06/2026, 20:06:56. Notas: Ausência de retorno não significa ausência real na natureza. Observação do iNaturalist não é equivalente a voucher de coleção.",
+      "answer": "Foram recuperados 1 táxons para os filtros informados. Interprete como registros disponíveis nas fontes consultadas, não como inventário completo. 1. Bothrops jararaca - iNaturalist Base local: atualizada em 02/06/2026, 20:06:56. Notas: Ausência de retorno não significa ausência real na natureza. Observação do iNaturalist não é equivalente a voucher de coleção. O cache local está antigo e deve ser atualizado.",
       "error": null
     },
     {
@@ -918,7 +990,7 @@
       ],
       "taxon": null,
       "issues": [],
-      "answer": "Nenhum registro correspondente foi retornado pelos filtros atuais. Isso não demonstra ausência real da espécie ou grupo no município. Base local: atualizada em 02/06/2026, 20:06:56. Notas: Ausência de retorno não significa ausência real na natureza. Observação do iNaturalist não é equivalente a voucher de coleção.",
+      "answer": "Nenhum registro correspondente foi retornado pelos filtros atuais. Isso não demonstra ausência real da espécie ou grupo no município. Base local: atualizada em 02/06/2026, 20:06:56. Notas: Ausência de retorno não significa ausência real na natureza. Observação do iNaturalist não é equivalente a voucher de coleção. O cache local está antigo e deve ser atualizado.",
       "error": null
     },
     {
@@ -946,19 +1018,19 @@
       ],
       "taxon": null,
       "issues": [],
-      "answer": "Foram recuperados 1 táxons para os filtros informados. Interprete como registros disponíveis nas fontes consultadas, não como inventário completo. 1. Rhinella icterica - iNaturalist Base local: atualizada em 02/06/2026, 20:06:56. Notas: Ausência de retorno não significa ausência real na natureza. Observação do iNaturalist não é equivalente a voucher de coleção.",
+      "answer": "Foram recuperados 1 táxons para os filtros informados. Interprete como registros disponíveis nas fontes consultadas, não como inventário completo. 1. Rhinella icterica - iNaturalist Base local: atualizada em 02/06/2026, 20:06:56. Notas: Ausência de retorno não significa ausência real na natureza. Observação do iNaturalist não é equivalente a voucher de coleção. O cache local está antigo e deve ser atualizado.",
       "error": null
     },
     {
       "category": "context",
       "question": "Sem município, fale de forma geral.",
-      "classification": "unknown",
+      "classification": "general_taxon_question",
       "scope": "general",
-      "routeIntent": "UNKNOWN",
+      "routeIntent": "SEARCH_SPECIES",
       "municipalities": [],
-      "taxon": null,
+      "taxon": "Forma geral",
       "issues": [],
-      "answer": "Entendi. Vou responder de forma geral, sem restringir a um município. Rhinella e um genero de anuros da familia Bufonidae. Muitas especies sao chamadas popularmente de sapos, mas nome popular sozinho nao confirma genero nem especie. Em inventarios, Rhinella pode ser registrada por observacao visual, fotos diagnosticas, vocalizacao em alguns contextos e localidade, sempre com cautela porque juvenis, especies parecidas e fotos ruins podem gerar identificacao incerta. Para o Gold, Rhinella deve ser",
+      "answer": "Reconheci o nome Forma geral, mas não encontrei evidência local específica e limpa o suficiente para descrevê-lo com segurança. Isso não significa que não existam estudos sobre a espécie; significa apenas que a biblioteca local atual não forneceu um trecho específico adequado para esta resposta.",
       "error": null
     },
     {

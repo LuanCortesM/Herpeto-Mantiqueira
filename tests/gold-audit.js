@@ -59,6 +59,12 @@ const cases = [
   ["taxon", "O que é Rhinella?"],
   ["taxon", "Brachycephalus rotenbergae é anfíbio ou réptil?"],
   ["taxon", "Boana beckeri pertence a qual família?"],
+  ["species-literature", "Fale sobre Proceratophrys itamari."],
+  ["species-literature", "O que você sabe sobre Aplastodiscus arildae?"],
+  ["species-literature", "Fale sobre Brachycephalus rotenbergae."],
+  ["species-literature", "Qual a ecologia de Boana beckeri?"],
+  ["species-literature", "O que sabe sobre Mussurana montana?"],
+  ["species-literature", "Fale sobre aplastodiscus arildae."],
   ["taxonomy", "Bothrops jararaca pertence à família Hylidae?"],
   ["taxonomy", "Rhinella icterica é uma serpente?"],
   ["method", "O que é busca ativa em inventário de anuros?"],
@@ -118,6 +124,16 @@ function inspectAnswer(question, answer, parsed) {
   if (/problema ao montar a resposta completa/.test(text)) issues.push("validator_generic_fallback");
   if (/^tem la/.test(normalize(question)) && /nao tenho contexto/.test(text)) issues.push("lost_context_reference");
   if (/nao apareceu registro/.test(text) && !/nao significa ausencia/.test(text)) issues.push("absence_without_caveat");
+  if (
+    parsed?.conversationTaxon?.rank === "species" &&
+    !parsed?.municipalities?.length &&
+    /municipio valido|preciso do municipio|informe.*municipio|diga.*municipio/.test(text)
+  ) issues.push("species_knowledge_wrongly_asked_municipality");
+  if (
+    parsed?.conversationTaxon?.rank === "species" &&
+    /fale sobre|o que voce sabe|qual a ecologia|o que sabe/.test(normalize(question)) &&
+    !/material cientifico|referencias recuperadas|biblioteca|artigo|evidencia/.test(text)
+  ) issues.push("species_literature_not_used");
   return issues;
 }
 
@@ -203,7 +219,9 @@ async function main() {
     orchestratorDiagnostics,
     rows,
   };
-  process.stdout.write(`${JSON.stringify(report, null, 2)}\n`);
+  const serialized = `${JSON.stringify(report, null, 2)}\n`;
+  await fs.writeFile(path.join(root, "tests", "gold-audit-report.json"), serialized, "utf8");
+  process.stdout.write(serialized);
 }
 
 main().catch((error) => {

@@ -146,12 +146,14 @@
     function decideSources(classification, question = "") {
       const sources = ["curated", "glossary", "herpetology"];
       const q = normalize(question);
+      const isSpecificTaxon = classification?.taxon?.rank === "species" || /\b[a-z]{3,}\s+[a-z]{3,}\b/.test(q);
       const methodologyConcept =
         /\b(voucher|darwin core|specieslink|inaturalist|inventario|busca ativa|pitfall|esforco amostral|vies amostral|curva de acumulacao|ciencia cidada)\b/.test(q);
       if ([core?.DATA_SCOPES?.TAXONOMY_INDEX, "taxonomy_index"].includes(classification.dataScope)) sources.push("taxonomy_index");
       if (classification.dataScope === "literature_rag" || classification.intent === "general_scientific_question") sources.push("master", "chunks", "public_index", "pdf", "neural");
       if (classification.intent === "methodology_question" || methodologyConcept) sources.push("methodology", "master", "chunks", "public_index", "pdf");
       if (classification.intent === "popular_name_question" || classification.intent === "general_taxon_question") sources.push("herpetology", "taxonomy_index", "public_index", "pdf");
+      if (isSpecificTaxon) sources.push("taxonomy_index", "master", "chunks", "public_index", "pdf", "neural");
       if (classification.intent === "safety_question" || classification.dataScope === "safety") sources.push("herpetology", "master", "chunks", "public_index", "pdf");
       return [...new Set(sources)];
     }
