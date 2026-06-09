@@ -391,6 +391,7 @@
       if (orchestrator?.answerQuestion) {
         const lightClassification = initialClassification;
         const canUseNonMunicipalOrchestrator = [
+          core.CONVERSATION_INTENTS.GREETING,
           core.CONVERSATION_INTENTS.SAFETY_QUESTION,
           core.CONVERSATION_INTENTS.POPULAR_NAME_QUESTION,
           core.CONVERSATION_INTENTS.GENERAL_TAXON_QUESTION,

@@ -46,6 +46,10 @@ fromRoot("js/gold-scientific-orchestrator.js");
 const brainModule = fromRoot("js/herpeto-chat-brain.js");
 
 const cases = [
+  ["conversation", "voce ta funcionando?"],
+  ["popular-taxon", "me fale de cascaveis"],
+  ["popular-taxon", "o que são cascavéis?"],
+  ["taxon", "me fale de Crotalus durissus"],
   ["general", "O que são anfíbios?"],
   ["general", "Qual a diferença entre sapo, rã e perereca?"],
   ["general", "O que é herpetologia?"],
@@ -124,6 +128,8 @@ function inspectAnswer(question, answer, parsed) {
   if (/problema ao montar a resposta completa/.test(text)) issues.push("validator_generic_fallback");
   if (/^tem la/.test(normalize(question)) && /nao tenho contexto/.test(text)) issues.push("lost_context_reference");
   if (/nao apareceu registro/.test(text) && !/nao significa ausencia/.test(text)) issues.push("absence_without_caveat");
+  if (/funcionando/.test(normalize(question)) && !/estou funcionando|posso conversar|pode perguntar/.test(text)) issues.push("status_question_not_answered");
+  if (/cascave/.test(normalize(question)) && !/cascavel|crotalus|serpente/.test(text)) issues.push("popular_taxon_not_recognized");
   if (
     parsed?.conversationTaxon?.rank === "species" &&
     !parsed?.municipalities?.length &&

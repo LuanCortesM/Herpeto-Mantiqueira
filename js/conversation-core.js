@@ -58,7 +58,7 @@
     viperideos: "Viperidae",
     bufonideos: "Bufonidae",
   };
-  const KNOWN_TAXA = ["Bothrops", "Rhinella", "Viperidae", "Bufonidae"];
+  const KNOWN_TAXA = ["Bothrops", "Crotalus", "Rhinella", "Viperidae", "Bufonidae"];
 
   const SLANG_MAP = {
     q: "que", qq: "que", oq: "o que", oque: "o que", vc: "você", vcs: "vocês",
@@ -298,7 +298,8 @@
     add(/\b(girino|girinos)\b/, "Amphibia", "girinos");
     add(/\b(reptil|repteis)\b/, "Reptilia", "répteis");
     add(/\bbothrops\b/, "Reptilia", "Bothrops", "serpentes");
-    add(/\b(cobra|cobras|serpente|serpentes|jararaca|jararacas|peconhenta|venenosa)\b/, "Reptilia", /\b(cobra|cobras)\b/.test(q) ? "cobras" : "serpentes", "serpentes");
+    add(/\bcrotalus\b|\bcascavel|cascaveis\b/, "Reptilia", "cascavéis", "serpentes");
+    add(/\b(cobra|cobras|serpente|serpentes|jararaca|jararacas|cascavel|cascaveis|peconhenta|venenosa)\b/, "Reptilia", /\b(cobra|cobras)\b/.test(q) ? "cobras" : "serpentes", "serpentes");
     add(/\b(lagarto|lagartos|teiu|teius)\b/, "Reptilia", "lagartos", "lagartos");
     add(/\b(quelonio|quelonios|tartaruga|tartarugas)\b/, "Reptilia", "quelônios", "quelônios");
     if (/\b(herpetofauna|fauna herpetologica|anfibios e repteis|repteis e anfibios|sapos e cobras|bicho|bichos|animal|animais)\b/.test(q)) {
@@ -409,6 +410,7 @@
     const known = KNOWN_TAXA.find((taxon) => new RegExp(`\\b${normalizeText(taxon)}\\b`, "i").test(q));
     if (known) return { raw: known, normalized: known, rank: known.endsWith("idae") ? "family" : "genus" };
     if (/\bjararacas?\b/.test(q)) return { raw: "jararaca", normalized: "jararaca", rank: "popular_name" };
+    if (/\bcascavel|cascaveis\b/.test(q)) return { raw: "cascavel", normalized: "Crotalus", rank: "popular_name" };
     if (/\bsapos?\b/.test(q)) return { raw: "sapo", normalized: "sapo", rank: "popular_name" };
     if (/\banura\b/.test(q)) return { raw: "Anura", normalized: "Anura", rank: "order" };
     if (/\bherpetofauna\b/.test(q)) return { raw: "herpetofauna", normalized: "herpetofauna", rank: "class" };
@@ -440,7 +442,8 @@
     const scope = detectConversationScope(q, municipalities);
     const taxon = detectConversationTaxon(typo.correctedText);
     const complaint = /\b(so sabe falar isso|voce so sabe falar isso|burro|idiota|inutil|para de perguntar|para de pedir municipio|ja falei|de novo isso|nao quero municipio|voce esta quebrado|esta quebrado|travou|bugado|nao foi isso|nao era isso|responde direito|eu falei geral|voce nao entendeu|nao entendeu)\b/.test(q);
-    const greeting = /^(oi|ola|bom dia|boa tarde|boa noite|e ai|opa|hey|hello)[!.? ]*$/.test(q);
+    const greeting = /^(oi|ola|bom dia|boa tarde|boa noite|e ai|opa|hey|hello)[!.? ]*$/.test(q) ||
+      /\b(voce|vc)\s+(ta|esta)\s+(funcionando|online|bem)\b|\besta funcionando\b/.test(q);
     const safety = /\b(picada|mordida|acidente|veneno|peconhent|torniquete|primeiros socorros|seguranca|posso pegar|pegar uma|capturar|manusear|matar|cobra no quintal|achei uma cobra|encontrei uma cobra|orientar criancas|orientar criancas sobre serpentes|sem criar panico|criancas.*serpentes|crianças.*serpentes)\b/.test(q);
     const methodology = /\b(inventario|levantamento|metodolog|metodologias|amostragem|pitfall|busca ativa|esforco amostral|artigo|vies|curva de acumulacao|ficha de campo|dados minimos|observacao cientifica|procura visual|encontros ocasionais|gravacao acustica)\b/.test(q);
     const conservationQuestion = /\b(conservacao|preservacao|projetos?|acoes?|restauracao|corredores?|proteger|ajudar|manejo|educacao ambiental)\b/.test(q);

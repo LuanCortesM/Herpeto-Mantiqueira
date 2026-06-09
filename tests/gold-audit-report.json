@@ -1,11 +1,12 @@
 {
-  "generatedAt": "2026-06-09T23:51:58.982Z",
-  "totalQuestions": 57,
+  "generatedAt": "2026-06-09T23:58:02.994Z",
+  "totalQuestions": 61,
   "answersWithIssues": 0,
   "issueCounts": {},
   "classificationCounts": {
-    "general_taxon_question": 24,
-    "popular_name_question": 2,
+    "greeting": 1,
+    "popular_name_question": 4,
+    "general_taxon_question": 25,
     "general_scientific_question": 2,
     "unknown": 6,
     "methodology_question": 3,
@@ -336,6 +337,54 @@
     }
   ],
   "rows": [
+    {
+      "category": "conversation",
+      "question": "voce ta funcionando?",
+      "classification": "greeting",
+      "scope": "unknown",
+      "routeIntent": "UNKNOWN",
+      "municipalities": [],
+      "taxon": null,
+      "issues": [],
+      "answer": "Estou funcionando. Posso conversar sobre animais, herpetologia, ecologia, taxonomia, artigos da biblioteca científica, segurança em campo e registros dos municípios do Vale Histórico.",
+      "error": null
+    },
+    {
+      "category": "popular-taxon",
+      "question": "me fale de cascaveis",
+      "classification": "popular_name_question",
+      "scope": "general",
+      "routeIntent": "UNKNOWN",
+      "municipalities": [],
+      "taxon": "Crotalus",
+      "issues": [],
+      "answer": "Cascavel é um nome popular associado principalmente a serpentes do gênero Crotalus. No Brasil, Crotalus durissus é uma referência importante, mas o nome popular não deve ser convertido automaticamente em uma identificação fechada sem localidade e características diagnósticas. Cascavéis são serpentes peçonhentas e predadoras, com papel ecológico no controle de pequenos vertebrados. A biblioteca científica local contém materiais sobre Crotalus durissus, distribuição, história natural e acidentes o",
+      "error": null
+    },
+    {
+      "category": "popular-taxon",
+      "question": "o que são cascavéis?",
+      "classification": "popular_name_question",
+      "scope": "general",
+      "routeIntent": "UNKNOWN",
+      "municipalities": [],
+      "taxon": "Crotalus",
+      "issues": [],
+      "answer": "Cascavel é um nome popular associado principalmente a serpentes do gênero Crotalus. No Brasil, Crotalus durissus é uma referência importante, mas o nome popular não deve ser convertido automaticamente em uma identificação fechada sem localidade e características diagnósticas. Cascavéis são serpentes peçonhentas e predadoras, com papel ecológico no controle de pequenos vertebrados. A biblioteca científica local contém materiais sobre Crotalus durissus, distribuição, história natural e acidentes o",
+      "error": null
+    },
+    {
+      "category": "taxon",
+      "question": "me fale de Crotalus durissus",
+      "classification": "general_taxon_question",
+      "scope": "general",
+      "routeIntent": "SEARCH_SPECIES",
+      "municipalities": [],
+      "taxon": "Crotalus durissus",
+      "issues": [],
+      "answer": "Encontrei material científico local que menciona especificamente Crotalus durissus. 1. Liver dysfunction in patients bitten by Crotalus durissus terrificus (Laurenti, 1768) snakes in Botucatu (State of São Paulo, Brazil): Crotalus durissus terrificus. Houve correlação positiva entre a 10. BARRAVIERA, B.; BONJORNO Ir., J.C; ARAKAKI, D. et al. - A ~ , oe no retrospective study of 40 victims of Crotalus snake bites. Analysis of retenção da bromosulfaleina e os níveis séricos de the hepatic necrosis",
+      "error": null
+    },
     {
       "category": "general",
       "question": "O que são anfíbios?",

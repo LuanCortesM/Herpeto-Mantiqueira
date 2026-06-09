@@ -285,7 +285,14 @@
       const plan = planQuestion(question);
 
       if (plan.route === "greeting") {
-        return { handled: true, answer: "Oi! Pode perguntar sobre herpetologia, ecologia, taxonomia, metodologia, seguranca em campo ou registros dos municipios do Vale Historico.", plan };
+        const statusQuestion = /\b(funcionando|online|esta bem|ta bem)\b/i.test(core.normalizeText(question));
+        return {
+          handled: true,
+          answer: statusQuestion
+            ? "Estou funcionando. Posso conversar sobre animais, herpetologia, ecologia, taxonomia, artigos da biblioteca científica, segurança em campo e registros dos municípios do Vale Histórico."
+            : "Oi! Pode perguntar sobre herpetologia, ecologia, taxonomia, metodologia, seguranca em campo ou registros dos municipios do Vale Historico.",
+          plan,
+        };
       }
 
       if (plan.route === "complaint") {
