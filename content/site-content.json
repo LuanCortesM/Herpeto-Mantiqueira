@@ -1,0 +1,41 @@
+{
+  "version": 1,
+  "updatedAt": "2026-06-10T01:12:54.705Z",
+  "updatedBy": "luancortesbio@gmail.com",
+  "site": {
+    "title": "HerpetoMantiqueira",
+    "subtitle": "Biodiversidade & Conservacao"
+  },
+  "pages": {
+    "index.html": {
+      "title": "HerpetoMantiqueira",
+      "patches": []
+    },
+    "sobre-gold.html": {
+      "title": "Sobre o Gold",
+      "patches": []
+    },
+    "oikos-fieldbook.html": {
+      "title": "Oikos FieldBook",
+      "patches": []
+    },
+    "sigmai.html": {
+      "title": "SIGMAI",
+      "patches": []
+    },
+    "topotrail.html": {
+      "title": "TopoTrail",
+      "patches": []
+    },
+    "herpetofauna-cruzeiro.html": {
+      "title": "Herpetofauna de Cruzeiro",
+      "patches": []
+    }
+  },
+  "notes": [
+    "Use patches para editar textos sem alterar HTML.",
+    "Exemplo: { \"selector\": \".home-hero h1\", \"text\": \"Novo titulo\" }",
+    "Para esconder um bloco: { \"selector\": \".classe-do-bloco\", \"visible\": false }",
+    "Para trocar imagem: { \"selector\": \"img.logo\", \"attr\": { \"src\": \"Assets/nova-logo.png\" } }"
+  ]
+}

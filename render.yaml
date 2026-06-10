@@ -1,0 +1,23 @@
+services:
+  - type: web
+    name: herpeto-mantiqueira
+    runtime: node
+    plan: free
+    buildCommand: npm install
+    startCommand: npm start
+    healthCheckPath: /api/biodiversity/local/health
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: GOLD_NEXT_LEVEL_RAG
+        value: "false"
+      - key: HERPETO_ALLOWED_ORIGIN
+        sync: false
+      - key: HERPETO_ADMIN_EMAIL
+        sync: false
+      - key: HERPETO_ADMIN_PASSWORD_HASH
+        sync: false
+      - key: SPECIESLINK_API_KEY
+        sync: false
+      - key: IUCN_API_KEY
+        sync: false

@@ -5,14 +5,7 @@
   const municipalitiesDefault =
     global.HerpetoMunicipalities ||
     (typeof require === "function" ? require("./municipalities.js") : null);
-  let storeDefault = null;
-  if (typeof require === "function") {
-    try {
-      storeDefault = require("./backend-biodiversity-store.js");
-    } catch (error) {
-      if (error?.code !== "MODULE_NOT_FOUND") throw error;
-    }
-  }
+  const storeDefault = typeof require === "function" ? require("./backend-biodiversity-store.js") : null;
 
   function removeAccents(value) {
     return String(value || "").normalize("NFD").replace(/[\u0300-\u036f]/g, "");
@@ -25,12 +18,6 @@
       source === "iNaturalist" || source === "inaturalist" ? "inat" : source.toLowerCase()
     );
   }
-  const SNAKE_FAMILIES = /\b(viperidae|dipsadidae|elapidae|colubridae|boidae|aniliidae|typhlopidae|leptotyphlopidae)\b/;
-  const LIZARD_FAMILIES = /\b(leiosauridae|teiidae|tropiduridae|gymnophthalmidae|gekkonidae|phyllodactylidae|scincidae|polychrotidae|dactyloidae|iguanaidae|angui?dae)\b/;
-  const TURTLE_FAMILIES = /\b(chelidae|testudinidae|emydidae|kinosternidae|chelydridae)\b/;
-  const SNAKE_GENERA = /\b(bothrops|chironius|crotalus|dipsas|dryophylax|erythrolamprus|micrurus|mussurana|philodryas|spilotes|xenodon|apostolepis|liotyphlops|oxyrhopus|sibynomorphus|taeniophallus|tomodon)\b/;
-  const LIZARD_GENERA = /\b(enyalius|tropidurus|salvator|tupinambis|ameiva|cnemidophorus|ecpleopus|heterodactylus|placosoma|anolis|hemidactylus)\b/;
-  const TURTLE_GENERA = /\b(hydromedusa|chelonoidis|mesoclemmys|phrynops|trachemys|kinosternon)\b/;
 
   function createMunicipalBiodiversityEngine(dependencies = {}) {
     const manager = dependencies.manager || managerDefault;
@@ -75,19 +62,14 @@
       const group = normalize(input.group);
       return (records || []).filter((record) => {
         const scientific = normalize(record.nome_cientifico);
-        const family = normalize(record.specieslink?.familia);
-        const order = normalize(record.specieslink?.ordem);
-        const taxonomicText = `${scientific} ${family} ${order}`;
         if (taxon && !scientific.includes(taxon)) return false;
-        if (input.includeVouchers && !record.specieslink?.registros_material_preservado) return false;
-        if (input.includeCoordinates && !record.specieslink?.registros_com_coordenada) return false;
         if (!group) return true;
         if (group === "anfibios") return record.grupo === "Amphibia";
         if (group === "repteis") return record.grupo === "Reptilia";
         if (group === "sapos") return record.grupo === "Amphibia";
-        if (group === "serpentes") return record.grupo === "Reptilia" && (SNAKE_FAMILIES.test(taxonomicText) || SNAKE_GENERA.test(scientific));
-        if (group === "lagartos") return record.grupo === "Reptilia" && (LIZARD_FAMILIES.test(taxonomicText) || LIZARD_GENERA.test(scientific));
-        if (group === "quelonios") return record.grupo === "Reptilia" && (order === "testudines" || TURTLE_FAMILIES.test(taxonomicText) || TURTLE_GENERA.test(scientific));
+        if (group === "serpentes") return record.grupo === "Reptilia" && /bothrops|serp|cobra|viper/i.test(`${scientific} ${record.specieslink?.familia || ""}`);
+        if (group === "lagartos") return record.grupo === "Reptilia";
+        if (group === "quelonios") return record.grupo === "Reptilia";
         return true;
       });
     }
@@ -132,7 +114,6 @@
         current.presente_specieslink = true;
         current.specieslink = {
           familia: current.specieslink?.familia || patch.specieslink.familia || null,
-          ordem: current.specieslink?.ordem || patch.specieslink.ordem || null,
           total_registros: Number(current.specieslink?.total_registros || 0) + Number(patch.specieslink.total_registros || 0),
           registros_material_preservado: Boolean(current.specieslink?.registros_material_preservado || patch.specieslink.registros_material_preservado),
           registros_com_coordenada: Boolean(current.specieslink?.registros_com_coordenada || patch.specieslink.registros_com_coordenada),
@@ -158,22 +139,13 @@
         .filter((snapshot) => snapshot.municipalityId === municipality.id || String(snapshot.key || "").startsWith(`${municipality.id}:`));
       for (const snapshot of speciesLinkSnapshots) {
         for (const record of snapshot.payload?.records || []) {
-          const county = normalize(record.county);
-          const expectedCounty = normalize(municipality.name).replace(/[-\s]+sp$/, "");
-          if (county && county !== expectedCounty) continue;
-          const latitude = Number(record.decimalLatitude);
-          const longitude = Number(record.decimalLongitude);
-          const hasUsableCoordinates = Number.isFinite(latitude) && Number.isFinite(longitude) &&
-            latitude !== 0 && longitude !== 0 &&
-            latitude >= -90 && latitude <= 90 && longitude >= -180 && longitude <= 180;
           mergeCacheRecord(map, record.scientificName, {
             grupo: record.className || snapshot.taxonClass || null,
             specieslink: {
               familia: record.family || null,
-              ordem: record.order || null,
               total_registros: 1,
               registros_material_preservado: /preservedspecimen|specimen|occurrence/i.test(String(record.basisOfRecord || "")),
-              registros_com_coordenada: hasUsableCoordinates,
+              registros_com_coordenada: Boolean(record.hasCoordinates || record.decimalLatitude || record.decimalLongitude),
             },
           });
         }
@@ -212,7 +184,7 @@
         };
       }
       const cacheRecords = cache.empty ? [] : await recordsFromCache(municipality);
-      if (cacheRecords.length) {
+      if ((!comparison.combined || !comparison.combined.length) && cacheRecords.length) {
         comparison = {
           ...comparison,
           combined: cacheRecords,

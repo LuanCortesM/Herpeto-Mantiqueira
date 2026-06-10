@@ -1,17 +1,6 @@
 (function (global) {
   const COMPLEX_GUIDES = [
     {
-      id: "comparacao_inaturalist_specieslink",
-      match: /\b(diferenca|compare|comparar)\b.*\b(inaturalist)\b.*\b(specieslink)\b|\b(diferenca|compare|comparar)\b.*\b(specieslink)\b.*\b(inaturalist)\b/,
-      title: "Comparacao entre iNaturalist e speciesLink",
-      answer: [
-        "iNaturalist e speciesLink documentam biodiversidade de formas diferentes e complementares.",
-        "O iNaturalist concentra observacoes de ciencia cidada, geralmente com data, foto, localidade e identificacao comunitaria. Ele e util para registros recentes e evidencia visual, mas observacao nao equivale a voucher nem a inventario completo.",
-        "O speciesLink integra dados de colecoes e outras bases biologicas. Ele e especialmente util para material preservado, vouchers e historico de coleta, mas pode conter nomes antigos, localidades amplas, coordenadas imprecisas ou registros que exigem revisao.",
-        "Ao combinar as fontes, mantenha separadas observacao, voucher, data, qualidade espacial e status taxonomico. Ausencia em qualquer uma delas nao prova ausencia da especie na natureza.",
-      ],
-    },
-    {
       id: "inventario_anuros_guia",
       match: /\b(inventario|levantamento|metodologia|metodologias|comecar|começar)\b.*\b(anuro|anuros|anfibio|anfibios|sapo|sapos|ra|ras|perereca|pererecas)\b|\b(anuro|anuros|anfibio|anfibios|sapo|sapos|ra|ras|perereca|pererecas)\b.*\b(inventario|levantamento|metodologia|metodologias|comecar|começar)\b/,
       title: "Guia inicial para inventario de anuros",

@@ -263,7 +263,7 @@
 
     function generateSafetyAnswer(parsed) {
       const text = core.normalizeText(parsed.rawText);
-      if (/\bpic|mordid|acidente\b/.test(text)) {
+      if (/\bpicad|mordid|acidente\b/.test(text)) {
         return [
           "Se houve picada ou suspeita de acidente com serpente, procure atendimento médico imediatamente.",
           "Não faça torniquete, não corte, não fure, não sugue e não aplique substâncias no local. Se for seguro, registre foto à distância para ajudar na identificação, mas não tente capturar o animal.",
@@ -379,25 +379,12 @@
     }
 
     async function receiveUserQuestion(question) {
-      const initialClassification = core.classifyConversationIntent(question);
-      const asksUnsupportedLocality =
-        !initialClassification.municipalities?.length &&
-        ![core.SCOPES.BRAZIL, core.SCOPES.MATA_ATLANTICA, core.SCOPES.SERRA_DA_MANTIQUEIRA, core.SCOPES.VALE_HISTORICO].includes(initialClassification.scope) &&
-        /\b(quais|qual|tem|ha|existem|ocorre|ocorrem|registrad\w*|observad\w*)\b/i.test(question) &&
-        /\b(?:em|no|na)\s+[A-ZÁÉÍÓÚÂÊÔÃÕÇ][\p{L}-]+(?:\s+[A-ZÁÉÍÓÚÂÊÔÃÕÇ][\p{L}-]+)*/u.test(question);
-      if (asksUnsupportedLocality) {
-        return `A consulta estruturada local do Gold cobre apenas ${SUPPORTED_MUNICIPALITIES}. Para a localidade citada, posso explicar o grupo de forma geral, mas não devo apresentar uma lista de ocorrência sem uma fonte adequada para esse recorte.`;
-      }
       if (orchestrator?.answerQuestion) {
-        const lightClassification = initialClassification;
+        const lightClassification = core.classifyConversationIntent(question);
         const canUseNonMunicipalOrchestrator = [
-          core.CONVERSATION_INTENTS.GREETING,
           core.CONVERSATION_INTENTS.SAFETY_QUESTION,
           core.CONVERSATION_INTENTS.POPULAR_NAME_QUESTION,
           core.CONVERSATION_INTENTS.GENERAL_TAXON_QUESTION,
-          core.CONVERSATION_INTENTS.GENERAL_SCIENTIFIC_QUESTION,
-          core.CONVERSATION_INTENTS.REGIONAL_CONTEXT_QUESTION,
-          core.CONVERSATION_INTENTS.METHODOLOGY_QUESTION,
           core.CONVERSATION_INTENTS.COMPLAINT,
         ].includes(lightClassification.intent);
         const normalizedQuestion = core.normalizeText(question);
@@ -408,16 +395,12 @@
           !explicitSpecies &&
           !lightClassification.taxon?.normalized &&
           /^(tem|ha|existe|existem|e|agora|quais|qual)\b/.test(normalizedQuestion);
-        const canUseReferencedMunicipalityOrchestrator =
-          Boolean(conversationState.lastTaxon) &&
-          Boolean(conversationState.lastReferencedMunicipalities?.length) &&
-          core.hasContextualReference(normalizedQuestion) &&
-          /^(tem|ha|existe|existem|e|agora|quais|qual)\b/.test(normalizedQuestion);
         const canUseExplicitMunicipalOrchestrator =
           lightClassification.intent === core.CONVERSATION_INTENTS.MUNICIPAL_OCCURRENCE_QUERY &&
           Boolean(lightClassification.municipalities?.length) &&
+          !explicitSpecies &&
           !dependencies.manager;
-        const canUseOrchestrator = canUseNonMunicipalOrchestrator || canUseContextualMunicipalOrchestrator || canUseReferencedMunicipalityOrchestrator || canUseExplicitMunicipalOrchestrator;
+        const canUseOrchestrator = canUseNonMunicipalOrchestrator || canUseContextualMunicipalOrchestrator || canUseExplicitMunicipalOrchestrator;
         let orchestrated = null;
         if (canUseOrchestrator) {
           try {
@@ -440,13 +423,8 @@
         conversationState.clearRoutingContext();
         return `${ux.frustration} Posso responder de forma geral sobre o grupo citado ou consultar registros se você indicar uma cidade.`;
       }
-      if (/^(sem municipio|sem cidade|geral|de forma geral|no geral|nao geral|nao quero municipio|eu falei geral)\b/.test(core.normalizeText(question))) {
-        const previousTaxon = conversationState.lastTaxon;
+      if (/^(sem municipio|sem cidade|geral|de forma geral|no geral|nao geral|nao quero municipio|eu falei geral)$/.test(core.normalizeText(question))) {
         conversationState.clearRoutingContext();
-        if (previousTaxon) {
-          const general = await herpetology?.answerQuestion?.(previousTaxon, {});
-          if (general?.answer) return `${ux.exitMunicipalContext} ${general.answer}`;
-        }
         return `${ux.exitMunicipalContext} Diga qual espécie, gênero ou tema você quer explorar.`;
       }
       const parsed = parseQuestion(question, conversationState, classification);

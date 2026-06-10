@@ -58,7 +58,7 @@
     viperideos: "Viperidae",
     bufonideos: "Bufonidae",
   };
-  const KNOWN_TAXA = ["Bothrops", "Crotalus", "Rhinella", "Viperidae", "Bufonidae"];
+  const KNOWN_TAXA = ["Bothrops", "Rhinella", "Viperidae", "Bufonidae"];
 
   const SLANG_MAP = {
     q: "que", qq: "que", oq: "o que", oque: "o que", vc: "você", vcs: "vocês",
@@ -88,7 +88,6 @@
     "interprete", "analise", "discuta", "tenho", "duvida", "defina", "diferenca",
     "quero", "existe", "existem", "mostre", "mostrar", "mande", "pode", "por",
     "onde", "quando", "porque", "seria", "faca", "sobre", "agora",
-    "toda", "todo", "me", "sem", "invente", "diga", "confirme", "ensine",
     "mata", "vale", "serra", "brasil", "municipio", "cidade", "cientifico",
     "cientifica", "biblioteca", "metodo", "metodos", "familia", "genero",
   ]);
@@ -268,9 +267,6 @@
     if (context?.lastMunicipalities?.length && (isFollowUp(text) || hasContextualReference(correctedText))) {
       return { municipalities: context.lastMunicipalities, warnings: [], unresolved: [], usesContext: true, contextFieldsUsed: ["municipalities"], confidence: 0.92 };
     }
-    if (context?.lastReferencedMunicipalities?.length && hasContextualReference(correctedText)) {
-      return { municipalities: context.lastReferencedMunicipalities, warnings: [], unresolved: [], usesContext: true, contextFieldsUsed: ["municipalities"], confidence: 0.86 };
-    }
     if (/\b(todos|todas|regiao|vale historico|municipios)\b/.test(correctedText)) {
       return { municipalities: municipalityConfig.getUniqueMunicipalities(), warnings: [], unresolved: [], usesContext: false, contextFieldsUsed: [], confidence: 1 };
     }
@@ -298,8 +294,7 @@
     add(/\b(girino|girinos)\b/, "Amphibia", "girinos");
     add(/\b(reptil|repteis)\b/, "Reptilia", "répteis");
     add(/\bbothrops\b/, "Reptilia", "Bothrops", "serpentes");
-    add(/\bcrotalus\b|\bcascavel|cascaveis\b/, "Reptilia", "cascavéis", "serpentes");
-    add(/\b(cobra|cobras|serpente|serpentes|jararaca|jararacas|cascavel|cascaveis|peconhenta|venenosa)\b/, "Reptilia", /\b(cobra|cobras)\b/.test(q) ? "cobras" : "serpentes", "serpentes");
+    add(/\b(cobra|cobras|serpente|serpentes|jararaca|jararacas|peconhenta|venenosa)\b/, "Reptilia", /\b(cobra|cobras)\b/.test(q) ? "cobras" : "serpentes", "serpentes");
     add(/\b(lagarto|lagartos|teiu|teius)\b/, "Reptilia", "lagartos", "lagartos");
     add(/\b(quelonio|quelonios|tartaruga|tartarugas)\b/, "Reptilia", "quelônios", "quelônios");
     if (/\b(herpetofauna|fauna herpetologica|anfibios e repteis|repteis e anfibios|sapos e cobras|bicho|bichos|animal|animais)\b/.test(q)) {
@@ -347,22 +342,6 @@
       }
       return { speciesQuery: candidate, possibleSpeciesQuery: null, commonNameQuery: null, rejectedSpeciesCandidates };
     }
-    const explicitLowercase = normalizeText(raw).match(/\b(?:sobre|do|da|de|especie)\s+([a-z]{3,})\s+([a-z]{3,})\b/);
-    if (explicitLowercase) {
-      const [, genus, epithet] = explicitLowercase;
-      if (
-        !SPECIES_BLACKLIST.has(genus) &&
-        !SPECIES_SECOND_BLACKLIST.has(epithet) &&
-        !PREPOSITIONS.has(epithet)
-      ) {
-        return {
-          speciesQuery: `${genus[0].toUpperCase()}${genus.slice(1)} ${epithet}`,
-          possibleSpeciesQuery: null,
-          commonNameQuery: null,
-          rejectedSpeciesCandidates,
-        };
-      }
-    }
     const q = normalizeText(text);
     const commonNameQuery = /\bjararacas?\b/.test(q) ? "jararaca" : null;
     return { speciesQuery: null, possibleSpeciesQuery: null, commonNameQuery, rejectedSpeciesCandidates };
@@ -401,8 +380,6 @@
   function detectConversationTaxon(text) {
     const corrected = correctTaxonomicTypos(text).correctedText;
     const q = slangAndAbbreviationResolver(corrected);
-    const species = speciesQueryExtractor(corrected).speciesQuery;
-    if (species) return { raw: species, normalized: species, rank: "species" };
     const family = corrected.match(/\b([A-Z][a-z]+idae)\b/)?.[1];
     if (family) return { raw: family, normalized: family, rank: "family" };
     const explicit = corrected.match(/\b(?:g[eê]nero|esp[eé]cies?\s+de)\s+([A-Z][a-z]{2,})\b/i)?.[1];
@@ -410,13 +387,11 @@
     const known = KNOWN_TAXA.find((taxon) => new RegExp(`\\b${normalizeText(taxon)}\\b`, "i").test(q));
     if (known) return { raw: known, normalized: known, rank: known.endsWith("idae") ? "family" : "genus" };
     if (/\bjararacas?\b/.test(q)) return { raw: "jararaca", normalized: "jararaca", rank: "popular_name" };
-    if (/\bcascavel|cascaveis\b/.test(q)) return { raw: "cascavel", normalized: "Crotalus", rank: "popular_name" };
     if (/\bsapos?\b/.test(q)) return { raw: "sapo", normalized: "sapo", rank: "popular_name" };
     if (/\banura\b/.test(q)) return { raw: "Anura", normalized: "Anura", rank: "order" };
     if (/\bherpetofauna\b/.test(q)) return { raw: "herpetofauna", normalized: "herpetofauna", rank: "class" };
-    if (/\b(anfibios?|repteis?|serpentes?|cobras?|lagartos?|quelonios?|anuros?)\b/.test(q)) {
-      const matched = q.match(/\b(anfibios?|repteis?|serpentes?|cobras?|lagartos?|quelonios?|anuros?)\b/)?.[1];
-      const raw = /^cobras?$/.test(matched) ? "serpentes" : matched;
+    if (/\b(anfibios?|repteis?|serpentes?|anuros?)\b/.test(q)) {
+      const raw = q.match(/\b(anfibios?|repteis?|serpentes?|anuros?)\b/)?.[1];
       const rank = /^anuros?$/.test(raw) ? "order" : /^serpentes?$/.test(raw) ? "order" : "class";
       return { raw, normalized: raw, rank };
     }
@@ -442,8 +417,7 @@
     const scope = detectConversationScope(q, municipalities);
     const taxon = detectConversationTaxon(typo.correctedText);
     const complaint = /\b(so sabe falar isso|voce so sabe falar isso|burro|idiota|inutil|para de perguntar|para de pedir municipio|ja falei|de novo isso|nao quero municipio|voce esta quebrado|esta quebrado|travou|bugado|nao foi isso|nao era isso|responde direito|eu falei geral|voce nao entendeu|nao entendeu)\b/.test(q);
-    const greeting = /^(oi|ola|bom dia|boa tarde|boa noite|e ai|opa|hey|hello)[!.? ]*$/.test(q) ||
-      /\b(voce|vc)\s+(ta|esta)\s+(funcionando|online|bem)\b|\besta funcionando\b/.test(q);
+    const greeting = /^(oi|ola|bom dia|boa tarde|boa noite|e ai|opa|hey|hello)[!.? ]*$/.test(q);
     const safety = /\b(picada|mordida|acidente|veneno|peconhent|torniquete|primeiros socorros|seguranca|posso pegar|pegar uma|capturar|manusear|matar|cobra no quintal|achei uma cobra|encontrei uma cobra|orientar criancas|orientar criancas sobre serpentes|sem criar panico|criancas.*serpentes|crianças.*serpentes)\b/.test(q);
     const methodology = /\b(inventario|levantamento|metodolog|metodologias|amostragem|pitfall|busca ativa|esforco amostral|artigo|vies|curva de acumulacao|ficha de campo|dados minimos|observacao cientifica|procura visual|encontros ocasionais|gravacao acustica)\b/.test(q);
     const conservationQuestion = /\b(conservacao|preservacao|projetos?|acoes?|restauracao|corredores?|proteger|ajudar|manejo|educacao ambiental)\b/.test(q);
@@ -467,9 +441,6 @@
     } else if (conservationQuestion || threatQuestion || ecologyQuestion) {
       intent = CONVERSATION_INTENTS.GENERAL_SCIENTIFIC_QUESTION;
     } else if (popularExplanation || taxon.rank === "popular_name") intent = CONVERSATION_INTENTS.POPULAR_NAME_QUESTION;
-    else if (taxon.normalized === "herpetofauna" && [SCOPES.MATA_ATLANTICA, SCOPES.SERRA_DA_MANTIQUEIRA, SCOPES.VALE_HISTORICO].includes(scope)) {
-      intent = CONVERSATION_INTENTS.REGIONAL_CONTEXT_QUESTION;
-    }
     else if (taxon.normalized || /\b(taxonomia|familia|genero|classe|filo|reino|especies?)\b/.test(q)) {
       intent = CONVERSATION_INTENTS.GENERAL_TAXON_QUESTION;
     } else if ([SCOPES.MATA_ATLANTICA, SCOPES.SERRA_DA_MANTIQUEIRA, SCOPES.VALE_HISTORICO].includes(scope)) {
@@ -609,10 +580,7 @@
   class ConversationState {
     constructor() { this.clear(); }
     update(parsed, evidence = null) {
-      if (parsed.municipalities?.length) {
-        this.lastMunicipalities = parsed.municipalities;
-        this.lastReferencedMunicipalities = parsed.municipalities;
-      }
+      if (parsed.municipalities?.length) this.lastMunicipalities = parsed.municipalities;
       if (parsed.taxonomicGroups?.length) this.lastTaxonomicGroups = parsed.taxonomicGroups;
       if (parsed.subgroupTerms?.length) this.lastSubgroupTerms = parsed.subgroupTerms;
       if (parsed.sources?.length) this.lastSources = parsed.sources;
@@ -661,7 +629,7 @@
       this.repeatedClarificationCount = 0;
     }
     clear() {
-      this.lastMunicipalities = []; this.lastReferencedMunicipalities = []; this.lastTaxonomicGroups = []; this.lastSubgroupTerms = [];
+      this.lastMunicipalities = []; this.lastTaxonomicGroups = []; this.lastSubgroupTerms = [];
       this.lastSources = []; this.lastIntent = null; this.lastSpeciesQuery = null;
       this.lastQuestion = null; this.lastEvidenceSummary = null; this.lastSuccessfulSources = [];
       this.lastFailedSources = []; this.turnCount = 0;

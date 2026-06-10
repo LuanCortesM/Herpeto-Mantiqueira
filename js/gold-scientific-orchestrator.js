@@ -55,10 +55,6 @@
     return /\b(cite|cita|citacao|referencia|referencias|fonte|fontes|artigo|literatura|vancouver)\b/i.test(String(question || ""));
   }
 
-  function isSpecificTaxon(plan) {
-    return plan.classification?.taxon?.rank === "species" || Boolean(plan.taxonForQuery && /\s/.test(plan.taxonForQuery));
-  }
-
   function createMunicipalInput(plan, question) {
     const q = coreDefault.normalizeText(question);
     const includeVouchers = /\b(voucher|vouchers|colecao|colecoes|material preservado|tombo|catalogo)\b/.test(q);
@@ -121,7 +117,6 @@
 
     function planQuestion(question) {
       const classification = core.classifyConversationIntent(question);
-      const explicitSpecies = core.speciesQueryExtractor(question).speciesQuery;
       state.prepareForInput(classification);
       const inheritedTaxon = shouldUseLastTaxon(question, classification) ? state.lastTaxon : null;
       let municipalities = classification.municipalities?.length
@@ -129,25 +124,24 @@
         : state.lastMunicipalities?.length && classification.intent === core.CONVERSATION_INTENTS.MUNICIPAL_OCCURRENCE_QUERY
           ? state.lastMunicipalities
           : [];
-      const taxonForQuery = explicitSpecies || classification.taxon?.normalized || inheritedTaxon || null;
+      const taxonForQuery = classification.taxon?.normalized || inheritedTaxon || null;
       const groupForQuery = groupFromClassification(classification, question);
       const sources = state.lastSources || ["iNaturalist", "speciesLink"];
       const q = core.normalizeText(question);
       const contextualMunicipalFollowUp = Boolean(
-        (state.lastMunicipalities?.length || state.lastReferencedMunicipalities?.length) &&
+        state.lastMunicipalities?.length &&
         (core.isFollowUp(q) || core.hasContextualReference(q) || /^(tem|ha|existe|existem|e|agora|quais|qual|vouchers?|coordenadas?)\b/.test(q)) &&
         ![core.CONVERSATION_INTENTS.COMPLAINT, core.CONVERSATION_INTENTS.GENERAL_TAXON_QUESTION, core.CONVERSATION_INTENTS.POPULAR_NAME_QUESTION, core.CONVERSATION_INTENTS.METHODOLOGY_QUESTION, core.CONVERSATION_INTENTS.GENERAL_SCIENTIFIC_QUESTION].includes(classification.intent) &&
         ![core.SCOPES.GENERAL, core.SCOPES.BRAZIL].includes(classification.scope)
       );
-      if (!municipalities.length && contextualMunicipalFollowUp) municipalities = state.lastMunicipalities?.length ? state.lastMunicipalities : state.lastReferencedMunicipalities;
+      if (!municipalities.length && contextualMunicipalFollowUp) municipalities = state.lastMunicipalities;
       const route =
         classification.intent === core.CONVERSATION_INTENTS.GREETING ? "greeting" :
         classification.intent === core.CONVERSATION_INTENTS.COMPLAINT ? "complaint" :
         classification.intent === core.CONVERSATION_INTENTS.SAFETY_QUESTION ? "safety" :
         classification.intent === core.CONVERSATION_INTENTS.METHODOLOGY_QUESTION ? "methodology" :
         classification.intent === core.CONVERSATION_INTENTS.MUNICIPAL_OCCURRENCE_QUERY || contextualMunicipalFollowUp ? "municipal" :
-        [core.SCOPES.MATA_ATLANTICA, core.SCOPES.SERRA_DA_MANTIQUEIRA, core.SCOPES.VALE_HISTORICO].includes(classification.scope) ? "rag" :
-        [core.CONVERSATION_INTENTS.POPULAR_NAME_QUESTION, core.CONVERSATION_INTENTS.GENERAL_TAXON_QUESTION].includes(classification.intent) ? (classification.taxon?.rank === "species" ? "rag" : "taxon") :
+        [core.CONVERSATION_INTENTS.POPULAR_NAME_QUESTION, core.CONVERSATION_INTENTS.GENERAL_TAXON_QUESTION].includes(classification.intent) ? "taxon" :
         [core.CONVERSATION_INTENTS.REGIONAL_CONTEXT_QUESTION, core.CONVERSATION_INTENTS.GENERAL_SCIENTIFIC_QUESTION].includes(classification.intent) ? "rag" :
         "unknown";
 
@@ -200,54 +194,6 @@
       if (!bundle) return null;
       const fallback = rag.explainInsufficientEvidence?.(bundle);
       if (fallback) return { answer: fallback, evidence: bundle.primaryEvidence || [], bundle, source: "rag" };
-      if (isSpecificTaxon(plan)) {
-        const taxon = plan.taxonForQuery || plan.classification.taxon?.normalized;
-        const sourcePriority = {
-          scientific_presentation_index: 6,
-          master: 5,
-          chunk: 4,
-          pdf: 3,
-          taxonomy_index: 2,
-          curated: 1,
-          glossary: 1,
-        };
-        const evidence = (bundle.evidence || []).filter((item) =>
-          core.normalizeText([item.title, item.text, item.sourceId].join(" ")).includes(core.normalizeText(taxon))
-        ).filter((item) => !/\bnao encontrei\b/i.test(core.normalizeText(item.text)))
-          .sort((left, right) => (sourcePriority[right.sourceType] || 0) - (sourcePriority[left.sourceType] || 0) || right.score - left.score);
-        const literatureTypes = new Set(["scientific_presentation_index", "master", "chunk", "pdf", "neural"]);
-        const literatureEvidence = evidence.filter((item) => literatureTypes.has(item.sourceType));
-        const selected = (literatureEvidence.length ? [
-          ...literatureEvidence,
-          ...evidence.filter((item) => !literatureTypes.has(item.sourceType)),
-        ] : evidence).slice(0, 3);
-        const evidenceLines = selected.map((item, index) =>
-          `${index + 1}. ${item.title}: ${compact(item.text, 360)}`
-        );
-        const referenceLines = selected.map((item, index) =>
-          `${index + 1}. ${item.title}${item.page ? `, p. ${item.page}` : ""} (${item.sourceType}).`
-        );
-        const refs = referenceLines.length
-          ? `\n\nReferências recuperadas:\n${referenceLines.join("\n")}`
-          : "";
-        const opening = literatureEvidence.length
-          ? `Encontrei material científico local que menciona especificamente ${taxon}.`
-          : evidence.length
-            ? `Reconheci ${taxon} no contexto taxonômico da biblioteca local, mas não encontrei um trecho de artigo específico e limpo o suficiente para resumir a espécie com segurança.`
-            : `Reconheci o nome ${taxon}, mas não encontrei evidência local específica e limpa o suficiente para descrevê-lo com segurança.`;
-        return {
-          answer: [
-            opening,
-            evidenceLines.join("\n\n"),
-            literatureEvidence.length
-              ? "Esses trechos são evidências recuperadas da biblioteca; devem ser interpretados no contexto dos artigos completos e não confirmam, sozinhos, ocorrência em um município."
-              : "Isso não significa que não existam estudos sobre a espécie; significa apenas que a biblioteca local atual não forneceu um trecho específico adequado para esta resposta.",
-          ].filter(Boolean).join("\n\n") + refs,
-          evidence: selected,
-          bundle,
-          source: "rag",
-        };
-      }
       const best = bundle.primaryEvidence?.[0];
       const body = best?.text ? compact(best.text, plan.classification.intent === core.CONVERSATION_INTENTS.REGIONAL_CONTEXT_QUESTION ? 1100 : 850) : "";
       const refs = wantsReferences(plan.question) && bundle.evidenceReferences?.length
@@ -263,7 +209,7 @@
 
     function answerSafety(plan) {
       const q = core.normalizeText(plan.question);
-      if (/\bpic|mordid|acidente\b/.test(q)) {
+      if (/\bpicad|mordid|acidente\b/.test(q)) {
         return [
           "Se houve picada ou suspeita de acidente com serpente, procure atendimento medico imediatamente.",
           "Nao faca torniquete, nao corte, nao fure, nao sugue e nao aplique substancias no local. Se for seguro, registre foto a distancia para ajudar na identificacao, mas nao tente capturar o animal.",
@@ -285,14 +231,7 @@
       const plan = planQuestion(question);
 
       if (plan.route === "greeting") {
-        const statusQuestion = /\b(funcionando|online|esta bem|ta bem)\b/i.test(core.normalizeText(question));
-        return {
-          handled: true,
-          answer: statusQuestion
-            ? "Estou funcionando. Posso conversar sobre animais, herpetologia, ecologia, taxonomia, artigos da biblioteca científica, segurança em campo e registros dos municípios do Vale Histórico."
-            : "Oi! Pode perguntar sobre herpetologia, ecologia, taxonomia, metodologia, seguranca em campo ou registros dos municipios do Vale Historico.",
-          plan,
-        };
+        return { handled: true, answer: "Oi! Pode perguntar sobre herpetologia, ecologia, taxonomia, metodologia, seguranca em campo ou registros dos municipios do Vale Historico.", plan };
       }
 
       if (plan.route === "complaint") {

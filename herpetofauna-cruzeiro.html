@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Herpetofauna de Cruzeiro | HerpetoMantiqueira</title>
     <meta name="description" content="Album interativo e educativo da herpetofauna de Cruzeiro, com figurinhas, fotografias, textos acessiveis e fichas de especies.">
+    <script src="js/content-loader.js?v=admin-content-20260609" defer></script>
     <style>
       :root {
         --bg: #06110b;
@@ -1175,23 +1176,11 @@
 
     <script>
       const BASE = "assets/herpetofauna";
-      const normalizeFileName = filename => {
-        if (!filename) return filename;
-        const extensionIndex = filename.lastIndexOf('.');
-        const stem = extensionIndex > 0 ? filename.slice(0, extensionIndex) : filename;
-        const extension = extensionIndex > 0 ? filename.slice(extensionIndex) : '';
-        return stem
-          .normalize('NFD')
-          .replace(/\p{Diacritic}/gu, '')
-          .toLowerCase()
-          .replace(/\s+/g, '-')
-          .replace(/[^a-z0-9\-_]/g, '') + extension.toLowerCase();
-      };
       const fileUrl = (folder, file) => {
         const signedFolder = folder === "stickers" || folder === "photos" ? `${folder}-signed` : folder;
-        return `${BASE}/${signedFolder}/${encodeURIComponent(normalizeFileName(file))}`;
+        return `${BASE}/${signedFolder}/${encodeURIComponent(file)}`;
       };
-      const rootUrl = file => `${BASE}/${encodeURIComponent(normalizeFileName(file))}`;
+      const rootUrl = file => `${BASE}/${encodeURIComponent(file)}`;
 
       const species = [
         {

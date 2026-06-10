@@ -1,0 +1,15 @@
+{
+  "name": "herpeto-mantiqueira",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Site HerpetoMantiqueira com backend do Gold, cache de biodiversidade e area administrativa.",
+  "type": "commonjs",
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "start": "node specieslink-proxy.js",
+    "render:check": "node tools/render/check-render-readiness.js",
+    "admin:hash": "node tools/admin/generate-admin-password-hash.js"
+  }
+}
