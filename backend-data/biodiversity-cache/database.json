@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-06-02T23:06:56.550Z",
+  "updatedAt": "2026-06-10T22:04:09.758Z",
   "sources": {
     "inaturalist": {
       "snapshots": {
@@ -52,7 +52,7 @@
                   },
                   "taxon_changes_count": 0,
                   "taxon_schemes_count": 0,
-                  "observations_count": 220,
+                  "observations_count": 223,
                   "flag_counts": {
                     "resolved": 0,
                     "unresolved": 0
@@ -117,7 +117,7 @@
                   },
                   "taxon_changes_count": 1,
                   "taxon_schemes_count": 2,
-                  "observations_count": 2413,
+                  "observations_count": 2422,
                   "flag_counts": {
                     "resolved": 0,
                     "unresolved": 0
@@ -171,7 +171,7 @@
                   },
                   "taxon_changes_count": 0,
                   "taxon_schemes_count": 7,
-                  "observations_count": 3747,
+                  "observations_count": 3756,
                   "flag_counts": {
                     "resolved": 0,
                     "unresolved": 0
@@ -226,7 +226,7 @@
                   },
                   "taxon_changes_count": 0,
                   "taxon_schemes_count": 2,
-                  "observations_count": 556,
+                  "observations_count": 561,
                   "flag_counts": {
                     "resolved": 0,
                     "unresolved": 0
@@ -284,7 +284,7 @@
                   },
                   "taxon_changes_count": 0,
                   "taxon_schemes_count": 2,
-                  "observations_count": 371,
+                  "observations_count": 372,
                   "flag_counts": {
                     "resolved": 0,
                     "unresolved": 0
@@ -338,7 +338,7 @@
                   },
                   "taxon_changes_count": 1,
                   "taxon_schemes_count": 7,
-                  "observations_count": 2962,
+                  "observations_count": 2973,
                   "flag_counts": {
                     "resolved": 0,
                     "unresolved": 0
@@ -392,7 +392,7 @@
                   },
                   "taxon_changes_count": 0,
                   "taxon_schemes_count": 7,
-                  "observations_count": 1759,
+                  "observations_count": 1767,
                   "flag_counts": {
                     "resolved": 0,
                     "unresolved": 1
@@ -552,7 +552,7 @@
                   },
                   "taxon_changes_count": 0,
                   "taxon_schemes_count": 7,
-                  "observations_count": 2872,
+                  "observations_count": 2878,
                   "flag_counts": {
                     "resolved": 0,
                     "unresolved": 0
@@ -662,7 +662,7 @@
                   },
                   "taxon_changes_count": 0,
                   "taxon_schemes_count": 4,
-                  "observations_count": 612,
+                  "observations_count": 615,
                   "flag_counts": {
                     "resolved": 0,
                     "unresolved": 0
@@ -720,7 +720,7 @@
                   },
                   "taxon_changes_count": 0,
                   "taxon_schemes_count": 2,
-                  "observations_count": 638,
+                  "observations_count": 640,
                   "flag_counts": {
                     "resolved": 0,
                     "unresolved": 0
@@ -777,7 +777,7 @@
                   },
                   "taxon_changes_count": 0,
                   "taxon_schemes_count": 4,
-                  "observations_count": 4668,
+                  "observations_count": 4691,
                   "flag_counts": {
                     "resolved": 0,
                     "unresolved": 0
@@ -937,7 +937,7 @@
                   },
                   "taxon_changes_count": 0,
                   "taxon_schemes_count": 7,
-                  "observations_count": 750,
+                  "observations_count": 752,
                   "flag_counts": {
                     "resolved": 0,
                     "unresolved": 0
@@ -991,7 +991,7 @@
                   },
                   "taxon_changes_count": 2,
                   "taxon_schemes_count": 7,
-                  "observations_count": 638,
+                  "observations_count": 644,
                   "flag_counts": {
                     "resolved": 1,
                     "unresolved": 0
@@ -1046,7 +1046,7 @@
                   },
                   "taxon_changes_count": 0,
                   "taxon_schemes_count": 2,
-                  "observations_count": 788,
+                  "observations_count": 794,
                   "flag_counts": {
                     "resolved": 0,
                     "unresolved": 0
@@ -1102,7 +1102,7 @@
                   },
                   "taxon_changes_count": 0,
                   "taxon_schemes_count": 2,
-                  "observations_count": 346,
+                  "observations_count": 348,
                   "flag_counts": {
                     "resolved": 0,
                     "unresolved": 0
@@ -1275,7 +1275,7 @@
                   },
                   "taxon_changes_count": 1,
                   "taxon_schemes_count": 2,
-                  "observations_count": 954,
+                  "observations_count": 958,
                   "flag_counts": {
                     "resolved": 0,
                     "unresolved": 0
@@ -1331,7 +1331,7 @@
                   },
                   "taxon_changes_count": 2,
                   "taxon_schemes_count": 2,
-                  "observations_count": 2212,
+                  "observations_count": 2221,
                   "flag_counts": {
                     "resolved": 0,
                     "unresolved": 0
@@ -1387,7 +1387,7 @@
                   },
                   "taxon_changes_count": 1,
                   "taxon_schemes_count": 1,
-                  "observations_count": 765,
+                  "observations_count": 776,
                   "flag_counts": {
                     "resolved": 0,
                     "unresolved": 0
@@ -1495,7 +1495,7 @@
                   },
                   "taxon_changes_count": 0,
                   "taxon_schemes_count": 0,
-                  "observations_count": 191,
+                  "observations_count": 192,
                   "flag_counts": {
                     "resolved": 1,
                     "unresolved": 0
@@ -1566,7 +1566,7 @@
           },
           "source": "inaturalist",
           "key": "cruzeiro_sp:herpetofauna:verifiable",
-          "updatedAt": "2026-06-01T20:49:18.175Z"
+          "updatedAt": "2026-06-10T21:59:31.133Z"
         },
         "lavrinhas_sp:herpetofauna:verifiable": {
           "municipalityId": "lavrinhas_sp",
@@ -1681,7 +1681,7 @@
                   },
                   "taxon_changes_count": 0,
                   "taxon_schemes_count": 4,
-                  "observations_count": 2145,
+                  "observations_count": 2161,
                   "flag_counts": {
                     "resolved": 1,
                     "unresolved": 0
@@ -1737,7 +1737,7 @@
                   },
                   "taxon_changes_count": 1,
                   "taxon_schemes_count": 1,
-                  "observations_count": 765,
+                  "observations_count": 776,
                   "flag_counts": {
                     "resolved": 0,
                     "unresolved": 0
@@ -1755,7 +1755,7 @@
           },
           "source": "inaturalist",
           "key": "lavrinhas_sp:herpetofauna:verifiable",
-          "updatedAt": "2026-06-01T20:49:20.279Z"
+          "updatedAt": "2026-06-10T21:59:31.592Z"
         },
         "queluz_sp:herpetofauna:verifiable": {
           "municipalityId": "queluz_sp",
@@ -1806,7 +1806,7 @@
                   },
                   "taxon_changes_count": 0,
                   "taxon_schemes_count": 1,
-                  "observations_count": 19112,
+                  "observations_count": 19232,
                   "flag_counts": {
                     "resolved": 2,
                     "unresolved": 0
@@ -1862,7 +1862,7 @@
                   },
                   "taxon_changes_count": 0,
                   "taxon_schemes_count": 5,
-                  "observations_count": 31026,
+                  "observations_count": 31176,
                   "flag_counts": {
                     "resolved": 3,
                     "unresolved": 0
@@ -1929,7 +1929,7 @@
                   },
                   "taxon_changes_count": 1,
                   "taxon_schemes_count": 0,
-                  "observations_count": 559,
+                  "observations_count": 563,
                   "flag_counts": {
                     "resolved": 0,
                     "unresolved": 0
@@ -1982,7 +1982,7 @@
                   },
                   "taxon_changes_count": 0,
                   "taxon_schemes_count": 1,
-                  "observations_count": 2148,
+                  "observations_count": 2153,
                   "flag_counts": {
                     "resolved": 0,
                     "unresolved": 0
@@ -2036,7 +2036,7 @@
                   },
                   "taxon_changes_count": 0,
                   "taxon_schemes_count": 1,
-                  "observations_count": 34114,
+                  "observations_count": 34317,
                   "flag_counts": {
                     "resolved": 0,
                     "unresolved": 0
@@ -2091,7 +2091,7 @@
                   },
                   "taxon_changes_count": 0,
                   "taxon_schemes_count": 1,
-                  "observations_count": 885,
+                  "observations_count": 886,
                   "flag_counts": {
                     "resolved": 0,
                     "unresolved": 0
@@ -2144,7 +2144,7 @@
                   },
                   "taxon_changes_count": 0,
                   "taxon_schemes_count": 7,
-                  "observations_count": 840,
+                  "observations_count": 844,
                   "flag_counts": {
                     "resolved": 0,
                     "unresolved": 0
@@ -2197,7 +2197,7 @@
                   },
                   "taxon_changes_count": 0,
                   "taxon_schemes_count": 7,
-                  "observations_count": 3747,
+                  "observations_count": 3756,
                   "flag_counts": {
                     "resolved": 0,
                     "unresolved": 0
@@ -2305,7 +2305,7 @@
                   },
                   "taxon_changes_count": 0,
                   "taxon_schemes_count": 2,
-                  "observations_count": 788,
+                  "observations_count": 794,
                   "flag_counts": {
                     "resolved": 0,
                     "unresolved": 0
@@ -2361,7 +2361,7 @@
                   },
                   "taxon_changes_count": 1,
                   "taxon_schemes_count": 2,
-                  "observations_count": 411,
+                  "observations_count": 414,
                   "flag_counts": {
                     "resolved": 1,
                     "unresolved": 0
@@ -2379,7 +2379,7 @@
           },
           "source": "inaturalist",
           "key": "queluz_sp:herpetofauna:verifiable",
-          "updatedAt": "2026-06-01T20:49:20.961Z"
+          "updatedAt": "2026-06-10T21:59:32.005Z"
         },
         "silveiras_sp:herpetofauna:verifiable": {
           "municipalityId": "silveiras_sp",
@@ -2430,7 +2430,7 @@
                   },
                   "taxon_changes_count": 0,
                   "taxon_schemes_count": 2,
-                  "observations_count": 556,
+                  "observations_count": 561,
                   "flag_counts": {
                     "resolved": 0,
                     "unresolved": 0
@@ -2484,7 +2484,7 @@
                   },
                   "taxon_changes_count": 1,
                   "taxon_schemes_count": 1,
-                  "observations_count": 2504,
+                  "observations_count": 2511,
                   "flag_counts": {
                     "resolved": 0,
                     "unresolved": 0
@@ -2592,7 +2592,7 @@
                   },
                   "taxon_changes_count": 1,
                   "taxon_schemes_count": 7,
-                  "observations_count": 2962,
+                  "observations_count": 2973,
                   "flag_counts": {
                     "resolved": 0,
                     "unresolved": 0
@@ -2647,7 +2647,7 @@
                   },
                   "taxon_changes_count": 0,
                   "taxon_schemes_count": 2,
-                  "observations_count": 346,
+                  "observations_count": 348,
                   "flag_counts": {
                     "resolved": 0,
                     "unresolved": 0
@@ -2757,7 +2757,7 @@
                   },
                   "taxon_changes_count": 2,
                   "taxon_schemes_count": 2,
-                  "observations_count": 414,
+                  "observations_count": 416,
                   "flag_counts": {
                     "resolved": 0,
                     "unresolved": 0
@@ -2775,7 +2775,7 @@
           },
           "source": "inaturalist",
           "key": "silveiras_sp:herpetofauna:verifiable",
-          "updatedAt": "2026-06-01T20:49:21.754Z"
+          "updatedAt": "2026-06-10T21:59:32.454Z"
         },
         "bananal_sp:herpetofauna:verifiable": {
           "municipalityId": "bananal_sp",
@@ -2827,7 +2827,7 @@
                   },
                   "taxon_changes_count": 0,
                   "taxon_schemes_count": 4,
-                  "observations_count": 4668,
+                  "observations_count": 4691,
                   "flag_counts": {
                     "resolved": 0,
                     "unresolved": 0
@@ -2881,7 +2881,7 @@
                   },
                   "taxon_changes_count": 0,
                   "taxon_schemes_count": 7,
-                  "observations_count": 3747,
+                  "observations_count": 3756,
                   "flag_counts": {
                     "resolved": 0,
                     "unresolved": 0
@@ -3148,7 +3148,7 @@
                   },
                   "taxon_changes_count": 0,
                   "taxon_schemes_count": 5,
-                  "observations_count": 31026,
+                  "observations_count": 31176,
                   "flag_counts": {
                     "resolved": 3,
                     "unresolved": 0
@@ -3268,7 +3268,7 @@
                   },
                   "taxon_changes_count": 0,
                   "taxon_schemes_count": 7,
-                  "observations_count": 840,
+                  "observations_count": 844,
                   "flag_counts": {
                     "resolved": 0,
                     "unresolved": 0
@@ -3504,7 +3504,7 @@
                   },
                   "taxon_changes_count": 2,
                   "taxon_schemes_count": 1,
-                  "observations_count": 122,
+                  "observations_count": 123,
                   "flag_counts": {
                     "resolved": 0,
                     "unresolved": 0
@@ -3718,7 +3718,7 @@
                   },
                   "taxon_changes_count": 0,
                   "taxon_schemes_count": 7,
-                  "observations_count": 1462,
+                  "observations_count": 1465,
                   "flag_counts": {
                     "resolved": 0,
                     "unresolved": 0
@@ -3771,7 +3771,7 @@
                   },
                   "taxon_changes_count": 0,
                   "taxon_schemes_count": 7,
-                  "observations_count": 499,
+                  "observations_count": 500,
                   "flag_counts": {
                     "resolved": 0,
                     "unresolved": 0
@@ -3930,7 +3930,7 @@
                   },
                   "taxon_changes_count": 0,
                   "taxon_schemes_count": 7,
-                  "observations_count": 2872,
+                  "observations_count": 2878,
                   "flag_counts": {
                     "resolved": 0,
                     "unresolved": 0
@@ -3983,7 +3983,7 @@
                   },
                   "taxon_changes_count": 0,
                   "taxon_schemes_count": 7,
-                  "observations_count": 230,
+                  "observations_count": 233,
                   "flag_counts": {
                     "resolved": 0,
                     "unresolved": 0
@@ -4214,7 +4214,7 @@
                   },
                   "taxon_changes_count": 0,
                   "taxon_schemes_count": 1,
-                  "observations_count": 2257,
+                  "observations_count": 2263,
                   "flag_counts": {
                     "resolved": 1,
                     "unresolved": 0
@@ -4374,7 +4374,7 @@
                   },
                   "taxon_changes_count": 0,
                   "taxon_schemes_count": 7,
-                  "observations_count": 1740,
+                  "observations_count": 1744,
                   "flag_counts": {
                     "resolved": 0,
                     "unresolved": 0
@@ -4485,7 +4485,7 @@
                   },
                   "taxon_changes_count": 0,
                   "taxon_schemes_count": 2,
-                  "observations_count": 131,
+                  "observations_count": 130,
                   "flag_counts": {
                     "resolved": 0,
                     "unresolved": 0
@@ -4542,7 +4542,7 @@
                   },
                   "taxon_changes_count": 0,
                   "taxon_schemes_count": 2,
-                  "observations_count": 3116,
+                  "observations_count": 3143,
                   "flag_counts": {
                     "resolved": 0,
                     "unresolved": 0
@@ -4598,7 +4598,7 @@
                   },
                   "taxon_changes_count": 1,
                   "taxon_schemes_count": 2,
-                  "observations_count": 140,
+                  "observations_count": 141,
                   "flag_counts": {
                     "resolved": 1,
                     "unresolved": 0
@@ -4655,7 +4655,7 @@
                   },
                   "taxon_changes_count": 2,
                   "taxon_schemes_count": 2,
-                  "observations_count": 12585,
+                  "observations_count": 12643,
                   "flag_counts": {
                     "resolved": 1,
                     "unresolved": 0
@@ -4763,7 +4763,7 @@
                   },
                   "taxon_changes_count": 1,
                   "taxon_schemes_count": 2,
-                  "observations_count": 2413,
+                  "observations_count": 2422,
                   "flag_counts": {
                     "resolved": 0,
                     "unresolved": 0
@@ -4873,7 +4873,7 @@
                   },
                   "taxon_changes_count": 1,
                   "taxon_schemes_count": 1,
-                  "observations_count": 2504,
+                  "observations_count": 2511,
                   "flag_counts": {
                     "resolved": 0,
                     "unresolved": 0
@@ -4928,7 +4928,7 @@
                   },
                   "taxon_changes_count": 1,
                   "taxon_schemes_count": 0,
-                  "observations_count": 460,
+                  "observations_count": 461,
                   "flag_counts": {
                     "resolved": 0,
                     "unresolved": 0
@@ -4981,7 +4981,7 @@
                   },
                   "taxon_changes_count": 0,
                   "taxon_schemes_count": 0,
-                  "observations_count": 1441,
+                  "observations_count": 1450,
                   "flag_counts": {
                     "resolved": 0,
                     "unresolved": 0
@@ -4998,7 +4998,7 @@
           },
           "source": "inaturalist",
           "key": "bananal_sp:herpetofauna:verifiable",
-          "updatedAt": "2026-06-01T20:49:22.429Z"
+          "updatedAt": "2026-06-10T21:59:32.875Z"
         },
         "areias_sp:herpetofauna:verifiable": {
           "municipalityId": "areias_sp",
@@ -5047,7 +5047,7 @@
                   },
                   "taxon_changes_count": 0,
                   "taxon_schemes_count": 7,
-                  "observations_count": 499,
+                  "observations_count": 500,
                   "flag_counts": {
                     "resolved": 0,
                     "unresolved": 0
@@ -5100,7 +5100,7 @@
                   },
                   "taxon_changes_count": 0,
                   "taxon_schemes_count": 7,
-                  "observations_count": 3747,
+                  "observations_count": 3756,
                   "flag_counts": {
                     "resolved": 0,
                     "unresolved": 0
@@ -5154,7 +5154,7 @@
                   },
                   "taxon_changes_count": 0,
                   "taxon_schemes_count": 7,
-                  "observations_count": 1759,
+                  "observations_count": 1767,
                   "flag_counts": {
                     "resolved": 0,
                     "unresolved": 1
@@ -5208,7 +5208,7 @@
                   },
                   "taxon_changes_count": 0,
                   "taxon_schemes_count": 7,
-                  "observations_count": 534,
+                  "observations_count": 535,
                   "flag_counts": {
                     "resolved": 0,
                     "unresolved": 0
@@ -5262,7 +5262,7 @@
                   },
                   "taxon_changes_count": 0,
                   "taxon_schemes_count": 7,
-                  "observations_count": 1462,
+                  "observations_count": 1465,
                   "flag_counts": {
                     "resolved": 0,
                     "unresolved": 0
@@ -5373,7 +5373,7 @@
                   },
                   "taxon_changes_count": 0,
                   "taxon_schemes_count": 4,
-                  "observations_count": 2145,
+                  "observations_count": 2161,
                   "flag_counts": {
                     "resolved": 1,
                     "unresolved": 0
@@ -5427,7 +5427,7 @@
                   },
                   "taxon_changes_count": 0,
                   "taxon_schemes_count": 7,
-                  "observations_count": 840,
+                  "observations_count": 844,
                   "flag_counts": {
                     "resolved": 0,
                     "unresolved": 0
@@ -5482,7 +5482,7 @@
                   },
                   "taxon_changes_count": 0,
                   "taxon_schemes_count": 7,
-                  "observations_count": 830,
+                  "observations_count": 831,
                   "flag_counts": {
                     "resolved": 0,
                     "unresolved": 0
@@ -5589,7 +5589,7 @@
                   },
                   "taxon_changes_count": 1,
                   "taxon_schemes_count": 7,
-                  "observations_count": 2962,
+                  "observations_count": 2973,
                   "flag_counts": {
                     "resolved": 0,
                     "unresolved": 0
@@ -5645,7 +5645,7 @@
                   },
                   "taxon_changes_count": 2,
                   "taxon_schemes_count": 2,
-                  "observations_count": 12585,
+                  "observations_count": 12643,
                   "flag_counts": {
                     "resolved": 1,
                     "unresolved": 0
@@ -5699,7 +5699,7 @@
                   },
                   "taxon_changes_count": 1,
                   "taxon_schemes_count": 1,
-                  "observations_count": 429,
+                  "observations_count": 431,
                   "flag_counts": {
                     "resolved": 0,
                     "unresolved": 0
@@ -5752,7 +5752,7 @@
                   },
                   "taxon_changes_count": 1,
                   "taxon_schemes_count": 1,
-                  "observations_count": 2504,
+                  "observations_count": 2511,
                   "flag_counts": {
                     "resolved": 0,
                     "unresolved": 0
@@ -5875,7 +5875,7 @@
           },
           "source": "inaturalist",
           "key": "areias_sp:herpetofauna:verifiable",
-          "updatedAt": "2026-06-01T20:49:23.955Z"
+          "updatedAt": "2026-06-10T21:59:33.436Z"
         },
         "sao_jose_do_barreiro_sp:herpetofauna:verifiable": {
           "municipalityId": "sao_jose_do_barreiro_sp",
@@ -5926,7 +5926,7 @@
                   },
                   "taxon_changes_count": 1,
                   "taxon_schemes_count": 2,
-                  "observations_count": 2413,
+                  "observations_count": 2422,
                   "flag_counts": {
                     "resolved": 0,
                     "unresolved": 0
@@ -5980,7 +5980,7 @@
                   },
                   "taxon_changes_count": 0,
                   "taxon_schemes_count": 7,
-                  "observations_count": 3747,
+                  "observations_count": 3756,
                   "flag_counts": {
                     "resolved": 0,
                     "unresolved": 0
@@ -6035,7 +6035,7 @@
                   },
                   "taxon_changes_count": 0,
                   "taxon_schemes_count": 2,
-                  "observations_count": 556,
+                  "observations_count": 561,
                   "flag_counts": {
                     "resolved": 0,
                     "unresolved": 0
@@ -6089,7 +6089,7 @@
                   },
                   "taxon_changes_count": 1,
                   "taxon_schemes_count": 1,
-                  "observations_count": 2504,
+                  "observations_count": 2511,
                   "flag_counts": {
                     "resolved": 0,
                     "unresolved": 0
@@ -6198,7 +6198,7 @@
                   },
                   "taxon_changes_count": 0,
                   "taxon_schemes_count": 4,
-                  "observations_count": 2145,
+                  "observations_count": 2161,
                   "flag_counts": {
                     "resolved": 1,
                     "unresolved": 0
@@ -6306,7 +6306,7 @@
                   },
                   "taxon_changes_count": 0,
                   "taxon_schemes_count": 7,
-                  "observations_count": 118,
+                  "observations_count": 119,
                   "flag_counts": {
                     "resolved": 0,
                     "unresolved": 0
@@ -6361,7 +6361,7 @@
                   },
                   "taxon_changes_count": 0,
                   "taxon_schemes_count": 2,
-                  "observations_count": 292,
+                  "observations_count": 294,
                   "flag_counts": {
                     "resolved": 0,
                     "unresolved": 0
@@ -6468,7 +6468,7 @@
                   },
                   "taxon_changes_count": 0,
                   "taxon_schemes_count": 7,
-                  "observations_count": 156,
+                  "observations_count": 157,
                   "flag_counts": {
                     "resolved": 0,
                     "unresolved": 0
@@ -6521,7 +6521,7 @@
                   },
                   "taxon_changes_count": 1,
                   "taxon_schemes_count": 7,
-                  "observations_count": 2962,
+                  "observations_count": 2973,
                   "flag_counts": {
                     "resolved": 0,
                     "unresolved": 0
@@ -6577,7 +6577,7 @@
                   },
                   "taxon_changes_count": 2,
                   "taxon_schemes_count": 2,
-                  "observations_count": 12585,
+                  "observations_count": 12643,
                   "flag_counts": {
                     "resolved": 1,
                     "unresolved": 0
@@ -6633,7 +6633,7 @@
                   },
                   "taxon_changes_count": 1,
                   "taxon_schemes_count": 2,
-                  "observations_count": 411,
+                  "observations_count": 414,
                   "flag_counts": {
                     "resolved": 1,
                     "unresolved": 0
@@ -6847,7 +6847,7 @@
                   },
                   "taxon_changes_count": 0,
                   "taxon_schemes_count": 7,
-                  "observations_count": 1462,
+                  "observations_count": 1465,
                   "flag_counts": {
                     "resolved": 0,
                     "unresolved": 0
@@ -6900,7 +6900,7 @@
                   },
                   "taxon_changes_count": 0,
                   "taxon_schemes_count": 7,
-                  "observations_count": 2872,
+                  "observations_count": 2878,
                   "flag_counts": {
                     "resolved": 0,
                     "unresolved": 0
@@ -7006,7 +7006,7 @@
                   },
                   "taxon_changes_count": 0,
                   "taxon_schemes_count": 7,
-                  "observations_count": 229,
+                  "observations_count": 231,
                   "flag_counts": {
                     "resolved": 0,
                     "unresolved": 0
@@ -7170,7 +7170,7 @@
                   },
                   "taxon_changes_count": 0,
                   "taxon_schemes_count": 4,
-                  "observations_count": 612,
+                  "observations_count": 615,
                   "flag_counts": {
                     "resolved": 0,
                     "unresolved": 0
@@ -7226,7 +7226,7 @@
                   },
                   "taxon_changes_count": 5,
                   "taxon_schemes_count": 3,
-                  "observations_count": 3206,
+                  "observations_count": 3228,
                   "flag_counts": {
                     "resolved": 2,
                     "unresolved": 0
@@ -7391,7 +7391,7 @@
                   },
                   "taxon_changes_count": 0,
                   "taxon_schemes_count": 7,
-                  "observations_count": 830,
+                  "observations_count": 831,
                   "flag_counts": {
                     "resolved": 0,
                     "unresolved": 0
@@ -7608,7 +7608,7 @@
                   },
                   "taxon_changes_count": 0,
                   "taxon_schemes_count": 2,
-                  "observations_count": 346,
+                  "observations_count": 348,
                   "flag_counts": {
                     "resolved": 0,
                     "unresolved": 0
@@ -7786,7 +7786,7 @@
                   },
                   "taxon_changes_count": 1,
                   "taxon_schemes_count": 2,
-                  "observations_count": 528,
+                  "observations_count": 529,
                   "flag_counts": {
                     "resolved": 0,
                     "unresolved": 0
@@ -7948,7 +7948,7 @@
                   },
                   "taxon_changes_count": 2,
                   "taxon_schemes_count": 1,
-                  "observations_count": 122,
+                  "observations_count": 123,
                   "flag_counts": {
                     "resolved": 0,
                     "unresolved": 0
@@ -8068,7 +8068,7 @@
                   },
                   "taxon_changes_count": 1,
                   "taxon_schemes_count": 0,
-                  "observations_count": 259,
+                  "observations_count": 261,
                   "flag_counts": {
                     "resolved": 0,
                     "unresolved": 0
@@ -8176,7 +8176,7 @@
                   },
                   "taxon_changes_count": 1,
                   "taxon_schemes_count": 0,
-                  "observations_count": 1600,
+                  "observations_count": 1608,
                   "flag_counts": {
                     "resolved": 0,
                     "unresolved": 1
@@ -8232,7 +8232,7 @@
                   },
                   "taxon_changes_count": 1,
                   "taxon_schemes_count": 0,
-                  "observations_count": 263,
+                  "observations_count": 264,
                   "flag_counts": {
                     "resolved": 1,
                     "unresolved": 0
@@ -8288,7 +8288,7 @@
                   },
                   "taxon_changes_count": 1,
                   "taxon_schemes_count": 0,
-                  "observations_count": 74,
+                  "observations_count": 75,
                   "flag_counts": {
                     "resolved": 0,
                     "unresolved": 0
@@ -8411,7 +8411,7 @@
           },
           "source": "inaturalist",
           "key": "sao_jose_do_barreiro_sp:herpetofauna:verifiable",
-          "updatedAt": "2026-06-01T20:49:24.675Z"
+          "updatedAt": "2026-06-10T22:01:49.013Z"
         },
         "arapei_sp:herpetofauna:verifiable": {
           "municipalityId": "arapei_sp",
@@ -8459,7 +8459,7 @@
                   },
                   "taxon_changes_count": 0,
                   "taxon_schemes_count": 1,
-                  "observations_count": 2148,
+                  "observations_count": 2153,
                   "flag_counts": {
                     "resolved": 0,
                     "unresolved": 0
@@ -8511,14 +8511,14 @@
                   },
                   "taxon_changes_count": 2,
                   "taxon_schemes_count": 0,
-                  "observations_count": 710653,
+                  "observations_count": 715152,
                   "flag_counts": {
                     "resolved": 3,
                     "unresolved": 0
                   },
                   "current_synonymous_taxon_ids": null,
                   "atlas_id": 138954,
-                  "complete_species_count": 760,
+                  "complete_species_count": 761,
                   "wikipedia_url": "https://en.wikipedia.org/wiki/Hylidae",
                   "complete_rank": "species",
                   "iconic_taxon_name": "Amphibia",
@@ -8529,11 +8529,11 @@
           },
           "source": "inaturalist",
           "key": "arapei_sp:herpetofauna:verifiable",
-          "updatedAt": "2026-06-01T20:49:29.745Z"
+          "updatedAt": "2026-06-10T22:01:49.431Z"
         }
       },
-      "lastAttemptAt": "2026-06-01T20:49:29.745Z",
-      "lastSuccessAt": "2026-06-01T20:49:29.745Z",
+      "lastAttemptAt": "2026-06-10T22:01:49.431Z",
+      "lastSuccessAt": "2026-06-10T22:01:49.431Z",
       "lastAttempt": {
         "status": "unavailable",
         "key": "arapei_sp:herpetofauna:verifiable",
@@ -80831,13 +80831,13 @@
           "updatedAt": "2026-06-01T20:49:31.083Z"
         }
       },
-      "lastAttemptAt": "2026-06-01T20:49:31.083Z",
+      "lastAttemptAt": "2026-06-10T22:04:06.406Z",
       "lastSuccessAt": "2026-06-01T20:49:31.083Z",
       "lastAttempt": {
-        "status": "unavailable",
+        "status": "missing_api_key",
         "key": "arapei_sp:Reptilia",
-        "message": "",
-        "recordedAt": "2026-06-01T20:48:08.637Z"
+        "message": "O speciesLink ainda não está disponível porque a chave da API não foi configurada no servidor.",
+        "recordedAt": "2026-06-10T22:04:06.406Z"
       }
     },
     "iucn": {
@@ -80848,7 +80848,7 @@
             "success": true,
             "source": "IUCN Red List",
             "scientificName": "Brachycephalus rotenbergae",
-            "queriedAt": "2026-06-02T23:05:50.687Z",
+            "queriedAt": "2026-06-10T22:01:49.609Z",
             "payload": {
               "taxon": {
                 "sis_id": 211137592,
@@ -80908,7 +80908,7 @@
           },
           "source": "iucn",
           "key": "brachycephalus rotenbergae",
-          "updatedAt": "2026-06-02T23:05:51.128Z"
+          "updatedAt": "2026-06-10T22:01:49.910Z"
         },
         "bothrops jararaca": {
           "scientificName": "Bothrops jararaca",
@@ -80916,7 +80916,7 @@
             "success": true,
             "source": "IUCN Red List",
             "scientificName": "Bothrops jararaca",
-            "queriedAt": "2026-06-02T23:05:51.175Z",
+            "queriedAt": "2026-06-10T22:04:06.839Z",
             "payload": {
               "taxon": {
                 "sis_id": 15203324,
@@ -81005,7 +81005,7 @@
           },
           "source": "iucn",
           "key": "bothrops jararaca",
-          "updatedAt": "2026-06-02T23:05:51.409Z"
+          "updatedAt": "2026-06-10T22:04:07.156Z"
         },
         "rhinella icterica": {
           "scientificName": "Rhinella icterica",
@@ -81013,7 +81013,7 @@
             "success": true,
             "source": "IUCN Red List",
             "scientificName": "Rhinella icterica",
-            "queriedAt": "2026-06-02T23:05:51.516Z",
+            "queriedAt": "2026-06-10T22:04:07.565Z",
             "payload": {
               "taxon": {
                 "sis_id": 54668,
@@ -81129,7 +81129,7 @@
           },
           "source": "iucn",
           "key": "rhinella icterica",
-          "updatedAt": "2026-06-02T23:05:51.752Z"
+          "updatedAt": "2026-06-10T22:04:07.801Z"
         },
         "erythrolamprus aesculapii": {
           "scientificName": "Erythrolamprus aesculapii",
@@ -81137,7 +81137,7 @@
             "success": true,
             "source": "IUCN Red List",
             "scientificName": "Erythrolamprus aesculapii",
-            "queriedAt": "2026-06-02T23:05:51.796Z",
+            "queriedAt": "2026-06-10T22:04:08.206Z",
             "payload": {
               "taxon": {
                 "sis_id": 203509,
@@ -81209,7 +81209,7 @@
           },
           "source": "iucn",
           "key": "erythrolamprus aesculapii",
-          "updatedAt": "2026-06-02T23:05:52.027Z"
+          "updatedAt": "2026-06-10T22:04:08.456Z"
         },
         "enyalius perditus": {
           "scientificName": "Enyalius perditus",
@@ -81217,7 +81217,7 @@
             "success": true,
             "source": "IUCN Red List",
             "scientificName": "Enyalius perditus",
-            "queriedAt": "2026-06-02T23:05:52.070Z",
+            "queriedAt": "2026-06-10T22:04:08.864Z",
             "payload": {
               "taxon": {
                 "sis_id": 203146,
@@ -81273,7 +81273,7 @@
           },
           "source": "iucn",
           "key": "enyalius perditus",
-          "updatedAt": "2026-06-02T23:05:52.398Z"
+          "updatedAt": "2026-06-10T22:04:09.101Z"
         },
         "rhinella ornata": {
           "scientificName": "Rhinella ornata",
@@ -81281,7 +81281,7 @@
             "success": true,
             "source": "IUCN Red List",
             "scientificName": "Rhinella ornata",
-            "queriedAt": "2026-06-02T23:06:14.524Z",
+            "queriedAt": "2026-06-10T22:04:09.517Z",
             "payload": {
               "taxon": {
                 "sis_id": 200073988,
@@ -81375,7 +81375,7 @@
           },
           "source": "iucn",
           "key": "rhinella ornata",
-          "updatedAt": "2026-06-02T23:06:14.881Z"
+          "updatedAt": "2026-06-10T22:04:09.758Z"
         },
         "leptodactylus fuscus": {
           "scientificName": "Leptodactylus fuscus",
@@ -90523,8 +90523,8 @@
           "updatedAt": "2026-06-02T23:06:51.338Z"
         }
       },
-      "lastAttemptAt": "2026-06-02T23:06:56.549Z",
-      "lastSuccessAt": "2026-06-02T23:06:51.338Z",
+      "lastAttemptAt": "2026-06-10T22:04:09.758Z",
+      "lastSuccessAt": "2026-06-10T22:04:09.758Z",
       "lastAttempt": {
         "status": "http_error",
         "key": "crotalus durissus terrificus",

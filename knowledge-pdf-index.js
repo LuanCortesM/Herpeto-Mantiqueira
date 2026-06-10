@@ -3,11 +3,21 @@
 const fs = require("fs");
 const path = require("path");
 const readline = require("readline");
+const zlib = require("zlib");
 
 const CLEAN_INDEX_PATH = path.join(__dirname, "IAAprendaAqui", "herpetology_pdf_chunks_clean.jsonl");
 const LEGACY_INDEX_PATH = path.join(__dirname, "IAAprendaAqui", "herpetology_pdf_chunks.jsonl");
-const INDEX_PATH = fs.existsSync(CLEAN_INDEX_PATH) ? CLEAN_INDEX_PATH : LEGACY_INDEX_PATH;
+const CLEAN_INDEX_GZIP_PATH = `${CLEAN_INDEX_PATH}.gz`;
+const LEGACY_INDEX_GZIP_PATH = `${LEGACY_INDEX_PATH}.gz`;
+const INDEX_CANDIDATES = [
+  CLEAN_INDEX_PATH,
+  CLEAN_INDEX_GZIP_PATH,
+  LEGACY_INDEX_PATH,
+  LEGACY_INDEX_GZIP_PATH,
+];
+const INDEX_PATH = INDEX_CANDIDATES.find((indexPath) => fs.existsSync(indexPath)) || LEGACY_INDEX_PATH;
 const OCR_SUPPLEMENT_PATH = path.join(__dirname, "IAAprendaAqui", "herpetology_pdf_ocr_supplement.jsonl");
+const OCR_SUPPLEMENT_GZIP_PATH = `${OCR_SUPPLEMENT_PATH}.gz`;
 const CATALOG_PATH = path.join(__dirname, "IAAprendaAqui", "herpetology_pdf_catalog.json");
 const EXCLUSIONS_PATH = path.join(__dirname, "IAAprendaAqui", "pdf_rag_exclusions.json");
 const STOPWORDS = new Set([
@@ -76,6 +86,14 @@ function isExcludedChunk(chunk) {
   return fileName && exclusions.fileNames.has(fileName);
 }
 
+function openJsonlStream(indexPath) {
+  const stream = fs.createReadStream(indexPath, { encoding: indexPath.endsWith(".gz") ? undefined : "utf8" });
+  if (indexPath.endsWith(".gz")) {
+    return stream.pipe(zlib.createGunzip()).setEncoding("utf8");
+  }
+  return stream;
+}
+
 function catalogSummary() {
   if (!fs.existsSync(CATALOG_PATH)) {
     return { available: false, documents_total: 0, chunks_total: 0 };
@@ -95,7 +113,10 @@ async function searchPdfKnowledge(query, options = {}) {
   const queryTokens = tokens(query);
   const limit = Math.min(Math.max(Number(options.limit || 4), 1), 8);
   const indexPaths = [INDEX_PATH];
-  if (INDEX_PATH !== CLEAN_INDEX_PATH && fs.existsSync(OCR_SUPPLEMENT_PATH)) indexPaths.push(OCR_SUPPLEMENT_PATH);
+  if (INDEX_PATH !== CLEAN_INDEX_PATH && INDEX_PATH !== CLEAN_INDEX_GZIP_PATH) {
+    if (fs.existsSync(OCR_SUPPLEMENT_PATH)) indexPaths.push(OCR_SUPPLEMENT_PATH);
+    else if (fs.existsSync(OCR_SUPPLEMENT_GZIP_PATH)) indexPaths.push(OCR_SUPPLEMENT_GZIP_PATH);
+  }
   const availableIndexPaths = indexPaths.filter((indexPath) => fs.existsSync(indexPath));
   if (!queryTokens.length || !availableIndexPaths.length) return [];
   const cacheKey = `${queryTokens.sort().join("|")}:${limit}`;
@@ -103,7 +124,7 @@ async function searchPdfKnowledge(query, options = {}) {
   if (cached && Date.now() - cached.timestamp < SEARCH_CACHE_TTL_MS) return cached.results;
   const best = [];
   for (const indexPath of availableIndexPaths) {
-    const input = fs.createReadStream(indexPath, { encoding: "utf8" });
+    const input = openJsonlStream(indexPath);
     const lines = readline.createInterface({ input, crlfDelay: Infinity });
     for await (const line of lines) {
       if (!line.trim()) continue;
@@ -141,6 +162,6 @@ async function searchPdfKnowledge(query, options = {}) {
 }
 
 module.exports = {
-  INDEX_PATH, CLEAN_INDEX_PATH, LEGACY_INDEX_PATH, OCR_SUPPLEMENT_PATH, CATALOG_PATH, EXCLUSIONS_PATH, SEARCH_CACHE_TTL_MS, normalize, tokens, scoreChunk,
+  INDEX_PATH, CLEAN_INDEX_PATH, CLEAN_INDEX_GZIP_PATH, LEGACY_INDEX_PATH, LEGACY_INDEX_GZIP_PATH, OCR_SUPPLEMENT_PATH, OCR_SUPPLEMENT_GZIP_PATH, CATALOG_PATH, EXCLUSIONS_PATH, SEARCH_CACHE_TTL_MS, normalize, tokens, scoreChunk,
   catalogSummary, searchPdfKnowledge, clearSearchCache: () => searchCache.clear(),
 };

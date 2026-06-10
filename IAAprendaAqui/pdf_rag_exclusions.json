@@ -1,0 +1,94 @@
+{
+  "generatedAt": "2026-06-02T11:38:02.361183+00:00",
+  "reason": "Arquivos fora do escopo artigo/livro ou com texto inadequado para o RAG público do Gold.",
+  "items": [
+    {
+      "fileName": "Apostila_Taxidermia_Serpentes.pdf",
+      "reason": "apostila"
+    },
+    {
+      "fileName": "Chave Tropidurus.pdf",
+      "reason": "chave didática sem metadados bibliográficos completos"
+    },
+    {
+      "fileName": "Espécies em Cruzeiro_SP _ Wiki Aves - A Enciclopédia das Aves do Brasil.pdf",
+      "reason": "página web salva como PDF"
+    },
+    {
+      "fileName": "H. Herpetofauna (2).pdf",
+      "reason": "apresentação PowerPoint exportada"
+    },
+    {
+      "fileName": "H. Metodos para caracterização da herpetofauna em estudos ambientais MAIA.pdf",
+      "reason": "material técnico sem metadados de artigo ou livro"
+    },
+    {
+      "fileName": "Ingles monitorando_herpetofauna.pdf",
+      "reason": "material didático sem metadados de artigo ou livro"
+    },
+    {
+      "fileName": "PITTFALLS.pdf",
+      "reason": "material didático sem metadados de artigo ou livro"
+    },
+    {
+      "fileName": "Serpentes asiaticas, sistematica e mordidas.pdf",
+      "reason": "material didático sem metadados de artigo ou livro"
+    },
+    {
+      "fileName": "Teste 1.pdf",
+      "reason": "manuscrito local não finalizado; uso e ingestão proibidos"
+    },
+    {
+      "fileName": "Teste artigo.pdf",
+      "reason": "manuscrito local não finalizado; uso e ingestão proibidos"
+    },
+    {
+      "fileName": "Versao 3.pdf",
+      "reason": "manuscrito local não finalizado; uso e ingestão proibidos"
+    },
+    {
+      "fileName": "Versão 4.pdf",
+      "reason": "manuscrito local não finalizado; uso e ingestão proibidos"
+    },
+    {
+      "fileName": "Versão 5.pdf",
+      "reason": "manuscrito local não finalizado; uso e ingestão proibidos"
+    },
+    {
+      "fileName": "versão 6.pdf",
+      "reason": "manuscrito local não finalizado; uso e ingestão proibidos"
+    },
+    {
+      "fileName": "versão 7.pdf",
+      "reason": "manuscrito local não finalizado; uso e ingestão proibidos"
+    },
+    {
+      "fileName": "browser-main.pdf",
+      "reason": "manuscrito local não finalizado; uso e ingestão proibidos"
+    },
+    {
+      "fileName": "ToxiconCobras.pdf",
+      "reason": "arquivo local sem metadados bibliográficos suficientes"
+    },
+    {
+      "fileName": "ameacado_serpente.pdf",
+      "reason": "lista/checklist sem metadados de artigo ou livro"
+    },
+    {
+      "fileName": "instituto butanta identificaçao de serpentes peçonhentas.pdf",
+      "reason": "folheto institucional"
+    },
+    {
+      "fileName": "instituto butanta sentidos das serpentes.pdf",
+      "reason": "folheto institucional"
+    },
+    {
+      "fileName": "pit fall.pdf",
+      "reason": "material didático sem metadados de artigo ou livro"
+    },
+    {
+      "fileName": "queimado_cobras.pdf",
+      "reason": "arquivo local sem metadados bibliográficos suficientes"
+    }
+  ]
+}

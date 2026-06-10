@@ -4,6 +4,7 @@ const fs = require("fs");
 const path = require("path");
 const { spawn } = require("child_process");
 const conversationCore = require("./conversation-core.js");
+const scientificOrchestrator = require("./gold-scientific-orchestrator.js");
 
 const ROOT = __dirname;
 const LOG_DIRECTORY = path.join(ROOT, "logs");
@@ -19,6 +20,15 @@ function isEnabled() {
 function routeFor(question) {
   const classification = conversationCore.classifyConversationIntent(question);
   const normalized = conversationCore.normalizeText(question);
+  if (/\b(edna|dna ambiental)\b/.test(normalized) && classification.intent === conversationCore.CONVERSATION_INTENTS.UNKNOWN) {
+    classification.intent = conversationCore.CONVERSATION_INTENTS.GENERAL_SCIENTIFIC_QUESTION;
+    classification.thematicScope = conversationCore.SCOPES.GENERAL;
+    classification.scope = conversationCore.SCOPES.GENERAL;
+    classification.dataScope = conversationCore.DATA_SCOPES.LITERATURE_RAG;
+    classification.municipalityRequired = false;
+    classification.shouldAskMunicipality = false;
+    classification.shouldClearPreviousContext = true;
+  }
   const scientificCue = /\b(edna|dna ambiental|bioacustic|monitoramento acustico|inventario|amostragem|ecologia|conservacao|taxon|especie|genero|familia|anuro|anfibio|reptil|serpente|bothrops|jararaca)\b/.test(normalized);
   const possibleNameMatch = String(question || "").match(/\b([A-Z][a-z]{2,})\s+([a-z][a-z-]{2,})\b/);
   const possibleScientificName = Boolean(possibleNameMatch && !new Set(["Como", "Qual", "Quais", "Onde", "Quando", "Porque", "Explique", "Fale"]).has(possibleNameMatch[1]));
@@ -109,6 +119,65 @@ async function answer(question, options = {}) {
     const result = { handled: false, fallback: true, fallbackReason: "legacy_route_preserved", classification: route.classification };
     writeLog({ ...baseLog, chunks_retrieved: [], documents_used: [], evidence_sufficiency: null, citations_used: [], response_time_ms: Date.now() - started, fallback_triggered: true, fallback_reason: result.fallbackReason });
     return result;
+  }
+
+  if (options.preferPython !== true) {
+    try {
+      const orchestrated = await scientificOrchestrator.answerQuestion(question);
+      if (orchestrated?.handled && orchestrated.answer) {
+        const evidence = Array.isArray(orchestrated.evidence)
+          ? orchestrated.evidence
+          : orchestrated.evidence?.primaryEvidence || [];
+        const citations = evidence
+          .map((item) => item.title || item.sourceId || item.id || item.reference)
+          .filter(Boolean)
+          .slice(0, 8);
+        const result = {
+          handled: true,
+          fallback: false,
+          fallbackReason: null,
+          answer: orchestrated.answer,
+          classification: route.classification,
+          traceability: {
+            scientificIntent: orchestrated.plan?.classification?.intent || route.classification.intent,
+            strategy: ["javascript_scientific_orchestrator"],
+            sufficiency: {
+              canAnswerSpecific: true,
+              evidenceCount: evidence.length,
+              route: orchestrated.plan?.route || route.strategy,
+            },
+            chunks: evidence,
+            documents: citations,
+            citations,
+          },
+        };
+        writeLog({
+          ...baseLog,
+          scientific_intent: result.traceability.scientificIntent,
+          search_strategy: result.traceability.strategy,
+          chunks_retrieved: evidence.map((item) => item.sourceId || item.id || item.document_id || item.title).filter(Boolean).slice(0, 20),
+          documents_used: result.traceability.documents,
+          evidence_sufficiency: result.traceability.sufficiency,
+          citations_used: citations,
+          response_time_ms: Date.now() - started,
+          fallback_triggered: false,
+          fallback_reason: null,
+        });
+        return result;
+      }
+    } catch (error) {
+      writeLog({
+        ...baseLog,
+        chunks_retrieved: [],
+        documents_used: [],
+        evidence_sufficiency: null,
+        citations_used: [],
+        response_time_ms: Date.now() - started,
+        fallback_triggered: true,
+        fallback_reason: "javascript_orchestrator_failure",
+        error: String(error.message || error).slice(0, 500),
+      });
+    }
   }
 
   try {

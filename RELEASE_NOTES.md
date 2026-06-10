@@ -1,6 +1,6 @@
 # HerpetoMantiqueira + Gold Public Release Candidate
 
-Gerado em: 2026-06-10T18:15:15
+Gerado em: 2026-06-10T18:58:37
 
 ## Como abrir localmente
 

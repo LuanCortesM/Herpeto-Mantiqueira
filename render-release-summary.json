@@ -1,13 +1,14 @@
 ﻿{
-    "generatedAt":  "2026-06-10T18:15:18.9364921-03:00",
+    "generatedAt":  "2026-06-10T18:58:51.1188950-03:00",
     "outputDirectory":  "C:\\Users\\T-Gamer\\Music\\Herpeto Mantiqueira\\dist\\render-release",
-    "fileCount":  281,
-    "totalBytes":  302030219,
+    "fileCount":  284,
+    "totalBytes":  378935422,
     "oversizedFiles":  [
 
                        ],
     "notes":  [
                   "Pacote Render limpo: sem .env, .venv, PDFs brutos ou OCR bruto.",
+                  "Indice taxonomico completo e chunks cientificos entram comprimidos em gzip.",
                   "MinIO local nao entra no Render; dados grandes precisam de storage online S3/MinIO acessivel."
               ]
 }
