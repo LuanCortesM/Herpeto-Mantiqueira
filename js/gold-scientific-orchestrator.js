@@ -135,11 +135,15 @@
         ![core.SCOPES.GENERAL, core.SCOPES.BRAZIL].includes(classification.scope)
       );
       if (!municipalities.length && contextualMunicipalFollowUp) municipalities = state.lastMunicipalities;
+      const curatedMethodologyAnswerAvailable = Boolean(methodology?.shouldHandle?.(question, {
+        conversationIntent: classification.intent,
+        municipalities,
+      }));
       const route =
         classification.intent === core.CONVERSATION_INTENTS.GREETING ? "greeting" :
         classification.intent === core.CONVERSATION_INTENTS.COMPLAINT ? "complaint" :
         classification.intent === core.CONVERSATION_INTENTS.SAFETY_QUESTION ? "safety" :
-        classification.intent === core.CONVERSATION_INTENTS.METHODOLOGY_QUESTION ? "methodology" :
+        classification.intent === core.CONVERSATION_INTENTS.METHODOLOGY_QUESTION || curatedMethodologyAnswerAvailable ? "methodology" :
         classification.intent === core.CONVERSATION_INTENTS.MUNICIPAL_OCCURRENCE_QUERY || contextualMunicipalFollowUp ? "municipal" :
         [core.CONVERSATION_INTENTS.POPULAR_NAME_QUESTION, core.CONVERSATION_INTENTS.GENERAL_TAXON_QUESTION].includes(classification.intent) ? "taxon" :
         [core.CONVERSATION_INTENTS.REGIONAL_CONTEXT_QUESTION, core.CONVERSATION_INTENTS.GENERAL_SCIENTIFIC_QUESTION].includes(classification.intent) ? "rag" :

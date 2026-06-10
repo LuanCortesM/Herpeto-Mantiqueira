@@ -14,6 +14,18 @@
       ],
     },
     {
+      id: "edna_dna_ambiental_conservacao",
+      match: /\b(edna|dna ambiental|dna do ambiente|metabarcoding|metabarcodificacao)\b/,
+      title: "eDNA e DNA ambiental em herpetologia",
+      answer: [
+        "eDNA, ou DNA ambiental, e o material genetico que organismos deixam no ambiente, como agua, solo, sedimento ou biofilmes. Em herpetologia, ele pode ajudar a detectar anfibios e repteis sem depender apenas de ver ou capturar o animal, especialmente em especies raras, cripticas, noturnas ou de dificil acesso.",
+        "Um desenho basico envolve escolher pontos de coleta, evitar contaminacao, coletar e filtrar amostras, preservar o material, extrair DNA, usar marcadores moleculares adequados e comparar as sequencias com bases de referencia. Para anfibios, pode ser muito util em brejos, riachos, pocas temporarias e areas reprodutivas.",
+        "Aplicacoes em conservacao: procurar especies ameacadas ou pouco detectaveis, monitorar areas restauradas, detectar especies invasoras, orientar amostragem de campo, acompanhar ocupacao de habitat e investigar lacunas de distribuicao. Tambem pode complementar bioacustica, busca ativa, ciencia cidada e registros de colecao.",
+        "Limites importantes: eDNA nao substitui todo o inventario. A deteccao depende de qualidade da amostra, degradacao do DNA, transporte pela agua, controle de contaminacao, escolha do marcador e qualidade da biblioteca de referencia. Um resultado negativo nao prova ausencia real, e um positivo precisa ser interpretado com o desenho amostral.",
+        "No Vale Historico e na Mantiqueira, eDNA pode ser uma camada poderosa para riachos, bromelias, brejos e pontos de dificil acesso, mas deve ser integrado com fotos, audios, registros locais, literatura e verificacao taxonomica.",
+      ],
+    },
+    {
       id: "projetos_conservacao_herpetofauna",
       match: /\b(projeto|projetos|acao|acoes|conservacao|preservacao|proteger|ajudar|manejo|restauracao|corredor|corredores|educacao ambiental)\b.*\b(serpente|serpentes|cobra|cobras|anfibio|anfibios|reptil|repteis|herpetofauna|sapo|sapos|anuro|anuros)\b|\b(serpente|serpentes|cobra|cobras|anfibio|anfibios|reptil|repteis|herpetofauna|sapo|sapos|anuro|anuros)\b.*\b(projeto|projetos|acao|acoes|conservacao|preservacao|proteger|ajudar|manejo|restauracao|corredor|corredores|educacao ambiental)\b/,
       title: "Projetos de conservacao para anfibios e repteis",

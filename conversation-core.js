@@ -600,6 +600,10 @@
     }
     clearRoutingContext() {
       this.lastMunicipalities = [];
+      this.lastTaxon = null;
+      this.lastTaxonomicGroups = [];
+      this.lastSubgroupTerms = [];
+      this.lastSpeciesQuery = null;
       this.mode = null;
       this.lastClarification = null;
       this.repeatedClarificationCount = 0;
