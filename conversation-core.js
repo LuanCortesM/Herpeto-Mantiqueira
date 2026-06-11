@@ -53,6 +53,9 @@
     bopthrops: "Bothrops",
     botrops: "Bothrops",
     bothropes: "Bothrops",
+    jararca: "jararaca",
+    jararcaa: "jararaca",
+    jararacca: "jararaca",
     rinella: "Rhinella",
     rhinela: "Rhinella",
     viperideos: "Viperidae",
@@ -400,18 +403,30 @@
     const family = corrected.match(/\b([A-Z][a-z]+idae)\b/)?.[1];
     if (family) return { raw: family, normalized: family, rank: "family" };
     const binomial = corrected.match(/\b([A-Z][a-z]{2,})\s+([a-z][a-z-]{2,})\b/);
-    if (binomial && !new Set(["Como", "Qual", "Quais", "Onde", "Quando", "Porque", "Explique", "Fale"]).has(binomial[1])) {
+    if (
+      binomial &&
+      !new Set(["Como", "Qual", "Quais", "Onde", "Quando", "Porque", "Explique", "Fale"]).has(binomial[1]) &&
+      !SPECIES_SECOND_BLACKLIST.has(normalizeText(binomial[2])) &&
+      !PREPOSITIONS.has(normalizeText(binomial[2])) &&
+      !normalizeText(binomial[2]).endsWith("mente")
+    ) {
       return { raw: `${binomial[1]} ${binomial[2]}`, normalized: `${binomial[1]} ${binomial[2]}`, rank: "species" };
+    }
+    const known = KNOWN_TAXA.find((taxon) => new RegExp(`\\b${normalizeText(taxon)}\\b`, "i").test(q));
+    const knownRank = known
+      ? known.endsWith("idae") ? "family" :
+        ["Anura", "Squamata"].includes(known) ? "order" :
+          ["Amphibia", "Reptilia"].includes(known) ? "class" :
+            "genus"
+      : null;
+    const knownAsQueryHead = known && new RegExp(`\\b(quais?|quantas?|lista|listar|fale|me fale|explique|explica|sobre)\\b.*\\b${normalizeText(known)}\\b`, "i").test(q);
+    const knownWithFunctionalTail = known && new RegExp(`\\b${normalizeText(known)}\\b\\s+(tem|existem|existe|conhece|conhecidas?|registradas?|no|na|em|do|da|de)\\b`, "i").test(q);
+    if (knownAsQueryHead || knownWithFunctionalTail) {
+      return { raw: known, normalized: known, rank: knownRank };
     }
     const explicit = corrected.match(/\b(?:g[eê]nero|esp[eé]cies?\s+de)\s+([A-Z][a-z]{2,})\b/i)?.[1];
     if (explicit) return { raw: explicit, normalized: explicit[0].toUpperCase() + explicit.slice(1).toLowerCase(), rank: "genus" };
-    const known = KNOWN_TAXA.find((taxon) => new RegExp(`\\b${normalizeText(taxon)}\\b`, "i").test(q));
     if (known) {
-      const knownRank =
-        known.endsWith("idae") ? "family" :
-          ["Anura", "Squamata"].includes(known) ? "order" :
-            ["Amphibia", "Reptilia"].includes(known) ? "class" :
-              "genus";
       return { raw: known, normalized: known, rank: knownRank };
     }
     const popular = POPULAR_TAXA.find((item) => item.pattern.test(q));

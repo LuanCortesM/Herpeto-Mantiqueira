@@ -60,6 +60,14 @@
       if (enabled && global.console?.debug) global.console.debug(`[Gold:${label}]`, payload);
     }
 
+    function outOfScopeClarification(rawText) {
+      const normalized = core.normalizeText(rawText);
+      if (/\b(bolo|receita|chocolate|futebol|carro|moto|politica|investimento|criptomoeda|filme|serie|musica)\b/.test(normalized)) {
+        return "Esse tema foge do meu foco científico. Eu sou o Gold, especializado em herpetologia, ecologia, conservação, Mata Atlântica, Serra da Mantiqueira, métodos de campo, taxonomia e dados de biodiversidade. Posso te ajudar, por exemplo, com anfíbios, répteis, inventários, segurança com serpentes, conservação ou registros municipais.";
+      }
+      return "Preciso de uma pista melhor para responder com qualidade. Diga um táxon, nome popular, grupo, método de campo ou tema ecológico.";
+    }
+
     function parseQuestion(question, state = conversationState, classification = null) {
       const rawText = String(question || "");
       const normalizedText = core.normalizeText(rawText);
@@ -186,7 +194,7 @@
           : missingRequiredInfo.includes("speciesQuery")
             ? "Consigo verificar, mas preciso do nome científico da espécie que você quer procurar."
             : intent === INTENTS.UNKNOWN
-              ? "Não tenho contexto suficiente para continuar. Diga o tema, táxon ou grupo; se quiser dados locais, inclua o município."
+              ? outOfScopeClarification(rawText)
               : null,
         assumptions: [],
         warnings: [

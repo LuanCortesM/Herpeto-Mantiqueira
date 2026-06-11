@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-11T08:14:36",
+  "generated_at": "2026-06-11T09:27:31",
   "source_project": "C:\\Users\\T-Gamer\\Music\\Herpeto Mantiqueira",
   "pages": [
     "index.html",
@@ -1137,8 +1137,8 @@
     },
     {
       "path": "js/conversation-core.js",
-      "size_bytes": 39950,
-      "sha256": "b775540be6715221ef040d07de3107619efe2b57a61cfec83b5c4002c656a0b3"
+      "size_bytes": 40711,
+      "sha256": "9cb22457b4291c9bac1fa1d67b1a8b7344defb32592f8b9b34fdd2dffc0689a3"
     },
     {
       "path": "js/gold-public-cache-data.js",
@@ -1152,8 +1152,8 @@
     },
     {
       "path": "js/gold-scientific-orchestrator.js",
-      "size_bytes": 22107,
-      "sha256": "1b67b3456c5b5b65d60a93707eafd48f128cd90155cbd7315c60e9b95e881a63"
+      "size_bytes": 23557,
+      "sha256": "50b80a84ed7d6512704f633da4d7529f1ca7ef1c86ddc03a19ed39cd869f3bb2"
     },
     {
       "path": "js/gold-scientific-reliability.js",
@@ -1167,8 +1167,8 @@
     },
     {
       "path": "js/herpeto-chat-brain.js",
-      "size_bytes": 28028,
-      "sha256": "8a68963039ed2c9c771ad8da8ef43c7efc9c57fbd497d72fd6a51820db6de274"
+      "size_bytes": 28693,
+      "sha256": "a027e861d3db2c9549d9adb07bdc16250e0e237a0caf40a33bf429678a84c2f2"
     },
     {
       "path": "js/herpetology-engine.js",
@@ -1513,36 +1513,8 @@
   ],
   "external_refs": [
     {
-      "from": "sobre-gold.html",
-      "ref": "https://www.nlm.nih.gov/bsd/uniform_requirements.html"
-    },
-    {
-      "from": "sobre-gold.html",
-      "ref": "https://www.icmje.org/recommendations/"
-    },
-    {
-      "from": "topotrail.html",
-      "ref": "https://doi.org/10.5281/zenodo.20320495"
-    },
-    {
-      "from": "topotrail.html",
-      "ref": "https://plugins.qgis.org/plugins/TopoTrail/"
-    },
-    {
-      "from": "herpetofauna-cruzeiro.html",
-      "ref": "https://doi.org/10.1590/S0101-81751999000400004"
-    },
-    {
-      "from": "herpetofauna-cruzeiro.html",
-      "ref": "https://amphibiansoftheworld.amnh.org/"
-    },
-    {
-      "from": "herpetofauna-cruzeiro.html",
-      "ref": "https://doi.org/10.1590/S1519-69842012000200001"
-    },
-    {
-      "from": "herpetofauna-cruzeiro.html",
-      "ref": "https://doi.org/10.1590/S0073-47212010000400002"
+      "from": "oikos-fieldbook.html",
+      "ref": "https://doi.org/10.5281/zenodo.20526747"
     },
     {
       "from": "herpetofauna-cruzeiro.html",
@@ -1550,31 +1522,11 @@
     },
     {
       "from": "herpetofauna-cruzeiro.html",
-      "ref": "https://doi.org/10.1590/S1676-06032006000200010"
+      "ref": "https://doi.org/10.1007/s10211-014-0194-4"
     },
     {
       "from": "herpetofauna-cruzeiro.html",
-      "ref": "https://doi.org/10.1590/S1984-46702009000100015"
-    },
-    {
-      "from": "herpetofauna-cruzeiro.html",
-      "ref": "https://doi.org/10.1038/428853a"
-    },
-    {
-      "from": "herpetofauna-cruzeiro.html",
-      "ref": "https://doi.org/10.1590/S1678-91992012000400007"
-    },
-    {
-      "from": "herpetofauna-cruzeiro.html",
-      "ref": "https://reptile-database.reptarium.cz/"
-    },
-    {
-      "from": "herpetofauna-cruzeiro.html",
-      "ref": "https://doi.org/10.1080/00222930600976021"
-    },
-    {
-      "from": "herpetofauna-cruzeiro.html",
-      "ref": "https://doi.org/10.1590/S1519-69842002000200010"
+      "ref": "https://amphibiansoftheworld.amnh.org/"
     },
     {
       "from": "herpetofauna-cruzeiro.html",
@@ -1582,7 +1534,27 @@
     },
     {
       "from": "herpetofauna-cruzeiro.html",
-      "ref": "https://doi.org/10.1038/s41586-023-06578-4"
+      "ref": "https://reptile-database.reptarium.cz/"
+    },
+    {
+      "from": "herpetofauna-cruzeiro.html",
+      "ref": "https://doi.org/10.1590/S1519-69842002000200010"
+    },
+    {
+      "from": "herpetofauna-cruzeiro.html",
+      "ref": "https://doi.org/10.1590/S1678-91992012000400007"
+    },
+    {
+      "from": "herpetofauna-cruzeiro.html",
+      "ref": "https://doi.org/10.1080/00222930600976021"
+    },
+    {
+      "from": "herpetofauna-cruzeiro.html",
+      "ref": "https://doi.org/10.1590/S1519-69842012000200001"
+    },
+    {
+      "from": "herpetofauna-cruzeiro.html",
+      "ref": "https://doi.org/10.1590/S0101-81751999000400004"
     },
     {
       "from": "herpetofauna-cruzeiro.html",
@@ -1590,11 +1562,15 @@
     },
     {
       "from": "herpetofauna-cruzeiro.html",
-      "ref": "https://doi.org/10.1007/s10211-014-0194-4"
+      "ref": "https://doi.org/10.1590/S1984-46702009000100015"
     },
     {
       "from": "herpetofauna-cruzeiro.html",
-      "ref": "https://doi.org/10.1126/science.1149374"
+      "ref": "https://doi.org/10.1590/S1676-06032006000200010"
+    },
+    {
+      "from": "herpetofauna-cruzeiro.html",
+      "ref": "https://doi.org/10.1038/428853a"
     },
     {
       "from": "herpetofauna-cruzeiro.html",
@@ -1602,27 +1578,51 @@
     },
     {
       "from": "herpetofauna-cruzeiro.html",
+      "ref": "https://doi.org/10.1126/science.1149374"
+    },
+    {
+      "from": "herpetofauna-cruzeiro.html",
+      "ref": "https://doi.org/10.1590/S0073-47212010000400002"
+    },
+    {
+      "from": "herpetofauna-cruzeiro.html",
       "ref": "https://doi.org/10.1590/S0101-81751998000200011"
     },
     {
-      "from": "index.html",
-      "ref": "https://www.instagram.com/reservagigantedoitaguare/"
+      "from": "herpetofauna-cruzeiro.html",
+      "ref": "https://doi.org/10.1038/s41586-023-06578-4"
     },
     {
       "from": "index.html",
       "ref": "https://www.instagram.com/batedor.birding/"
     },
     {
-      "from": "oikos-fieldbook.html",
-      "ref": "https://doi.org/10.5281/zenodo.20526747"
+      "from": "index.html",
+      "ref": "https://www.instagram.com/reservagigantedoitaguare/"
+    },
+    {
+      "from": "sigmai.html",
+      "ref": "https://plugins.qgis.org/plugins/sigmai/"
     },
     {
       "from": "sigmai.html",
       "ref": "https://doi.org/10.5281/zenodo.20389287"
     },
     {
-      "from": "sigmai.html",
-      "ref": "https://plugins.qgis.org/plugins/sigmai/"
+      "from": "topotrail.html",
+      "ref": "https://plugins.qgis.org/plugins/TopoTrail/"
+    },
+    {
+      "from": "topotrail.html",
+      "ref": "https://doi.org/10.5281/zenodo.20320495"
+    },
+    {
+      "from": "sobre-gold.html",
+      "ref": "https://www.nlm.nih.gov/bsd/uniform_requirements.html"
+    },
+    {
+      "from": "sobre-gold.html",
+      "ref": "https://www.icmje.org/recommendations/"
     }
   ],
   "missing_dependencies": [
@@ -1633,22 +1633,12 @@
     },
     {
       "from": "herpetofauna-cruzeiro.html",
-      "ref": "item.audio",
-      "reason": "missing"
-    },
-    {
-      "from": "herpetofauna-cruzeiro.html",
       "ref": "${fileUrl(",
       "reason": "missing"
     },
     {
-      "from": "inat.js",
-      "ref": "placeId, options = {}",
-      "reason": "missing"
-    },
-    {
-      "from": "inat.js",
-      "ref": "placeId, options",
+      "from": "herpetofauna-cruzeiro.html",
+      "ref": "item.audio",
       "reason": "missing"
     },
     {
@@ -1660,11 +1650,21 @@
       "from": "specieslink.js",
       "ref": "{\n    apiKey,\n    taxonClass,\n    county,\n    limit = DEFAULT_LIMIT,\n    offset = 0,\n    coordinates,\n    basisOfRecord,\n    scientificName,\n    genus,\n    family,\n    order,\n    scope,\n  }",
       "reason": "missing"
+    },
+    {
+      "from": "inat.js",
+      "ref": "placeId, options = {}",
+      "reason": "missing"
+    },
+    {
+      "from": "inat.js",
+      "ref": "placeId, options",
+      "reason": "missing"
     }
   ],
   "sensitive_findings": [],
   "total_files": 247,
-  "total_size_bytes": 392570799,
+  "total_size_bytes": 392573675,
   "largest_files": [
     {
       "path": "IAAprendaAqui/taxonomic_context_index.json",

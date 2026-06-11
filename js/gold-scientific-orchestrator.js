@@ -55,6 +55,19 @@
     return /\b(cite|cita|citacao|referencia|referencias|fonte|fontes|artigo|literatura|vancouver)\b/i.test(String(question || ""));
   }
 
+  function isUnsupportedBinomial(plan, summary, ragEvidence) {
+    const taxon = plan.classification?.taxon;
+    const normalized = taxon?.normalized || plan.taxonForQuery || "";
+    if (taxon?.rank !== "species" || !/\s/.test(normalized)) return false;
+    if (summary?.taxon && ["validated", "pending", "ambiguous"].includes(summary.taxon.validationStatus)) return false;
+    if (["accepted_name", "synonym", "local_context_mention", "ocr_mention"].includes(summary?.type)) return false;
+    const needle = coreDefault.normalizeText(normalized);
+    return !(ragEvidence || []).some((item) => {
+      if (["taxonomy_index", "curated"].includes(item.sourceType)) return false;
+      return coreDefault.normalizeText(`${item.title || ""} ${item.text || ""}`).includes(needle);
+    });
+  }
+
   function createMunicipalInput(plan, question) {
     const q = coreDefault.normalizeText(question);
     const includeVouchers = /\b(voucher|vouchers|colecao|colecoes|material preservado|tombo|catalogo)\b/.test(q);
@@ -213,7 +226,7 @@
     }
 
     async function answerTaxon(plan) {
-      const herpetologyQuestion = plan.inheritedTaxon || plan.question;
+      const herpetologyQuestion = plan.taxonForQuery || plan.inheritedTaxon || plan.question;
       const herp = await herpetology?.answerQuestion?.(herpetologyQuestion, {
         conversationIntent: plan.classification.intent,
         municipalities: plan.municipalities,
@@ -231,6 +244,16 @@
       const ragEvidence = (ragBundle?.primaryEvidence || [])
         .filter((item) => !["curated"].includes(item.sourceType))
         .slice(0, 4);
+      const target = plan.taxonForQuery || plan.question;
+      const summary = await taxonomy?.getTaxonSummary?.(target);
+      if (isUnsupportedBinomial(plan, summary, ragEvidence)) {
+        const targetName = plan.classification?.taxon?.normalized || target;
+        return {
+          answer: `Nao encontrei evidencia suficiente no acervo local para tratar "${targetName}" como especie validada. O genero pode existir, mas esse binomio precisa de fonte taxonomica antes de eu afirmar biologia, distribuicao ou conservacao. Para manter rigor cientifico, posso responder sobre o genero ${targetName.split(" ")[0]} de forma geral ou tentar outra grafia/nome aceito.`,
+          evidence: [],
+          source: "unsupported_binomial_guard",
+        };
+      }
       if (herp?.answer) {
         const sourceLines = summarizeEvidenceSources(ragEvidence, plan);
         const evidenceNote = sourceLines.length
@@ -239,8 +262,6 @@
         return { answer: `${herp.answer}${evidenceNote}`, evidence: [...(herp.evidence || []), ...ragEvidence], source: "herpetology+rag" };
       }
 
-      const target = plan.taxonForQuery || plan.question;
-      const summary = await taxonomy?.getTaxonSummary?.(target);
       if (summary?.summary) {
         if (/^n(?:a|ã)o encontrei\b/i.test(summary.summary)) {
           const targetName = plan.taxonForQuery || plan.classification?.taxon?.raw || target;
