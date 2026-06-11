@@ -41,13 +41,13 @@
   function groupFromClassification(classification, question) {
     const q = coreDefault.normalizeText(question);
     if (/\b(anfibio|anfibios|sapo|sapos|ra|ras|perereca|pererecas|anuro|anuros)\b/.test(q)) return "anfibios";
-    if (/\b(cobra|cobras|serpente|serpentes|jararaca|jararacas)\b/.test(q)) return "serpentes";
+    if (/\b(cobra|cobras|serpente|serpentes|jararaca|jararacas|cascavel|cascaveis|coral|corais|jiboia|jiboias|surucucu|surucucus|mucurana|mucuranas|mussurana|mussuranas|caninana|caninanas|crotalus|bothrops)\b/.test(q)) return "serpentes";
     if (/\b(lagarto|lagartos|teiu|teius)\b/.test(q)) return "lagartos";
     if (/\b(quelonio|quelonios|tartaruga|tartarugas|cagado|cagados|jabuti|jabutis)\b/.test(q)) return "quelonios";
     if (/\b(reptil|repteis)\b/.test(q)) return "repteis";
     const taxon = classification?.taxon?.normalized || "";
     if (["Rhinella", "Boana", "Scinax", "Leptodactylus", "Anura", "Amphibia"].includes(taxon)) return "anfibios";
-    if (["Bothrops", "Viperidae", "Squamata", "Reptilia"].includes(taxon)) return "repteis";
+    if (["Bothrops", "Crotalus", "Viperidae", "Elapidae", "Dipsadidae", "Colubridae", "Boidae", "Squamata", "Reptilia"].includes(taxon)) return "repteis";
     return null;
   }
 
@@ -178,17 +178,102 @@
       state.update(parsed, evidence);
     }
 
+    function evidenceTitleLooksHerpetological(item, plan) {
+      const title = core.normalizeText(item.title || item.sourceId || item.id || "");
+      const taxon = core.normalizeText(plan.taxonForQuery || plan.classification?.taxon?.normalized || "");
+      const popular = core.normalizeText(plan.classification?.taxon?.raw || "");
+      const reptileCue = /\b(serpente|serpentes|snake|snakes|reptil|repteis|reptile|reptiles|squamata|viper|viperidae|elapidae|boidae|bothrops|crotalus|cascavel|jararaca|coral|jiboia|surucucu|mucurana|mussurana|caninana)\b/.test(title);
+      const amphibianCue = /\b(anfibio|anfibios|anuro|anuros|amphibia|anura|hylidae|bufonidae|leptodactylidae|rhinella|boana|scinax|leptodactylus|sapo|sapos|perereca|pererecas)\b/.test(title);
+      const broadHerpCue = /\b(herpetofauna|herpetology|herpetologia)\b/.test(title);
+      const currentMention = (taxon && title.includes(taxon)) || (popular && title.includes(popular));
+      const otherSpecificReptile = /\b(bothrops|crotalus|jararaca|cascavel|coral|jiboia|surucucu|mucurana|mussurana|caninana)\b/.test(title) && !currentMention;
+      if (otherSpecificReptile) return false;
+      const group = plan.groupForQuery || "";
+      const groupCompatible =
+        group === "anfibios" ? amphibianCue || broadHerpCue :
+          ["serpentes", "repteis", "lagartos", "quelonios"].includes(group) ? reptileCue || broadHerpCue :
+            amphibianCue || reptileCue || broadHerpCue;
+      return groupCompatible || currentMention;
+    }
+
+    function summarizeEvidenceSources(evidence, plan) {
+      const rows = [];
+      const seen = new Set();
+      (evidence || []).forEach((item) => {
+        if (!evidenceTitleLooksHerpetological(item, plan)) return;
+        const title = item.title || item.sourceId || item.id || item.reference;
+        if (!title) return;
+        const key = String(title).toLowerCase();
+        if (seen.has(key)) return;
+        seen.add(key);
+        const page = item.page ? `, p. ${item.page}` : "";
+        rows.push(`- ${title}${page}`);
+      });
+      return rows.slice(0, 3);
+    }
+
     async function answerTaxon(plan) {
       const herpetologyQuestion = plan.inheritedTaxon || plan.question;
       const herp = await herpetology?.answerQuestion?.(herpetologyQuestion, {
         conversationIntent: plan.classification.intent,
         municipalities: plan.municipalities,
       });
-      if (herp?.answer) return { answer: herp.answer, evidence: herp.evidence || [], source: "herpetology" };
+      let ragBundle = null;
+      try {
+        ragBundle = await rag?.retrieve?.(plan.question, {
+          classification: plan.classification,
+          sourcesToSearch: ["herpetology", "taxonomy_index", "public_index", "pdf"],
+          limit: 8,
+        });
+      } catch {
+        ragBundle = null;
+      }
+      const ragEvidence = (ragBundle?.primaryEvidence || [])
+        .filter((item) => !["curated"].includes(item.sourceType))
+        .slice(0, 4);
+      if (herp?.answer) {
+        const sourceLines = summarizeEvidenceSources(ragEvidence, plan);
+        const evidenceNote = sourceLines.length
+          ? `\n\nBiblioteca local consultada: encontrei mencoes relacionadas no acervo OCR/RAG. Exemplos recuperados:\n${sourceLines.join("\n")}\n\nEssas mencoes ajudam a contextualizar, mas nao substituem revisao taxonomica nem confirmam ocorrencia municipal.`
+          : "";
+        return { answer: `${herp.answer}${evidenceNote}`, evidence: [...(herp.evidence || []), ...ragEvidence], source: "herpetology+rag" };
+      }
 
       const target = plan.taxonForQuery || plan.question;
       const summary = await taxonomy?.getTaxonSummary?.(target);
-      if (summary?.summary) return { answer: summary.summary, evidence: [summary], source: "taxonomy" };
+      if (summary?.summary) {
+        if (/^n(?:a|ã)o encontrei\b/i.test(summary.summary)) {
+          const targetName = plan.taxonForQuery || plan.classification?.taxon?.raw || target;
+          return {
+            answer: `Nao encontrei evidencia suficiente no acervo local para tratar "${targetName}" como taxon validado no Gold. Pode ser um nome fora da base, erro de digitacao, sinonimo ainda nao mapeado ou um taxon ficticio. Para manter rigor cientifico, nao vou inventar distribuicao, biologia ou referencia. Se voce quiser, posso tentar por genero, familia, nome popular ou municipio.`,
+            evidence: [],
+            source: "insufficient_taxon_evidence",
+          };
+        }
+        const sourceLines = summarizeEvidenceSources(ragEvidence, plan);
+        const evidenceNote = sourceLines.length
+          ? `\n\nBiblioteca local consultada:\n${sourceLines.join("\n")}`
+          : "";
+        return { answer: `${summary.summary}${evidenceNote}`, evidence: [summary, ...ragEvidence], source: "taxonomy+rag" };
+      }
+
+      if (ragBundle?.primaryEvidence?.length) {
+        const best = ragBundle.primaryEvidence[0];
+        return {
+          answer: `Encontrei evidencias no acervo local, mas vou responder com cautela porque o termo precisa de revisao taxonomica ou contexto adicional.\n\n${compact(best.text, 850)}`,
+          evidence: ragBundle.primaryEvidence,
+          source: "rag",
+        };
+      }
+
+      if (plan.taxonForQuery || plan.classification?.taxon?.raw) {
+        const targetName = plan.taxonForQuery || plan.classification.taxon.raw;
+        return {
+          answer: `Nao encontrei evidencia suficiente no acervo local para tratar "${targetName}" como taxon validado no Gold. Pode ser um nome fora da base, erro de digitacao, sinonimo ainda nao mapeado ou um taxon ficticio. Para manter rigor cientifico, nao vou inventar distribuicao, biologia ou referencia. Se voce quiser, posso tentar por genero, familia, nome popular ou municipio.`,
+          evidence: [],
+          source: "insufficient_taxon_evidence",
+        };
+      }
 
       return null;
     }

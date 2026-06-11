@@ -1176,11 +1176,27 @@
 
     <script>
       const BASE = "assets/herpetofauna";
+      const publicAssetName = file => {
+        const value = String(file || "");
+        const extensionMatch = value.match(/(\.[a-z0-9]+)$/i);
+        const extension = extensionMatch ? extensionMatch[1].toLowerCase() : "";
+        const stem = extension ? value.slice(0, -extension.length) : value;
+        const slug = stem
+          .normalize("NFD")
+          .replace(/[\u0300-\u036f]/g, "")
+          .toLowerCase()
+          .replace(/[^a-z0-9]+/g, "-")
+          .replace(/^-+|-+$/g, "");
+        return `${slug || "asset"}${extension}`;
+      };
+      const assetFileName = file => BASE === "assets/herpetofauna"
+        ? publicAssetName(file)
+        : encodeURIComponent(file);
       const fileUrl = (folder, file) => {
         const signedFolder = folder === "stickers" || folder === "photos" ? `${folder}-signed` : folder;
-        return `${BASE}/${signedFolder}/${encodeURIComponent(file)}`;
+        return `${BASE}/${signedFolder}/${assetFileName(file)}`;
       };
-      const rootUrl = file => `${BASE}/${encodeURIComponent(file)}`;
+      const rootUrl = file => `${BASE}/${assetFileName(file)}`;
 
       const species = [
         {

@@ -29,7 +29,7 @@ function routeFor(question) {
     classification.shouldAskMunicipality = false;
     classification.shouldClearPreviousContext = true;
   }
-  const scientificCue = /\b(edna|dna ambiental|bioacustic|monitoramento acustico|inventario|amostragem|ecologia|conservacao|taxon|especie|genero|familia|anuro|anfibio|reptil|serpente|bothrops|jararaca)\b/.test(normalized);
+  const scientificCue = /\b(edna|dna ambiental|bioacustic|monitoramento acustico|inventario|amostragem|ecologia|conservacao|taxon|especie|genero|familia|anuro|anfibio|reptil|serpente|bothrops|jararaca|cascavel|cascaveis|crotalus|coral|corais|jiboia|jiboias|surucucu|mucurana|mussurana|caninana)\b/.test(normalized);
   const possibleNameMatch = String(question || "").match(/\b([A-Z][a-z]{2,})\s+([a-z][a-z-]{2,})\b/);
   const possibleScientificName = Boolean(possibleNameMatch && !new Set(["Como", "Qual", "Quais", "Onde", "Quando", "Porque", "Explique", "Fale"]).has(possibleNameMatch[1]));
   const eligibleIntents = new Set([
@@ -40,7 +40,6 @@ function routeFor(question) {
     conversationCore.CONVERSATION_INTENTS.REGIONAL_CONTEXT_QUESTION,
   ]);
   const preservedLegacyIntents = new Set([
-    conversationCore.CONVERSATION_INTENTS.MUNICIPAL_OCCURRENCE_QUERY,
     conversationCore.CONVERSATION_INTENTS.SAFETY_QUESTION,
     conversationCore.CONVERSATION_INTENTS.COMPLAINT,
     conversationCore.CONVERSATION_INTENTS.GREETING,
@@ -121,6 +120,12 @@ async function answer(question, options = {}) {
     return result;
   }
 
+  if (String(process.env.GOLD_NEXT_LEVEL_RAG_FORCE_FAILURE || "").toLowerCase() === "true") {
+    const result = { handled: false, fallback: true, fallbackReason: "experimental_layer_failure", classification: route.classification };
+    writeLog({ ...baseLog, chunks_retrieved: [], documents_used: [], evidence_sufficiency: null, citations_used: [], response_time_ms: Date.now() - started, fallback_triggered: true, fallback_reason: result.fallbackReason, error: "forced_next_level_failure" });
+    return result;
+  }
+
   if (options.preferPython !== true) {
     try {
       const orchestrated = await scientificOrchestrator.answerQuestion(question);
@@ -132,6 +137,7 @@ async function answer(question, options = {}) {
           .map((item) => item.title || item.sourceId || item.id || item.reference)
           .filter(Boolean)
           .slice(0, 8);
+        const insufficient = /nao encontrei evidencia|não encontrei evidência|evidencia local forte o suficiente|evidência local forte o suficiente/i.test(orchestrated.answer || "");
         const result = {
           handled: true,
           fallback: false,
@@ -142,7 +148,8 @@ async function answer(question, options = {}) {
             scientificIntent: orchestrated.plan?.classification?.intent || route.classification.intent,
             strategy: ["javascript_scientific_orchestrator"],
             sufficiency: {
-              canAnswerSpecific: true,
+              canAnswerSpecific: !insufficient,
+              confidence: insufficient ? "insufficient" : "sufficient",
               evidenceCount: evidence.length,
               route: orchestrated.plan?.route || route.strategy,
             },

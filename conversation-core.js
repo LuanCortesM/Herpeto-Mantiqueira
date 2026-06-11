@@ -58,7 +58,22 @@
     viperideos: "Viperidae",
     bufonideos: "Bufonidae",
   };
-  const KNOWN_TAXA = ["Bothrops", "Rhinella", "Viperidae", "Bufonidae"];
+  const KNOWN_TAXA = [
+    "Bothrops", "Crotalus", "Rhinella", "Boana", "Scinax", "Leptodactylus",
+    "Viperidae", "Elapidae", "Dipsadidae", "Colubridae", "Bufonidae", "Hylidae",
+    "Leptodactylidae", "Boidae", "Anura", "Squamata", "Amphibia", "Reptilia",
+  ];
+  const POPULAR_TAXA = [
+    { raw: "jararaca", normalized: "jararaca", rank: "popular_name", pattern: /\bjararacas?\b/ },
+    { raw: "cascavel", normalized: "cascavel", rank: "popular_name", pattern: /\bcascav(?:el|eis|éis)\b/ },
+    { raw: "cobra-coral", normalized: "cobra-coral", rank: "popular_name", pattern: /\b(cobras?\s+)?cor(?:al|ais)\b/ },
+    { raw: "jiboia", normalized: "jiboia", rank: "popular_name", pattern: /\bjiboias?\b/ },
+    { raw: "surucucu", normalized: "surucucu", rank: "popular_name", pattern: /\bsurucucus?\b/ },
+    { raw: "muçurana", normalized: "muçurana", rank: "popular_name", pattern: /\b(mu[cç]uranas?|mussuranas?)\b/ },
+    { raw: "caninana", normalized: "caninana", rank: "popular_name", pattern: /\bcaninanas?\b/ },
+    { raw: "cobra-cipó", normalized: "cobra-cipó", rank: "popular_name", pattern: /\b(cobras?\s+)?cip[oó]s?\b/ },
+    { raw: "sapo", normalized: "sapo", rank: "popular_name", pattern: /\bsapos?\b/ },
+  ];
 
   const SLANG_MAP = {
     q: "que", qq: "que", oq: "o que", oque: "o que", vc: "você", vcs: "vocês",
@@ -79,7 +94,9 @@
   const SPECIES_BLACKLIST = new Set([
     "sapo", "sapos", "ra", "ras", "perereca", "pererecas", "anuro", "anuros",
     "anfibio", "anfibios", "cobra", "cobras", "serpente", "serpentes", "jararaca",
-    "jararacas", "reptil", "repteis", "lagarto", "lagartos", "teiu", "teius",
+    "jararacas", "cascavel", "cascaveis", "coral", "corais", "jiboia", "jiboias",
+    "surucucu", "surucucus", "mucurana", "mucuranas", "mussurana", "mussuranas",
+    "caninana", "caninanas", "reptil", "repteis", "lagarto", "lagartos", "teiu", "teius",
     "quelonio", "quelonios", "tartaruga", "tartarugas", "fauna", "herpetofauna",
     "bicho", "bichos", "animal", "animais", "registro", "registros", "observacao",
     "observacoes", "voucher", "vouchers", "colecao", "coordenada", "coordenadas",
@@ -293,8 +310,8 @@
     add(/\b(anuro|anuros)\b/, "Amphibia", "anuros", "anuros");
     add(/\b(girino|girinos)\b/, "Amphibia", "girinos");
     add(/\b(reptil|repteis)\b/, "Reptilia", "répteis");
-    add(/\bbothrops\b/, "Reptilia", "Bothrops", "serpentes");
-    add(/\b(cobra|cobras|serpente|serpentes|jararaca|jararacas|peconhenta|venenosa)\b/, "Reptilia", /\b(cobra|cobras)\b/.test(q) ? "cobras" : "serpentes", "serpentes");
+    add(/\b(bothrops|crotalus)\b/, "Reptilia", /\bcrotalus\b/.test(q) ? "Crotalus" : "Bothrops", "serpentes");
+    add(/\b(cobra|cobras|serpente|serpentes|jararaca|jararacas|cascavel|cascaveis|coral|corais|jiboia|jiboias|surucucu|surucucus|mucurana|mucuranas|mussurana|mussuranas|caninana|caninanas|peconhenta|venenosa)\b/, "Reptilia", /\b(cobra|cobras)\b/.test(q) ? "cobras" : "serpentes", "serpentes");
     add(/\b(lagarto|lagartos|teiu|teius)\b/, "Reptilia", "lagartos", "lagartos");
     add(/\b(quelonio|quelonios|tartaruga|tartarugas)\b/, "Reptilia", "quelônios", "quelônios");
     if (/\b(herpetofauna|fauna herpetologica|anfibios e repteis|repteis e anfibios|sapos e cobras|bicho|bichos|animal|animais)\b/.test(q)) {
@@ -343,7 +360,7 @@
       return { speciesQuery: candidate, possibleSpeciesQuery: null, commonNameQuery: null, rejectedSpeciesCandidates };
     }
     const q = normalizeText(text);
-    const commonNameQuery = /\bjararacas?\b/.test(q) ? "jararaca" : null;
+    const commonNameQuery = (POPULAR_TAXA.find((item) => item.pattern.test(q)) || {}).normalized || null;
     return { speciesQuery: null, possibleSpeciesQuery: null, commonNameQuery, rejectedSpeciesCandidates };
   }
 
@@ -373,7 +390,7 @@
     if (/\b(top|mais registrad|mais observad|mais comum)\b/.test(q)) return { intent: INTENTS.TOP_RECORDED, confidence: 1 };
     if (/\b(resumo|quantos|quantidade|visao geral|riqueza|total)\b/.test(q)) return { intent: INTENTS.SUMMARY, confidence: 0.98 };
     if (speciesQuery) return { intent: INTENTS.SEARCH_SPECIES, confidence: 1 };
-    if (municipalities.length || /\b(especies|fauna|animais|bichos|registros|o que tem|sapo|sapos|anfibio|anfibios|reptil|repteis|cobra|cobras|jararaca|jararacas|serpente|serpentes|lagarto|lagartos|quelonio|quelonios|tartaruga|tartarugas)\b/.test(q)) return { intent: INTENTS.LIST_TAXA, confidence: 0.9 };
+    if (municipalities.length || /\b(especies|fauna|animais|bichos|registros|o que tem|sapo|sapos|anfibio|anfibios|reptil|repteis|cobra|cobras|jararaca|jararacas|cascavel|cascaveis|coral|corais|jiboia|jiboias|surucucu|surucucus|mucurana|mucuranas|mussurana|mussuranas|serpente|serpentes|lagarto|lagartos|quelonio|quelonios|tartaruga|tartarugas)\b/.test(q)) return { intent: INTENTS.LIST_TAXA, confidence: 0.9 };
     return { intent: INTENTS.UNKNOWN, confidence: 0.35 };
   }
 
@@ -382,12 +399,23 @@
     const q = slangAndAbbreviationResolver(corrected);
     const family = corrected.match(/\b([A-Z][a-z]+idae)\b/)?.[1];
     if (family) return { raw: family, normalized: family, rank: "family" };
+    const binomial = corrected.match(/\b([A-Z][a-z]{2,})\s+([a-z][a-z-]{2,})\b/);
+    if (binomial && !new Set(["Como", "Qual", "Quais", "Onde", "Quando", "Porque", "Explique", "Fale"]).has(binomial[1])) {
+      return { raw: `${binomial[1]} ${binomial[2]}`, normalized: `${binomial[1]} ${binomial[2]}`, rank: "species" };
+    }
     const explicit = corrected.match(/\b(?:g[eê]nero|esp[eé]cies?\s+de)\s+([A-Z][a-z]{2,})\b/i)?.[1];
     if (explicit) return { raw: explicit, normalized: explicit[0].toUpperCase() + explicit.slice(1).toLowerCase(), rank: "genus" };
     const known = KNOWN_TAXA.find((taxon) => new RegExp(`\\b${normalizeText(taxon)}\\b`, "i").test(q));
-    if (known) return { raw: known, normalized: known, rank: known.endsWith("idae") ? "family" : "genus" };
-    if (/\bjararacas?\b/.test(q)) return { raw: "jararaca", normalized: "jararaca", rank: "popular_name" };
-    if (/\bsapos?\b/.test(q)) return { raw: "sapo", normalized: "sapo", rank: "popular_name" };
+    if (known) {
+      const knownRank =
+        known.endsWith("idae") ? "family" :
+          ["Anura", "Squamata"].includes(known) ? "order" :
+            ["Amphibia", "Reptilia"].includes(known) ? "class" :
+              "genus";
+      return { raw: known, normalized: known, rank: knownRank };
+    }
+    const popular = POPULAR_TAXA.find((item) => item.pattern.test(q));
+    if (popular) return { raw: popular.raw, normalized: popular.normalized, rank: popular.rank };
     if (/\banura\b/.test(q)) return { raw: "Anura", normalized: "Anura", rank: "order" };
     if (/\bherpetofauna\b/.test(q)) return { raw: "herpetofauna", normalized: "herpetofauna", rank: "class" };
     if (/\b(anfibios?|repteis?|serpentes?|anuros?)\b/.test(q)) {

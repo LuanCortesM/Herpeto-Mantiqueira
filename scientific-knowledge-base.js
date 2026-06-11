@@ -37,6 +37,26 @@
 
   const COMMON_TAXON_PROFILES = [
     {
+      id: "cascavel",
+      match: /\bcascav(?:el|eis|éis)\b/,
+      answer: [
+        "Cascavel e um nome popular geralmente associado a serpentes do genero Crotalus. No Brasil, o termo aparece com frequencia ligado ao complexo de Crotalus durissus, mas nome popular sozinho nao confirma especie nem ocorrencia local.",
+        "Cascaveis pertencem a Viperidae, sao serpentes peconhentas e tem importancia ecologica como predadoras. O chocalho da cauda e uma caracteristica conhecida, mas a observacao deve ser feita a distancia.",
+        "Se encontrar uma, nao tente capturar, matar ou manusear. Em caso de picada, procure atendimento medico imediatamente e nao faca torniquete, cortes ou tratamentos caseiros.",
+        "Posso explicar Crotalus de forma geral, recuperar mencoes da biblioteca local ou consultar registros em um municipio quando voce indicar a localidade.",
+      ].join("\n\n"),
+      source: "sintese curada da base cientifica local; Ministerio da Saude, Acidentes Ofidicos",
+    },
+    {
+      id: "crotalus",
+      match: /\bcrotalus\b/,
+      answer: [
+        "Crotalus e um genero de serpentes peconhentas da familia Viperidae, popularmente associado as cascaveis.",
+        "A resposta geral deve separar taxonomia de ocorrencia: falar de Crotalus nao significa afirmar que ha registro em um municipio especifico. Para isso, o Gold precisa consultar cache, literatura local, iNaturalist ou speciesLink.",
+      ].join("\n\n"),
+      source: "sintese curada da base cientifica local",
+    },
+    {
       id: "jararaca",
       match: /\bjararacas?\b/,
       answer: [
