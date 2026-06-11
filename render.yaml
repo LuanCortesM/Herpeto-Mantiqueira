@@ -10,7 +10,7 @@ services:
       - key: NODE_ENV
         value: production
       - key: GOLD_NEXT_LEVEL_RAG
-        value: "false"
+        value: "true"
       - key: HERPETO_ALLOWED_ORIGIN
         sync: false
       - key: HERPETO_ADMIN_EMAIL
