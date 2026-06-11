@@ -567,6 +567,25 @@ const server = http.createServer(async (request, response) => {
   serveStatic(request, response, url);
 });
 
+function warmGoldKnowledgeCaches() {
+  const queries = [
+    "Bothrops jararaca Viperidae Mata Atlantica",
+    "inventario de anuros busca ativa pitfall gravacao acustica",
+  ];
+  Promise.allSettled(queries.map((query) => pdfKnowledge.searchPdfKnowledge(query, { limit: 4 })))
+    .then((results) => {
+      const failures = results.filter((result) => result.status === "rejected");
+      if (failures.length) {
+        console.warn(`Aquecimento parcial do indice cientifico do Gold: ${failures.length} falha(s).`);
+      } else {
+        console.log("Indice cientifico do Gold aquecido em segundo plano.");
+      }
+    })
+    .catch((error) => {
+      console.warn("Aquecimento do indice cientifico do Gold indisponivel:", error.message);
+    });
+}
+
 if (require.main === module) {
   server.listen(PORT, () => {
     console.log(`Herpeto Mantiqueira aberto em http://localhost:${PORT}`);
@@ -579,6 +598,7 @@ if (require.main === module) {
     biodiversityRefresh.refreshAll().catch((error) => {
       console.warn("Atualizacao semanal de biodiversidade indisponivel:", error.message);
     });
+    setTimeout(warmGoldKnowledgeCaches, 1500);
   });
   const weeklyCheckInterval = setInterval(() => {
     biodiversityRefresh.refreshAll().catch((error) => {
