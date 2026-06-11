@@ -6,10 +6,18 @@ const readline = require("readline");
 const zlib = require("zlib");
 
 const CLEAN_INDEX_PATH = path.join(__dirname, "IAAprendaAqui", "herpetology_pdf_chunks_clean.jsonl");
+const OFFICIAL_EVIDENCE_INDEX_PATH = path.join(__dirname, "IAAprendaAqui", "gold_official_evidence_corpus.jsonl");
+const OLD_100_DECISION_INDEX_PATH = path.join(__dirname, "IAAprendaAqui", "herpetology_pdf_chunks_100_decision_experimental.jsonl");
 const LEGACY_INDEX_PATH = path.join(__dirname, "IAAprendaAqui", "herpetology_pdf_chunks.jsonl");
 const CLEAN_INDEX_GZIP_PATH = `${CLEAN_INDEX_PATH}.gz`;
+const OFFICIAL_EVIDENCE_INDEX_GZIP_PATH = `${OFFICIAL_EVIDENCE_INDEX_PATH}.gz`;
+const OLD_100_DECISION_INDEX_GZIP_PATH = `${OLD_100_DECISION_INDEX_PATH}.gz`;
 const LEGACY_INDEX_GZIP_PATH = `${LEGACY_INDEX_PATH}.gz`;
 const INDEX_CANDIDATES = [
+  OFFICIAL_EVIDENCE_INDEX_PATH,
+  OFFICIAL_EVIDENCE_INDEX_GZIP_PATH,
+  OLD_100_DECISION_INDEX_PATH,
+  OLD_100_DECISION_INDEX_GZIP_PATH,
   CLEAN_INDEX_PATH,
   CLEAN_INDEX_GZIP_PATH,
   LEGACY_INDEX_PATH,
@@ -95,8 +103,19 @@ function openJsonlStream(indexPath) {
 }
 
 function catalogSummary() {
+  const activeIndex = {
+    path: INDEX_PATH,
+    file: path.basename(INDEX_PATH),
+    mode: [OFFICIAL_EVIDENCE_INDEX_PATH, OFFICIAL_EVIDENCE_INDEX_GZIP_PATH, OLD_100_DECISION_INDEX_PATH, OLD_100_DECISION_INDEX_GZIP_PATH].includes(INDEX_PATH)
+      ? "official_100_decision"
+      : [CLEAN_INDEX_PATH, CLEAN_INDEX_GZIP_PATH].includes(INDEX_PATH)
+        ? "clean_fallback"
+        : "legacy_fallback",
+    compressed: INDEX_PATH.endsWith(".gz"),
+    bytes: fs.existsSync(INDEX_PATH) ? fs.statSync(INDEX_PATH).size : 0,
+  };
   if (!fs.existsSync(CATALOG_PATH)) {
-    return { available: false, documents_total: 0, chunks_total: 0 };
+    return { available: false, documents_total: 0, chunks_total: 0, activeIndex };
   }
   const catalog = JSON.parse(fs.readFileSync(CATALOG_PATH, "utf8"));
   return {
@@ -106,6 +125,7 @@ function catalogSummary() {
     documents_with_text: catalog.documents_with_text,
     documents_failed: catalog.documents_failed,
     chunks_total: catalog.chunks_total,
+    activeIndex,
   };
 }
 
@@ -113,7 +133,7 @@ async function searchPdfKnowledge(query, options = {}) {
   const queryTokens = tokens(query);
   const limit = Math.min(Math.max(Number(options.limit || 4), 1), 8);
   const indexPaths = [INDEX_PATH];
-  if (INDEX_PATH !== CLEAN_INDEX_PATH && INDEX_PATH !== CLEAN_INDEX_GZIP_PATH) {
+  if (![OFFICIAL_EVIDENCE_INDEX_PATH, OFFICIAL_EVIDENCE_INDEX_GZIP_PATH, OLD_100_DECISION_INDEX_PATH, OLD_100_DECISION_INDEX_GZIP_PATH, CLEAN_INDEX_PATH, CLEAN_INDEX_GZIP_PATH].includes(INDEX_PATH)) {
     if (fs.existsSync(OCR_SUPPLEMENT_PATH)) indexPaths.push(OCR_SUPPLEMENT_PATH);
     else if (fs.existsSync(OCR_SUPPLEMENT_GZIP_PATH)) indexPaths.push(OCR_SUPPLEMENT_GZIP_PATH);
   }
@@ -162,6 +182,6 @@ async function searchPdfKnowledge(query, options = {}) {
 }
 
 module.exports = {
-  INDEX_PATH, CLEAN_INDEX_PATH, CLEAN_INDEX_GZIP_PATH, LEGACY_INDEX_PATH, LEGACY_INDEX_GZIP_PATH, OCR_SUPPLEMENT_PATH, OCR_SUPPLEMENT_GZIP_PATH, CATALOG_PATH, EXCLUSIONS_PATH, SEARCH_CACHE_TTL_MS, normalize, tokens, scoreChunk,
+  INDEX_PATH, OFFICIAL_EVIDENCE_INDEX_PATH, OFFICIAL_EVIDENCE_INDEX_GZIP_PATH, OLD_100_DECISION_INDEX_PATH, OLD_100_DECISION_INDEX_GZIP_PATH, CLEAN_INDEX_PATH, CLEAN_INDEX_GZIP_PATH, LEGACY_INDEX_PATH, LEGACY_INDEX_GZIP_PATH, OCR_SUPPLEMENT_PATH, OCR_SUPPLEMENT_GZIP_PATH, CATALOG_PATH, EXCLUSIONS_PATH, SEARCH_CACHE_TTL_MS, normalize, tokens, scoreChunk,
   catalogSummary, searchPdfKnowledge, clearSearchCache: () => searchCache.clear(),
 };

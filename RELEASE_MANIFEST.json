@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-10T23:58:28",
+  "generated_at": "2026-06-11T08:14:36",
   "source_project": "C:\\Users\\T-Gamer\\Music\\Herpeto Mantiqueira",
   "pages": [
     "index.html",
@@ -1207,8 +1207,8 @@
     },
     {
       "path": "js/scientific-rag-engine.js",
-      "size_bytes": 15205,
-      "sha256": "91b12b1a50a094400988c24628a006c1be6b158a537482eaffd940a2db0e303b"
+      "size_bytes": 15191,
+      "sha256": "df40f7a713999a696e3385e4d95353d06c465d68b4a70499aa2ce63b5246bd16"
     },
     {
       "path": "js/specieslink.js",
@@ -1521,72 +1521,12 @@
       "ref": "https://www.icmje.org/recommendations/"
     },
     {
-      "from": "oikos-fieldbook.html",
-      "ref": "https://doi.org/10.5281/zenodo.20526747"
+      "from": "topotrail.html",
+      "ref": "https://doi.org/10.5281/zenodo.20320495"
     },
     {
-      "from": "herpetofauna-cruzeiro.html",
-      "ref": "https://doi.org/10.1590/S1984-46702009000100015"
-    },
-    {
-      "from": "herpetofauna-cruzeiro.html",
-      "ref": "https://doi.org/10.1080/00222930600976021"
-    },
-    {
-      "from": "herpetofauna-cruzeiro.html",
-      "ref": "https://doi.org/10.1126/science.1149374"
-    },
-    {
-      "from": "herpetofauna-cruzeiro.html",
-      "ref": "https://doi.org/10.1590/S1676-06032006000200010"
-    },
-    {
-      "from": "herpetofauna-cruzeiro.html",
-      "ref": "https://doi.org/10.1590/S1678-91992012000400007"
-    },
-    {
-      "from": "herpetofauna-cruzeiro.html",
-      "ref": "https://doi.org/10.1007/s10211-014-0194-4"
-    },
-    {
-      "from": "herpetofauna-cruzeiro.html",
-      "ref": "https://doi.org/10.1590/S0073-47212010000400002"
-    },
-    {
-      "from": "herpetofauna-cruzeiro.html",
-      "ref": "https://doi.org/10.1038/s41586-023-06578-4"
-    },
-    {
-      "from": "herpetofauna-cruzeiro.html",
-      "ref": "https://reptile-database.reptarium.cz/"
-    },
-    {
-      "from": "herpetofauna-cruzeiro.html",
-      "ref": "https://doi.org/10.1590/S1519-69842012000200001"
-    },
-    {
-      "from": "herpetofauna-cruzeiro.html",
-      "ref": "https://doi.org/10.1038/428853a"
-    },
-    {
-      "from": "herpetofauna-cruzeiro.html",
-      "ref": "https://doi.org/10.1590/S0101-81751998000200011"
-    },
-    {
-      "from": "herpetofauna-cruzeiro.html",
-      "ref": "https://doi.org/10.1590/S0073-47212010000300004"
-    },
-    {
-      "from": "herpetofauna-cruzeiro.html",
-      "ref": "https://doi.org/10.1590/1676-0611-BN-2020-1147"
-    },
-    {
-      "from": "herpetofauna-cruzeiro.html",
-      "ref": "https://doi.org/10.1590/S1519-69842002000200010"
-    },
-    {
-      "from": "herpetofauna-cruzeiro.html",
-      "ref": "https://doi.org/10.1371/journal.pone.0244812"
+      "from": "topotrail.html",
+      "ref": "https://plugins.qgis.org/plugins/TopoTrail/"
     },
     {
       "from": "herpetofauna-cruzeiro.html",
@@ -1598,31 +1538,91 @@
     },
     {
       "from": "herpetofauna-cruzeiro.html",
+      "ref": "https://doi.org/10.1590/S1519-69842012000200001"
+    },
+    {
+      "from": "herpetofauna-cruzeiro.html",
+      "ref": "https://doi.org/10.1590/S0073-47212010000400002"
+    },
+    {
+      "from": "herpetofauna-cruzeiro.html",
+      "ref": "https://doi.org/10.1371/journal.pone.0244812"
+    },
+    {
+      "from": "herpetofauna-cruzeiro.html",
+      "ref": "https://doi.org/10.1590/S1676-06032006000200010"
+    },
+    {
+      "from": "herpetofauna-cruzeiro.html",
+      "ref": "https://doi.org/10.1590/S1984-46702009000100015"
+    },
+    {
+      "from": "herpetofauna-cruzeiro.html",
+      "ref": "https://doi.org/10.1038/428853a"
+    },
+    {
+      "from": "herpetofauna-cruzeiro.html",
+      "ref": "https://doi.org/10.1590/S1678-91992012000400007"
+    },
+    {
+      "from": "herpetofauna-cruzeiro.html",
+      "ref": "https://reptile-database.reptarium.cz/"
+    },
+    {
+      "from": "herpetofauna-cruzeiro.html",
+      "ref": "https://doi.org/10.1080/00222930600976021"
+    },
+    {
+      "from": "herpetofauna-cruzeiro.html",
+      "ref": "https://doi.org/10.1590/S1519-69842002000200010"
+    },
+    {
+      "from": "herpetofauna-cruzeiro.html",
+      "ref": "https://doi.org/10.1590/1676-0611-BN-2020-1147"
+    },
+    {
+      "from": "herpetofauna-cruzeiro.html",
+      "ref": "https://doi.org/10.1038/s41586-023-06578-4"
+    },
+    {
+      "from": "herpetofauna-cruzeiro.html",
+      "ref": "https://doi.org/10.1590/S0073-47212010000300004"
+    },
+    {
+      "from": "herpetofauna-cruzeiro.html",
+      "ref": "https://doi.org/10.1007/s10211-014-0194-4"
+    },
+    {
+      "from": "herpetofauna-cruzeiro.html",
+      "ref": "https://doi.org/10.1126/science.1149374"
+    },
+    {
+      "from": "herpetofauna-cruzeiro.html",
       "ref": "https://doi.org/10.5751/ES-02815-140121"
     },
     {
-      "from": "index.html",
-      "ref": "https://www.instagram.com/batedor.birding/"
+      "from": "herpetofauna-cruzeiro.html",
+      "ref": "https://doi.org/10.1590/S0101-81751998000200011"
     },
     {
       "from": "index.html",
       "ref": "https://www.instagram.com/reservagigantedoitaguare/"
     },
     {
-      "from": "topotrail.html",
-      "ref": "https://plugins.qgis.org/plugins/TopoTrail/"
+      "from": "index.html",
+      "ref": "https://www.instagram.com/batedor.birding/"
     },
     {
-      "from": "topotrail.html",
-      "ref": "https://doi.org/10.5281/zenodo.20320495"
-    },
-    {
-      "from": "sigmai.html",
-      "ref": "https://plugins.qgis.org/plugins/sigmai/"
+      "from": "oikos-fieldbook.html",
+      "ref": "https://doi.org/10.5281/zenodo.20526747"
     },
     {
       "from": "sigmai.html",
       "ref": "https://doi.org/10.5281/zenodo.20389287"
+    },
+    {
+      "from": "sigmai.html",
+      "ref": "https://plugins.qgis.org/plugins/sigmai/"
     }
   ],
   "missing_dependencies": [
@@ -1642,16 +1642,6 @@
       "reason": "missing"
     },
     {
-      "from": "specieslink.js",
-      "ref": "{\n    apiKey,\n    taxonClass,\n    county,\n    limit = DEFAULT_LIMIT,\n    offset = 0,\n    coordinates,\n    basisOfRecord,\n    scientificName,\n    genus,\n    family,\n    order,\n    scope,\n  }",
-      "reason": "missing"
-    },
-    {
-      "from": "specieslink.js",
-      "ref": "{\n      taxonClass, county, limit, offset, coordinates, basisOfRecord, scientificName, genus, family, order, scope,\n    }, apiKey",
-      "reason": "missing"
-    },
-    {
       "from": "inat.js",
       "ref": "placeId, options = {}",
       "reason": "missing"
@@ -1660,11 +1650,21 @@
       "from": "inat.js",
       "ref": "placeId, options",
       "reason": "missing"
+    },
+    {
+      "from": "specieslink.js",
+      "ref": "{\n      taxonClass, county, limit, offset, coordinates, basisOfRecord, scientificName, genus, family, order, scope,\n    }, apiKey",
+      "reason": "missing"
+    },
+    {
+      "from": "specieslink.js",
+      "ref": "{\n    apiKey,\n    taxonClass,\n    county,\n    limit = DEFAULT_LIMIT,\n    offset = 0,\n    coordinates,\n    basisOfRecord,\n    scientificName,\n    genus,\n    family,\n    order,\n    scope,\n  }",
+      "reason": "missing"
     }
   ],
   "sensitive_findings": [],
   "total_files": 247,
-  "total_size_bytes": 392570813,
+  "total_size_bytes": 392570799,
   "largest_files": [
     {
       "path": "IAAprendaAqui/taxonomic_context_index.json",

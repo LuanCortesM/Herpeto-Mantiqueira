@@ -230,7 +230,7 @@
           title: chunk.title || chunk.source_file,
           text: chunk.text,
           sourceId: chunk.documentId || chunk.id,
-          baseScore: 0.46,
+          baseScore: 0.24,
         })));
       });
 
@@ -241,7 +241,8 @@
           sourceType: "pdf",
           title: chunk.title,
           text: chunk.text,
-          baseScore: 0.3,
+          sourceId: chunk.document_id || chunk.id,
+          baseScore: 0.48,
         })));
       });
 
@@ -266,13 +267,13 @@
         })
         .filter((item) => {
           if (item.qualityScore < 0.32 || item.score < 0.34) return false;
-          if (["curated", "glossary", "taxonomy_index", "scientific_presentation_index"].includes(item.sourceType)) return true;
+          if (["curated", "glossary", "taxonomy_index"].includes(item.sourceType)) return true;
           return item.relevanceOverlap > 0;
         })
         .sort((left, right) => right.score - left.score)
         .slice(0, options.limit || 8);
 
-      const strongEvidence = ranked.filter((item) => item.score >= 0.58 || ["curated", "glossary", "taxonomy_index", "scientific_presentation_index"].includes(item.sourceType));
+      const strongEvidence = ranked.filter((item) => item.score >= 0.58 || ["curated", "glossary", "taxonomy_index"].includes(item.sourceType));
       const draftBundle = {
         evidence: ranked,
         primaryEvidence: strongEvidence.slice(0, 4),
